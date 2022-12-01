@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RoyalMailController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -174,5 +175,8 @@ Route::get('/seller/account_plan', function () {
 Route::get('/royal-mail-create-orders', [RoyalMailController::class, 'create']);
 Route::get('/royal-mail-get-orders', [RoyalMailController::class, 'index']);
 Route::get('/royal-mail-update-orders', [RoyalMailController::class, 'update']);
+
+//ebay
+Route::get('/get-orders',[TestController::class, 'index']);
 
 
