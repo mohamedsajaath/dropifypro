@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\Mapper\Product\RequestToProductMapper;
+use App\Helper\Service\ProductService;
+use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    use ResponseWrapper;
     /**
      * Display a listing of the resource.
      *
@@ -27,15 +39,18 @@ class ProductController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function store(StoreProductRequest $request)
     {
-        //
+        try{
+            $userId = Auth::user()->id;
+            $requestMapper = new RequestToProductMapper($request);
+            $product = $requestMapper->getProduct();
+            ProductService::save($product, $userId);
+            return self::response('Successfully Added');
+        }catch(\Exception $ex){
+            return self::response($ex->getMessage(),[],422);
+        }
     }
 
     /**
