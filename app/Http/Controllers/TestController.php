@@ -10,6 +10,6 @@ class TestController extends Controller
     public function  index()
     {
         $result = EbayHandler::getOrder();
-        print_r($result);die;
+        print_r($result);
     }
 }
