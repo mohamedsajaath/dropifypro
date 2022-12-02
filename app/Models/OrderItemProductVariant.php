@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderItemProductVariant extends Model
 {
-    use HasFactory;
+    use HasFactory, CommonQuery;
 }

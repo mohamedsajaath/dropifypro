@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderCustomer extends Model
 {
-    use HasFactory;
+    use HasFactory, CommonQuery;
 }
