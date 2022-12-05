@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('on_boardings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->text('title');
             $table->date('date');
             $table->time('time');

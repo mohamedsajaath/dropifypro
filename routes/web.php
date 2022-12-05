@@ -26,17 +26,17 @@ Route::get('/home', function () {
 })->name('home');
 //HOME END
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-require __DIR__.'/auth.php';
+
+
 
 //ADMIN START
 
@@ -121,7 +121,7 @@ Route::prefix('admin')->group(function(){
 
 
 //SELLER START
-Route::get('/dashboard', function () {
+Route::get('/seller/dashboard', function () {
     return view('pages.seller.dashboard.index');
 })->name('seller.dashboard');
 
@@ -200,4 +200,5 @@ Route::get('/royal-mail-update-orders', [RoyalMailController::class, 'update']);
 Route::get('/get-orders',[TestController::class, 'index']);
 
 
-
+});
+require __DIR__.'/auth.php';

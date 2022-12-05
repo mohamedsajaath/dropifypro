@@ -25,8 +25,8 @@
         <!--begin::Header wrapper-->
         <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1" id="kt_app_header_wrapper">
             <!--begin::Menu wrapper-->
-{{--            @include('layouts.header.seller.index')--}}
-           @include('layouts.header.admin.index')
+           @include('layouts.header.seller.index')
+           {{-- @include('layouts.header.admin.index') --}}
 
 
             <!--end::Navbar-->
