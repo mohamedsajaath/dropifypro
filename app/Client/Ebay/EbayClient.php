@@ -3,7 +3,7 @@
 namespace App\Client\Ebay;
 
 use App\Handlers\ProcessHitCounter;
-use App\Utilities\DateTimeUtility;
+use App\Helper\Utility\DateTimeUtility;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Spatie\ArrayToXml\ArrayToXml;
