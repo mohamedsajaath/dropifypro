@@ -24,9 +24,9 @@ Route::get('/home', function () {
 })->name('home');
 //HOME END
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -119,7 +119,7 @@ Route::prefix('admin')->group(function(){
 
 
 //SELLER START
-Route::get('/dashboard', function () {
+Route::get('/seller/dashboard', function () {
     return view('pages.seller.dashboard.index');
 })->name('seller.dashboard');
 
