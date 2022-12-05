@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('ebay_order_id')->unique();
             $table->double('total_amount', 8, 2);
             $table->integer('total_quantity');
+            $table->json('content');
             $table->timestamps();
         });
     }

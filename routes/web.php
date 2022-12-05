@@ -1,7 +1,11 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\RoyalMailController;
 use App\Http\Controllers\TestController;
+=======
+use App\Http\Controllers\ProfileController;
+>>>>>>> 264784aed4997da25c394b9e68c007307b0cedbf
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +19,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/', function () {
-    return view('layouts.app');
+    return view('welcome');
 });
 
 //HOME START
@@ -26,76 +29,96 @@ Route::get('/home', function () {
 })->name('home');
 //HOME END
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+
 //ADMIN START
 
-Route::get('/admin/dashboard', function () {
-    return view('pages.admin.dashboard.index');
-})->name('admin.dashboard');
+
+Route::prefix('admin')->group(function(){
 
 
-Route::get('/admin/products/active', function () {
-    return view('pages.admin.products.index');
-})->name('admin.products.active');
+    Route::get('/dashboard', function () {
+        return view('pages.admin.dashboard.index');
+    })->name('admin.dashboard');
 
 
-Route::get('/admin/products/recommend', function () {
-    return view('pages.admin.products.recommend.index');
-})->name('admin.products.recommend');
+    Route::get('/products/active', function () {
+        return view('pages.admin.products.index');
+    })->name('admin.products.active');
 
 
-Route::get('/admin/orders/paid', function () {
-    return view('pages.admin.orders.paid.index');
-})->name('admin.orders.paid');
+    Route::get('/products/recommend', function () {
+        return view('pages.admin.products.recommend.index');
+    })->name('admin.products.recommend');
 
 
-Route::get('/admin/orders/unpaid', function () {
-    return view('pages.admin.orders.unpaid.index');
-})->name('admin.orders.unpaid');
+    Route::get('/orders/paid', function () {
+        return view('pages.admin.orders.paid.index');
+    })->name('admin.orders.paid');
 
 
-Route::get('/admin/sellers/wallet', function () {
-    return view('pages.admin.sellers.wallets.index');
-})->name('admin.sellers.wallet');
+    Route::get('/orders/unpaid', function () {
+        return view('pages.admin.orders.unpaid.index');
+    })->name('admin.orders.unpaid');
 
 
-Route::get('/admin/sellers/ebay-accounts', function () {
-    return view('pages.admin.sellers.ebay-accounts.index');
-})->name('admin.sellers.ebay-accounts');
+    Route::get('/sellers/wallet', function () {
+        return view('pages.admin.sellers.wallets.index');
+    })->name('admin.sellers.wallet');
 
 
-Route::get('/admin/sellers/memberships/active', function () {
-    return view('pages.admin.memberships.active.index');
-})->name('admin.sellers.memberships.active');
+    Route::get('/sellers/ebay-accounts', function () {
+        return view('pages.admin.sellers.ebay-accounts.index');
+    })->name('admin.sellers.ebay-accounts');
 
 
-Route::get('/admin/sellers/memberships/cancelled', function () {
-    return view('pages.admin.memberships.cancelled.index');
-})->name('admin.sellers.memberships.cancelled');
+    Route::get('/sellers/memberships/active', function () {
+        return view('pages.admin.memberships.active.index');
+    })->name('admin.sellers.memberships.active');
 
 
-Route::get('/admin/support/tickets', function () {
-    return view('pages.admin.support.tickets.index');
-})->name('admin.support.tickets');
+    Route::get('/sellers/memberships/cancelled', function () {
+        return view('pages.admin.memberships.cancelled.index');
+    })->name('admin.sellers.memberships.cancelled');
 
 
-Route::get('/admin/support/account-managers', function () {
-    return view('pages.admin.support.account-managers.index');
-})->name('admin.support.account-managers');
+    Route::get('/support/tickets', function () {
+        return view('pages.admin.support.tickets.index');
+    })->name('admin.support.tickets');
 
 
-Route::get('/admin/onboardings', function () {
-    return view('pages.admin.onboardings.index');
-})->name('admin.onboardings');
+    Route::get('/support/account-managers', function () {
+        return view('pages.admin.support.account-managers.index');
+    })->name('admin.support.account-managers');
 
 
-Route::get('/admin/wholesale-requests', function () {
-    return view('pages.admin.wholesale-requests.index');
-})->name('admin.wholesale-requests');
+    Route::get('/onboardings', function () {
+        return view('pages.admin.onboardings.index');
+    })->name('admin.onboardings');
 
 
-Route::get('/admin/manage-emails', function () {
-    return view('pages.admin.manage-emails.index');
-})->name('admin.manage-emails');
+    Route::get('/wholesale-requests', function () {
+        return view('pages.admin.wholesale-requests.index');
+    })->name('admin.wholesale-requests');
+
+
+    Route::get('/manage-emails', function () {
+        return view('pages.admin.manage-emails.index');
+    })->name('admin.manage-emails');
+
+
+
+});
 
 //ADMIN END
 
@@ -178,5 +201,6 @@ Route::get('/royal-mail-update-orders', [RoyalMailController::class, 'update']);
 
 //ebay
 Route::get('/get-orders',[TestController::class, 'index']);
+
 
 
