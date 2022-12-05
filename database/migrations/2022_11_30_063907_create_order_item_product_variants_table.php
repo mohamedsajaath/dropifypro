@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('order_item_product_variants', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_item_id');
-            $table->foreignId('product_variant_id');
+            $table->foreignId('order_item_id')->constrained('order_items');
+            $table->foreignId('product_variant_id')->constrained('product_variants');
             $table->timestamps();
 
             $table->unique(['order_item_id','product_variant_id'],'unique_order_item_product_variant');

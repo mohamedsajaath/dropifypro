@@ -32,9 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-require __DIR__.'/auth.php';
+
+
 
 //ADMIN START
 
@@ -195,4 +195,5 @@ Route::get('/royal-mail-get-orders', [RoyalMailController::class, 'index']);
 Route::get('/royal-mail-update-orders', [RoyalMailController::class, 'update']);
 
 
-
+});
+require __DIR__.'/auth.php';

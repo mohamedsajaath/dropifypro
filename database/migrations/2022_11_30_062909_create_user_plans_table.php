@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('user_plans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('plan_id');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('plan_id')->constrained('plans');
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();

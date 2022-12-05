@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('user_products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('product_id');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('product_variant_id')->constrained('product_variants');
             $table->text('ebay_item_id')->unique();
             $table->double('ebay_price', 8, 2);
             $table->date('date');

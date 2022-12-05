@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Helper\Royalmail\RoyalMailHelper;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
-use App\Models\royal_mail;
-
-class RoyalMailController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,7 @@ class RoyalMailController extends Controller
      */
     public function index()
     {
-      $endpoint= '"ref";1005';
-      $res = RoyalMailHelper::getOrder($endpoint);
-      dd($res);
+        //
     }
 
     /**
@@ -28,9 +24,7 @@ class RoyalMailController extends Controller
      */
     public function create()
     {
-
-       $res = RoyalMailHelper::CreateOrder();
-       dd($res);
+        //
     }
 
     /**
@@ -47,10 +41,10 @@ class RoyalMailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Payment $payment)
     {
         //
     }
@@ -58,10 +52,10 @@ class RoyalMailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Payment $payment)
     {
         //
     }
@@ -70,23 +64,21 @@ class RoyalMailController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function update(Request $request, Payment $payment)
     {
-        $endpoint ='status';
-        $res = RoyalMailHelper::updateOrder($endpoint);
-        dd($res);
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Payment $payment)
     {
         //
     }

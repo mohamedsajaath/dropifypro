@@ -11,12 +11,15 @@ return new class extends Migration
      *
      * @return void
      */
-   
     public function up()
     {
-        Schema::create('royal_mails', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->string('bearer_token');
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('method');
+            $table->string('reference');
+            $table->double('amount', 8, 2);
+            $table->date('date');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('royal_mails');
+        Schema::dropIfExists('payments');
     }
 };

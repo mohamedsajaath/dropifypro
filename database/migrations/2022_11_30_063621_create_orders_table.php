@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->tinyInteger('status');
             $table->text('ebay_order_id')->unique();
             $table->double('total_amount', 8, 2);
