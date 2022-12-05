@@ -1,11 +1,8 @@
 <?php
 
-<<<<<<< HEAD
 use App\Http\Controllers\RoyalMailController;
 use App\Http\Controllers\TestController;
-=======
 use App\Http\Controllers\ProfileController;
->>>>>>> 264784aed4997da25c394b9e68c007307b0cedbf
 use Illuminate\Support\Facades\Route;
 
 /*

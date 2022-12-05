@@ -15,5 +15,6 @@ class Order extends Model
         'ebay_order_id',
         'total_amount',
         'total_quantity',
+        'content'
     ];
 }

@@ -39,9 +39,10 @@
                             <!--end::Logo-->
 
                             <!--begin::Toolbar-->
+                            
                             <div class="flex-equal text-end ms-1">
-                                <a href="../../demo1/dist/authentication/layouts/basic/sign-in.html"
-                                    class="btn btn-success">Sign In</a>
+                                <a href="{{route('login')}}"
+                                    class="btn btn-success">Login</a>
                             </div>
                             <!--end::Toolbar-->
                         </div>
@@ -785,11 +786,13 @@
                                                 <h1 class="text-dark mb-5 fw-boldest">Startup</h1>
                                                 <!--end::Title-->
                                                 <!--begin::Description-->
-                                                <div class="text-gray-400 fw-semibold mb-5">Best Settings for Startups
+                                                <div class="text-gray-400 fw-semibold mb-5">Provides professional research
+                                                    tools for making data-driven
+                                                    business decisions.
                                                 </div>
                                                 <!--end::Description-->
                                                 <!--begin::Price-->
-                                                <div class="text-center">
+                                                <div class="text-center w-100 mb-10">
                                                     <span class="mb-2 text-primary">$</span>
                                                     <span class="fs-3x fw-bold text-primary"
                                                         data-kt-plan-price-month="99"
@@ -798,6 +801,8 @@
                                                         data-kt-plan-price-month="Mon"
                                                         data-kt-plan-price-annual="Ann">/
                                                         Mon</span>
+                                                </div>
+                                                <div class="fw-semibold fs-6 text-gray-800 text-start pe-3" style="font-weight: bold !important;">Key benefits of Startup:
                                                 </div>
                                                 <!--end::Price-->
                                             </div>
