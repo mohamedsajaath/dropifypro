@@ -22,11 +22,7 @@
     <td class="text-end pe-0">
         <span class="fw-bold ms-3">16</span>
     </td>
-    <!--end::Qty=-->
-    <td class="text-end pe-0">
-        <span class="fw-bold ms-3">$52.23</span>
-    </td>
-    <!--begin::Rating-->
+   
     <td class="text-end pe-0">
         <span class="fw-bold ms-3">$62.23</span>
     </td>
@@ -36,14 +32,12 @@
     </td>
     <!--begin::Status=-->
     <td class="text-end pe-0">
-        <span class="fw-bold ms-3">25/11/2022</span>
+        <span class="fw-bold ms-3">25/11/2022
+                                   30/11/2022
+        </span>
     </td>
     <!--end::Status=-->
-    <!--begin::Status=-->
-    <td class="text-end pe-0">
-        <span class="fw-bold ms-3">30/11/2022</span>
-    </td>
-    <!--end::Status=-->
+   
     <!--begin::Action=-->
     <td class="text-end ">
         <a href="#" class="btn btn-sm  btn-primary add-products-btn" data-kt-menu-trigger="click"
@@ -82,11 +76,7 @@
     </td>
     <!--end::Qty=-->
 
-    <!--begin::Rating-->
-    <td class="text-end pe-0">
-        <span class="fw-bold ms-3">$25.23</span>
-    </td>
-    <!--end::Rating-->
+    
     <!--begin::Rating-->
     <td class="text-end pe-0">
         <span class="fw-bold ms-3">$35.23</span>
@@ -99,14 +89,12 @@
     <!--end::Rating-->
      <!--begin::Status=-->
      <td class="text-end pe-0">
-        <span class="fw-bold ms-3">25/11/2022</span>
+        <span class="fw-bold ms-3">25/11/2022
+        30/11/2022
+        </span>
     </td>
     <!--end::Status=-->
-    <!--begin::Status=-->
-    <td class="text-end pe-0">
-        <span class="fw-bold ms-3">30/11/2022</span>
-    </td>
-    <!--end::Status=-->
+   
     <!--begin::Action=-->
     <td class="text-end ">
         <a href="#" class="btn btn-sm  btn-primary add-products-btn" data-kt-menu-trigger="click"
