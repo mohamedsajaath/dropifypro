@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('wholesale_requests', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('product_variant_id')->constrained('product_variants');
+            $table->integer('user_id');
+            $table->integer('product_variant_id');
             $table->integer('quantity');
             $table->date('date');
             $table->timestamps();

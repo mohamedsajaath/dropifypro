@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('product_images', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('reference_id')->constrained('product_variants');
+            $table->integer('reference_id');
             $table->string('reference');
             $table->string('file_name');
             $table->string('storage_name');

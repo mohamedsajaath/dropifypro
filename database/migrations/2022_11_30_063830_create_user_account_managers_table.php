@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('user_account_managers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('account_manager_id')->constrained('account_managers');
-            $table->foreignId('user_id')->constrained('users');
+            $table->integer('account_manager_id');
+            $table->integer('user_id');
             $table->timestamps();
 
             $table->unique(['account_manager_id','user_id'],'unique_user_account_manager');

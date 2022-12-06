@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('ebay_accounts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->integer('user_id');
             $table->text('refresh_token');
             $table->text('access_token');
             $table->date('connected_date');
