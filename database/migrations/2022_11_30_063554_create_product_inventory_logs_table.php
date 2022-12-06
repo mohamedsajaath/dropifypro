@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('product_inventory_logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_variant_id')->constrained('product_variants');
+            $table->integer('product_variant_id');
             $table->integer('previous_quantity');
             $table->integer('current_quantity');
-            $table->foreignId('user_id')->constrained('users'); //added by
+            $table->integer('user_id'); //added by
             $table->double('amount', 8, 2);
             $table->date('date');
             $table->text('note');

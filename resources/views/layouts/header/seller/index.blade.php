@@ -1639,10 +1639,10 @@
             </div>
             <!--end::Menu item-->
             <!--begin::Menu item-->
-            <div class="d-flex menu-item px-5">
+            <div class="menu-item px-5">
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
-                    <button type="submit" class="btn btn-success px-5 justify-content-end">Sign Out</button>
+                    <button type="submit" class="btn btn-danger px-5 w-100">Sign Out</button>
                 </form>
             </div>
             <!--end::Menu item-->
