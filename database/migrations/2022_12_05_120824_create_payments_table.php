@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->integer('user_id');
             $table->string('method');
             $table->string('reference');
             $table->double('amount', 8, 2);
