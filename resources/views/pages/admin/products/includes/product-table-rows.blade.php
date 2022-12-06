@@ -5,7 +5,7 @@
             <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html"
                class="symbol symbol-50px">
                                         <span class="symbol-label"
-                                              style="background-image:url({{ asset('assets/media//stock/ecommerce/1.gif') }});"></span>
+                                              style="background-image:url('{{ asset('assets/media/stock/ecommerce/1.gif') }}');"></span>
             </a>
             <!--end::Thumbnail-->
             <div class="ms-5">
@@ -105,7 +105,7 @@
             <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html"
                class="symbol symbol-50px">
                                         <span class="symbol-label"
-                                              style="background-image:url({{ asset('assets/media//stock/ecommerce/2.gif') }});"></span>
+                                              style="background-image:url('{{ asset('assets/media/stock/ecommerce/2.gif') }}');"></span>
             </a>
             <!--end::Thumbnail-->
             <div class="ms-5">
@@ -206,7 +206,7 @@
             <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html"
                class="symbol symbol-50px">
                                         <span class="symbol-label"
-                                              style="background-image:url({{ asset('assets/media//stock/ecommerce/3.gif') }});"></span>
+                                              style="background-image:url('{{ asset('assets/media/stock/ecommerce/3.gif') }}');"></span>
             </a>
             <!--end::Thumbnail-->
             <div class="ms-5">
@@ -307,7 +307,7 @@
             <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html"
                class="symbol symbol-50px">
                                         <span class="symbol-label"
-                                              style="background-image:url({{ asset('assets/media//stock/ecommerce/4.gif') }});"></span>
+                                              style="background-image:url('{{ asset('assets/media/stock/ecommerce/4.gif') }}');"></span>
             </a>
             <!--end::Thumbnail-->
             <div class="ms-5">
@@ -411,7 +411,7 @@
             <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html"
                class="symbol symbol-50px">
                                         <span class="symbol-label"
-                                              style="background-image:url({{ asset('assets/media//stock/ecommerce/5.gif') }});"></span>
+                                              style="background-image:url('{{ asset('assets/media/stock/ecommerce/5.gif') }}');"></span>
             </a>
             <!--end::Thumbnail-->
             <div class="ms-5">
@@ -512,7 +512,7 @@
             <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html"
                class="symbol symbol-50px">
                                         <span class="symbol-label"
-                                              style="background-image:url({{ asset('assets/media//stock/ecommerce/7.gif') }});"></span>
+                                              style="background-image:url('{{ asset('assets/media/stock/ecommerce/7.gif') }}');"></span>
             </a>
             <!--end::Thumbnail-->
             <div class="ms-5">
@@ -612,7 +612,7 @@
             <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html"
                class="symbol symbol-50px">
                                         <span class="symbol-label"
-                                              style="background-image:url({{ asset('assets/media//stock/ecommerce/10.gif') }});"></span>
+                                              style="background-image:url('{{ asset('assets/media/stock/ecommerce/10.gif') }}');"></span>
             </a>
             <!--end::Thumbnail-->
             <div class="ms-5">
@@ -712,7 +712,7 @@
             <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html"
                class="symbol symbol-50px">
                                         <span class="symbol-label"
-                                              style="background-image:url({{ asset('assets/media//stock/ecommerce/11.gif') }});"></span>
+                                              style="background-image:url('{{ asset('assets/media/stock/ecommerce/11.gif') }}');"></span>
             </a>
             <!--end::Thumbnail-->
             <div class="ms-5">
