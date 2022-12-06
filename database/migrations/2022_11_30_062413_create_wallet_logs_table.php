@@ -15,12 +15,11 @@ return new class extends Migration
     {
         Schema::create('wallet_logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wallet_id');
+            $table->foreignId('wallet_id')->constrained('wallets');
             $table->double('previous_amount', 8, 2);
-            $table->double('changed_amount', 8, 2);
             $table->double('current_amount', 8, 2);
-            $table->tinyInteger('type');
-            $table->tinyInteger('payment_method');
+            $table->tinyInteger('reference_type');
+            $table->foreignId('reference_value')->constrained('payments');
             $table->string('reference');
             $table->timestamps();
         });
