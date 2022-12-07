@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('title');
             $table->double('amount', 8, 2);
             $table->string('sku');
-            $table->text('ebay_item_id')->unique();
+            $table->string('ebay_item_id');
             $table->integer('quantity');
             $table->timestamps();
         });
