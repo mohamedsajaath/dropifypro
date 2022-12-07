@@ -67,7 +67,6 @@ $(document).on("click", "#payment", async function () {
                  />
             </div>
             <!--end::Col-->
-
         </div>
 <!--end::Row-->`
     );

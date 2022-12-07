@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.home.index');
 });
 
 //HOME START
@@ -167,7 +167,7 @@ Route::get('/onboarding', function () {
 
 
 
-// ACCOUNT SETTING START
+// SELLER ACCOUNT SETTING START
 Route::get('/seller/account_overview', function () {
     return view('pages.seller.account_settings.overview');
 })->name('seller.overview');
@@ -175,15 +175,33 @@ Route::get('/seller/account_overview', function () {
 Route::get('/seller/account_profile', function () {
     return view('pages.seller.account_settings.profile');
 })->name('seller.profile');
+
 Route::get('/seller/account_e-bay', function () {
     return view('pages.seller.account_settings.ebay');
 })->name('seller.ebay');
+
 Route::get('/seller/account_plan', function () {
     return view('pages.seller.account_settings.plans');
 })->name('seller.plan');
-// ACCOUNT SETTING END
+// SELLER ACCOUNT SETTING END
 
+// ADMIN ACCOUNT SETTING START
+Route::get('/admin/account_overview', function () {
+    return view('pages.admin.account_settings.overview');
+})->name('admin.overview');
 
+Route::get('/admin/account_profile', function () {
+    return view('pages.admin.account_settings.profile');
+})->name('admin.profile');
+
+Route::get('/admin/account_e-bay', function () {
+    return view('pages.admin.account_settings.ebay');
+})->name('admin.ebay');
+
+Route::get('/admin/account_plan', function () {
+    return view('pages.admin.account_settings.plans');
+})->name('admin.plan');
+// ADMIN ACCOUNT SETTING END
 
 
 
