@@ -1,3 +1,136 @@
+
+
+
+function loadFormModal(action, method, title, description, submitButtonText, submitButtonClass,loadUrl, fileExist = false) {
+    return new Promise(function (resolve, reject) {
+        $('#modal-content-body').html(`
+          <form id="kt_modal_new_target_form" class="form" action="${action}" method="${method}">
+                <!--begin::Heading-->
+                <div class="mb-13 text-center">
+                    <!--begin::Title-->
+                    <h1 class="mb-3">${title}</h1>
+                    <!--end::Title-->
+                    <!--begin::Description-->
+                    <div class="text-muted fw-semibold fs-5">${description}</div>
+                    <!--end::Description-->
+                    </div>
+
+                    <div id="modal-body">
+
+
+                    </div>
+
+                    <!--begin::Actions-->
+                    <div class="text-center">
+                        <button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">
+                            Cancel
+                        </button>
+                        <button type="submit" id="kt_modal_new_target_submit" class="btn btn-primary ${submitButtonClass}">
+                            <span class="indicator-label">${submitButtonText}</span>
+                            <span class="indicator-progress">Please wait...
+            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                        </button>
+                    </div>
+                    <!--end::Actions-->
+                </form>
+    `);
+        $('#modal-body').load(loadUrl,function(){
+            $('#kt_modal_new_target').modal('show');
+        });
+        if (fileExist) {
+            let type = "multipart/form-data";
+            $('#kt_modal_new_target_form').attr("enctype", type);
+        }
+        resolve(true);
+    });
+}
+
+
+function loadDetailModal(title, description, loadUrl) {
+    $('#modal-content-body').html(`
+     <!--begin::Heading-->
+                <div class="mb-13 text-center">
+                    <!--begin::Title-->
+                    <h1 class="mb-3">${title}</h1>
+                    <!--end::Title-->
+                    <!--begin::Description-->
+                    <div class="text-muted fw-semibold fs-5">${description}</div>
+                    <!--end::Description-->
+                    </div>
+                    <!--end::Heading-->
+                    <div id="modal-body">
+
+
+                    </div>
+                    <!--begin::Actions-->
+                    <div class="text-center">
+                        <button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">
+                            Close
+                        </button>
+
+                    </div>
+    `);
+    $('#modal-body').load(loadUrl,function(){
+        $('#kt_modal_new_target').modal('show');
+    });
+}
+
+
+function loadBreadCrumbWithHeader(header, currentPage, previousPage, previousPageRoute) {
+
+    $(document).ready(function () {
+        $('#kt_app_content').prepend(`
+    <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+    <!--begin::Toolbar container-->
+    <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack m-0">
+        <!--begin::Page title-->
+        <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+            <!--begin::Title-->
+            <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
+                ${header}</h1>
+            <!--end::Title-->
+            <!--begin::Breadcrumb-->
+            <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1 removeBreadCrumb">
+                <!--begin::Item-->
+                <li class="breadcrumb-item text-muted">
+                    <a href="${previousPageRoute}" class="text-muted text-hover-primary">${previousPage}</a>
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li class="breadcrumb-item">
+                    <span class="bullet bg-gray-400 w-5px h-2px"></span>
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li class="breadcrumb-item text-muted">${currentPage}</li>
+                <!--end::Item-->
+            </ul>
+            <!--end::Breadcrumb-->
+        </div>
+        <!--end::Page title-->
+        <!--begin::Actions-->
+        <div class="d-flex align-items-center gap-2 gap-lg-3">
+
+
+        </div>
+        <!--end::Actions-->
+    </div>
+    <!--end::Toolbar container-->
+</div>
+
+
+    `);
+
+        if (currentPage === "" && previousPage === "" && previousPageRoute === "") {
+            $('.removeBreadCrumb').css('display', 'none');
+        }
+    });
+
+
+}
+
+
+
 $(document).on('click', '.delete-sweet', function () {
     Swal.fire({
         html: `Are You Sure You Want To Delete`,
@@ -407,14 +540,14 @@ $(document).on('click', '.seller-slider', function (e) {
                 <div class="btn btn-sm btn-icon btn-active-light-primary" id="kt_drawer_chat_close">
                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
                     <span class="svg-icon svg-icon-2">
-\t\t\t\t\t\t\t\t<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
-\t\t\t\t\t\t\t\t\t<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
+<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
                                           transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-\t\t\t\t\t\t\t\t\t<rect x="7.41422" y="6" width="16" height="2" rx="1"
+<rect x="7.41422" y="6" width="16" height="2" rx="1"
                                           transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-\t\t\t\t\t\t\t\t</svg>
-\t\t\t\t\t\t\t</span>
+</svg>
+</span>
                     <!--end::Svg Icon-->
                 </div>
                 <!--end::Close-->
@@ -462,16 +595,16 @@ $(document).on('click', '.seller-slider', function (e) {
                                            class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
                                             <!--begin::Svg Icon | path: icons/duotune/general/gen018.svg-->
                                             <span class="svg-icon svg-icon-4 me-1">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<svg width="24" height="24" viewBox="0 0 24 24"
+<svg width="24" height="24" viewBox="0 0 24 24"
                                                                          fill="none" xmlns="http://www.w3.org/2000/svg">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<path opacity="0.3"
+<path opacity="0.3"
                                                                               d="M18.0624 15.3453L13.1624 20.7453C12.5624 21.4453 11.5624 21.4453 10.9624 20.7453L6.06242 15.3453C4.56242 13.6453 3.76242 11.4453 4.06242 8.94534C4.56242 5.34534 7.46242 2.44534 11.0624 2.04534C15.8624 1.54534 19.9624 5.24534 19.9624 9.94534C20.0624 12.0453 19.2624 13.9453 18.0624 15.3453Z"
                                                                               fill="currentColor"></path>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<path
+<path
                                                                             d="M12.0624 13.0453C13.7193 13.0453 15.0624 11.7022 15.0624 10.0453C15.0624 8.38849 13.7193 7.04535 12.0624 7.04535C10.4056 7.04535 9.06241 8.38849 9.06241 10.0453C9.06241 11.7022 10.4056 13.0453 12.0624 13.0453Z"
                                                                             fill="currentColor"></path>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</svg>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>
+</svg>
+</span>
                                             <!--end::Svg Icon-->SF, Bay Area</a>
                                         <a href="#"
                                            class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
@@ -715,127 +848,3 @@ $(document).on('click', '.seller-slider', function (e) {
     </div>
     `);
 });
-
-
-function loadFormModal(action, method, title, description, submitButtonText, submitButtonClass,loadUrl, fileExist = false) {
-    return new Promise(function (resolve, reject) {
-        $('#modal-content-body').html(`
-          <form id="kt_modal_new_target_form" class="form" action="${action}" method="${method}">
-                <!--begin::Heading-->
-                <div class="mb-13 text-center">
-                    <!--begin::Title-->
-                    <h1 class="mb-3">${title}</h1>
-                    <!--end::Title-->
-                    <!--begin::Description-->
-                    <div class="text-muted fw-semibold fs-5">${description}</div>
-                    <!--end::Description-->
-                    </div>
-
-                    <div id="modal-body">
-
-
-                    </div>
-
-                    <!--begin::Actions-->
-                    <div class="text-center">
-                        <button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">
-                            Cancel
-                        </button>
-                        <button type="submit" id="kt_modal_new_target_submit" class="btn btn-primary ${submitButtonClass}">
-                            <span class="indicator-label">${submitButtonText}</span>
-                            <span class="indicator-progress">Please wait...
-            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                        </button>
-                    </div>
-                    <!--end::Actions-->
-                </form>
-    `);
-        $('#modal-body').load(loadUrl,function(){
-            $('#kt_modal_new_target').modal('show');
-        });
-        if (fileExist) {
-            let type = "multipart/form-data";
-            $('#kt_modal_new_target_form').attr("enctype", type);
-        }
-        resolve(true);
-    });
-}
-
-
-function loadDetailModal(title, description, content) {
-    $('#modal-content-body').html(`
-     <!--begin::Heading-->
-                <div class="mb-13 text-center">
-                    <!--begin::Title-->
-                    <h1 class="mb-3">${title}</h1>
-                    <!--end::Title-->
-                    <!--begin::Description-->
-                    <div class="text-muted fw-semibold fs-5">${description}</div>
-                    <!--end::Description-->
-                    </div>
-                    <!--end::Heading-->
-                    ${content}
-                    <!--begin::Actions-->
-                    <div class="text-center">
-                        <button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">
-                            Close
-                        </button>
-
-                    </div>
-    `);
-    $('#kt_modal_new_target').modal('show');
-}
-
-
-function loadBreadCrumbWithHeader(header, currentPage, previousPage, previousPageRoute) {
-
-    $(document).ready(function () {
-        $('#kt_app_content').prepend(`
-    <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
-    <!--begin::Toolbar container-->
-    <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack m-0">
-        <!--begin::Page title-->
-        <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
-            <!--begin::Title-->
-            <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                ${header}</h1>
-            <!--end::Title-->
-            <!--begin::Breadcrumb-->
-            <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1 removeBreadCrumb">
-                <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">
-                    <a href="${previousPageRoute}" class="text-muted text-hover-primary">${previousPage}</a>
-                </li>
-                <!--end::Item-->
-                <!--begin::Item-->
-                <li class="breadcrumb-item">
-                    <span class="bullet bg-gray-400 w-5px h-2px"></span>
-                </li>
-                <!--end::Item-->
-                <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">${currentPage}</li>
-                <!--end::Item-->
-            </ul>
-            <!--end::Breadcrumb-->
-        </div>
-        <!--end::Page title-->
-        <!--begin::Actions-->
-        <div class="d-flex align-items-center gap-2 gap-lg-3">
-
-
-        </div>
-        <!--end::Actions-->
-    </div>
-    <!--end::Toolbar container-->
-</div>
-
-
-    `);
-
-        if (currentPage === "" && previousPage === "" && previousPageRoute === "") {
-            $('.removeBreadCrumb').css('display', 'none');
-        }
-    });
-
-
-}
