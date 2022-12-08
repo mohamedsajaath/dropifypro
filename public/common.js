@@ -1,6 +1,135 @@
 
 
 
+function loadFormModal(action, method, title, description, submitButtonText, submitButtonClass,loadUrl, fileExist = false) {
+    return new Promise(function (resolve, reject) {
+        $('#modal-content-body').html(`
+          <form id="kt_modal_new_target_form" class="form" action="${action}" method="${method}">
+                <!--begin::Heading-->
+                <div class="mb-13 text-center">
+                    <!--begin::Title-->
+                    <h1 class="mb-3">${title}</h1>
+                    <!--end::Title-->
+                    <!--begin::Description-->
+                    <div class="text-muted fw-semibold fs-5">${description}</div>
+                    <!--end::Description-->
+                    </div>
+
+                    <div id="modal-body">
+
+
+                    </div>
+
+                    <!--begin::Actions-->
+                    <div class="text-center">
+                        <button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">
+                            Cancel
+                        </button>
+                        <button type="submit" id="kt_modal_new_target_submit" class="btn btn-primary ${submitButtonClass}">
+                            <span class="indicator-label">${submitButtonText}</span>
+                            <span class="indicator-progress">Please wait...
+            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                        </button>
+                    </div>
+                    <!--end::Actions-->
+                </form>
+    `);
+        $('#modal-body').load(loadUrl,function(){
+            $('#kt_modal_new_target').modal('show');
+        });
+        if (fileExist) {
+            let type = "multipart/form-data";
+            $('#kt_modal_new_target_form').attr("enctype", type);
+        }
+        resolve(true);
+    });
+}
+
+
+function loadDetailModal(title, description, loadUrl) {
+    $('#modal-content-body').html(`
+     <!--begin::Heading-->
+                <div class="mb-13 text-center">
+                    <!--begin::Title-->
+                    <h1 class="mb-3">${title}</h1>
+                    <!--end::Title-->
+                    <!--begin::Description-->
+                    <div class="text-muted fw-semibold fs-5">${description}</div>
+                    <!--end::Description-->
+                    </div>
+                    <!--end::Heading-->
+                    <div id="modal-body">
+
+
+                    </div>
+                    <!--begin::Actions-->
+                    <div class="text-center">
+                        <button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">
+                            Close
+                        </button>
+
+                    </div>
+    `);
+    $('#modal-body').load(loadUrl,function(){
+        $('#kt_modal_new_target').modal('show');
+    });
+}
+
+
+function loadBreadCrumbWithHeader(header, currentPage, previousPage, previousPageRoute) {
+
+    $(document).ready(function () {
+        $('#kt_app_content').prepend(`
+    <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+    <!--begin::Toolbar container-->
+    <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack m-0">
+        <!--begin::Page title-->
+        <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+            <!--begin::Title-->
+            <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
+                ${header}</h1>
+            <!--end::Title-->
+            <!--begin::Breadcrumb-->
+            <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1 removeBreadCrumb">
+                <!--begin::Item-->
+                <li class="breadcrumb-item text-muted">
+                    <a href="${previousPageRoute}" class="text-muted text-hover-primary">${previousPage}</a>
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li class="breadcrumb-item">
+                    <span class="bullet bg-gray-400 w-5px h-2px"></span>
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li class="breadcrumb-item text-muted">${currentPage}</li>
+                <!--end::Item-->
+            </ul>
+            <!--end::Breadcrumb-->
+        </div>
+        <!--end::Page title-->
+        <!--begin::Actions-->
+        <div class="d-flex align-items-center gap-2 gap-lg-3">
+
+
+        </div>
+        <!--end::Actions-->
+    </div>
+    <!--end::Toolbar container-->
+</div>
+
+
+    `);
+
+        if (currentPage === "" && previousPage === "" && previousPageRoute === "") {
+            $('.removeBreadCrumb').css('display', 'none');
+        }
+    });
+
+
+}
+
+
 
 $(document).on('click', '.delete-sweet', function () {
     Swal.fire({
@@ -18,7 +147,7 @@ $(document).on('click', '.delete-sweet', function () {
 });
 
 
-$(document).on('click','.product-slider',function(e){
+$(document).on('click', '.product-slider', function (e) {
     e.preventDefault();
     $('.slide-btn-product').click();
     $('.product-drawer').html(`
@@ -388,7 +517,7 @@ Barometric Altimeter, Water-Resistant, Accelerometer, Glonass, Ambient Light Sen
     `);
 });
 
-$(document).on('click','.seller-slider',function(e){
+$(document).on('click', '.seller-slider', function (e) {
     e.preventDefault();
     $('.slide-btn-seller').click();
     $('.seller-drawer').html(`
@@ -411,14 +540,14 @@ $(document).on('click','.seller-slider',function(e){
                 <div class="btn btn-sm btn-icon btn-active-light-primary" id="kt_drawer_chat_close">
                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
                     <span class="svg-icon svg-icon-2">
-\t\t\t\t\t\t\t\t<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
-\t\t\t\t\t\t\t\t\t<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
+<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
                                           transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-\t\t\t\t\t\t\t\t\t<rect x="7.41422" y="6" width="16" height="2" rx="1"
+<rect x="7.41422" y="6" width="16" height="2" rx="1"
                                           transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-\t\t\t\t\t\t\t\t</svg>
-\t\t\t\t\t\t\t</span>
+</svg>
+</span>
                     <!--end::Svg Icon-->
                 </div>
                 <!--end::Close-->
@@ -466,31 +595,31 @@ $(document).on('click','.seller-slider',function(e){
                                            class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
                                             <!--begin::Svg Icon | path: icons/duotune/general/gen018.svg-->
                                             <span class="svg-icon svg-icon-4 me-1">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<svg width="24" height="24" viewBox="0 0 24 24"
+<svg width="24" height="24" viewBox="0 0 24 24"
                                                                          fill="none" xmlns="http://www.w3.org/2000/svg">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<path opacity="0.3"
+<path opacity="0.3"
                                                                               d="M18.0624 15.3453L13.1624 20.7453C12.5624 21.4453 11.5624 21.4453 10.9624 20.7453L6.06242 15.3453C4.56242 13.6453 3.76242 11.4453 4.06242 8.94534C4.56242 5.34534 7.46242 2.44534 11.0624 2.04534C15.8624 1.54534 19.9624 5.24534 19.9624 9.94534C20.0624 12.0453 19.2624 13.9453 18.0624 15.3453Z"
                                                                               fill="currentColor"></path>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<path
+<path
                                                                             d="M12.0624 13.0453C13.7193 13.0453 15.0624 11.7022 15.0624 10.0453C15.0624 8.38849 13.7193 7.04535 12.0624 7.04535C10.4056 7.04535 9.06241 8.38849 9.06241 10.0453C9.06241 11.7022 10.4056 13.0453 12.0624 13.0453Z"
                                                                             fill="currentColor"></path>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</svg>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>
+</svg>
+</span>
                                             <!--end::Svg Icon-->SF, Bay Area</a>
                                         <a href="#"
                                            class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
                                             <!--begin::Svg Icon | path: icons/duotune/communication/com011.svg-->
                                             <span class="svg-icon svg-icon-4 me-1">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<svg width="24" height="24" viewBox="0 0 24 24"
+                                            <svg width="24" height="24" viewBox="0 0 24 24"
                                                                          fill="none" xmlns="http://www.w3.org/2000/svg">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<path opacity="0.3"
+<path opacity="0.3"
                                                                               d="M21 19H3C2.4 19 2 18.6 2 18V6C2 5.4 2.4 5 3 5H21C21.6 5 22 5.4 22 6V18C22 18.6 21.6 19 21 19Z"
                                                                               fill="currentColor"></path>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<path
+<path
                                                                             d="M21 5H2.99999C2.69999 5 2.49999 5.10005 2.29999 5.30005L11.2 13.3C11.7 13.7 12.4 13.7 12.8 13.3L21.7 5.30005C21.5 5.10005 21.3 5 21 5Z"
                                                                             fill="currentColor"></path>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</svg>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>
+</svg>
+</span>
                                             <!--end::Svg Icon-->max@kt.com</a>
                                     </div>
                                     <!--end::Info-->
@@ -574,18 +703,18 @@ $(document).on('click','.seller-slider',function(e){
                                         <div class="d-flex align-items-center">
                                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
                                             <span class="svg-icon svg-icon-3 svg-icon-success me-2">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<svg width="24" height="24"
+<svg width="24" height="24"
                                                                                  viewBox="0 0 24 24" fill="none"
                                                                                  xmlns="http://www.w3.org/2000/svg">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<rect opacity="0.5" x="13" y="6"
+<rect opacity="0.5" x="13" y="6"
                                                                                       width="13" height="2" rx="1"
                                                                                       transform="rotate(90 13 6)"
                                                                                       fill="currentColor"></rect>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<path
+<path
                                                                                     d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z"
                                                                                     fill="currentColor"></path>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</svg>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>
+</svg>
+</span>
                                             <!--end::Svg Icon-->
                                             <div class="fs-2 fw-bold counted" data-kt-countup="true"
                                                  data-kt-countup-value="4500" data-kt-countup-prefix="$"
@@ -605,18 +734,17 @@ $(document).on('click','.seller-slider',function(e){
                                         <div class="d-flex align-items-center">
                                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr065.svg-->
                                             <span class="svg-icon svg-icon-3 svg-icon-danger me-2">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<svg width="24" height="24"
+<svg width="24" height="24"
                                                                                  viewBox="0 0 24 24" fill="none"
                                                                                  xmlns="http://www.w3.org/2000/svg">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<rect opacity="0.5" x="11" y="18"
+<rect opacity="0.5" x="11" y="18"
                                                                                       width="13" height="2" rx="1"
                                                                                       transform="rotate(-90 11 18)"
                                                                                       fill="currentColor"></rect>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<path
+<path
                                                                                     d="M11.4343 15.4343L7.25 11.25C6.83579 10.8358 6.16421 10.8358 5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75L11.2929 18.2929C11.6834 18.6834 12.3166 18.6834 12.7071 18.2929L18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25C17.8358 10.8358 17.1642 10.8358 16.75 11.25L12.5657 15.4343C12.2533 15.7467 11.7467 15.7467 11.4343 15.4343Z"
                                                                                     fill="currentColor"></path>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</svg>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>
+</svg></span>
                                             <!--end::Svg Icon-->
                                             <div class="fs-2 fw-bold counted" data-kt-countup="true"
                                                  data-kt-countup-value="75" data-kt-initialized="1">75
@@ -635,18 +763,18 @@ $(document).on('click','.seller-slider',function(e){
                                         <div class="d-flex align-items-center">
                                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
                                             <span class="svg-icon svg-icon-3 svg-icon-success me-2">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<svg width="24" height="24"
+<svg width="24" height="24"
                                                                                  viewBox="0 0 24 24" fill="none"
                                                                                  xmlns="http://www.w3.org/2000/svg">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<rect opacity="0.5" x="13" y="6"
+<rect opacity="0.5" x="13" y="6"
                                                                                       width="13" height="2" rx="1"
                                                                                       transform="rotate(90 13 6)"
                                                                                       fill="currentColor"></rect>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<path
+<path
                                                                                     d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z"
                                                                                     fill="currentColor"></path>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</svg>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>
+</svg>
+</span>
                                             <!--end::Svg Icon-->
                                             <div class="fs-2 fw-bold counted" data-kt-countup="true"
                                                  data-kt-countup-value="60" data-kt-countup-prefix="%"
@@ -666,18 +794,18 @@ $(document).on('click','.seller-slider',function(e){
                                         <div class="d-flex align-items-center">
                                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
                                             <span class="svg-icon svg-icon-3 svg-icon-success me-2">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<svg width="24" height="24"
+<svg width="24" height="24"
                                                                                  viewBox="0 0 24 24" fill="none"
                                                                                  xmlns="http://www.w3.org/2000/svg">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<rect opacity="0.5" x="13" y="6"
+<rect opacity="0.5" x="13" y="6"
                                                                                       width="13" height="2" rx="1"
                                                                                       transform="rotate(90 13 6)"
                                                                                       fill="currentColor"></rect>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<path
+<path
                                                                                     d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z"
                                                                                     fill="currentColor"></path>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</svg>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>
+</svg>
+</span>
                                             <!--end::Svg Icon-->
                                             <div class="fs-2 fw-bold counted" data-kt-countup="true"
                                                  data-kt-countup-value="60" data-kt-countup-prefix="%"
@@ -720,123 +848,3 @@ $(document).on('click','.seller-slider',function(e){
     </div>
     `);
 });
-
-
-function loadFormModal(action, method, title, description, submitButtonText, submitButtonClass, inputTags, fileExist = false) {
-    return new Promise(function (resolve, reject) {
-        $('#modal-content-body').html(`
-          <form id="kt_modal_new_target_form" class="form" action="${action}" method="${method}">
-                <!--begin::Heading-->
-                <div class="mb-13 text-center">
-                    <!--begin::Title-->
-                    <h1 class="mb-3">${title}</h1>
-                    <!--end::Title-->
-                    <!--begin::Description-->
-                    <div class="text-muted fw-semibold fs-5">${description}</div>
-                    <!--end::Description-->
-                    </div>
-                    <!--end::Heading-->
-                    ${inputTags}
-                    <!--begin::Actions-->
-                    <div class="text-center">
-                        <button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">
-                            Cancel
-                        </button>
-                        <button type="submit" id="kt_modal_new_target_submit" class="btn btn-primary ${submitButtonClass}">
-                            <span class="indicator-label">${submitButtonText}</span>
-                            <span class="indicator-progress">Please wait...
-            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                        </button>
-                    </div>
-                    <!--end::Actions-->
-                </form>
-    `);
-
-        $('#kt_modal_new_target').modal('show');
-
-        if (fileExist) {
-            let type = "multipart/form-data";
-            $('#kt_modal_new_target_form').attr("enctype", type);
-        }
-        resolve(true);
-    });
-}
-
-
-function loadDetailModal(title, description, content) {
-    $('#modal-content-body').html(`
-     <!--begin::Heading-->
-                <div class="mb-13 text-center">
-                    <!--begin::Title-->
-                    <h1 class="mb-3">${title}</h1>
-                    <!--end::Title-->
-                    <!--begin::Description-->
-                    <div class="text-muted fw-semibold fs-5">${description}</div>
-                    <!--end::Description-->
-                    </div>
-                    <!--end::Heading-->
-                    ${content}
-                    <!--begin::Actions-->
-                    <div class="text-center">
-                        <button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">
-                            Close
-                        </button>
-
-                    </div>
-    `);
-    $('#kt_modal_new_target').modal('show');
-}
-
-
-function loadBreadCrumbWithHeader(header, currentPage, previousPage, previousPageRoute) {
-
-    $(document).ready(function () {
-        $('#kt_app_content').prepend(`
-    <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
-    <!--begin::Toolbar container-->
-    <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack m-0">
-        <!--begin::Page title-->
-        <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
-            <!--begin::Title-->
-            <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                ${header}</h1>
-            <!--end::Title-->
-            <!--begin::Breadcrumb-->
-            <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1 removeBreadCrumb">
-                <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">
-                    <a href="${previousPageRoute}" class="text-muted text-hover-primary">${previousPage}</a>
-                </li>
-                <!--end::Item-->
-                <!--begin::Item-->
-                <li class="breadcrumb-item">
-                    <span class="bullet bg-gray-400 w-5px h-2px"></span>
-                </li>
-                <!--end::Item-->
-                <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">${currentPage}</li>
-                <!--end::Item-->
-            </ul>
-            <!--end::Breadcrumb-->
-        </div>
-        <!--end::Page title-->
-        <!--begin::Actions-->
-        <div class="d-flex align-items-center gap-2 gap-lg-3">
-
-
-        </div>
-        <!--end::Actions-->
-    </div>
-    <!--end::Toolbar container-->
-</div>
-
-
-    `);
-
-        if(currentPage === "" && previousPage === "" && previousPageRoute === ""){
-            $('.removeBreadCrumb').css('display','none');
-        }
-    });
-
-
-}
