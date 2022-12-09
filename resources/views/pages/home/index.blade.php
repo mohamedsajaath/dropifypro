@@ -40,8 +40,10 @@
 
                             <!--begin::Toolbar-->
                             <div class="flex-equal text-end ms-1">
-                                <a href="../../demo1/dist/authentication/layouts/basic/sign-in.html"
+                                <a href="{{ route('login') }}"
                                     class="btn btn-success">Sign In</a>
+                                    <a href="#kt_pricing" data-kt-scroll-toggle="true"
+                                    class="btn btn-success">Register</a>
                             </div>
                             <!--end::Toolbar-->
                         </div>
