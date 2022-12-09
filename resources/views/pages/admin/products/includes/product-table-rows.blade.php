@@ -5,7 +5,7 @@
             <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html"
                class="symbol symbol-50px">
                                         <span class="symbol-label"
-                                              style="background-image:url('{{ asset('assets/media/stock/ecommerce/1.gif') }}');"></span>
+                                              style="background-image:url("{{ asset('assets/media/stock/ecommerce/1.gif') }}")"></span>
             </a>
             <!--end::Thumbnail-->
             <div class="ms-5">
@@ -105,7 +105,7 @@
             <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html"
                class="symbol symbol-50px">
                                         <span class="symbol-label"
-                                              style="background-image:url('{{ asset('assets/media/stock/ecommerce/2.gif') }}');"></span>
+                                              style="background-image:url("{{ asset('assets/media/stock/ecommerce/2.gif') }}")"></span>
             </a>
             <!--end::Thumbnail-->
             <div class="ms-5">

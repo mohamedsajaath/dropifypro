@@ -14,7 +14,17 @@
     <script>
         loadBreadCrumbWithHeader("Onboarding", "Home", "Dashboard", "#");
     </script>
+    
+    <script>
+    $(document).on('click', '.add-onboarding', function () {
+        loadFormModal("", "", "Add New On-boarding", "", "Add", "btn-class", `
+
     @include('pages.admin.onboardings.includes.add-onboarding-modal')
+
+    `);
+    });
+</script>
+
 
 @endpush
 
