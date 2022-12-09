@@ -8,6 +8,7 @@
 <!--end::Global Javascript Bundle-->
 
 <script src="{{  asset('common.js')  }}"></script>
+<script src="{{  asset('AjaxHttpRequest.js')  }}"></script>
 
 @stack('script')
 

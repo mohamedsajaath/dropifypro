@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PlanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -198,13 +199,11 @@ Route::get('/admin/account_e-bay', function () {
     return view('pages.admin.account_settings.ebay');
 })->name('admin.ebay');
 
-Route::get('/admin/account_plan', function () {
-    return view('pages.admin.account_settings.plans');
-})->name('admin.plan');
+Route::get('/admin/account_plan', [PlanController::class, 'index'])->name('admin.plan');
+Route::post('/plan', [PlanController::class, 'store'])->name('plan.store');
+Route::get('/plan/{id}', [PlanController::class, 'edit'])->name('plan.edit');
+Route::post('/plan/update', [PlanController::class, 'update'])->name('plan.update');
 // ADMIN ACCOUNT SETTING END
-
-
-
 
 //Royal- Mail-Api
 

@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             'zipcode' => "test",
             'country_code' => "LK",
             'phone_no' => "+94771231234",
+            'type' => User::ADMIN,
         ]);
     }
 }

@@ -82,12 +82,19 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td><a href="#" class="items text-dark">124521</a></td>
-                                                    <td>2022-04-12</td>
-                                                    <td>$621</td>
-                                                    <td>5</td>
-                                                </tr>
+                                                @foreach ($plan_details as $plan_detail)
+                                                    <tr>
+                                                        <td>{{ $plan_detail->name }}</td>
+                                                        <td>£
+                                                            {{ number_format((float) $plan_detail->price_month, 2, '.', '') }}
+                                                        </td>
+                                                        <td>£
+                                                            {{ number_format((float) $plan_detail->price_year, 2, '.', '') }}
+                                                        </td>
+                                                        <td><button class="btn btn-sm btn-success edit_plan"
+                                                                data-id="{{ $plan_detail->id }}">Edit</button></td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -110,46 +117,100 @@
 @push('script')
     <script>
         $(document).on("click", "#plan_model", async function() {
-    // $('.custom-modal-size').addClass('mw-1000px').removeClass('mw-650px');
-    await loadFormModal(
-        "action",
-        "post",
-        "Add Subcription plan",
-        "",
-        "submit",
-        "submitButtonClass",
-        `        <!--begin::Input group-->
-    <div class="d-flex flex-column mb-8 fv-row">
-        <!--begin::Label-->
-        <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-            <span class="required">Plan Name</span>
-        </label>
-        <!--end::Label-->
-        <input type="text" class="form-control form-control-solid" placeholder="Plan Name" name="target_title" />
-    </div>
-    <!--end::Input group-->
-    <!--begin::Input group-->
-    <div class="d-flex flex-column mb-8 fv-row">
-            <label class="required fs-6 fw-semibold mb-2">Monthly Price</label>
-            <div class="input-group">
-                <span class="input-group-text">USD</span>
-                <input type="number" class="form-control" name="price">
-                <span class="input-group-text">.00</span>
-            </div>
-        </div>
-    </div>
-    <div class="d-flex flex-column mb-8 fv-row">
-        <label class="required fs-6 fw-semibold mb-2">Yearly Price</label>
-        <!--begin::Input-->
+            // $('.custom-modal-size').addClass('mw-1000px').removeClass('mw-650px');
+            await loadFormModal(
+                "",
+                "post",
+                "Add Subcription plan",
+                "",
+                "submit",
+                "add_plan_submit",
+                ` @csrf
+ <!--begin::Input group-->
+ <div class="d-flex flex-column mb-8 fv-row">
+    <!--begin::Label-->
+    <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+        <span class="required">Plan Name</span>
+    </label>
+    <!--end::Label-->
+    <input type="text" class="form-control form-control-solid" placeholder="Plan Name" name="name" />
+</div>
+<!--end::Input group-->
+<!--begin::Input group-->
+<div class="d-flex flex-column mb-8 fv-row">
+        <label class="required fs-6 fw-semibold mb-2">Monthly Price</label>
         <div class="input-group">
-            <span class="input-group-text">USD</span>
-            <input type="number" class="form-control" name="price">
-            <span class="input-group-text">.00</span>
+            <span class="input-group-text">GBP</span>
+            <input type="number" step="0.01" class="form-control" name="price_month">
         </div>
     </div>
-    <!--end::Input group-->
-           `
-    );
-});
+</div>
+<div class="d-flex flex-column mb-8 fv-row">
+    <label class="required fs-6 fw-semibold mb-2">Yearly Price</label>
+    <!--begin::Input-->
+    <div class="input-group">
+        <span class="input-group-text">GBP</span>
+        <input type="number" step="0.01" class="form-control" name="price_year">
+    </div>
+</div>
+<!--end::Input group-->
+       `
+            );
+        });
+    </script>
+    <script>
+        $(document).on("click", ".add_plan_submit", async function(e) {
+            e.preventDefault();
+            let form = $(this).closest('form');
+            try {
+                const url = "{{ route('plan.store') }}";
+                let ajaxRequest = new HttpRequest(url, 'POST');
+                ajaxRequest.set_data_by_form_object(form);
+                let response = await ajaxRequest.call();
+                console.log(response.message);
+                $("#kt_modal_new_target").modal("hide");
+                window.location = "{{ route('admin.plan') }}";
+
+            } catch (err) {
+                console.log(err);
+                console.log("error");
+            }
+        });
+    </script>
+    <script>
+        $(document).on("click", ".edit_plan", async function() {
+            // $('.custom-modal-size').addClass('mw-1000px').removeClass('mw-650px');
+            let plan_id = $(this).data('id');
+            let url = "{{ url('/plan/')}}"+"/"+plan_id;
+            await loadEditFormModal(
+                "",
+                "post",
+                "Edit Subcription plan",
+                "",
+                "Update",
+                "edit_plan_submit",
+                url
+            );
+            // $('.edit_plan_submit').attr('data-id',plan_id);
+        });
+    </script>
+    <script>
+        $(document).on("click", ".edit_plan_submit", async function(e) {
+            e.preventDefault();
+            let form = $(this).closest('form');
+            try {
+                const url = "{{ route('plan.update') }}";
+                let ajaxRequest = new HttpRequest(url, 'POST');
+                ajaxRequest.set_data_by_form_object(form);
+                let response = await ajaxRequest.call();
+                console.log(response.message);
+                $("#kt_modal_new_target").modal("hide");
+                window.location = "{{ route('admin.plan') }}";
+
+            } catch (err) {
+                console.log(err);
+                console.log("error");
+            }
+        });
     </script>
 @endpush

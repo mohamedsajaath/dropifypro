@@ -1,9 +1,63 @@
-
-
-
-function loadFormModal(action, method, title, description, submitButtonText, submitButtonClass,loadUrl, fileExist = false) {
+function loadFormModal(
+    action,
+    method,
+    title,
+    description,
+    submitButtonText,
+    submitButtonClass,
+    body,
+    fileExist = false
+) {
     return new Promise(function (resolve, reject) {
-        $('#modal-content-body').html(`
+        $("#modal-content-body").html(`
+          <form id="kt_modal_new_target_form" class="form" action="${action}" method="${method}">
+                <!--begin::Heading-->
+                <div class="mb-13 text-center">
+                    <!--begin::Title-->
+                    <h1 class="mb-3">${title}</h1>
+                    <!--end::Title-->
+                    <!--begin::Description-->
+                    <div class="text-muted fw-semibold fs-5">${description}</div>
+                    <!--end::Description-->
+                    </div>
+
+                   ${body}
+
+                    <!--begin::Actions-->
+                    <div class="text-center">
+                        <button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">
+                            Cancel
+                        </button>
+                        <button type="submit" id="kt_modal_new_target_submit" class="btn btn-primary ${submitButtonClass}">
+                            <span class="indicator-label">${submitButtonText}</span>
+                            <span class="indicator-progress">Please wait...
+            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                        </button>
+                    </div>
+                    <!--end::Actions-->
+                </form>
+    `);
+        $("#kt_modal_new_target").modal("show");
+        if (fileExist) {
+            let type = "multipart/form-data";
+            $("#kt_modal_new_target_form").attr("enctype", type);
+        }
+        resolve(true);
+    });
+}
+
+function loadEditFormModal(
+    action,
+    method,
+    title,
+    description,
+    submitButtonText,
+    submitButtonClass,
+    loadUrl,
+    fileExist = false
+) {
+    return new Promise(function (resolve, reject) {
+        $("#modal-content-body").html(`
           <form id="kt_modal_new_target_form" class="form" action="${action}" method="${method}">
                 <!--begin::Heading-->
                 <div class="mb-13 text-center">
@@ -34,20 +88,19 @@ function loadFormModal(action, method, title, description, submitButtonText, sub
                     <!--end::Actions-->
                 </form>
     `);
-        $('#modal-body').load(loadUrl,function(){
-            $('#kt_modal_new_target').modal('show');
+        $("#modal-body").load(loadUrl, function () {
+            $("#kt_modal_new_target").modal("show");
         });
         if (fileExist) {
             let type = "multipart/form-data";
-            $('#kt_modal_new_target_form').attr("enctype", type);
+            $("#kt_modal_new_target_form").attr("enctype", type);
         }
         resolve(true);
     });
 }
 
-
 function loadDetailModal(title, description, loadUrl) {
-    $('#modal-content-body').html(`
+    $("#modal-content-body").html(`
      <!--begin::Heading-->
                 <div class="mb-13 text-center">
                     <!--begin::Title-->
@@ -70,16 +123,19 @@ function loadDetailModal(title, description, loadUrl) {
 
                     </div>
     `);
-    $('#modal-body').load(loadUrl,function(){
-        $('#kt_modal_new_target').modal('show');
+    $("#modal-body").load(loadUrl, function () {
+        $("#kt_modal_new_target").modal("show");
     });
 }
 
-
-function loadBreadCrumbWithHeader(header, currentPage, previousPage, previousPageRoute) {
-
+function loadBreadCrumbWithHeader(
+    header,
+    currentPage,
+    previousPage,
+    previousPageRoute
+) {
     $(document).ready(function () {
-        $('#kt_app_content').prepend(`
+        $("#kt_app_content").prepend(`
     <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
     <!--begin::Toolbar container-->
     <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack m-0">
@@ -121,36 +177,35 @@ function loadBreadCrumbWithHeader(header, currentPage, previousPage, previousPag
 
     `);
 
-        if (currentPage === "" && previousPage === "" && previousPageRoute === "") {
-            $('.removeBreadCrumb').css('display', 'none');
+        if (
+            currentPage === "" &&
+            previousPage === "" &&
+            previousPageRoute === ""
+        ) {
+            $(".removeBreadCrumb").css("display", "none");
         }
     });
-
-
 }
 
-
-
-$(document).on('click', '.delete-sweet', function () {
+$(document).on("click", ".delete-sweet", function () {
     Swal.fire({
         html: `Are You Sure You Want To Delete`,
         icon: "error",
         buttonsStyling: false,
         showCancelButton: true,
         confirmButtonText: "Yes, Delete it!",
-        cancelButtonText: 'Nope',
+        cancelButtonText: "Nope",
         customClass: {
             confirmButton: "btn btn-primary",
-            cancelButton: 'btn btn-danger'
-        }
+            cancelButton: "btn btn-danger",
+        },
     });
 });
 
-
-$(document).on('click', '.product-slider', function (e) {
+$(document).on("click", ".product-slider", function (e) {
     e.preventDefault();
-    $('.slide-btn-product').click();
-    $('.product-drawer').html(`
+    $(".slide-btn-product").click();
+    $(".product-drawer").html(`
         <div class="card w-100 rounded-0 border-0" id="kt_drawer_product_messenger">
         <!--begin::Card header-->
         <div class="card-header pe-5" id="kt_drawer_product_messenger_header">
@@ -517,10 +572,10 @@ Barometric Altimeter, Water-Resistant, Accelerometer, Glonass, Ambient Light Sen
     `);
 });
 
-$(document).on('click', '.seller-slider', function (e) {
+$(document).on("click", ".seller-slider", function (e) {
     e.preventDefault();
-    $('.slide-btn-seller').click();
-    $('.seller-drawer').html(`
+    $(".slide-btn-seller").click();
+    $(".seller-drawer").html(`
                <div class="card w-100 rounded-0 border-0" id="kt_drawer_chat_messenger">
         <!--begin::Card header-->
         <div class="card-header pe-5" id="kt_drawer_chat_messenger_header">
