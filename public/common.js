@@ -194,7 +194,7 @@ $(document).on("click", ".delete-sweet", function () {
         buttonsStyling: false,
         showCancelButton: true,
         confirmButtonText: "Yes, Delete it!",
-        cancelButtonText: "Nope",
+        cancelButtonText: "Cancel",
         customClass: {
             confirmButton: "btn btn-primary",
             cancelButton: "btn btn-danger",

@@ -195,7 +195,7 @@
                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-200px py-4" data-kt-menu="true">
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a  class="menu-link px-3 product-edit d-flex gap-5"><i class="bi bi-pencil"></i> Edit</a>
+                                    <a  class="menu-link px-3 product-edit d-flex gap-5 add-onboarding"><i class="bi bi-pencil"></i> Edit</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
@@ -244,7 +244,7 @@
                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-200px py-4" data-kt-menu="true">
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a  class="menu-link px-3 product-edit d-flex gap-5"><i class="bi bi-pencil"></i> Edit</a>
+                                    <a  class="menu-link px-3 product-edit d-flex gap-5 add-onboarding"><i class="bi bi-pencil"></i> Edit</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
@@ -292,8 +292,8 @@
                             <!--begin::Menu-->
                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-200px py-4" data-kt-menu="true">
                                 <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a  class="menu-link px-3 product-edit d-flex gap-5"><i class="bi bi-pencil"></i> Edit</a>
+                                <div class="menu-item px-3 ">
+                                    <a  class="menu-link px-3 product-edit d-flex gap-5 add-onboarding "><i class="bi bi-pencil "></i> Edit</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->

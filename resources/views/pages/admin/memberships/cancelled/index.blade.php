@@ -71,7 +71,7 @@
                                 <tbody>
 
                                 <tr>
-                                    <td>hd5465</td>
+                                    <td class="seller-slider">SLR5465</td>
                                     <td>Andrew</td>
                                     <td class="text-center"><span class="badge badge-success fs-7">Business</span></td>
                                     <td class="text-center">3yrs</td>
