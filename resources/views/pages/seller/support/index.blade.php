@@ -7,7 +7,7 @@
         <!--begin::Inbox App - Messages -->
         <div class="d-flex flex-column flex-lg-row">
             <!--begin::Content-->
-            <div class="flex-lg-row-fluid ms-lg-7 ms-xl-10">
+            <div class="flex-lg-row-fluid ms-lg-7 ms-xl-2">
                 <!--begin::Card-->
                 <div class="card">
                     <div class="card-header align-items-center py-5 gap-2 gap-md-5">
