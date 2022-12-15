@@ -1,12 +1,6 @@
 @extends('layouts.app')
-
 @push('css')
     <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <style>
-        .rem {
-            margin: 50px 15rem !important;
-        }
-    </style>
 @endpush
 @section('content')
     <div id="kt_app_content_container" class="app-container container-xxl">
@@ -105,8 +99,9 @@
                         <div class="d-flex align-items-center flex-wrap gap-2">
                             <!--begin::Search-->
                             <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                                <button class="btn btn-success position-relative me-5 account-manager" >
-                                    My Account manager <span class="position-absolute top-0 start-0 translate-middle  fa-solid fa-crown text-warning fs-1"></span>
+                                <button class="btn btn-success position-relative me-5 account-manager">
+                                    My Account manager <span
+                                        class="position-absolute top-0 start-0 translate-middle  fa-solid fa-crown text-warning fs-1"></span>
                                 </button>
                                 <button type="button" class="btn btn-primary create-ticket">Create Ticket</button>
                             </div>
@@ -228,7 +223,6 @@
                                     <!--end::Table body-->
                                 </table>
                             </div>
-
                             <div class="row px-9 pt-3 pb-5">
                                 <div
                                     class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
@@ -282,9 +276,7 @@
     </script>
     <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
 
-
     {{-- create tickets --}}
-
     <script>
         $(document).on('click', '.create-ticket', function() {
             $('.custom-modal-size').addClass('mw-500px').removeClass('mw-650px');
@@ -317,13 +309,11 @@
             <!--end::Input group-->
         </form>
     </div>
-    <!--end::Card body--> `); });
-
+    <!--end::Card body--> `);
+        });
     </script>
 
-
     {{-- Account Manager details --}}
-
     <script>
         $(document).on('click', '.account-manager', function() {
             $('.custom-modal-size').addClass('mw-550px').removeClass('mw-650px');
@@ -384,14 +374,11 @@
                 </div>
                 <!--end::Card body-->
             </div>
-            <!--end::details View-->
-       `);
+            <!--end::details View-->    `);
         });
     </script>
 
-
     {{-- View tickets details --}}
-
     <script>
         $(document).on('click', '.view-tickets', function() {
             $('.custom-modal-size').addClass('mw-700px').removeClass('mw-650px');
@@ -598,10 +585,7 @@
         });
     </script>
 
-
-
     {{-- Close --}}
-
     <script>
         $(document).on('click', '.close', function() {
             $('.custom-modal-size').addClass('mw-650px').removeClass('mw-650px');
