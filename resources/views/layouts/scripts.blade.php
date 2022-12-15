@@ -1,5 +1,9 @@
 <!--begin::Javascript-->
-<script>var hostUrl = "{{ asset('assets/') }}";</script>
+<script>
+var hostUrl = "{{ asset('assets/') }}";
+let baseUrl = "{{url('/')}}";
+
+</script>
 <!--begin::Global Javascript Bundle(mandatory for active pages)-->
 <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
