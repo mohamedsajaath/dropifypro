@@ -1,3 +1,4 @@
+
 function loadFormModal(
     action,
     method,
@@ -99,7 +100,7 @@ function loadEditFormModal(
     });
 }
 
-function loadDetailModal(title, description, loadUrl) {
+function loadDetailModal(title, description, body) {
     $("#modal-content-body").html(`
      <!--begin::Heading-->
                 <div class="mb-13 text-center">
@@ -111,10 +112,7 @@ function loadDetailModal(title, description, loadUrl) {
                     <!--end::Description-->
                     </div>
                     <!--end::Heading-->
-                    <div id="modal-body">
-
-
-                    </div>
+                ${body}
                     <!--begin::Actions-->
                     <div class="text-center">
                         <button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">
@@ -123,9 +121,7 @@ function loadDetailModal(title, description, loadUrl) {
 
                     </div>
     `);
-    $("#modal-body").load(loadUrl, function () {
-        $("#kt_modal_new_target").modal("show");
-    });
+    $("#kt_modal_new_target").modal("show");
 }
 
 function loadBreadCrumbWithHeader(
