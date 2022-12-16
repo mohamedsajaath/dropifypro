@@ -28,9 +28,12 @@ class DatabaseSeeder extends Seeder
             'city' => "test",
             'state' => "test",
             'zipcode' => "test",
-            'country_code' => "LK",
+            'country_id' => "213",
+            'currency' => "GBP",
             'phone_no' => "+94771231234",
             'type' => User::ADMIN,
+            'temp_account' => User::FIXED_ACCOUNT,
+            'image_url' => "",
         ]);
     }
 }
