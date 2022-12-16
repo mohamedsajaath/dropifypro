@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Plan extends Model
 {
     use HasFactory, CommonQuery;
-
+    const STARTER_SLUG = 'starter';
+    const ADVANCED_SLUG = 'advanced';
+    const BUSINESS_SLUG = 'business';
       /**
      * The attributes that are mass assignable.
      *
@@ -19,4 +21,6 @@ class Plan extends Model
         'price_month',
         'price_year',
     ];
+
+
 }
