@@ -35,9 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-
-
-//ADMIN START
+//admin START
 
 
 Route::prefix('admin')->group(function(){
@@ -48,9 +46,16 @@ Route::prefix('admin')->group(function(){
     })->name('admin.dashboard');
 
 
-    Route::get('/products/active', function () {
-        return view('pages.admin.products.index');
-    })->name('admin.products.active');
+
+    Route::get('/products',
+        [\App\Http\Controllers\admin\ProductController::class, 'index'])
+        ->name('admin.products');
+
+    Route::post('/products/create',
+        [\App\Http\Controllers\admin\ProductController::class, 'store'])
+        ->name('admin.products.store');
+
+
 
 
     Route::get('/products/recommend', function () {
@@ -116,7 +121,7 @@ Route::prefix('admin')->group(function(){
 
 });
 
-//ADMIN END
+//admin END
 
 
 //SELLER START

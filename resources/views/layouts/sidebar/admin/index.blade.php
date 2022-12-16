@@ -25,7 +25,7 @@
 
 <div  class="menu-item here show menu-accordion">
     <!--begin:Menu link-->
-    <a class="menu-link" href="{{ route('admin.products.active') }}">
+    <a class="menu-link" href="{{ route('admin.products') }}">
         <span class="menu-icon">
             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
             <span class="svg-icon svg-icon-2">
