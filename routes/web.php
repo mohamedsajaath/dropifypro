@@ -46,66 +46,54 @@ Route::middleware('auth')->group(function () {
             return view('pages.admin.dashboard.index');
         })->name('admin.dashboard');
 
+        Route::get('/products', [\App\Http\Controllers\admin\ProductController::class, 'index'])->name('admin.products');
 
-        Route::get('/products/active', function () {
-            return view('pages.admin.products.index');
-        })->name('admin.products.active');
-
+        Route::post('/products/create', [\App\Http\Controllers\admin\ProductController::class, 'store'])->name('admin.products.store');
 
         Route::get('/products/recommend', function () {
             return view('pages.admin.products.recommend.index');
         })->name('admin.products.recommend');
 
-
         Route::get('/orders/paid', function () {
             return view('pages.admin.orders.paid.index');
         })->name('admin.orders.paid');
-
 
         Route::get('/orders/unpaid', function () {
             return view('pages.admin.orders.unpaid.index');
         })->name('admin.orders.unpaid');
 
-
         Route::get('/sellers/wallet', function () {
             return view('pages.admin.sellers.wallets.index');
         })->name('admin.sellers.wallet');
-
 
         Route::get('/sellers/ebay-accounts', function () {
             return view('pages.admin.sellers.ebay-accounts.index');
         })->name('admin.sellers.ebay-accounts');
 
-
         Route::get('/sellers/memberships/active', function () {
             return view('pages.admin.memberships.active.index');
         })->name('admin.sellers.memberships.active');
-
 
         Route::get('/sellers/memberships/cancelled', function () {
             return view('pages.admin.memberships.cancelled.index');
         })->name('admin.sellers.memberships.cancelled');
 
-    Route::get('/tickets/index', [TicketController::class, 'index'])->name('admin.support.tickets.index');
-    Route::get('/tickets/create', [TicketController::class, 'create'])->name('admin.support.tickets.create');
-    Route::post('/tickets/store', [TicketController::class, 'store'])->name('admin.support.tickets.store');
+        Route::get('/tickets/index', [TicketController::class, 'index'])->name('admin.support.tickets.index');
+        Route::get('/tickets/create', [TicketController::class, 'create'])->name('admin.support.tickets.create');
+        Route::post('/tickets/store', [TicketController::class, 'store'])->name('admin.support.tickets.store');
 
-
-    Route::get('/account-managers/index', [AccountManagerController::class, 'index'])->name('admin.support.account-managers.index');
-    // Route::get('account-managers/create', [AccountManagerController::class, 'create'])->name('admin.account-managers.create');
-    Route::post('/account-managers/store', [AccountManagerController::class, 'store'])->name('admin.account-managers.store');
-    Route::get('/account-managers/edit/{id}', [AccountManagerController::class, 'edit'])->name('admin.account-managers.edit');
-
+        Route::get('/account-managers/index', [AccountManagerController::class, 'index'])->name('admin.support.account-managers.index');
+        // Route::get('account-managers/create', [AccountManagerController::class, 'create'])->name('admin.account-managers.create');
+        Route::post('/account-managers/store', [AccountManagerController::class, 'store'])->name('admin.account-managers.store');
+        Route::get('/account-managers/edit/{id}', [AccountManagerController::class, 'edit'])->name('admin.account-managers.edit');
 
         Route::get('/onboardings', function () {
             return view('pages.admin.onboardings.index');
         })->name('admin.onboardings');
 
-
         Route::get('/wholesale-requests', function () {
             return view('pages.admin.wholesale-requests.index');
         })->name('admin.wholesale-requests');
-
 
         Route::get('/manage-emails', function () {
             return view('pages.admin.manage-emails.index');
