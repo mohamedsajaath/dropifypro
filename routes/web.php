@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\AccountManagerController;
+use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\RegisterPlanController;
@@ -84,15 +86,15 @@ Route::middleware('auth')->group(function () {
             return view('pages.admin.memberships.cancelled.index');
         })->name('admin.sellers.memberships.cancelled');
 
+    Route::get('/tickets/index', [TicketController::class, 'index'])->name('admin.support.tickets.index');
+    Route::get('/tickets/create', [TicketController::class, 'create'])->name('admin.support.tickets.create');
+    Route::post('/tickets/store', [TicketController::class, 'store'])->name('admin.support.tickets.store');
 
-        Route::get('/support/tickets', function () {
-            return view('pages.admin.support.tickets.index');
-        })->name('admin.support.tickets');
 
-
-        Route::get('/support/account-managers', function () {
-            return view('pages.admin.support.account-managers.index');
-        })->name('admin.support.account-managers');
+    Route::get('/account-managers/index', [AccountManagerController::class, 'index'])->name('admin.support.account-managers.index');
+    // Route::get('account-managers/create', [AccountManagerController::class, 'create'])->name('admin.account-managers.create');
+    Route::post('/account-managers/store', [AccountManagerController::class, 'store'])->name('admin.account-managers.store');
+    Route::get('/account-managers/edit/{id}', [AccountManagerController::class, 'edit'])->name('admin.account-managers.edit');
 
 
         Route::get('/onboardings', function () {

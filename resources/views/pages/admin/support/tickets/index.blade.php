@@ -1,246 +1,289 @@
 @extends('layouts.app')
-
-
-
-@push('css')
-
-
-@endpush
-
 @section('content')
-
-    <div class="card mb-5 mb-xl-8 m-10">
-
-        <!--begin::Header-->
-
-        <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-
-            <div class="card-title">
-
-                <!--begin::Search-->
-
-                <div class="d-flex align-items-center position-relative my-1">
-
-                    <span class="svg-icon svg-icon-1 position-absolute ms-4"><svg xmlns="http://www.w3.org/2000/svg"
-
-                                                                                  width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-
-                            <path
-
-                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-
-                        </svg>
-
-                    </span>
-
-                    <input type="text" data-kt-filter="search" class="form-control form-control-solid w-250px ps-14"
-
-                           placeholder="Search" />
-
-                </div>
-
-                <!--end::Search-->
-
-            </div>
-
-        </div>
-
-        <!--end::Header-->
-
-
-
-        <!--begin::Body-->
-
-        <div class="card-body py-3">
-
-            <!--begin::Table container-->
-
-            <div class="table-responsive">
-
-                <!--begin::Table-->
-
-                <table id="kt_datatable_column_rendering"
-
-                       class="table table-hover table-rounded table-row-bordered gy-5 gs-7 table-striped">
-
-                    <thead>
-
-                    <tr class="fw-semibold fs-6 text-gray-400 text-uppercase">
-
-                        <th class="fw-bold fs-6 ">SELLER ID</th>
-
-                        <th class="fw-bold fs-6 ">REQUESTED DATE</th>
-
-                        <th class="fw-bold fs-6 ">REQUESTED TIME</th>
-
-                        <th class="fw-bold fs-6 text-end ">ACTIONS</th>
-
-                    </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                    <tr>
-
-                        <td class=" pe-0">1001</td>
-
-                        <td class=" pe-0">2022/10/10</td>
-
-                        <td class=" pe-0">UTC−04:00</td>
-
-                        <!--begin::Action=-->
-                        <td class="text-end">
-                            <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                <span class="svg-icon svg-icon-5 m-0">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="currentColor"></path>
-                                                    </svg>
-                                                </span>
-                                <!--end::Svg Icon-->
-                            </a>
-                            <!--begin::Menu-->
-                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
-                                <div class="menu-item px-3 dispatch">
-                                    <a class="menu-link px-3 product-edit d-flex gap-5">
-
-                                        <i class="bi bi-exclamation-circle text-danger"></i>
-
-                                        Alert Seller</a>
-                                </div>
-
-                            </div>
-                            <!--end::Menu-->
-                        </td>
-                        <!--end::Action=-->
-
-                    </tr>
-
-                    </tbody>
-
-                </table>
-
-                <div class="d-flex flex-stack flex-wrap pt-10">
-
-                    <div
-
-                        class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
-
-                        <div class="dataTables_length" id="kt_ecommerce_products_table_length">
-
-                            <label>
-
-                                <select name="kt_ecommerce_products_table_length"
-
-                                        aria-controls="kt_ecommerce_products_table"
-
-                                        class="form-select form-select-sm form-select-solid">
-
-                                    <option value="10">10</option>
-
-                                    <option value="25">25</option>
-
-                                    <option value="50">50</option>
-
-                                    <option value="100">100</option>
-
-                                </select>
-
-                            </label>
-
-                        </div>
-
-                    </div>
-
-                    <!--begin::Pages-->
-
-                    <ul class="pagination">
-
-                        <li class="page-item previous">
-
-                            <a href="#" class="page-link">
-
-                                <i class="previous"></i>
-
-                            </a>
-
-                        </li>
-
-                        <li class="page-item active">
-
-                            <a href="#" class="page-link">1</a>
-
-                        </li>
-
-                        <li class="page-item">
-
-                            <a href="#" class="page-link">2</a>
-
-                        </li>
-
-                        <li class="page-item">
-
-                            <a href="#" class="page-link">3</a>
-
-                        </li>
-
-                        <li class="page-item">
-
-                            <a href="#" class="page-link">4</a>
-
-                        </li>
-
-                        <li class="page-item">
-
-                            <a href="#" class="page-link">5</a>
-
-                        </li>
-
-                        <li class="page-item">
-
-                            <a href="#" class="page-link">6</a>
-
-                        </li>
-
-                        <li class="page-item next">
-
-                            <a href="#" class="page-link">
-
-                                <i class="next"></i>
-
-                            </a>
-
-                        </li>
-
-                    </ul>
-
-                    <!--end::Pages-->
-
-                </div>
-
-                <!--end::Table-->
-
-            </div>
-
-            <!--end::Table container-->
-
-        </div>
-
-        <!--begin::Body-->
-
-    </div>
-
+    @include('pages.admin.support.tickets.includes.table-details')
 @endsection
-
 @push('script')
-
     <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
-
     <script>
-
         loadBreadCrumbWithHeader("Tickets", "Details", "Dashboard", "{{ route('admin.dashboard') }}")
-
     </script>
 
+
+    {{-- create tickets --}}
+    <script>
+        $(document).on('click', '.create-ticket', function() {
+            $('.custom-modal-size').addClass('mw-500px').removeClass('mw-650px');
+            loadFormModal("", "", "Create Ticket", "Create new ticket here", "Create", "submit-btn",
+                `<!--begin::Card body-->
+<div class="card-body p-9 card mb-5">
+    <form id="kt_modal_new_card_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">
+        <!--begin::Input group-->
+        <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
+            <!--begin::Label-->
+            <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
+                <span class="required">Title :</span>
+                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
+                    aria-label="Specify a card holder's name" data-kt-initialized="1"></i>
+            </label>
+            <!--end::Label-->
+            <input type="text" class="form-control form-control-solid" placeholder="Title" name="card_name" value="">
+        </div>
+        <!--end::Input group-->
+        <!--begin::Input group-->
+        <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
+            <label class="fs-6 fw-semibold mb-2">
+                <span class="required">Description :</span>
+                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
+                    aria-label="Specify a card holder's name" data-kt-initialized="1"></i>
+            </label>
+            <textarea class="form-control form-control-solid" rows="3" name="target_details" placeholder="Description"></textarea>
+        </div>
+        <!--end::Input group-->
+    </form>
+</div>
+<!--end::Card body-->`);
+        });
+    </script>
+
+
+    {{-- Account Manager details --}}
+    <script>
+        $(document).on('click', '.account-manager', function() {
+            $('.custom-modal-size').addClass('mw-550px').removeClass('mw-650px');
+            loadDetailModal("My Account Manager", "",
+                ` `);
+        });
+    </script>
+
+    {{-- View tickets details --}}
+    <script>
+        $(document).on('click', '.view-tickets', function() {
+            $('.custom-modal-size').addClass('mw-700px').removeClass('mw-650px');
+            loadDetailModal("Ticket", "View Tickets Details",
+                `<div class="scroll-y h-lg-auto" data-kt-element="messages" data-kt-scroll="true"
+    data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto"
+    data-kt-scroll-dependencies="#kt_header, #kt_app_header, #kt_app_toolbar, #kt_toolbar, #kt_footer, #kt_app_footer, #kt_chat_messenger_header, #kt_chat_messenger_footer"
+    data-kt-scroll-wrappers="#kt_content, #kt_app_content, #kt_chat_messenger_body" data-kt-scroll-offset="5px"
+    style="max-height: 350px;">
+    <!--begin::Message(in)-->
+    <div class="d-flex justify-content-start mb-10">
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-column align-items-start">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+                <!--begin::Details-->
+                <div class="ms-3">
+                    <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian Cox</a>
+                    <span class="text-muted fs-7 mb-1">2 mins</span>
+                </div>
+                <!--end::Details-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start"
+                data-kt-element="message-text">How likely are you to recommend our company to your friends and family ?
+            </div>
+            <!--end::Text-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Message(in)-->
+    <!--begin::Message(out)-->
+    <div class="d-flex justify-content-end mb-10">
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-column align-items-end">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+                <!--begin::Details-->
+                <div class="me-3">
+                    <span class="text-muted fs-7 mb-1">5 mins</span>
+                    <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary ms-1">You</a>
+                </div>
+                <!--end::Details-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end"
+                data-kt-element="message-text">Hey there, we’re just writing to let you know that you’ve been subscribed
+                to a repository on GitHub.</div>
+            <!--end::Text-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Message(out)-->
+    <!--begin::Message(in)-->
+    <div class="d-flex justify-content-start mb-10">
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-column align-items-start">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+                <!--begin::Details-->
+                <div class="ms-3">
+                    <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian Cox</a>
+                    <span class="text-muted fs-7 mb-1">1 Hour</span>
+                </div>
+                <!--end::Details-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start"
+                data-kt-element="message-text">Ok, Understood!</div>
+            <!--end::Text-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Message(in)-->
+    <!--begin::Message(out)-->
+    <div class="d-flex justify-content-end mb-10">
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-column align-items-end">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+                <!--begin::Details-->
+                <div class="me-3">
+                    <span class="text-muted fs-7 mb-1">2 Hours</span>
+                    <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary ms-1">You</a>
+                </div>
+                <!--end::Details-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end"
+                data-kt-element="message-text">You’ll receive notifications for all issues, pull requests!</div>
+            <!--end::Text-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Message(out)-->
+    <!--begin::Message(in)-->
+    <div class="d-flex justify-content-start mb-10">
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-column align-items-start">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+                <!--begin::Details-->
+                <div class="ms-3">
+                    <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian Cox</a>
+                    <span class="text-muted fs-7 mb-1">3 Hours</span>
+                </div>
+                <!--end::Details-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start"
+                data-kt-element="message-text">You can unwatch this repository immediately by clicking here:
+                <a href="https://keenthemes.com">Keenthemes.com</a>
+            </div>
+            <!--end::Text-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Message(in)-->
+    <!--begin::Message(out)-->
+    <div class="d-flex justify-content-end mb-10">
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-column align-items-end">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+                <!--begin::Details-->
+                <div class="me-3">
+                    <span class="text-muted fs-7 mb-1">4 Hours</span>
+                    <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary ms-1">You</a>
+                </div>
+                <!--end::Details-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end"
+                data-kt-element="message-text">Most purchased Business courses during this sale!</div>
+            <!--end::Text-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Message(out)-->
+    <!--begin::Message(in)-->
+    <div class="d-flex justify-content-start mb-10">
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-column align-items-start">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+                <!--begin::Details-->
+                <div class="ms-3">
+                    <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian Cox</a>
+                    <span class="text-muted fs-7 mb-1">5 Hours</span>
+                </div>
+                <!--end::Details-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start"
+                data-kt-element="message-text">Company BBQ to celebrate the last quater achievements and goals. Food and
+                drinks provided</div>
+            <!--end::Text-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Message(in)-->
+    <!--begin::Message(template for out)-->
+    <div class="d-flex justify-content-end mb-10 d-none" data-kt-element="template-out">
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-column align-items-end">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+                <!--begin::Details-->
+                <div class="me-3">
+                    <span class="text-muted fs-7 mb-1">Just now</span>
+                    <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary ms-1">You</a>
+                </div>
+                <!--end::Details-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end"
+                data-kt-element="message-text"></div>
+            <!--end::Text-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Message(template for out)-->
+    <!--begin::Message(template for in)-->
+    <div class="d-flex justify-content-start mb-10 d-none" data-kt-element="template-in">
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-column align-items-start">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+                <!--begin::Avatar-->
+                <div class="symbol symbol-35px symbol-circle">
+                    <img alt="Pic" src="assets/media/avatars/300-25.jpg">
+                </div>
+                <!--end::Avatar-->
+                <!--begin::Details-->
+                <div class="ms-3">
+                    <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian Cox</a>
+                    <span class="text-muted fs-7 mb-1">Just now</span>
+                </div>
+                <!--end::Details-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start"
+                data-kt-element="message-text">Right before vacation season we have the next Big Deal for you.</div>
+            <!--end::Text-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Message(template for in)-->
+</div> `);
+        });
+    </script>
+
+
+    {{-- Close --}}
+    <script>
+        $(document).on('click', '.close', function() {
+            $('.custom-modal-size').addClass('mw-650px').removeClass('mw-650px');
+            loadFormModal("", "", "Close Ticket", "Are you sure want to close?", "Yes,Close it!", "submit-btn",
+                ` `);
+        });
+    </script>
 @endpush
