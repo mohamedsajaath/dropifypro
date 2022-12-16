@@ -25,9 +25,12 @@ return new class extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('zipcode');
-            $table->string('country_code');
+            $table->string('country_id');
+            $table->string('currency')->nullable();
             $table->string('phone_no');
             $table->tinyInteger('type')->default(User::SELLER);
+            $table->tinyInteger('temp_account')->default(User::FIXED_ACCOUNT);
+            $table->string('image_url');
             $table->rememberToken();
             $table->timestamps();
         });

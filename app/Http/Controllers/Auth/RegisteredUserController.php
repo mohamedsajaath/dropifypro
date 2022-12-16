@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\MdCountry;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -20,7 +21,8 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        
+        return view('pages.register.index');
     }
 
     /**
@@ -35,16 +37,17 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'address' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
             'state' => ['required', 'string', 'max:255'],
             'zipcode' => ['required', 'string', 'max:255'],
-            'country_code' => ['required', 'string', 'max:255'],
+            'country_id' => ['required'],
             'phone_no' => ['required', 'string', 'max:255'],
         ]);
-
+        $currency = MdCountry::where('id', $request->country_id)->first();
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -54,10 +57,10 @@ class RegisteredUserController extends Controller
             'city' => $request->city,
             'state' => $request->state,
             'zipcode' => $request->zipcode,
-            'country_code' => $request->country_code,
+            'country_id' => $request->country_id,
+            'currency' => $currency->currency_code,
             'phone_no' => $request->phone_no,
         ]);
-
         event(new Registered($user));
 
         Auth::login($user);

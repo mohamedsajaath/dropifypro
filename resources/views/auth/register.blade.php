@@ -5,7 +5,7 @@
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
         </x-slot>
-
+        {{-- {{ request()->get('plan_id') }} --}}
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
@@ -81,11 +81,11 @@
                 <x-input-error :messages="$errors->get('zipcode')" class="mt-2" />
             </div>
 
-            <!-- Country_Code -->
+            <!-- country_id -->
             <div class="mt-4">
-                <x-input-label for="country_code" :value="__('Country Code')" />
-                <x-text-input id="country_code" class="block mt-1 w-full" type="text" name="country_code" :value="old('country_code')" required autofocus />
-                <x-input-error :messages="$errors->get('country_code')" class="mt-2" />
+                <x-input-label for="country_id" :value="__('Country Code')" />
+                <x-text-input id="country_id" class="block mt-1 w-full" type="text" name="country_id" :value="old('country_id')" required autofocus />
+                <x-input-error :messages="$errors->get('country_id')" class="mt-2" />
             </div>
 
             <!-- Phone_Number -->

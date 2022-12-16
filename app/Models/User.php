@@ -13,6 +13,9 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, CommonQuery;
     const ADMIN  = 0;
     const SELLER = 1;
+    const TEMP_ACCOUNT = 0;
+    const FIXED_ACCOUNT = 1;
+
 
     /**
      * The attributes that are mass assignable.
@@ -28,7 +31,8 @@ class User extends Authenticatable
         'city',
         'state',
         'zipcode',
-        'country_code',
+        'country_id',
+        'currency',
         'phone_no',
     ];
 
