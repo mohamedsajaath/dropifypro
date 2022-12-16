@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('city');
             $table->string('province');
-            $table->string('country_code');
+            $table->string('country_id');
             $table->string('zipcode');
             $table->string('phone_no');
             $table->timestamps();
