@@ -21,7 +21,7 @@
             dropdownParent: $('#kt_modal_new_target'),
             minimumResultsForSearch: Infinity
         });
-        $('.input-images').imageUploader();
+        $('.input-images1').imageUploader();
     });
 
     $(document).on('change', '[name=condition]', function () {
