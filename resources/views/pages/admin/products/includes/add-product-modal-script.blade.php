@@ -29,7 +29,7 @@
             $(this).closest('.radio-btns').append(`
                 <div class="col-lg-12 fv-row comp-desc mt-2">
 					<textarea name="comprehensive-description"
-                              class="form-control form-control-lg form-control-solid "
+                              class="form-control form-control-lg form-control-solid"
                               placeholder="comprehensive description">
                     </textarea>
 				</div>
@@ -54,7 +54,7 @@
                             </label>
                             <!--end::Label-->
                             <!--begin::Col-->
-                            <div class="col-lg-5 fv-row">
+                            <div class="col-lg-4 fv-row">
                                 <input type="number" name="non-variant-quantity"
                                        class="form-control form-control-lg form-control-solid"
                                        placeholder="QUANTITY" required/>
@@ -71,7 +71,7 @@
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-4 fv-row">
-                                <input type="text" name="non-variant-price"
+                                <input type="number" name="non-variant-price"
                                        class="form-control form-control-lg form-control-solid"
                                        placeholder="PRICE" required/>
                             </div>
@@ -87,7 +87,7 @@
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-4 fv-row">
-                                <input type="text" name="non-variant-price"
+                                <input type="number" name="non-variant-rsp"
                                        class="form-control form-control-lg form-control-solid"
                                        placeholder="RSP" required/>
                             </div>
@@ -133,14 +133,15 @@
     });
 
     $(document).on('click', '.Specification-add-btn', function () {
+        $(this).closest('.specification-wrap').find('.delete-Specification-btn').removeClass('d-none');
         $(this).closest('.card-body').after(`
         <div class="card-body border-top w-100 mb-5">
             <div class="row mb-2">
-               <span style="border:1px solid #d3d3d3; border-radius:5px; margin:1rem; padding:1rem; width:75%;"
+               <span style="border:1px solid #d3d3d3; border-radius:5px; margin:1rem; padding:1rem; width:100%;"
                      class="product-specification-container">
                 <div class="col-lg-12 fv-row mt-4 d-flex" style="gap:10px;">
                     <input type="text" class="form-control  w-50 h-50px" name="specification-type[]" placeholder="Specification Type"/>
-                         <textarea type="text" class="form-control w-50 min-h-50px" name="specification-type-value[]" placeholder="Specification Value"></textarea>
+                         <input type="text" class="form-control w-50 min-h-50px" name="specification-type-value[]" placeholder="Specification Value"/>
                  <span class="w-30px"></span>
                     <button type="button" class="btn btn-primary Specification-add-btn btn-sm h-40px"
                             data-bs-toggle="tooltip" data-bs-placement="top" title="add Variant"><i
@@ -153,15 +154,9 @@
         `);
 
 
-        if ($(this).find('.delete-Specification-btn').length !== 0) {
-            $(this).after(`
-        <button type="button" class="btn btn-danger delete-Specification-btn btn-sm h-40px" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove Variant"><i class="bi bi-dash-lg"></i></button>
-        `);
 
             $(this).remove();
-        }
 
-        $(this).remove();
     });
 
     $(document).on('click', '.delete-Specification-btn', function () {
@@ -174,10 +169,10 @@
 
     $(document).on('click', '.variant-type-add-btn', function () {
 
-        $(this).closest()
+        $(this).closest('.variant-wrap').find('.delete-variant-btn').removeClass('d-none');
 
         $('.variant-row').append(`
-        <span style="border:1px solid #d3d3d3; border-radius:5px; margin:1rem; padding:1rem; width:75%;" class="variant-type-container remove-container">
+      <span style="border:1px solid #d3d3d3; border-radius:5px; padding:1rem; width:90%;" class="variant-type-container remove-container mt-4">
             <div class="col-lg-12 fv-row mt-4 d-flex" style="gap:10px;">
 
                 <input type="text" class="form-control variant-type w-50 h-50px" placeholder="Variation Type"/>
@@ -270,41 +265,7 @@
         $('.remove-container').remove();
     });
 
-    $(document).on('change', '[name=variation-combination]', function () {
-        if ($('.variation-combination').is(':checked')) {
-            let randomNum = Math.floor(Math.random() * 10);
-            $(this).closest('.variant-type-combination-container').find('table').after(
-                `<div class="col-lg-12 fv-row mt-4 d-flex variant-details" style="gap:10px; width:100%;">
-                         <input type="text" class="form-control w-25 h-50px " name="variant-sku[]" placeholder="SKU" value="" required/>
-                         <input type="number" class="form-control w-25 h-50px " name="variant-price[]" placeholder="PRICE" value="" required/>
-                         <input type="number" class="form-control w-25 h-50px " name="variant-rsp[]" placeholder="RSP" value="" required/>
-                         <input type="number" class="form-control w-25 h-50px " name="variant-quantity[]" placeholder="Quantity" value="" required/>
 
-                         <div class="form-group w-25">
-                                <div class="image-field d-flex">
-                                    <button type="button" style="display:block;width:120px; height:50px; border: solid 1px #dcdcdc; background-color: #ffffff;" onclick="document.getElementById('getFile').click()">Select Image</button>
-                                    <input type="file" name="variant-image[]" id="getFile" class="image_input_tag form-control opacity upload-image-input d-none"
-                                           oninput="uploaded_imagen${randomNum}.src=window.URL.createObjectURL(this.files[0])"/>
-                                         <a type="button" class="btn btn-light-danger fs-3 delete-variant-image-btn btn-sm h-40px" style="display:none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove Variant image">
-                                             <i class="bi bi-x-lg"></i>
-                                        </a>
-                                </div>
-                            <div class="form-group hidden">
-                                <div class="image-field">
-                                    <img src="" id="uploaded_imagen${randomNum}" class="uploaded-image" style="height:100px; width:100px; display:none;"/>
-                                </div>
-                            </div>
-                            </div>
-
-
-
-                            </a>
-                           </div>`
-            )
-        } else {
-            $(this).closest('.variant-type-combination-container').find('.variant-details').remove();
-        }
-    });
 
 
 
@@ -353,6 +314,45 @@
         }
         return innerArr;
     }
+
+
+
+
+    $(document).on('change', '[name=variation-combination]', function () {
+        if ($('.variation-combination').is(':checked')) {
+            let randomNum = Math.floor(Math.random() * 10);
+            $(this).closest('.variant-type-combination-container').find('table').after(
+                `<div class="col-lg-12 fv-row mt-4 d-flex variant-details" style="gap:10px; width:100%;">
+                         <input type="text" class="form-control w-25 h-50px " name="variant-sku[]" placeholder="SKU" value="" required/>
+                         <input type="number" class="form-control w-25 h-50px " name="variant-price[]" placeholder="PRICE" value="" required/>
+                         <input type="number" class="form-control w-25 h-50px " name="variant-rsp[]" placeholder="RSP" value="" required/>
+                         <input type="number" class="form-control w-25 h-50px " name="variant-quantity[]" placeholder="Quantity" value="" required/>
+
+                         <div class="form-group w-25">
+                                <div class="image-field d-flex">
+                                    <button type="button" style="display:block;width:120px; height:50px; border: solid 1px #dcdcdc; background-color: #ffffff;" onclick="document.getElementById('getFile${randomNum}').click()">Select Image</button>
+                                    <input type="file" name="variant-image[]" id="getFile${randomNum}" class="image_input_tag form-control opacity upload-image-input d-none"
+                                           oninput="uploaded_imagen${randomNum}.src=window.URL.createObjectURL(this.files[0])"/>
+                                         <a type="button" class="btn btn-light-danger fs-3 delete-variant-image-btn btn-sm h-40px" style="display:none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove Variant image">
+                                             <i class="bi bi-x-lg"></i>
+                                        </a>
+                                </div>
+                            <div class="form-group hidden">
+                                <div class="image-field">
+                                    <img src="" id="uploaded_imagen${randomNum}" class="uploaded-image" style="height:100px; width:100px; display:none;"/>
+                                </div>
+                            </div>
+                            </div>
+
+
+
+                            </a>
+                           </div>`
+            )
+        } else {
+            $(this).closest('.variant-type-combination-container').find('.variant-details').remove();
+        }
+    });
 
 </script>
 
