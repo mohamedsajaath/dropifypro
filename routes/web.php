@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlanController;
+use App\Http\Controllers\Admin\OnBoardingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -98,9 +99,6 @@ Route::prefix('admin')->group(function(){
     })->name('admin.support.account-managers');
 
 
-    Route::get('/onboardings', function () {
-        return view('pages.admin.onboardings.index');
-    })->name('admin.onboardings');
 
 
     Route::get('/wholesale-requests', function () {
@@ -203,6 +201,15 @@ Route::get('/admin/account_plan', [PlanController::class, 'index'])->name('admin
 Route::post('/plan', [PlanController::class, 'store'])->name('plan.store');
 Route::get('/plan/{id}', [PlanController::class, 'edit'])->name('plan.edit');
 Route::post('/plan/update', [PlanController::class, 'update'])->name('plan.update');
+
+//  onboarding
+
+Route::get('/admin/onboardings', [OnBoardingController::class, 'index'])->name('admin.onboardings');
+Route::post('/onboardings', [OnBoardingController::class,'store'])->name('onboardings.store');
+Route::get('/onboardings/{id}', [OnBoardingController::class,'edit'])->name('onboardings.edit');
+Route::post('/onboardings/update/{id}', [OnBoardingController::class,'update'])->name('onboardings.update');
+Route::delete('/onboardings', [OnBoardingController::class, 'destroy'])->name('onboardings.destroy');
+
 // ADMIN ACCOUNT SETTING END
 
 //Royal- Mail-Api
@@ -210,6 +217,8 @@ Route::post('/plan/update', [PlanController::class, 'update'])->name('plan.updat
 Route::get('/royal-mail-create-orders', [RoyalMailController::class, 'create']);
 Route::get('/royal-mail-get-orders', [RoyalMailController::class, 'index']);
 Route::get('/royal-mail-update-orders', [RoyalMailController::class, 'update']);
+
+
 
 
 });
