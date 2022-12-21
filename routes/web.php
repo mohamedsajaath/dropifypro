@@ -242,9 +242,11 @@ Route::prefix('admin')->group(function(){
     })->name('admin.support.tickets');
 
 
-    Route::get('/support/account-managers', function () {
-        return view('pages.admin.support.account-managers.index');
-    })->name('admin.support.account-managers');
+    Route::get('/account-managers/index', [AccountManagerController::class, 'index'])->name('admin.support.account-managers.index');
+    // Route::get('account-managers/create', [AccountManagerController::class, 'create'])->name('admin.account-managers.create');
+    Route::post('/account-managers/store', [AccountManagerController::class, 'store'])->name('admin.account-managers.store');
+    Route::get('/account-managers/edit/{id}', [AccountManagerController::class, 'edit'])->name('admin.account-managers.edit');
+    Route::post('/account-managers/update', [AccountManagerController::class, 'update'])->name('admin.account-managers.update');
 
 
 

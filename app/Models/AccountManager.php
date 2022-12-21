@@ -9,7 +9,5 @@ class AccountManager extends Model
 {
     use HasFactory, CommonQuery;
 
-    // protected $table = "account_managers";
-
     protected $fillable = ['name', 'email', 'contact_no', 'response_time'];
 }

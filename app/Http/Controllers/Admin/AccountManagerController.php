@@ -42,21 +42,14 @@ class AccountManagerController extends Controller
      */
     public function store(Request $request)
     {
-        //get all request data as array
         $inputs = $request->all();
-
-        //create new record
         $newAccountManager = new AccountManager();
         $newAccountManager->fill($inputs);
-
-        // dd($newAccountManager);
         $newAccountManager->save();
-
         $result = "result";
         $message = "Succesfully insert";
         $errors = [];
         $status = 200;
-
         return response()->json(['result' => $result, 'message' => $message, 'errors' => $errors], $status);
     }
 
@@ -90,22 +83,22 @@ class AccountManagerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function update(AccountManagerRequest $request, AccountManager $AccountManager)
-    // {
-    //     try {
-    //         $id = $request->id;
-    //         $AccountManager = new AccountManager();
-    //         $AccountManager = AccountManager::find($id);
-    //         $AccountManager->name = $request->name;
-    //         $AccountManager->email = $request->email;
-    //         $AccountManager->contact_no = $request->contact_no;
-    //         $AccountManager->response_time = $request->response_time
-    //         $AccountManager::save($AccountManager);
-    //         return self::response('Successfully Updated');
-    //     } catch (\Exception $ex) {
-    //         return self::response($ex->getMessage(), [], 422);
-    //     }
-    // }
+    public function update(AccountManagerRequest $request, AccountManager $AccountManager)
+    {
+        try {
+            $id = $request->id;
+            $AccountManager = new AccountManager();
+            $AccountManager = AccountManager::find($id);
+            $AccountManager->name = $request->name;
+            $AccountManager->email = $request->email;
+            $AccountManager->contact_no = $request->contact_no;
+            $AccountManager->response_time = $request->response_time;
+            $AccountManager->save();
+            return self::response('Successfully Updated');
+        } catch (\Exception $ex) {
+            return self::response($ex->getMessage(), [], 422);
+        }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -113,9 +106,10 @@ class AccountManagerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(AccountManager $AccountManager)
     {
-        //
+        // AccountManagerService::delete($AccountManager);
+        // return self::response('success', 'User deleted!');
     }
 
 }
