@@ -53,7 +53,16 @@ trait CommonQuery
 
     public static function getAll()
     {
-        return self::query()->query()->get();
+        return self::query()->get();
+    }
+
+    public static function selectIn($conditions)
+    {
+        $model = self::query();
+        foreach ($conditions as $key => $values)
+            $model = $model->whereIn($key, $values);
+
+        return $model->get();
     }
 
     public static function increase($condition, $column, $value)
@@ -90,10 +99,6 @@ trait CommonQuery
 
     public function loadFromArray($array)
     {
-        foreach ($array as $key => $value) {
-            if (in_array($key, $this->fillable) || $key == 'id') {
-                $this->$key = $value;
-            }
-        }
+        $this->fill($array);
     }
 }

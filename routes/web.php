@@ -352,11 +352,11 @@ Route::post('/plan/update', [PlanController::class, 'update'])->name('plan.updat
 
 //  onboarding
 
-Route::get('/admin/onboardings', [OnBoardingController::class, 'index'])->name('admin.onboardings');
-Route::post('/onboardings', [OnBoardingController::class,'store'])->name('onboardings.store');
-Route::get('/onboardings/{id}', [OnBoardingController::class,'edit'])->name('onboardings.edit');
-Route::post('/onboardings/update/{id}', [OnBoardingController::class,'update'])->name('onboardings.update');
-Route::delete('/onboardings', [OnBoardingController::class, 'destroy'])->name('onboardings.destroy');
+Route::get('/admin/on-boardings', [OnBoardingController::class, 'index'])->name('admin.on-boardings.index');
+Route::post('/on-boardings', [OnBoardingController::class,'store'])->name('admin.on-boarding.store');
+Route::get('/on-boardings/{id}', [OnBoardingController::class,'edit'])->name('admin.on-boarding.edit');
+Route::post('/on-boardings/update/{id}', [OnBoardingController::class,'update'])->name('admin.on-boarding.update');
+Route::delete('/on-boardings', [OnBoardingController::class, 'destroy'])->name('admin.on-boarding.destroy');
 
 // ADMIN ACCOUNT SETTING END
 

@@ -3,48 +3,28 @@
 namespace App\Helper\Service\Admin;
 
 use App\Models\OnBoarding;
-use Carbon\Carbon;
-use Carbon\CarbonPeriod;
 
 class OnboardingService
 {
-    public static function save(onboarding $onboarding)
+    public static function storeFromRequest($request)
     {
-        $onboarding->save();
+        $onBoarding = new OnBoarding();
+        $onBoarding->loadFromRequest($request);
+        $onBoarding->save();
     }
 
     public static function show()
     {
-
         return OnBoarding::all();
-        // $data->
-        // $output_date = Carbon::create($data->date);
-        // // dd($output_date);
     }
 
-    public static function getDateRanges()
+    public static function getDateRanges($days)
     {
-        //Get date from today to next 7 days
-        $date = Carbon::now();
-        $date->toDateString();
-        $period = CarbonPeriod::create($date, 7);
 
-        $dates = [];
-        foreach ($period as $key => $date) {
-            if ($key === 7) {
-                $period->invert()->start($date); // invert() is an alias for invertDateInterval()
-            }
-            $dates[] = $date->format('Y-m-d');
-        }
-        return $dates;
     }
 
-    public static function getOnBoardingByDate($dates)
+    public static function getOnBoardingByDate($date)
     {
-        {
-            $event = OnBoarding::where('date', $dates)->get();
-            return $event;
-
-        }
+        return OnBoarding::findBy(['date' => $date]);
     }
 }
