@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use App\Helper\Service\admin;
+use App\Models\MdEbayCategory;
 
 
 
@@ -17,7 +19,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('pages.Admin.products.index');
+        $EbayCategories = new MdEbayCategory();
+
+        $category = $EbayCategories->query()->get()->take(10);
+
+        return view('pages.Admin.products.index')->with(["ebay_category"=> $category]);
 
     }
 
@@ -29,8 +35,10 @@ class ProductController extends Controller
 
 
 
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
+
+
         dd($request->all());
 
     }
