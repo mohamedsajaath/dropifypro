@@ -71,7 +71,7 @@
                                     <!--end::Last login=-->
                                     <!--begin::Two step=-->
                                     <td class="align-items-center">
-                                        <a href="#" class="btn btn-primary fs-8">5.00 - 6.00 PM</a>
+                                        <a href="#" class="btn btn-danger  fs-8">5.00 - 6.00 PM</a>
                                     </td>
                                     <!--end::Two step=-->
                                     <!--begin::Joined-->
@@ -84,7 +84,7 @@
                                         <a href="#" class="btn btn-primary fs-8">5.00 - 6.00 PM</a>
                                     </td>
                                     <td class="align-items-center">
-                                        <a href="#" class="btn btn-primary fs-8">5.00 - 6.00 PM</a>
+                                        <a href="#" class="btn btn-danger fs-8">5.00 - 6.00 PM</a>
                                     </td>
                                     <!--end::Action=-->
                                 </tr>
@@ -97,7 +97,7 @@
                                     <!--end::User=-->
                                     <!--begin::Role=-->
                                     <td class="align-items-center">
-                                        <a href="#" class="btn btn-primary fs-8">5.00 - 6.00 PM</a>
+                                        <a href="#" class="btn btn-danger  fs-8">5.00 - 6.00 PM</a>
                                     </td>
                                     <!--end::Role=-->
                                     <!--begin::Last login=-->
@@ -117,7 +117,7 @@
                                     <!--begin::Joined-->
                                     <!--begin::Action=-->
                                     <td class="align-items-center">
-                                        <a href="#" class="btn btn-primary fs-8">5.00 - 6.00 PM</a>
+                                        <a href="#" class="btn btn-danger fs-8">5.00 - 6.00 PM</a>
                                     </td>
                                     <td class="align-items-center">
                                         <a href="#" class="btn btn-primary fs-8">5.00 - 6.00 PM</a>
