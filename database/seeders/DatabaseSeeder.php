@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        // \App\Models\OrderCustomer::factory(1)->create();
 
         DB::table('users')->insert([
             'first_name' => "Admin",

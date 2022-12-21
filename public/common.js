@@ -183,30 +183,20 @@ function loadBreadCrumbWithHeader(
     });
 }
 
-let isConfirmToProcess = (alert_type, description, title = 'Are you sure!')=>{
-    return new Promise((resolve, reject)=>{
-        Swal.fire({
-            title: title,
-            text: description,
-            type: alert_type,
-            showCancelButton: true,
-            showLoaderOnConfirm: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes',
-            confirmButtonClass: 'btn btn-primary',
-            cancelButtonClass: 'btn btn-danger ml-1',
-            buttonsStyling: false,
-        })
-            .then(async function (result) {
-                if (result.value) {
-                    resolve(true);
-                }else{
-                    resolve(false);
-                }
-            })
+$(document).on("click", ".delete-sweet", function () {
+    Swal.fire({
+        html: `Are You Sure You Want To Delete`,
+        icon: "error",
+        buttonsStyling: false,
+        showCancelButton: true,
+        confirmButtonText: "Yes, Delete it!",
+        cancelButtonText: "Nope",
+        customClass: {
+            confirmButton: "btn btn-primary",
+            cancelButton: "btn btn-danger",
+        },
     });
-}
+});
 
 $(document).on("click", ".product-slider", function (e) {
     e.preventDefault();
