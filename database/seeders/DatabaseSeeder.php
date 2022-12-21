@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        // \App\Models\OrderCustomer::factory(1)->create();
 
         DB::table('users')->insert([
             'first_name' => "Admin",
@@ -28,9 +29,12 @@ class DatabaseSeeder extends Seeder
             'city' => "test",
             'state' => "test",
             'zipcode' => "test",
-            'country_code' => "LK",
+            'country_id' => "213",
+            'currency' => "GBP",
             'phone_no' => "+94771231234",
             'type' => User::ADMIN,
+            'temp_account' => User::FIXED_ACCOUNT,
+            'image_url' => "",
         ]);
     }
 }

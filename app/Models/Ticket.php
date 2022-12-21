@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Ticket extends Model
 {
     use HasFactory, CommonQuery;
+
+
+
+protected $fillable = ['user_id','title','status'];
+
 }

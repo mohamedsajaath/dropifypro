@@ -2,7 +2,7 @@
     <!--begin: Pic-->
     <div class="me-7 mb-4">
         <div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-            <img src="{{ asset('assets/media/avatars/300-1.jpg') }}" alt="image">
+            <img src="{{ asset('storage/'. Auth::user()->image_url) }}" alt="image">
         </div>
     </div>
     <!--end::Pic-->
@@ -14,8 +14,7 @@
             <div class="d-flex flex-column">
                 <!--begin::Name-->
                 <div class="d-flex align-items-center mb-2">
-                    <a href="#" class="text-gray-900 text-hover-primary fs-2 fw-bold me-1">Max
-                        Smith</a>
+                    <a href="#" class="text-gray-900 text-hover-primary fs-2 fw-bold me-1">{{ Auth::user()->first_name . " " . Auth::user()->last_name}}</a>
                 </div>
                 <!--end::Name-->
                 <!--begin::Info-->

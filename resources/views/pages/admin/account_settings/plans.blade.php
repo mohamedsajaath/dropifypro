@@ -59,7 +59,7 @@
                             </div>
                             <!--end::Card title-->
                             <!--begin::Action-->
-                            <a href="#" class="btn btn-primary er fs-6 px-8 py-4 my-5" id="plan_model">Add plan</a>
+                            {{-- <a href="#" class="btn btn-primary er fs-6 px-8 py-4 my-5" id="plan_model">Add plan</a> --}}
                             <!--end::Action-->
                         </div>
                         <!--begin::Card header-->
@@ -203,9 +203,11 @@
                 let ajaxRequest = new HttpRequest(url, 'POST');
                 ajaxRequest.set_data_by_form_object(form);
                 let response = await ajaxRequest.call();
-                console.log(response.message);
+                // console.log(response.message);
                 $("#kt_modal_new_target").modal("hide");
-                window.location = "{{ route('admin.plan') }}";
+                // if(response.message == "Successfully Updated"){
+                //     $("#kt_datatable_column_rendering").load();
+                // }
 
             } catch (err) {
                 console.log(err);

@@ -8,5 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class MdCountry extends Model
 {
     use HasFactory;
-    protected $table="md_countries";
+    protected $table = "md_countries";
+
+    public static function country()
+    {
+        $countries = MdCountry::all();
+        return $countries;
+    }
+
+    public static function userCountry($id)
+    {
+        $country = MdCountry::where('id', $id)->first();
+        return $country->name;
+    }
+
 }
