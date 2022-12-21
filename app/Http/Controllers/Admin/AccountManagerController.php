@@ -108,8 +108,8 @@ class AccountManagerController extends Controller
      */
     public function destroy(AccountManager $AccountManager)
     {
-        AccountManagerService::delete($AccountManager);
-        return self::response('success', 'User deleted!');
+        // AccountManagerService::delete($AccountManager);
+        // return self::response('success', 'User deleted!');
     }
 
 }
