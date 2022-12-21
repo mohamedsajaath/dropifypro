@@ -24,10 +24,10 @@ class AccountManagerRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string'],
-            'email' =>['required','string'],
+            'name' => ['required', 'string','max:255'],
+            'email' =>['required','string','max:255'],
             'contact_no' => ['Required'],
-            'responce_time' => ['required', 'regex:/^[0-9]+(\.[0-9][0-9]?)?$/'],
+            'response_time' => ['required', 'regex:/^[0-9]+(\.[0-9][0-9]?)?$/'],
         ];
     }
 }
