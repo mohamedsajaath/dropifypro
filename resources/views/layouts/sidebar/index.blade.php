@@ -56,13 +56,11 @@
                 </div>
 
                 {{-- check with if condition if admin include admin items else seller items --}}
-
-
+                @if (Auth::user()->type == App\Models\User::ADMIN)
                     @include('layouts.sidebar.admin.index')
-                    {{-- @include('layouts.sidebar.seller.index') --}}
-
-
-
+                @else
+                    @include('layouts.sidebar.seller.index')
+                @endif
                 {{-- check with if condition if admin include admin items else seller items --}}
 
 
@@ -92,4 +90,3 @@
         });
     </script>
 @endpush
-

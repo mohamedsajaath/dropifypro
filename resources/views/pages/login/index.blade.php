@@ -69,14 +69,14 @@
                             <div class="fv-row mb-8">
                                 <!--begin::Email-->
                                 <input type="text" placeholder="Email" name="email" autocomplete="off"
-                                    class="form-control bg-transparent" />
+                                    class="form-control bg-transparent" required/>
                                 <!--end::Email-->
                             </div>
                             <!--end::Input group=-->
                             <div class="fv-row mb-3">
                                 <!--begin::Password-->
                                 <input type="password" placeholder="Password" name="password" autocomplete="off"
-                                    class="form-control bg-transparent" />
+                                    class="form-control bg-transparent" required/>
                                 <!--end::Password-->
                             </div>
                             <!--end::Input group=-->
@@ -96,7 +96,7 @@
                             <!--end::Submit button-->
                             <!--begin::Sign up-->
                             <div class="text-gray-500 text-center fw-semibold fs-6">Not a Member yet?
-                                <a href="../../demo1/dist/authentication/layouts/creative/sign-up.html"
+                                <a href="{{ route('home').'#kt_pricing' }}"
                                     class="link-primary">Sign up</a>
                             </div>
                             <!--end::Sign up-->

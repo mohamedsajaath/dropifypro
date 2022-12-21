@@ -63,10 +63,7 @@
                                     aria-controls="kt_ecommerce_products_table" rowspan="1" colspan="1"
                                     aria-label="Qty: activate to sort column ascending" style="width: 125.031px;">Quantity
                                 </th>
-                                <th class="text-end min-w-100px sorting" tabindex="0"
-                                    aria-controls="kt_ecommerce_products_table" rowspan="1" colspan="1"
-                                    aria-label="Rating: activate to sort column ascending" style="width: 140.875px;">Price
-                                </th>
+                               
                                 <th class="text-end min-w-100px sorting" tabindex="0"
                                     aria-controls="kt_ecommerce_products_table" rowspan="1" colspan="1"
                                     aria-label="Rating: activate to sort column ascending" style="width: 140.875px;">RSP
@@ -79,12 +76,12 @@
                                     aria-controls="kt_ecommerce_products_table" rowspan="1" colspan="1"
                                     aria-label="Rating: activate to sort column ascending" style="width: 140.875px;">Dispach Time
                                 </th>
-                                <th class="text-end min-w-100px sorting" tabindex="0"
-                                    aria-controls="kt_ecommerce_products_table" rowspan="1" colspan="1"
-                                    aria-label="Rating: activate to sort column ascending" style="width: 140.875px;">Delivery Time
-                                </th>
+                              
                                 <th class="text-end min-w-70px sorting_disabled" rowspan="1" colspan="1"
                                     aria-label="Actions" style="width: 130.203px;">Actions
+                                </th>
+                                <th class="text-end min-w-70px sorting_disabled" rowspan="1" colspan="1"
+                                    aria-label="Actions" style="width: 130.203px;">Status
                                 </th>
                             </tr>
                             <!--end::Table row-->
