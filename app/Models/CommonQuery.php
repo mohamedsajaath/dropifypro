@@ -82,4 +82,18 @@ trait CommonQuery
             ->limit($limit)
             ->get();
     }
+
+    public function loadFromRequest($request)
+    {
+        $this->loadFromArray($request->all());
+    }
+
+    public function loadFromArray($array)
+    {
+        foreach ($array as $key => $value) {
+            if (in_array($key, $this->fillable) || $key == 'id') {
+                $this->$key = $value;
+            }
+        }
+    }
 }

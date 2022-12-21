@@ -40,7 +40,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     //ADMIN START
-
     Route::middleware(['auth.admin'])->prefix('admin')->group(function () {
 
         Route::get('/dashboard', function () {
@@ -96,11 +95,11 @@ Route::middleware('auth')->group(function () {
         })->name('admin.manage-emails');
 
         // ADMIN ACCOUNT SETTING START
-        Route::get('/account_overview', function () {
+        Route::get('/account/overview', function () {
             return view('pages.admin.account_settings.overview');
         })->name('admin.overview');
 
-        Route::get('/account_profile', function () {
+        Route::get('/account/profile', function () {
             return view('pages.admin.account_settings.profile');
         })->name('admin.profile');
 
@@ -116,7 +115,6 @@ Route::middleware('auth')->group(function () {
 
     });
     //ADMIN END
-
 
     //SELLER START
     Route::middleware(['auth.seller'])->group(function () {
@@ -137,7 +135,7 @@ Route::middleware('auth')->group(function () {
         })->name('products-recommended');
 
         Route::get('/orders/paid-orders', [OrderController::class, 'index'])->name('paid-orders');
-       
+
 
         Route::get('/orders/unpaid-orders', function () {
             return view('pages.seller.orders.unpaid.index');
@@ -182,15 +180,5 @@ Route::middleware('auth')->group(function () {
         // SELLER ACCOUNT SETTING END
     });
     //SELLER END
-
-
-
-    //Royal- Mail-Api
-
-    // Route::get('/royal-mail-create-orders', [RoyalMailController::class, 'create']);
-    // Route::get('/royal-mail-get-orders', [RoyalMailController::class, 'index']);
-    // Route::get('/royal-mail-update-orders', [RoyalMailController::class, 'update']);
-
-
 });
 require __DIR__ . '/auth.php';
