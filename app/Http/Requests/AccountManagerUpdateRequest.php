@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OnBoardingRequest extends FormRequest
+class AccountManagerUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,10 @@ class OnBoardingRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => ['required'],
-            'title' => ['required', 'string',],
-            'date' => ['required', 'regex:/^[0-9]+(\.[0-9][0-9]?)?$/'],
-            'time' => ['required', 'regex:/^[0-9]+(\.[0-9][0-9]?)?$/'],
-            'status' => ['required'],
-
+            'name' => ['required', 'string','max:255'],
+            'email' =>['required','string','max:255'],
+            'contact_no' => ['Required'],
+            'response_time' => ['required', 'regex:/^[0-9]+(\.[0-9][0-9]?)?$/'],
         ];
     }
 }
