@@ -18,7 +18,7 @@ class PlanController extends Controller
     public function index()
     {
         $plan_details = PlanService::show();
-        return view("pages.admin.account_settings.plans")->with("plan_details", $plan_details);
+        return view("pages.admin.account.plans")->with("plan_details", $plan_details);
     }
 
     /**
@@ -66,8 +66,9 @@ class PlanController extends Controller
      */
     public function edit($id)
     {
+        dd($id);
         $plan = Plan::find($id);
-        return view("pages.admin.account_settings.includes.edit_plan_model")->with('plan', $plan);
+        return view("pages.admin.account.includes.edit_plan_model")->with('plan', $plan);
     }
 
     /**

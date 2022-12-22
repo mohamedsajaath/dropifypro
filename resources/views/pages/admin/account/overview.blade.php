@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('css')
-    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+
 @endpush
 
 @section('content')
@@ -16,36 +16,8 @@
                     <div class="card mb-5 mb-xl-10">
                         <div class="card-body pt-9 pb-0">
                             <!--begin::Details-->
-                            @include('pages.seller.account_settings.includes.index')
+                            @include('pages.admin.account.includes.index')
                             <!--end::Details-->
-                            <!--begin::Navs-->
-                            <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
-                                <!--begin::Nav item-->
-                                <li class="nav-item mt-2">
-                                    <a class="nav-link text-active-primary ms-0 me-10 py-5 active"
-                                        href="{{ route('seller.overview') }}">Overview</a>
-                                </li>
-                                <!--end::Nav item-->
-                                <!--begin::Nav item-->
-                                <li class="nav-item mt-2">
-                                    <a class="nav-link text-active-primary ms-0 me-10 py-5"
-                                        href="{{ route('seller.profile') }}">Profile</a>
-                                </li>
-                                <!--end::Nav item-->
-                                <!--begin::Nav item-->
-                                <li class="nav-item mt-2">
-                                    <a class="nav-link text-active-primary ms-0 me-10 py-5"
-                                        href="{{ route('seller.ebay') }}">E-Bay </a>
-                                </li>
-                                <!--end::Nav item-->
-                                <!--begin::Nav item-->
-                                <li class="nav-item mt-2">
-                                    <a class="nav-link text-active-primary ms-0 me-10 py-5"
-                                        href="{{ route('seller.plan') }}">Plans</a>
-                                </li>
-                                <!--end::Nav item-->
-                            </ul>
-                            <!--begin::Navs-->
                         </div>
                     </div>
                     <!--end::Navbar-->
@@ -59,7 +31,7 @@
                             </div>
                             <!--end::Card title-->
                             <!--begin::Action-->
-                            <a href="{{ route('seller.profile') }}" class="btn btn-primary align-self-center">Edit
+                            <a href="{{ route('admin.account.',['page'=>'profile']) }}" class="btn btn-primary align-self-center">Edit
                                 Profile</a>
                             <!--end::Action-->
                         </div>
@@ -73,8 +45,7 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
-                                    <span
-                                        class="fw-bold fs-6 text-gray-800">{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</span>
+                                    <span class="fw-bold fs-6 text-gray-800">{{ Auth::user()->first_name . " " . Auth::user()->last_name}}</span>
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -86,7 +57,7 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 d-flex align-items-center">
-                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{ Auth::user()->phone_no }}</span>
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{Auth::user()->phone_no}}</span>
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -98,7 +69,7 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
-                                    <span class="fw-bold fs-6 text-gray-800">{{ Auth::user()->email }}</span>
+                                    <span class="fw-bold fs-6 text-gray-800">{{Auth::user()->email}}</span>
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -110,7 +81,7 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
-                                    <span class="fw-bold fs-6 text-gray-800">{{ Auth::user()->address }}</span>
+                                    <span class="fw-bold fs-6 text-gray-800">{{Auth::user()->address}}</span>
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -122,7 +93,7 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
-                                    <span class="fw-bold fs-6 text-gray-800">{{ Auth::user()->city }}</span>
+                                    <span class="fw-bold fs-6 text-gray-800">{{Auth::user()->city}}</span>
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -130,11 +101,11 @@
                             <!--begin::Input group-->
                             <div class="row mb-7">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 fw-semibold text-muted">State</label>
+                                <label class="col-lg-4 fw-semibold text-muted">State/Province</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
-                                    <span class="fw-bold fs-6 text-gray-800">{{ Auth::user()->state }}</span>
+                                    <span class="fw-bold fs-6 text-gray-800">{{Auth::user()->state}}</span>
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -146,7 +117,7 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
-                                    <span class="fw-bold fs-6 text-gray-800">{{ Auth::user()->zipcode }}</span>
+                                    <span class="fw-bold fs-6 text-gray-800">{{Auth::user()->zipcode}}</span>
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -158,8 +129,7 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
-                                    <span
-                                        class="fw-bold fs-6 text-gray-800">{{ App\models\MdCountry::userCountry(Auth::user()->country_id) }}</span>
+                                    <span class="fw-bold fs-6 text-gray-800">{{App\models\MdCountry::userCountry(Auth::user()->country_id)}}</span>
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -171,7 +141,7 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
-                                    <span class="fw-bold fs-6 text-gray-800">{{ Auth::user()->currency }}</span>
+                                    <span class="fw-bold fs-6 text-gray-800">{{Auth::user()->currency}}</span>
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -187,13 +157,13 @@
         </div>
         <!--end::Content wrapper-->
     </div>
-    <input id="message" type="hidden" value="{{session('status')}}">
+<input id="message" type="hidden" value="{{session('status')}}">
 @endsection
 @push('script')
     <script>
         loadBreadCrumbWithHeader("Account", "Overview", "Dashboard", "#")
     </script>
-     <script>
+    <script>
         const msg = $('#message').val();
         if (msg != "") {
         toastr.options = {
@@ -214,6 +184,7 @@
         "hideMethod": "fadeOut"
         };
         toastr.success(msg);
-    }    
+    }
+
     </script>
 @endpush

@@ -15,9 +15,14 @@ use App\Models\User;
 
 class ProfileController extends Controller
 {
-    public function index()
+    public function index($page)
     {
-        return view('pages.admin.account_settings.overview');
+        return view('pages.admin.account.' . $page);
+    }
+
+    public function sellerIndex($page)
+    {
+        return view('pages.seller.account.' . $page);
     }
 
     /**
@@ -42,6 +47,7 @@ class ProfileController extends Controller
     public function updateDetails(ProfileUpdateRequest $request)
     {
         ProfileService::updateFromRequest($request);
+       // return back()->with('status', 'profile-updated');
         //ToDo Redirect back with message
         //return Redirect::back()->with('status', 'profile-updated')
     }
@@ -83,14 +89,14 @@ class ProfileController extends Controller
             $user->image_url = str_replace('public/', '', $path);
             $user->save();
             if ($user->type == User::ADMIN) {
-                return Redirect::route('admin.overview')->with('status', 'profile-image-updated');
+              //  return Redirect::route('admin.account.', ['page' => 'overview'])->with('status', 'profile-image-updated');
             }
-            return Redirect::route('seller.overview')->with('status', 'profile-image-updated');
+            return Redirect::route('seller.account.', ['page' => 'overview'])->with('status', 'profile-image-updated');
         }
         if ($user->type == User::ADMIN) {
-            return Redirect::route('admin.overview');
+            return Redirect::route('admin.account.', ['page' => 'overview']);
         }
-        return Redirect::route('seller.overview');
+        return Redirect::route('seller.account.', ['page' => 'overview']);
     }
 
     /**

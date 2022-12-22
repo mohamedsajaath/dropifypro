@@ -30,9 +30,9 @@
                     <!--begin::Card body-->
                     <div class="card-body p-10 p-lg-20">
                         <!--begin::Form-->
-                        <form class="form w-100" method="post" id="kt_sign_in_form" action="{{ route('login') }}">
-							@csrf
-							<!--begin::Heading-->
+                        <form class="form w-100" method="post" id="sign_in_form" action="{{ route('login') }}">
+                            @csrf
+                            <!--begin::Heading-->
                             <div class="text-center mb-11">
                                 <!--begin::Title-->
                                 <h1 class="text-dark fw-bolder mb-3">Sign In</h1>
@@ -69,14 +69,14 @@
                             <div class="fv-row mb-8">
                                 <!--begin::Email-->
                                 <input type="text" placeholder="Email" name="email" autocomplete="off"
-                                    class="form-control bg-transparent" required/>
+                                    class="form-control bg-transparent" required />
                                 <!--end::Email-->
                             </div>
                             <!--end::Input group=-->
                             <div class="fv-row mb-3">
                                 <!--begin::Password-->
                                 <input type="password" placeholder="Password" name="password" autocomplete="off"
-                                    class="form-control bg-transparent" required/>
+                                    class="form-control bg-transparent" required />
                                 <!--end::Password-->
                             </div>
                             <!--end::Input group=-->
@@ -96,8 +96,7 @@
                             <!--end::Submit button-->
                             <!--begin::Sign up-->
                             <div class="text-gray-500 text-center fw-semibold fs-6">Not a Member yet?
-                                <a href="{{ route('home').'#kt_pricing' }}"
-                                    class="link-primary">Sign up</a>
+                                <a href="{{ route('home') . '#kt_pricing' }}" class="link-primary">Sign up</a>
                             </div>
                             <!--end::Sign up-->
                         </form>
@@ -120,9 +119,31 @@
     <script src="assets/plugins/global/plugins.bundle.js"></script>
     <script src="assets/js/scripts.bundle.js"></script>
     <!--end::Global Javascript Bundle-->
-    <!--begin::Custom Javascript(used for this page only)-->
-    <script src="assets/js/custom/authentication/sign-in/general.js"></script>
-    <!--end::Custom Javascript-->
+    <script>
+        @if (count($errors) > 0)
+            @foreach ($errors->all() as $error)
+                toastr.error("{{ $error }}");
+            @endforeach
+        @endif
+      
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toastr-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+    </script>
     <!--end::Javascript-->
 </body>
 <!--end::Body-->

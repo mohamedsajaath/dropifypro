@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @push('css')
-    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
 @endpush
 
 @section('content')
@@ -16,36 +15,8 @@
                     <div class="card mb-5 mb-xl-10">
                         <div class="card-body pt-9 pb-0">
                             <!--begin::Details-->
-                            @include('pages.admin.account_settings.includes.index')
+                            @include('pages.admin.account.includes.index')
                             <!--end::Details-->
-                            <!--begin::Navs-->
-                            <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
-                                <!--begin::Nav item-->
-                                <li class="nav-item mt-2">
-                                    <a class="nav-link text-active-primary ms-0 me-10 py-5 "
-                                        href="{{ route('admin.overview') }}">Overview</a>
-                                </li>
-                                <!--end::Nav item-->
-                                <!--begin::Nav item-->
-                                <li class="nav-item mt-2">
-                                    <a class="nav-link text-active-primary ms-0 me-10 py-5"
-                                        href="{{ route('admin.profile') }}">Profile</a>
-                                </li>
-                                <!--end::Nav item-->
-                                <!--begin::Nav item-->
-                                <li class="nav-item mt-2">
-                                    <a class="nav-link text-active-primary ms-0 me-10 py-5"
-                                        href="{{ route('admin.ebay') }}">E-Bay </a>
-                                </li>
-                                <!--end::Nav item-->
-                                <!--begin::Nav item-->
-                                <li class="nav-item mt-2">
-                                    <a class="nav-link text-active-primary ms-0 me-10 py-5 active"
-                                        href="{{ route('admin.plan') }}">Plans</a>
-                                </li>
-                                <!--end::Nav item-->
-                            </ul>
-                            <!--begin::Navs-->
                         </div>
                     </div>
                     <!--end::Navbar-->
@@ -116,6 +87,9 @@
 @endsection
 @push('script')
     <script>
+        loadBreadCrumbWithHeader("Account", "Plans", "Dashboard", "#")
+    </script>
+    <script>
         $(document).on("click", "#plan_model", async function() {
             // $('.custom-modal-size').addClass('mw-1000px').removeClass('mw-650px');
             await loadFormModal(
@@ -181,7 +155,7 @@
         $(document).on("click", ".edit_plan", async function() {
             // $('.custom-modal-size').addClass('mw-1000px').removeClass('mw-650px');
             let plan_id = $(this).data('id');
-            let url = "{{ url('/plan/')}}"+"/"+plan_id;
+            let url = "{{ url('/plan/') }}" + "/" + plan_id;
             await loadEditFormModal(
                 "",
                 "post",

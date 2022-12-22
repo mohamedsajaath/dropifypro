@@ -29,7 +29,8 @@
                 <div class="card rounded-3 w-md-550px" style="box-shadow: 0px 0px 40px #e5dede;">
                     <!--begin::Card body-->
                     <div class="card-body p-10 p-lg-20">
-                        {{-- {{ $register_Plan_details['id'] }} --}}
+                        {{-- {{ $register_Plan_details['id'] }}
+                        {{ $register_Plan_details['package'] }} --}}
                         <!--begin::Form-->
                         <form class="form w-100" method="post" id="kt_sign_in_form" action="{{ route('register') }}">
                             @csrf
@@ -37,7 +38,6 @@
                             <div class="text-center mb-11">
                                 <!--begin::Title-->
                                 <h1 class="text-dark fw-bolder mb-3">Sign Up</h1>
-
                                 <!--end::Title-->
                             </div>
                             <!--begin::Heading-->
@@ -68,23 +68,19 @@
 								</div>
 								<!--end::Separator--> --}}
                             <!--begin::Input group=-->
-                            <input type="hidden" value="{{ request()->get('plan_id') }}" name="plan_id">
+                            {{-- <input type="hidden" value="{{ request()->get('plan_id') }}" name="plan_id"> --}}
                             <div class="fv-row mb-8">
-                                <!--begin::First Name-->
-                                <input type="text" placeholder="First Name" name="first_name" autocomplete="off"
+                                <!--begin::Name-->
+                                <input type="text" placeholder="Name" name="name" autocomplete="off"
                                     class="form-control bg-transparent" required />
-                                <!--end::First Name-->
-                            </div>
-                            <div class="fv-row mb-8">
-                                <!--begin::Last Name-->
-                                <input type="text" placeholder="Last Name" name="last_name" autocomplete="off"
-                                    class="form-control bg-transparent" required />
-                                <!--end::Last Name-->
+                                   
+                                <!--end::Name-->
                             </div>
                             <div class="fv-row mb-8">
                                 <!--begin::Email-->
                                 <input type="text" placeholder="Email" name="email" autocomplete="off"
                                     class="form-control bg-transparent" required />
+                                   
                                 <!--end::Email-->
                             </div>
                             <!--end::Input group=-->
@@ -92,55 +88,17 @@
                                 <!--begin::Password-->
                                 <input type="password" placeholder="Password" name="password" autocomplete="off"
                                     class="form-control bg-transparent" required />
+                                   
                                 <!--end::Password-->
                             </div>
                             <div class="fv-row mb-8">
                                 <!--begin::Password-->
                                 <input type="password" placeholder="Confirm Password" name="password_confirmation"
                                     autocomplete="off" class="form-control bg-transparent" required />
+                                    
                                 <!--end::Password-->
                             </div>
                             <!--end::Input group=-->
-                            <div class="fv-row mb-8">
-                                <!--begin::Address-->
-                                <input type="text" placeholder="Address" name="address" autocomplete="off"
-                                    class="form-control bg-transparent" required />
-                                <!--end::Address-->
-                            </div>
-                            <div class="fv-row mb-8">
-                                <!--begin::City-->
-                                <input type="text" placeholder="City" name="city" autocomplete="off"
-                                    class="form-control bg-transparent" required />
-                                <!--end::City-->
-                            </div>
-                            <div class="fv-row mb-8">
-                                <!--begin::State-->
-                                <input type="text" placeholder="State" name="state" autocomplete="off"
-                                    class="form-control bg-transparent" required />
-                                <!--end::State-->
-                            </div>
-                            <div class="fv-row mb-8">
-                                <!--begin::ZipCode-->
-                                <input type="text" placeholder="ZipCode" name="zipcode" autocomplete="off"
-                                    class="form-control bg-transparent" required />
-                                <!--end::ZipCode-->
-                            </div>
-                            <div class="fv-row mb-8">
-                                <select name="country_id" aria-label="Select a Country" data-control="select2"
-                                    data-placeholder="Select a country..." class="form-select form-select-solid">
-                                    <option value="">Select A Country</option>
-                                    @foreach (App\models\MdCountry::country() as $country)
-                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="fv-row mb-8">
-                                <!--begin::Phone Number-->
-                                <input type="text" placeholder="Phone Number" name="phone_no" autocomplete="off"
-                                    class="form-control bg-transparent" required />
-                                <!--end::Phone Number-->
-                            </div>
-
                             <!--begin::Submit button-->
                             <div class="d-grid mb-10">
                                 <button type="submit" class="btn btn-primary">Sign Up
@@ -148,6 +106,18 @@
                             </div>
                             <!--end::Submit button-->
                         </form>
+                        <div class="text-gray-500 text-center fw-semibold fs-6">
+                            <div class="fv-row mb-8">
+                                <div class="col-mb-2">
+                                    Already Have an Account!
+                                    <a href="{{ route('login') }}" class="link-primary">Login</a>
+                                </div>
+                                <div class="col-mb-4 mt-2">
+                                    Change Plan!
+                                    <a href="http://127.0.0.1:8000#kt_pricing" class="link-primary">Home</a>
+                                </div>
+                            </div>
+                        </div>
                         <!--end::Form-->
                     </div>
                     <!--end::Card body-->
@@ -167,9 +137,31 @@
     <script src="assets/plugins/global/plugins.bundle.js"></script>
     <script src="assets/js/scripts.bundle.js"></script>
     <!--end::Global Javascript Bundle-->
-    <!--begin::Custom Javascript(used for this page only)-->
-    <script src="assets/js/custom/authentication/sign-in/general.js"></script>
-    <!--end::Custom Javascript-->
+    <script>
+        @if (count($errors) > 0)
+            @foreach ($errors->all() as $error)
+                toastr.error("{{ $error }}");
+            @endforeach
+        @endif
+      
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toastr-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+    </script>
     <!--end::Javascript-->
 </body>
 <!--end::Body-->

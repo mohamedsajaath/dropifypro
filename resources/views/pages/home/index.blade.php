@@ -106,7 +106,7 @@
 
                             <div class="flex-equal text-end ms-1">
                                 <a href="{{ route('login') }}" class="btn btn-sm btn-border-4">Login</a>
-                                <a href="#pricing" data-kt-scroll-toggle="true"
+                                <a href="{{ route('register') }}" data-kt-scroll-toggle="true"
                                     class="btn btn-sm btn-border-4">Register</a>
                             </div>
                             <!--end::Toolbar-->
@@ -929,13 +929,13 @@
                             <!--end::Nav group-->
                             <!--begin::Row-->
                             <div class="row g-10">
-                                <form action="{{ route('register.plan') }}" method="POST" class="plan_form">
+                                {{-- <form action="{{ route('register.plan') }}" method="POST" class="plan_form">
                                     @csrf
                                     <input type="hidden" value="" name="package" id="package">
                                     <input type="hidden" value="" name="id" id="plan_id">
                                     <input type="submit" id="submit" style="display: none">
 
-                                </form>
+                                </form> --}}
 
                                 @foreach ($plan_details as $plan_detail)
                                     @if (App\Models\Plan::ADVANCED_SLUG == $plan_detail->slug)
