@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\Service\MdCountryService;
+use App\Helper\Service\ProfileService;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\ProfileEmailUpdateRequest;
 use Illuminate\Http\Request;
@@ -13,6 +15,11 @@ use App\Models\User;
 
 class ProfileController extends Controller
 {
+    public function index()
+    {
+        return view('pages.admin.account_settings.overview');
+    }
+
     /**
      * Display the user's profile form.
      *
@@ -32,26 +39,11 @@ class ProfileController extends Controller
      * @param \App\Http\Requests\ProfileUpdateRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ProfileUpdateRequest $request)
+    public function updateDetails(ProfileUpdateRequest $request)
     {
-        $currency = MdCountry::where('id', $request->country_id)->first();
-        // $request->user()->fill($request->validated());
-        $user = $request->user();
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->address = $request->address;
-        $user->city = $request->city;
-        $user->state = $request->state;
-        $user->zipcode = $request->zipcode;
-        $user->country_id = $request->country_id;
-        $user->phone_no = $request->phone_no;
-        $user->currency = $currency->currency_code;
-        $user->save();
-        if ($user->type == User::ADMIN) {
-            return Redirect::route('admin.overview')->with('status', 'profile-updated');
-        }
-
-        return Redirect::route('seller.overview')->with('status', 'profile-updated');
+        ProfileService::updateFromRequest($request);
+        //ToDo Redirect back with message
+        //return Redirect::back()->with('status', 'profile-updated')
     }
 
     /**
@@ -62,19 +54,13 @@ class ProfileController extends Controller
      */
     public function updateEmail(ProfileEmailUpdateRequest $request)
     {
-        $user = $request->user();
-        if (Hash::check($request->confirmemailpassword, $user->password,)) {
-            $user->email = $request->emailaddress;
-            $user->save();
-            if ($user->type == User::ADMIN) {
-                return Redirect::route('admin.overview')->with('status', 'Email-updated');
-            }
-            return Redirect::route('seller.overview')->with('status', 'Email-updated');
+        $passwordValidated = ProfileService::validatePassword($request->confirmemailpassword);
+        if (!$passwordValidated) {
+            //ToDo return Redirect::back()->with('status','Password does not match');
         }
-        if ($user->type == User::ADMIN) {
-            return Redirect::route('admin.profile')->with('status', 'Password does not match');
-        }
-        return Redirect::route('seller.profile')->with('status', 'Password does not match');
+
+        ProfileService::updateFromRequest($request);
+        //ToDo return Redirect::back()->with('status','Password does not match');
     }
 
     /**

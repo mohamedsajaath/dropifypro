@@ -35,13 +35,12 @@ Route::post('/register-with-plan-details', [RegisterPlanController::class, 'inde
 Route::middleware('auth')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile', [ProfileController::class, 'updateDetails'])->name('profile.update');
     Route::patch('/profile/image', [ProfileController::class, 'updateImage'])->name('profile.image');
     Route::patch('/profile/email', [ProfileController::class, 'updateEmail'])->name('profile.update.email');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     //ADMIN START
-
     Route::middleware(['auth.admin'])->prefix('admin')->group(function () {
 
         Route::get('/dashboard', function () {
@@ -97,9 +96,10 @@ Route::middleware('auth')->group(function () {
         })->name('admin.manage-emails');
 
         // ADMIN ACCOUNT SETTING START
-        Route::get('/account/overview', function () {
+        Route::get('/account/overview', [ProfileController::class, 'index'])->name('admin.overview');
+        /*Route::get('/account/overview', function () {
             return view('pages.admin.account_settings.overview');
-        })->name('admin.overview');
+        })->name('admin.overview');*/
 
         Route::get('/account/profile', function () {
             return view('pages.admin.account_settings.profile');

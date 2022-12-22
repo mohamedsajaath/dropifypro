@@ -5,14 +5,16 @@ namespace App\Models;
 
 trait CommonQuery
 {
-    public static function findById($id)
+    public static function findById($id, $columns = ['*'])
     {
-        return self::findBy(['id' => $id]);
+        return self::findBy(['id' => $id], $columns);
     }
 
-    public static function findBy($whereCondition)
+    public static function findBy($whereCondition, $columns)
     {
-        return self::query()->where($whereCondition)->first();
+        return self::query()->where($whereCondition)
+            ->select($columns)
+            ->first();
     }
 
     public static function selectBy($whereCondition)
