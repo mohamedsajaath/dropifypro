@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    @include('pages.admin.support.account-managers.includes.details-table')
+    @include('pages.admin.support.account_managers.includes.details-table')
 @endsection
 @push('script')
     <script>
@@ -61,25 +61,6 @@
     </script>
 
 {{-- edit manager --}}
-    <script>
-        $(document).on("click", ".edit_managers_btn", async function(e) {
-            e.preventDefault();
-            let form = $(this).closest('form');
-            try {
-                const url = "{{ route('admin.account-managers.edit', 2) }}";
-                let ajaxRequest = new HttpRequest(url, 'POST');
-                ajaxRequest.set_data_by_form_object(form);
-                let response = await ajaxRequest.call();
-                console.log(response.message);
-                $("#kt_modal_new_target").modal("hide");
-
-            } catch (err) {
-                console.log(err);
-                console.log("error");
-            }
-        });
-    </script>
-
     <script>
         $(document).on("click", ".edit-manager", async function() {
             let manager_id = $(this).data('id');
