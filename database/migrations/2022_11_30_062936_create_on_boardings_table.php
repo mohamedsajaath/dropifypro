@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -15,11 +14,11 @@ return new class extends Migration
     {
         Schema::create('on_boardings', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->text('title');
+            $table->integer('user_id')->nullable();
+            $table->text('title')->nullable();
             $table->date('date');
             $table->time('time');
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default(\App\Models\OnBoarding::STATUS_AVAILABLE);
             $table->timestamps();
         });
     }
