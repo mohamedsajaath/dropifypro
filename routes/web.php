@@ -35,13 +35,12 @@ Route::post('/register-with-plan-details', [RegisterPlanController::class, 'inde
 Route::middleware('auth')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile', [ProfileController::class, 'updateDetails'])->name('profile.update');
     Route::patch('/profile/image', [ProfileController::class, 'updateImage'])->name('profile.image');
     Route::patch('/profile/email', [ProfileController::class, 'updateEmail'])->name('profile.update.email');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     //ADMIN START
-
     Route::middleware(['auth.admin'])->prefix('admin')->group(function () {
 
         Route::get('/dashboard', function () {
@@ -97,11 +96,12 @@ Route::middleware('auth')->group(function () {
         })->name('admin.manage-emails');
 
         // ADMIN ACCOUNT SETTING START
-        Route::get('/account_overview', function () {
+        Route::get('/account/overview', [ProfileController::class, 'index'])->name('admin.overview');
+        /*Route::get('/account/overview', function () {
             return view('pages.admin.account_settings.overview');
-        })->name('admin.overview');
+        })->name('admin.overview');*/
 
-        Route::get('/account_profile', function () {
+        Route::get('/account/profile', function () {
             return view('pages.admin.account_settings.profile');
         })->name('admin.profile');
 
@@ -138,7 +138,7 @@ Route::middleware('auth')->group(function () {
         })->name('products-recommended');
 
         Route::get('/orders/paid-orders', [OrderController::class, 'index'])->name('paid-orders');
-       
+
 
         Route::get('/orders/unpaid-orders', function () {
             return view('pages.seller.orders.unpaid.index');
@@ -242,9 +242,11 @@ Route::prefix('admin')->group(function(){
     })->name('admin.support.tickets');
 
 
-    Route::get('/support/account-managers', function () {
-        return view('pages.admin.support.account-managers.index');
-    })->name('admin.support.account-managers');
+    Route::get('/account-managers/index', [AccountManagerController::class, 'index'])->name('admin.support.account-managers.index');
+    // Route::get('account-managers/create', [AccountManagerController::class, 'create'])->name('admin.account-managers.create');
+    Route::post('/account-managers/store', [AccountManagerController::class, 'store'])->name('admin.account-managers.store');
+    Route::get('/account-managers/edit/{id}', [AccountManagerController::class, 'edit'])->name('admin.account-managers.edit');
+    Route::post('/account-managers/update', [AccountManagerController::class, 'update'])->name('admin.account-managers.update');
 
 
 
@@ -352,11 +354,11 @@ Route::post('/plan/update', [PlanController::class, 'update'])->name('plan.updat
 
 //  onboarding
 
-Route::get('/admin/onboardings', [OnBoardingController::class, 'index'])->name('admin.onboardings');
-Route::post('/onboardings', [OnBoardingController::class,'store'])->name('onboardings.store');
-Route::get('/onboardings/{id}', [OnBoardingController::class,'edit'])->name('onboardings.edit');
-Route::post('/onboardings/update/{id}', [OnBoardingController::class,'update'])->name('onboardings.update');
-Route::delete('/onboardings', [OnBoardingController::class, 'destroy'])->name('onboardings.destroy');
+Route::get('/admin/on-boardings', [OnBoardingController::class, 'index'])->name('admin.on-boardings.index');
+Route::post('/on-boardings', [OnBoardingController::class,'store'])->name('admin.on-boarding.store');
+Route::get('/on-boardings/{id}', [OnBoardingController::class,'edit'])->name('admin.on-boarding.edit');
+Route::post('/on-boardings/update/{id}', [OnBoardingController::class,'update'])->name('admin.on-boarding.update');
+Route::delete('/on-boardings', [OnBoardingController::class, 'destroy'])->name('admin.on-boarding.destroy');
 
 // ADMIN ACCOUNT SETTING END
 

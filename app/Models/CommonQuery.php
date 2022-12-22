@@ -5,14 +5,16 @@ namespace App\Models;
 
 trait CommonQuery
 {
-    public static function findById($id)
+    public static function findById($id, $columns = ['*'])
     {
-        return self::findBy(['id' => $id]);
+        return self::findBy(['id' => $id], $columns);
     }
 
-    public static function findBy($whereCondition)
+    public static function findBy($whereCondition, $columns)
     {
-        return self::query()->where($whereCondition)->first();
+        return self::query()->where($whereCondition)
+            ->select($columns)
+            ->first();
     }
 
     public static function selectBy($whereCondition)
@@ -53,7 +55,16 @@ trait CommonQuery
 
     public static function getAll()
     {
-        return self::query()->query()->get();
+        return self::query()->get();
+    }
+
+    public static function selectIn($conditions)
+    {
+        $model = self::query();
+        foreach ($conditions as $key => $values)
+            $model = $model->whereIn($key, $values);
+
+        return $model->get();
     }
 
     public static function increase($condition, $column, $value)
@@ -81,5 +92,15 @@ trait CommonQuery
             ->offset($offset)
             ->limit($limit)
             ->get();
+    }
+
+    public function loadFromRequest($request)
+    {
+        $this->loadFromArray($request->all());
+    }
+
+    public function loadFromArray($array)
+    {
+        $this->fill($array);
     }
 }

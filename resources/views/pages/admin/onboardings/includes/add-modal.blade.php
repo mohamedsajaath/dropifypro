@@ -1,6 +1,4 @@
-
-
-      @csrf
+@csrf
 <div class="modal-body py-10 px-lg-17">
     <div class="row row-cols-lg-2 g-10">
         <div class="col">
@@ -21,7 +19,7 @@
                 <label class="fs-6 fw-semibold mb-2">Event Start Time</label>
                 <!--end::Label-->
                 <!--begin::Input-->
-                <input type="time" class="form-control form-control-solid" name="time" />
+                <input type="time" class="form-control form-control-solid" name="time"/>
                 <!--end::Input-->
             </div>
         </div>
