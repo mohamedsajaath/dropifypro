@@ -16,18 +16,17 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('address');
-            $table->string('city');
-            $table->string('state');
-            $table->string('zipcode');
-            $table->string('country_id');
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('zipcode')->nullable();
+            $table->string('country_id')->nullable();
             $table->string('currency')->nullable();
-            $table->string('phone_no');
+            $table->string('phone_no')->nullable();
             $table->tinyInteger('type')->default(User::SELLER);
             $table->tinyInteger('temp_account')->default(User::FIXED_ACCOUNT);
             $table->string('image_url');

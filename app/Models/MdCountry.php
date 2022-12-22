@@ -20,7 +20,13 @@ class MdCountry extends Model
     public static function userCountry($id)
     {
         $country = MdCountry::where('id', $id)->first();
+
+        if($id == null){
+            return " ";
+        }
         return $country->name;
+
+        
     }
 
 }
