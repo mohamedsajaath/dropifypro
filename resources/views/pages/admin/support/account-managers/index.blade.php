@@ -4,36 +4,32 @@
 @endsection
 @push('script')
     <script>
-        loadBreadCrumbWithHeader("Account Managers", "Details", "Dashboard", "{{ route('admin.dashboard') }}")
+        loadBreadCrumbWithHeader("Account Managers", "", "", "{{ route('admin.dashboard') }}")
     </script>
     <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
 
     <script>
         $(document).on('click', '.add-manager', function() {
-            $('.custom-modal-size').addClass('mw-750px').removeClass('mw-650px');
-            loadFormModal("", "", "ADD MANAGER", "New manager can add here", "Submit", "add-managers-btn",
+            $('.custom-modal-size').addClass('mw-550px').removeClass('mw-650px');
+            loadFormModal("", "", "ADD MANAGER", "", "Submit", "add-managers-btn",
                 `@csrf
 <div class="container">
     <div class="row g-9 mb-8 justify-content-center">
         <div class="col-md-8 fv-row">
             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                <span class="required">Name :</span>
-                <i class="fas fa-exclamation-circle ms-2 fs-7"></i>
+                <span class="">Name :</span>
             </label>
             <input type="text" class="form-control form-control" placeholder="" name="name" />
             <label class="d-flex align-items-center fs-6 fw-semibold mb-2 mt-5">
-                <span class="required">E-Mail :</span>
-                <i class="fas fa-exclamation-circle ms-2 fs-7"></i>
+                <span class="">E-Mail :</span>
             </label>
             <input type="text" class="form-control form-control" placeholder="" name="email" />
             <label class="d-flex align-items-center fs-6 fw-semibold mb-2 mt-5">
-                <span class="required">WhatsApp No :</span>
-                <i class="fas fa-exclamation-circle ms-2 fs-7"></i>
+                <span class="">WhatsApp No :</span>
             </label>
             <input type="text" class="form-control form-control" placeholder="" name="contact_no" />
             <label class="d-flex align-items-center fs-6 fw-semibold mb-2 mt-5">
-                <span class="required">Response Time :</span>
-                <i class="fas fa-exclamation-circle ms-2 fs-7"></i>
+                <span class="">Response Time :</span>
             </label>
             <input type="text" class="form-control form-control" placeholder="" name="response_time" />
         </div>
@@ -64,6 +60,7 @@
         });
     </script>
 
+{{-- edit manager --}}
     <script>
         $(document).on("click", ".edit_managers_btn", async function(e) {
             e.preventDefault();
@@ -91,7 +88,7 @@
                 "",
                 "post",
                 "EDIT MANAGER",
-                "Manager details can edit here",
+                "",
                 "Update",
                 "edit_managers_btn",
                 url
@@ -99,6 +96,7 @@
         });
     </script>
 
+{{-- update manager --}}
     <script>
         $(document).on("click", ".edit_managers_btn", async function(e) {
             e.preventDefault();
