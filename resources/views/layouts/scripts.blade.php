@@ -13,5 +13,5 @@ let baseUrl = "{{url('/')}}";
 <!--end::Global Javascript Bundle-->
 <script src="{{  asset('common.js')  }}"></script>
 <script src="{{  asset('AjaxHttpRequest.js')  }}"></script>
-
+<script src="{{ asset('assets/image-uploader/image-uploader.min.js') }}"></script>
 @stack('script')
