@@ -3,6 +3,8 @@
 namespace App\Models;
 
 
+use Illuminate\Support\Facades\Request;
+
 trait CommonQuery
 {
     public static function findById($id, $columns = ['*'])
@@ -102,5 +104,15 @@ trait CommonQuery
     public function loadFromArray($array)
     {
         $this->fill($array);
+    }
+
+    public function storeFromRequest($request, $id = null)
+    {
+        if (!is_null($id)) {
+            $this->id = $id;
+            $this->exists = true;
+        }
+        $this->loadFromRequest($request);
+        $this->save();
     }
 }
