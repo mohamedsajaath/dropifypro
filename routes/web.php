@@ -80,7 +80,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/tickets/store', [TicketController::class, 'store'])->name('admin.support.tickets.store');
 
         Route::get('/account-managers/index', [AccountManagerController::class, 'index'])->name('admin.support.account-managers.index');
-        // Route::get('account-managers/create', [AccountManagerController::class, 'create'])->name('admin.account-managers.create');
         Route::post('/account-managers/store', [AccountManagerController::class, 'store'])->name('admin.account-managers.store');
         Route::get('/account-managers/edit/{id}', [AccountManagerController::class, 'edit'])->name('admin.account-managers.edit');
 
