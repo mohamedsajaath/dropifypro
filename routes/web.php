@@ -79,9 +79,11 @@ Route::middleware('auth')->group(function () {
         Route::post('/tickets/store', [TicketController::class, 'store'])->name('admin.support.tickets.store');
 
         Route::get('/support/account-managers', [AccountManagerController::class, 'index'])->name('admin.support.account-managers.index');
-        // Route::get('account-managers/create', [AccountManagerController::class, 'create'])->name('admin.account-managers.create');
         Route::post('/support/account-managers/store', [AccountManagerController::class, 'store'])->name('admin.account-managers.store');
         Route::get('/support/account-managers/edit/{id}', [AccountManagerController::class, 'edit'])->name('admin.account-managers.edit');
+        Route::post('/support/account-managers/update', [AccountManagerController::class, 'update'])->name('admin.account-managers.update');
+        Route::get('/support/account-managers/delete/{id}', [AccountManagerController::class, 'destroy'])->name('admin.account-managers.delete');
+
 
         Route::get('/onboardings', function () {
             return view('pages.admin.onboardings.index');
@@ -240,15 +242,6 @@ Route::prefix('admin')->group(function(){
     Route::get('/support/tickets', function () {
         return view('pages.admin.support.tickets.index');
     })->name('admin.support.tickets');
-
-
-    Route::get('/account-managers/index', [AccountManagerController::class, 'index'])->name('admin.support.account-managers.index');
-    // Route::get('account-managers/create', [AccountManagerController::class, 'create'])->name('admin.account-managers.create');
-    Route::post('/account-managers/store', [AccountManagerController::class, 'store'])->name('admin.account-managers.store');
-    Route::get('/account-managers/edit/{id}', [AccountManagerController::class, 'edit'])->name('admin.account-managers.edit');
-    Route::post('/account-managers/update', [AccountManagerController::class, 'update'])->name('admin.account-managers.update');
-
-
 
 
     Route::get('/wholesale-requests', function () {

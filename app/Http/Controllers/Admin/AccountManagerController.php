@@ -21,8 +21,7 @@ class AccountManagerController extends Controller
     public function index()
     {
         $accountManagers = AccountManager::getAll();
-        return view('pages.admin.support.account_managers.index')
-            ->with("account_manager_details", $accountManagers);
+        return view('pages.admin.support.account_managers.index')->with("account_manager_details", $accountManagers);
     }
 
     /**
@@ -77,9 +76,9 @@ class AccountManagerController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AccountManagerUpdateRequest $request, $id)
+    public function update(AccountManagerUpdateRequest $request)
     {
-        AccountManagerService::storeFromRequest($request, $id);
+        AccountManagerService::storeFromRequest($request, $request['id']);
         return self::response('Successfully updated');
     }
 
@@ -89,10 +88,10 @@ class AccountManagerController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AccountManager $AccountManager)
+    public function destroy($id)
     {
-        // AccountManagerService::delete($AccountManager);
-        // return self::response('success', 'User deleted!');
-    }
 
+        AccountManagerService::deleteById($id);
+        return self::response('success', 'User deleted!');
+    }
 }
