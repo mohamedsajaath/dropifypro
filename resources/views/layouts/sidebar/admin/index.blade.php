@@ -253,7 +253,7 @@
 <div class="menu-item here show menu-accordion">
     <!--begin:Menu link-->
 
-    <a class="menu-link" href="{{route('admin.onboardings')}}">
+    <a class="menu-link" href="{{route('admin.on-boardings.index')}}">
         <span class="menu-icon">
             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
            <span class="svg-icon svg-icon-2">

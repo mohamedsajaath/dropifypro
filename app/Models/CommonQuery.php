@@ -101,6 +101,11 @@ trait CommonQuery
 
     public function loadFromArray($array)
     {
-        $this->fill($array);
+        foreach ($array as $key => $value) {
+            if (in_array($key, $this->fillable)
+                || $key == 'id') {
+                $this->$key = $value;
+            }
+        }
     }
 }

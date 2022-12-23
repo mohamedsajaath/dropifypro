@@ -17,7 +17,10 @@ class OnBoardingController extends Controller
      */
     public function index()
     {
+
+ 
         $dates = DateTimeUtility::getFutureDates(7);
+        
         $onboarding = OnboardingService::getOnBoardingByDate($dates[0]);
         return view('pages.admin.onboardings.index')->with([
             'dates' => $dates,
@@ -96,17 +99,22 @@ class OnBoardingController extends Controller
         //     $onboarding  = $request->all();
         //     $onboarding->update($request);
         // return redirect('onboarding')->with('flash_message', 'onboarding Updated!');
-        $onboarding = OnBoarding::find($request->id);
-        $onboarding->date = $request->date;
-        $onboarding->time = $request->time;
+        // $onboarding = OnBoarding::find($request->id);
+        // $onboarding->date = $request->date;
+        // $onboarding->time = $request->time;
         // $project->description = $request->input('description');
         // $project->time_span = $request->input('time_span');
         // $project->text_report = $request->input('text_report');
         // $project->created_by = $request->input('created_by');
 
-        $onboarding->save();
+        // $onboarding->save();
 
-        return redirect('/')->with('success', 'Project aangepast');
+        // $onboarding = OnBoarding::find($request->id);
+
+        return OnboardingService::updateOnboarding($request->except(['_token','id']),$id);
+        // return view("pages.admin.onboardings.includes.edit_modal")->with(['onboarding' => $onboarding]);
+
+        // return redirect('/')->with('success', 'Project aangepast');
     }
 
     /**
@@ -116,13 +124,29 @@ class OnBoardingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        OnBoarding::destroy($id);
-        return redirect('onboarding')->with('flash_message', 'Event deleted!');
+    {  
+        // OnBoarding::destroy($id);
+        // return redirect('onboarding')->with('flash_message', 'Event deleted!');
+        return OnboardingService::deleteOnboarding($id);
     }
-
+    
     public function getOnBoardingByDate($date)
     {
         return OnboardingService::getOnBoardingByDate($date);
+    }
+
+
+
+    public function singleDate($date){
+      
+        $dates = DateTimeUtility::getFutureDates(7);
+       
+        $onboarding = OnboardingService::getOnBoardingByDate($date);
+    
+        return [
+            'dates' => $dates,
+            'onboarding' => $onboarding,
+        ];
+
     }
 }

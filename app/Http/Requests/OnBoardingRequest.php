@@ -27,7 +27,8 @@ class OnBoardingstRequest extends FormRequest
             'user_id' => ['required'],
             'title' => ['required', 'string',],
             'date' => ['required', 'regex:/^[0-9]+(\.[0-9][0-9]?)?$/'],
-            'time' => ['required', 'regex:/^[0-9]+(\.[0-9][0-9]?)?$/'],
+            'start_time' => ['required', 'regex:/^[0-9]+(\.[0-9][0-9]?)?$/'],
+            'end_time' => ['required', 'regex:/^[0-9]+(\.[0-9][0-9]?)?$/'],
             'status' => ['required'],
 
         ];
