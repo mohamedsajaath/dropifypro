@@ -143,7 +143,7 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
-                                    <span class="fw-bold fs-6 text-gray-800">{{ Auth::user()->currency }}</span>
+                                    <span class="fw-bold fs-6 text-gray-800">{{ App\models\MdCountry::userCurrency(Auth::user()->currency_id) }}</span>
                                 </div>
                                 <!--end::Col-->
                             </div>

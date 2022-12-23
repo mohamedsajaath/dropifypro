@@ -279,6 +279,35 @@
                                         </div>
                                     </div>
                                     <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="row mb-6">
+                                        <!--begin::Label-->
+                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">
+                                            Currency
+                                        </label>
+                                        <!--end::Label-->
+                                        <!--begin::Col-->
+                                        <div class="col-lg-8">
+                                            <!--begin::Row-->
+                                            <div class="row">
+                                                <div class="col-lg-8 fv-row fv-plugins-icon-container">
+                                                    <select name="currency_id" aria-label="Select a Currency"
+                                                        data-control="select2" data-placeholder="Select a Currency..."
+                                                        class="form-select form-select-solid" required>
+                                                        <option value="">Select A Currency</option>
+                                                        @foreach (App\models\MdCountry::country() as $country)
+                                                            <option value="{{ $country->id }}"
+                                                                {{ $country->id == Auth::user()->currency_id ? 'selected' : '' }}>
+                                                                {{ $country->name . '  ( ' . $country->currency_name . ' )' }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <!--end::Col-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Input group-->
                             </div>
                             <!--end::Card body-->
                             <!--begin::Actions-->
@@ -324,8 +353,7 @@
                                         <!--begin::Form-->
                                         <form id="kt_signin_change_email"
                                             class="form fv-plugins-bootstrap5 fv-plugins-framework"
-                                            novalidate="novalidate" action="{{ route('profile.update.email') }}"
-                                            method="POST">
+                                            action="{{ route('profile.update.email') }}" method="POST">
                                             @csrf
                                             @method('patch')
                                             <div class="row mb-6">
@@ -337,10 +365,8 @@
                                                             Address</label>
                                                         <input type="email"
                                                             class="form-control form-control-lg form-control-solid"
-                                                            id="emailaddress" placeholder="Email Address"
-                                                            name="emailaddress" value="">
-                                                        <div class="fv-plugins-message-container invalid-feedback">
-                                                        </div>
+                                                            id="email-address" placeholder="Email Address" name="email"
+                                                            value="" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
@@ -350,16 +376,15 @@
                                                             Password</label>
                                                         <input type="password"
                                                             class="form-control form-control-lg form-control-solid"
-                                                            name="confirmemailpassword" id="confirmemailpassword">
-                                                        <div class="fv-plugins-message-container invalid-feedback">
-                                                        </div>
+                                                            name="confirmemailpassword" id="confirm-email-password"
+                                                            required>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="d-flex">
-                                                <button id="kt_signin_submit" type="submit"
-                                                    class="btn btn-primary me-2 px-6">Update Email</button>
-                                                <button id="kt_signin_cancel" type="button"
+                                                <button type="submit" class="btn btn-primary me-2 px-6">Update
+                                                    Email</button>
+                                                <button type="reset"
                                                     class="btn btn-color-gray-400 btn-active-light-primary px-6">Cancel</button>
                                             </div>
                                         </form>
@@ -463,14 +488,14 @@
         </div>
         <!--end::Content wrapper-->
     </div>
-    <input id="message" type="hidden" value="{{ session('status') }}">
+    {{-- <input id="message" type="hidden" value="{{ session('status') }}"> --}}
 @endsection
 @push('script')
     <script src="{{ asset('assets/js/custom/account/settings/signin-methods.js') }}"></script>
     <script>
         loadBreadCrumbWithHeader("Account", "Profile", "Dashboard", "#")
     </script>
-    <script>
+    {{-- <script>
         const msg = $('#message').val();
         if (msg != "") {
             toastr.options = {
@@ -493,5 +518,5 @@
 
             toastr.error(msg);
         }
-    </script>
+    </script> --}}
 @endpush

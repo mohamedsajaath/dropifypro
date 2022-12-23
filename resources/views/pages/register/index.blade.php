@@ -113,8 +113,8 @@
                                     <a href="{{ route('login') }}" class="link-primary">Login</a>
                                 </div>
                                 <div class="col-mb-4 mt-2">
-                                    Change Plan!
-                                    <a href="http://127.0.0.1:8000#kt_pricing" class="link-primary">Home</a>
+                                    Back To
+                                    <a href="{{ route('home') }}" class="link-primary"> Home</a>
                                 </div>
                             </div>
                         </div>

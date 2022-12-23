@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('state')->nullable();
             $table->string('zipcode')->nullable();
             $table->string('country_id')->nullable();
-            $table->string('currency')->nullable();
+            $table->string('currency_id')->nullable();
             $table->string('phone_no')->nullable();
             $table->tinyInteger('type')->default(User::SELLER);
             $table->tinyInteger('temp_account')->default(User::FIXED_ACCOUNT);

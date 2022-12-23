@@ -66,9 +66,8 @@ class PlanController extends Controller
      */
     public function edit($id)
     {
-        dd($id);
         $plan = Plan::find($id);
-        return view("pages.admin.account.includes.edit_plan_model")->with('plan', $plan);
+       // return view("pages.admin.account.includes.edit_plan_model")->with('plan', $plan);
     }
 
     /**

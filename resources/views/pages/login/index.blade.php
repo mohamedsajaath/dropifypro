@@ -96,7 +96,7 @@
                             <!--end::Submit button-->
                             <!--begin::Sign up-->
                             <div class="text-gray-500 text-center fw-semibold fs-6">Not a Member yet?
-                                <a href="{{ route('home') . '#kt_pricing' }}" class="link-primary">Sign up</a>
+                                <a href="{{ route('home') . '#pricing' }}" class="link-primary">Sign up</a>
                             </div>
                             <!--end::Sign up-->
                         </form>

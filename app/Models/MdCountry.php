@@ -25,8 +25,18 @@ class MdCountry extends Model
             return " ";
         }
         return $country->name;
+    
+    }
 
-        
+    public static function userCurrency($id)
+    {
+        $currency = MdCountry::where('id', $id)->first();
+
+        if($id == null){
+            return " ";
+        }
+        return $currency->currency_code;
+    
     }
 
 }

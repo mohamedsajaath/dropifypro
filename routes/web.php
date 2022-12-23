@@ -26,7 +26,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
 //HOME END
 
-// Route::post('/register-with-plan-details', [RegisterPlanController::class, 'index'])->name('register.plan');
+Route::get('/register-with-plan-details', [RegisterPlanController::class, 'index'])->name('register.plan');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

@@ -125,7 +125,7 @@
                             <!--begin::Input group-->
                             <div class="row mb-7">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 fw-semibold text-muted">Country</label>
+                                <label class="col-lg-4 fw-semibold text-muted required">Country</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
@@ -137,11 +137,11 @@
                             <!--begin::Input group-->
                             <div class="row mb-7">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 fw-semibold text-muted">Currency</label>
+                                <label class="col-lg-4 fw-semibold text-muted required">Currency</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
-                                    <span class="fw-bold fs-6 text-gray-800">{{Auth::user()->currency}}</span>
+                                    <span class="fw-bold fs-6 text-gray-800">{{ App\models\MdCountry::userCurrency(Auth::user()->currency_id) }}</span>
                                 </div>
                                 <!--end::Col-->
                             </div>

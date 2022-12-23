@@ -33,7 +33,7 @@ class User extends Authenticatable
         'state',
         'zipcode',
         'country_id',
-        'currency',
+        'currency_id',
         'phone_no',
     ];
 

@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             'state' => "test",
             'zipcode' => "test",
             'country_id' => "213",
-            'currency' => "GBP",
+            'currency_id' => "213",
             'phone_no' => "+94771231234",
             'type' => User::ADMIN,
             'temp_account' => User::FIXED_ACCOUNT,
