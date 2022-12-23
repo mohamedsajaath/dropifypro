@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
+
 <!--begin::Head-->
 @include('layouts.head')
 @push('css')
