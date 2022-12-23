@@ -24,4 +24,16 @@ class ProductVariantService
             $variant->quantity, $user_id);
         ProductInventoryLogService::save($productInventoryLog);
     }
+
+    public static function getByEbayItemIdAndSku($ebay_item_id, $sku):ProductVariant{
+        // fetch userProduct object(single) by ebayItemId
+        // check if user product is not available for the ebay item return null,otherwise continue
+
+        // catch `user product id`
+        // fetch userProductVariant object(single) by  user product id, sku
+        // check if user variant product is not available  return null,otherwise continue
+
+        //catch variant id
+        //fetch and return variant
+     }
 }

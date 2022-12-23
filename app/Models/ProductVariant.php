@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class ProductVariant extends Model
 {
     use HasFactory, CommonQuery;
+    protected $table = 'product_variants';
+    protected $fillable = [
+        'product_id',
+        'quantity',
+        'sku',
+        'price',
+    ];
 }

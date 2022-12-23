@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('product_variant_id');
-            $table->text('ebay_item_id')->unique();
+            $table->text('ebay_item_id');
             $table->double('ebay_price', 8, 2);
             $table->date('date');
             $table->timestamps();

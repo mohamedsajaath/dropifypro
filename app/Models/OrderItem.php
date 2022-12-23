@@ -17,4 +17,9 @@ class OrderItem extends Model
         'ebay_item_id',
         'quantity'
     ];
+
+    public function order_item_product_variant()
+    {
+        return $this->hasOne(OrderItemProductVariant::class, 'order_item_id', 'id');
+    } 
 }

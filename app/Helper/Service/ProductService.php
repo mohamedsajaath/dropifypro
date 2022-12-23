@@ -14,4 +14,10 @@ class ProductService
             ProductVariantService::saveOrUpdate($variant, $user_id);
         }
     }
+
+    public static function listById($product_id,$price)
+    {
+        //get product with its all dependencies
+        Product::findById($product_id);
+    }
 }

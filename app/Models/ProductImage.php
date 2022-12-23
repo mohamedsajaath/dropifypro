@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class ProductImage extends Model
 {
     use HasFactory, CommonQuery;
+    protected $table = 'product_images';
+    protected $fillable = [
+        'reference_id',
+        'reference',
+        'file_name',
+        'storage_name',
+        'image_url'
+    ];
 }

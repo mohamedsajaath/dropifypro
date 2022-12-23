@@ -17,4 +17,13 @@ class Order extends Model
         'total_quantity',
         'content'
     ];
+
+    public $orderItems;
+    public $customer;
+
+
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class, 'order_id', 'id');
+    }
 }

@@ -17,10 +17,13 @@ class RequestToProductMapper implements ProductMapper
     public function getProduct(): Product
     {
         $product = new Product();
-        $product->name = $this->request->name;
+        $product->title = $this->request->title;
         $product->description = $this->request->description;
+        $product->categories = $this->request->categories;
         $product->sku = $this->request->sku;
         $product->weight = $this->request->weight;
+        $product->price = $this->request->price;
+        $product->image = $this->request->image;
         $product->variants = $this->getVariants();
         return $product;
     }

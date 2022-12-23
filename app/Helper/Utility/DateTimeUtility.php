@@ -116,6 +116,11 @@ class DateTimeUtility
         return self::getFormattedTime(Carbon::now(), 'Y-m-d');
     }
 
+    public static function getPreviousDate(): string
+    {
+        return self::getFormattedTime(Carbon::now()->subDays(1), 'Y-m-d');
+    }
+
     public static function getCurrent24hTime(): string
     {
         return self::getFormattedTime(Carbon::now(), 'H:i:s');

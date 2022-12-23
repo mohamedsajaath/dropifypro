@@ -6,6 +6,67 @@
     <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 @endpush
+<style>
+    .btn {
+        position: relative;
+        display: inline-block;
+        margin: 15px;
+        padding: 12px 27px;
+        text-align: center;
+        font-size: 16px;
+        letter-spacing: 1px;
+        text-decoration: none;
+        color: #999999;
+        background: #ffffff;
+        border: 3px solid #999999;
+        cursor: pointer;
+        transition: ease-out 0.5s;
+        -webkit-transition: ease-out 0.5s;
+        -moz-transition: ease-out 0.5s;
+    }
+
+    .btn.btn-border-4::after,
+    .btn.btn-border-4::before {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        transition: .5s;
+    }
+
+    .btn.btn-border-4::after {
+        top: -9px;
+        left: -9px;
+        border-top: 3px solid transparent;
+        border-left: 3px solid transparent;
+    }
+
+    .btn.btn-border-4::before {
+        bottom: -9px;
+        right: -9px;
+        border-bottom: 3px solid transparent;
+        border-right: 3px solid transparent;
+    }
+
+    .btn.btn-border-4:hover {
+        color: #222222;
+    }
+
+    .btn.btn-border-4:hover::after,
+    .btn.btn-border-4:hover::before {
+        width: calc(100% + 15px);
+        height: calc(100% + 15px);
+        border-color: #222222;
+    }
+
+    .brand-logo{
+        max-height: 90px;
+        filter: grayscale(2)
+    }
+    .brand-logo img{
+        max-height: 90px !important;
+    }
+</style>
 <!--end::Head-->
 
 <!--begin::Body-->
@@ -16,10 +77,12 @@
         <!--begin::Header Section-->
         <div class="mb-0" id="home">
             <!--begin::Wrapper-->
-            <div class="bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom primary-gr-color-blue" ">
+            <div
+                class="bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom primary-gr-color-blue">
                 <!--begin::Header-->
                 <div class="landing-header" data-kt-sticky="true" data-kt-sticky-name="landing-header"
-                    data-kt-sticky-offset="{default: '200px', lg: '300px'}">
+                    data-kt-sticky-offset="{default: '200px', lg: '300px'}"
+                    style="animation-duration: 0.3s; background: linear-gradient(45deg, #051119, #394955); top: 0px;">
                     <!--begin::Container-->
                     <div class="container">
                         <!--begin::Wrapper-->
@@ -39,10 +102,9 @@
                             <!--end::Logo-->
 
                             <!--begin::Toolbar-->
-                            
+
                             <div class="flex-equal text-end ms-1">
-                                <a href="{{route('login')}}"
-                                    class="btn btn-success">Login</a>
+                                <a href="" class="btn btn-border-4">Login</a>
                             </div>
                             <!--end::Toolbar-->
                         </div>
@@ -52,16 +114,16 @@
                 </div>
                 <!--end::Header-->
                 <!--begin::Landing hero-->
-                <div class="d-flex flex-column flex-center w-100 min-h-350px min-h-lg-500px px-9">
+                <div class="d-flex flex-column flex-center w-100 min-h-350px min-h-lg-500px px-9"
+                    style="background-repeat: no-repeat;background-position: center;background-image: url(https://images.pexels.com/photos/7567561/pexels-photo-7567561.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);opacity: 0.9;background-size: cover;height: 85vh;">
                     <!--begin::Heading-->
                     <div class="text-center mb-5 mb-lg-10 py-10 py-lg-20">
                         <!--begin::Title-->
-                        <h1 class="text-white lh-base fw-bold fs-2x fs-lg-3x mb-15">Build An Outstanding Solutions
+                        <h1 class="text-white lh-base fw-bold fs-2x fs-lg-3x mb-15" style="position: absolute;bottom: 50px;">Build An Outstanding Solutions
                             <br />with
-                            <span
-                                style="background: linear-gradient(to right, #12CE5D 0%, #FFD80C 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">
-                                <span id="kt_landing_hero_text">The Best Theme Ever</span>
-                            </span>
+                            <span style="background: linear-gradient(to right, #12CE5D 0%, #594c0e 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;font-family:cursive">
+                                <span id="kt_landing_hero_text">DropifyPro</span>
+                            </span>  <span>-Team DropifyPro-</span>
                         </h1>
                         <!--end::Title-->
                     </div>
@@ -71,29 +133,57 @@
             </div>
             <!--end::Wrapper-->
             <!--begin::Curve bottom-->
-            <div class="landing-curve  mb-10 mb-lg-20">
+            {{-- <div class="landing-curve  mb-10 mb-lg-20">
                 <svg viewBox="15 12 1470 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M0 11C3.93573 11.3356 7.85984 11.6689 11.7725 12H1488.16C1492.1 11.6689 1496.04 11.3356 1500 11V12H1488.16C913.668 60.3476 586.282 60.6117 11.7725 12H0V11Z"
                         fill="#2d449e"></path>
                 </svg>
-            </div>
+            </div> --}}
             <!--end::Curve bottom-->
+            <div class="d-flex flex-center flex-wrap position-relative px-5" style="background: lightgray">
+                <div class="d-flex flex-center m-3 m-md-6 brand-logo" data-bs-toggle="tooltip" aria-label="Nasa"
+                    data-kt-initialized="1">
+                    <img src="assets/media/stock/600x400/ebay.png" class="mh-30px mh-lg-40px" alt="">
+                </div>
+                <!--begin::Client-->
+                <div class="d-flex flex-center m-3 m-md-6 brand-logo" data-bs-toggle="tooltip" aria-label="Nasa"
+                    data-kt-initialized="1">
+                    <img src="assets/media/stock/600x400/royalmail.png" class="mh-30px mh-lg-40px" alt="">
+                </div>
+                <div class="d-flex flex-center m-3 m-md-6 brand-logo" data-bs-toggle="tooltip" aria-label="Nasa"
+                    data-kt-initialized="1">
+                    <img src="assets/media/stock/600x400/stripe.png" class="mh-30px mh-lg-40px" alt="">
+                </div>
+                <div class="d-flex flex-center m-3 m-md-6 brand-logo" data-bs-toggle="tooltip" aria-label="Nasa"
+                    data-kt-initialized="1">
+                    <img src="assets/media/stock/600x400/hermes.png" class="mh-30px mh-lg-40px" alt="">
+                </div>
+                <div class="d-flex flex-center m-3 m-md-6 brand-logo" data-bs-toggle="tooltip" aria-label="Nasa"
+                    data-kt-initialized="1">
+                    <img src="assets/media/stock/600x400/paypal.png" class="mh-30px mh-lg-40px" alt="">
+                </div>
+                <div class="d-flex flex-center m-3 m-md-6 brand-logo" data-bs-toggle="tooltip" aria-label="Nasa"
+                    data-kt-initialized="1">
+                    <img src="assets/media/stock/600x400/visa.png" class="mh-30px mh-lg-40px" alt="">
+                </div>
+                <!--end::Client-->
+            </div>
         </div>
         <!--end::Header Section-->
         <!--begin::How It Works Section-->
-        <div class="mb-n10 mb-lg-n20 z-index-2">
+        <div class="mb-n10 mb-lg-n20 z-index-2" style="margin-top: 60px;">
             <!--begin::Container-->
             <div class="container">
                 <!--begin::Heading-->
                 <div class="text-center mb-17">
                     <!--begin::Title-->
                     <h3 class="fs-2hx text-dark mb-5" id="how-it-works" data-kt-scroll-offset="{default: 100, lg: 150}">
-                        How it Works</h3>
+                        Our Premium Services</h3>
                     <!--end::Title-->
                     <!--begin::Text-->
                     <div class="fs-5 text-muted fw-bold">Save thousands to millions of bucks by using single tool
-                        <br />for different amazing and great useful admin
+                        <br />for different amazing and great useful for our Clients
                     </div>
                     <!--end::Text-->
                 </div>
@@ -114,14 +204,16 @@
                                 <span class="badge badge-circle badge-light-success fw-bold p-5 me-3 fs-3">1</span>
                                 <!--end::Badge-->
                                 <!--begin::Title-->
-                                <div class="fs-5 fs-lg-3 fw-bold text-dark">Jane Miller</div>
+                                <div class="fs-5 fs-lg-3 fw-bold text-dark">Inventory Log</div>
                                 <!--end::Title-->
                             </div>
                             <!--end::Heading-->
                             <!--begin::Description-->
-                            <div class="fw-semibold fs-6 fs-lg-4 text-muted">Save thousands to millions of bucks
-                                <br />by using single tool for different
-                                <br />amazing and great
+                            <div class="fw-semibold fs-6 fs-lg-4 text-muted">Inventory logs are used to help track
+                                inventory when it is requested and fulfilled in
+                                <br />your site's requests. It also tracks: who used the inventory. the quantity
+                                fulfilled. the tota
+                                <br />inventory cost.
                             </div>
                             <!--end::Description-->
                         </div>
@@ -142,14 +234,15 @@
                                 <span class="badge badge-circle badge-light-success fw-bold p-5 me-3 fs-3">2</span>
                                 <!--end::Badge-->
                                 <!--begin::Title-->
-                                <div class="fs-5 fs-lg-3 fw-bold text-dark">Setup Your App</div>
+                                <div class="fs-5 fs-lg-3 fw-bold text-dark">Courier Service</div>
                                 <!--end::Title-->
                             </div>
                             <!--end::Heading-->
                             <!--begin::Description-->
-                            <div class="fw-semibold fs-6 fs-lg-4 text-muted">Save thousands to millions of bucks
-                                <br />by using single tool for different
-                                <br />amazing and great
+                            <div class="fw-semibold fs-6 fs-lg-4 text-muted">Courier services focuses on express and
+                                door-to-door delivery.
+                                <br />Couriers may use self-owned,
+                                <br />privately shared or public transportation to supply these services.
                             </div>
                             <!--end::Description-->
                         </div>
@@ -170,14 +263,16 @@
                                 <span class="badge badge-circle badge-light-success fw-bold p-5 me-3 fs-3">3</span>
                                 <!--end::Badge-->
                                 <!--begin::Title-->
-                                <div class="fs-5 fs-lg-3 fw-bold text-dark">Enjoy Nautica App</div>
+                                <div class="fs-5 fs-lg-3 fw-bold text-dark">Secure Payments Options</div>
                                 <!--end::Title-->
                             </div>
                             <!--end::Heading-->
                             <!--begin::Description-->
-                            <div class="fw-semibold fs-6 fs-lg-4 text-muted">Save thousands to millions of bucks
-                                <br />by using single tool for different
-                                <br />amazing and great
+                            <div class="fw-semibold fs-6 fs-lg-4 text-muted">Your standard data connection is more
+                                secure.
+                                <br />Pay using a credit card.
+                                <br />You'll have more protection. <br />So scammers can't get hold of your bank
+                                details.
                             </div>
                             <!--end::Description-->
                         </div>
@@ -189,7 +284,7 @@
                 <!--begin::Product slider-->
                 <div class="tns tns-default">
                     <!--begin::Slider-->
-                    <div data-tns="true" data-tns-loop="true" data-tns-swipe-angle="false" data-tns-speed="2000"
+                    {{-- <div data-tns="true" data-tns-loop="true" data-tns-swipe-angle="false" data-tns-speed="2000"
                         data-tns-autoplay="true" data-tns-autoplay-timeout="18000" data-tns-controls="true"
                         data-tns-nav="false" data-tns-items="1" data-tns-center="false" data-tns-dots="false"
                         data-tns-prev-button="#kt_team_slider_prev1" data-tns-next-button="#kt_team_slider_next1">
@@ -217,10 +312,10 @@
                                 alt="" />
                         </div>
                         <!--end::Item-->
-                    </div>
+                    </div> --}}
                     <!--end::Slider-->
                     <!--begin::Slider button-->
-                    <button class="btn btn-icon btn-active-color-primary" id="kt_team_slider_prev1">
+                    {{-- <button class="btn btn-icon btn-active-color-primary" id="kt_team_slider_prev1">
                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr074.svg-->
                         <span class="svg-icon svg-icon-3x">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -231,10 +326,10 @@
                             </svg>
                         </span>
                         <!--end::Svg Icon-->
-                    </button>
+                    </button> --}}
                     <!--end::Slider button-->
                     <!--begin::Slider button-->
-                    <button class="btn btn-icon btn-active-color-primary" id="kt_team_slider_next1">
+                    {{-- <button class="btn btn-icon btn-active-color-primary" id="kt_team_slider_next1">
                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr071.svg-->
                         <span class="svg-icon svg-icon-3x">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -245,7 +340,7 @@
                             </svg>
                         </span>
                         <!--end::Svg Icon-->
-                    </button>
+                    </button> --}}
                     <!--end::Slider button-->
                 </div>
                 <!--end::Product slider-->
@@ -254,7 +349,7 @@
         </div>
         <!--end::How It Works Section-->
         <!--begin::Statistics Section-->
-        <div class="mt-sm-n10">
+        <div class="mt-sm-n10" style="margin-top: 4rem !important;">
             <!--begin::Curve top-->
             {{-- <div class="landing-curve landing-dark-color">
                 <svg viewBox="15 -1 1470 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -400,14 +495,14 @@
                     <!--begin::Testimonial-->
                     <div class="fs-2 fw-semibold text-muted text-center mb-3">
                         <span class="fs-1 lh-1 text-white">“When you care about your topic, you’ll write
-                        about
-                        it in a</span>
+                            about
+                            it in a</span>
                         <br />
                         <span class="text-gray me-1">more powerful</span>
                         <span class="fs-1 lh-1 text-white">, emotionally expressive way “</span>
                     </div>
                     <!--end::Testimonial-->
-                    
+
                 </div>
                 <!--end::Container-->
             </div>
@@ -625,7 +720,7 @@
                         <div class="text-center mb-5 mb-lg-10">
                             <!--begin::Title-->
                             <h3 class="fs-2hx text-dark mb-5" id="portfolio"
-                                data-kt-scroll-offset="{default: 100, lg: 250}">Our Projects</h3>
+                                data-kt-scroll-offset="{default: 100, lg: 250}">Our Projects Sample Clicks</h3>
                             <!--end::Title-->
                         </div>
                         <!--end::Heading-->
@@ -639,12 +734,66 @@
                                     <!--begin::Col-->
                                     <div class="col-lg-6">
                                         <!--begin::Item-->
-                                        <a class="d-block card-rounded overlay h-lg-100"
+                                        <a class="d-block card-rounded overlay h-lg-70"
                                             data-fslightbox="lightbox-projects"
-                                            href="assets/media/stock/ecommerce/182.gif">
+                                            href="assets/media/images/dashboard.png">
                                             <!--begin::Image-->
                                             <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-lg-100 min-h-250px"
-                                                style="background-image:url('assets/media/stock/ecommerce/182.gif')">
+                                                style="background-image:url('assets/media/images/dashboard.png')">
+                                            </div>
+                                            <!--end::Image-->
+                                            <!--begin::Action-->
+                                            <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                <i class="bi bi-eye-fill fs-3x text-white"></i>
+                                            </div>
+                                            <!--end::Action-->
+                                        </a>
+                                        <!--end::Item-->
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!--begin::Item-->
+                                        <a class="d-block card-rounded overlay h-lg-70"
+                                            data-fslightbox="lightbox-projects"
+                                            href="assets/media/images/dashboard4.png">
+                                            <!--begin::Image-->
+                                            <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-lg-100 min-h-250px"
+                                                style="background-image:url('assets/media/images/dashboard4.png')">
+                                            </div>
+                                            <!--end::Image-->
+                                            <!--begin::Action-->
+                                            <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                <i class="bi bi-eye-fill fs-3x text-white"></i>
+                                            </div>
+                                            <!--end::Action-->
+                                        </a>
+                                        <!--end::Item-->
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!--begin::Item-->
+                                        <a class="d-block card-rounded overlay h-lg-70"
+                                            data-fslightbox="lightbox-projects"
+                                            href="assets/media/images/dashboard2.png">
+                                            <!--begin::Image-->
+                                            <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-lg-100 min-h-250px"
+                                                style="background-image:url('assets/media/images/dashboard2.png')">
+                                            </div>
+                                            <!--end::Image-->
+                                            <!--begin::Action-->
+                                            <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                <i class="bi bi-eye-fill fs-3x text-white"></i>
+                                            </div>
+                                            <!--end::Action-->
+                                        </a>
+                                        <!--end::Item-->
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!--begin::Item-->
+                                        <a class="d-block card-rounded overlay h-lg-70"
+                                            data-fslightbox="lightbox-projects"
+                                            href="assets/media/images/dashboard3.png">
+                                            <!--begin::Image-->
+                                            <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-lg-100 min-h-250px"
+                                                style="background-image:url('assets/media/images/dashboard3.png')">
                                             </div>
                                             <!--end::Image-->
                                             <!--begin::Action-->
@@ -657,7 +806,7 @@
                                     </div>
                                     <!--end::Col-->
                                     <!--begin::Col-->
-                                    <div class="col-lg-6">
+                                    {{-- <div class="col-lg-6">
                                         <!--begin::Row-->
                                         <div class="row g-10 mb-10">
                                             <!--begin::Col-->
@@ -717,7 +866,7 @@
                                             <!--end::Action-->
                                         </a>
                                         <!--end::Item-->
-                                    </div>
+                                    </div> --}}
                                     <!--end::Col-->
                                 </div>
                                 <!--end::Row-->
@@ -763,7 +912,8 @@
                         <!--begin::Pricing-->
                         <div class="text-center" id="kt_pricing">
                             <!--begin::Nav group-->
-                            <div class="nav-group primary-color-light-blue d-inline-flex mb-15" data-kt-buttons="true">
+                            <div class="nav-group primary-color-light-blue d-inline-flex mb-15"
+                                data-kt-buttons="true">
                                 <a href="#"
                                     class="btn btn-color-white-600 btn-active btn-active-success px-6 py-3 me-2 active"
                                     data-kt-plan="month">Monthly</a>
@@ -786,7 +936,8 @@
                                                 <h1 class="text-dark mb-5 fw-boldest">Startup</h1>
                                                 <!--end::Title-->
                                                 <!--begin::Description-->
-                                                <div class="text-gray-400 fw-semibold mb-5">Provides professional research
+                                                <div class="text-gray-400 fw-semibold mb-5">Provides professional
+                                                    research
                                                     tools for making data-driven
                                                     business decisions.
                                                 </div>
@@ -802,7 +953,8 @@
                                                         data-kt-plan-price-annual="Ann">/
                                                         Mon</span>
                                                 </div>
-                                                <div class="fw-semibold fs-6 text-gray-800 text-start pe-3" style="font-weight: bold !important;">Key benefits of Startup:
+                                                <div class="fw-semibold fs-6 text-gray-800 text-start pe-3"
+                                                    style="font-weight: bold !important;">Key benefits of Startup:
                                                 </div>
                                                 <!--end::Price-->
                                             </div>
@@ -1247,9 +1399,9 @@
                         Our Clients Say</h3>
                     <!--end::Title-->
                     <!--begin::Description-->
-                    <div class="fs-5 text-muted fw-bold">Save thousands to millions of bucks by using single tool
+                    {{-- <div class="fs-5 text-muted fw-bold">Save thousands to millions of bucks by using single tool
                         <br />for different amazing and great useful admin
-                    </div>
+                    </div> --}}
                     <!--end::Description-->
                 </div>
                 <!--end::Heading-->
@@ -1282,14 +1434,16 @@
                                 </div>
                                 <!--end::Rating-->
                                 <!--begin::Title-->
-                                <div class="fs-2 fw-bold text-dark mb-3">This is by far the cleanest template
-                                    <br />and the most well structured
+                                <div class="fs-2 fw-bold text-dark mb-3">As a user for 6 months now,
+                                    <br />i'm impressed!
                                 </div>
                                 <!--end::Title-->
                                 <!--begin::Feedback-->
-                                <div class="text-gray-500 fw-semibold fs-4">The most well thought out design theme I
-                                    have ever used. The codes are up to tandard. The css styles are very clean. In fact
-                                    the cleanest and the most up to standard I have ever seen.</div>
+                                <div class="text-gray-500 fw-semibold fs-4">As a user for 6 months now; it is the best
+                                    investment I have made for my dropshipping business to be successful. Massive
+                                    advantage over the competition and other sellers with the various built-in tools.
+                                    Constantly coming out with new releases and other tools to help your business grow,
+                                    they are a clear winner for product research!</div>
                                 <!--end::Feedback-->
                             </div>
                             <!--end::Wrapper-->
@@ -1340,14 +1494,17 @@
                                 </div>
                                 <!--end::Rating-->
                                 <!--begin::Title-->
-                                <div class="fs-2 fw-bold text-dark mb-3">This is by far the cleanest template
-                                    <br />and the most well structured
+                                <div class="fs-2 fw-bold text-dark mb-3">Great software for
+                                    <br />eBay sellers
                                 </div>
                                 <!--end::Title-->
                                 <!--begin::Feedback-->
-                                <div class="text-gray-500 fw-semibold fs-4">The most well thought out design theme I
-                                    have ever used. The codes are up to tandard. The css styles are very clean. In fact
-                                    the cleanest and the most up to standard I have ever seen.</div>
+                                <div class="text-gray-500 fw-semibold fs-4">DropifyPro is easy to use, the data is very
+                                    accurate and the customer service always helpful You can find all the information I
+                                    need about product research and eBay selling inside DropifyPro analytics as well to
+                                    the greate features they have mainly product and competitor research And for the
+                                    titles I have the unique title builder that even show you sales history and
+                                    competitor of every keyword</div>
                                 <!--end::Feedback-->
                             </div>
                             <!--end::Wrapper-->
@@ -1398,14 +1555,15 @@
                                 </div>
                                 <!--end::Rating-->
                                 <!--begin::Title-->
-                                <div class="fs-2 fw-bold text-dark mb-3">This is by far the cleanest template
-                                    <br />and the most well structured
+                                <div class="fs-2 fw-bold text-dark mb-3">Very helpful program
+                                    <br />and group of…
                                 </div>
                                 <!--end::Title-->
                                 <!--begin::Feedback-->
-                                <div class="text-gray-500 fw-semibold fs-4">The most well thought out design theme I
-                                    have ever used. The codes are up to tandard. The css styles are very clean. In fact
-                                    the cleanest and the most up to standard I have ever seen.</div>
+                                <div class="text-gray-500 fw-semibold fs-4">Very helpful program and group of people.
+                                    YouTube channel has tons of vids and more out weekly. Fb group is very helpful all
+                                    the time with a good group of people. Program I use daily and has been more helpful
+                                    than any other tool in this entire DS learning process.</div>
                                 <!--end::Feedback-->
                             </div>
                             <!--end::Wrapper-->
@@ -1437,20 +1595,20 @@
                     <!--begin::Content-->
                     <div class="my-2 me-5">
                         <!--begin::Title-->
-                        <div class="fs-1 fs-lg-2qx fw-bold text-white mb-2">Start With Metronic Today,
-                            <span class="fw-normal">Speed Up Development!</span>
+                        <div class="fs-1 fs-lg-2qx fw-bold text-white mb-2">Start With DropifyPro Today,
+                            <span class="fw-normal">Speed Up Your Work!</span>
                         </div>
                         <!--end::Title-->
                         <!--begin::Description-->
-                        <div class="fs-6 fs-lg-5 text-white fw-semibold opacity-75">Join over 100,000 Professionals
-                            Community to Stay Ahead</div>
+                        <div class="fs-6 fs-lg-5 text-white fw-semibold opacity-75">Join over 100,000 sellers that have
+                            started or grown their eBay business using DropifyPro Analytics</div>
                         <!--end::Description-->
                     </div>
                     <!--end::Content-->
                     <!--begin::Link-->
                     <a href="https://1.envato.market/EA4JP"
                         class="btn btn-lg btn-outline border-2 btn-outline-white flex-shrink-0 my-2">Purchase on
-                        Themeforest</a>
+                        DropifyPro</a>
                     <!--end::Link-->
                 </div>
                 <!--end::Highlight-->
@@ -1485,7 +1643,7 @@
                                 <!--begin::Text-->
                                 <span class="fw-normal fs-4 text-black">Email us to
                                     <a href="https://keenthemes.com/support"
-                                        class="text-white opacity-50 text-hover-primary">support@keenthemes.com</a></span>
+                                        class="text-white opacity-50 text-hover-primary">support@dropifypro.com</a></span>
                                 <!--end::Text-->
                             </div>
                             <!--end::Block-->
@@ -1548,8 +1706,7 @@
                                     <a href="https://www.facebook.com/keenthemes" class="mb-6">
                                         <img src="assets/media/svg/brand-logos/facebook-4.svg" class="h-20px me-2"
                                             alt="" />
-                                        <span
-                                            class="text-black  text-hover-primary fs-5 mb-6">Facebook</span>
+                                        <span class="text-black  text-hover-primary fs-5 mb-6">Facebook</span>
                                     </a>
                                     <!--end::Link-->
                                     <!--begin::Link-->
@@ -1570,16 +1727,14 @@
                                     <a href="https://dribbble.com/keenthemes" class="mb-6">
                                         <img src="assets/media/svg/brand-logos/dribbble-icon-1.svg"
                                             class="h-20px me-2" alt="" />
-                                        <span
-                                            class="text-black  text-hover-primary fs-5 mb-6">Dribbble</span>
+                                        <span class="text-black  text-hover-primary fs-5 mb-6">Dribbble</span>
                                     </a>
                                     <!--end::Link-->
                                     <!--begin::Link-->
                                     <a href="https://www.instagram.com/keenthemes" class="mb-6">
                                         <img src="assets/media/svg/brand-logos/instagram-2-1.svg" class="h-20px me-2"
                                             alt="" />
-                                        <span
-                                            class="text-black  text-hover-primary fs-5 mb-6">Instagram</span>
+                                        <span class="text-black  text-hover-primary fs-5 mb-6">Instagram</span>
                                     </a>
                                     <!--end::Link-->
                                 </div>
@@ -1603,19 +1758,18 @@
                         <div class="d-flex align-items-center order-2 order-md-1">
                             <!--begin::Logo-->
                             <a href="{{ route('home') }}">
-                                <img alt="Logo" src="{{ asset('assets/media/logo/dropify-logo.png') }}" class="h-75px h-md-70px mb-10" />
+                                <img alt="Logo" src="{{ asset('assets/media/logo/dropify-logo.png') }}"
+                                    class="h-75px h-md-70px mb-10" />
                             </a>
                             <!--end::Logo image-->
                             <!--begin::Logo image-->
-                            <span class="mx-5 fs-6 fw-semibold text-white pt-1"
-                                href="https://keenthemes.com">&copy;
+                            <span class="mx-5 fs-6 fw-semibold text-white pt-1" href="https://keenthemes.com">&copy;
                                 2022 DropifyPro.</span>
                             <!--end::Logo image-->
                         </div>
                         <!--end::Copyright-->
                         <!--begin::Menu-->
-                        <ul
-                            class="menu menu-white menu-hover-primary fw-semibold fs-6 fs-md-5 order-1 mb-5 mb-md-0">
+                        <ul class="menu menu-white menu-hover-primary fw-semibold fs-6 fs-md-5 order-1 mb-5 mb-md-0">
                             <li class="menu-item">
                                 <a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
                             </li>
@@ -1654,15 +1808,15 @@
         <!--end::Scrolltop-->
     </div>
     <!--end::Root-->
-    
+
     <!--begin::Scrolltop-->
     <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
         <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
         <span class="svg-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
-                <rect opacity="0.5" x="13" y="6" width="13" height="2"
-                    rx="1" transform="rotate(90 13 6)" fill="currentColor" />
+                <rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1"
+                    transform="rotate(90 13 6)" fill="currentColor" />
                 <path
                     d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z"
                     fill="currentColor" />
@@ -1670,6 +1824,7 @@
         </span>
         <!--end::Svg Icon-->
     </div>
+    
     <!--end::Scrolltop-->
     <!--begin::Javascript-->
     @include('layouts.scripts')
