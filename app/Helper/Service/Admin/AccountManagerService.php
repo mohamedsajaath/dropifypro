@@ -10,5 +10,10 @@ class AccountManagerService
     {
         $accountManager = new AccountManager();
         $accountManager->storeFromRequest($request, $id);
+        
+    }
+    public static function deleteById($id){
+
+        AccountManager::deleteById($id);
     }
 }

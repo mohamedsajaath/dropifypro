@@ -73,8 +73,10 @@
                                     </div>
                                     <!--end::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a class="menu-link px-3 delete-sweet d-flex gap-5">
-                                            <i class="bi bi-trash"></i>Delete</a>
+                                        <a class="menu-link px-3 acc-delete d-flex gap-5" 
+                                        data-id="{{ $account_manager_detail->id }}">
+                                            <i class="bi bi-trash"></i>Delete
+                                        </a>
                                     </div>
                                     <div class="menu-item px-3">
                                         <a class="menu-link px-3 assign-sellers d-flex gap-5">
@@ -118,15 +120,6 @@
                     </li>
                     <li class="page-item">
                         <a href="#" class="page-link">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">4</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">5</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">6</a>
                     </li>
                     <li class="page-item next">
                         <a href="#" class="page-link">
