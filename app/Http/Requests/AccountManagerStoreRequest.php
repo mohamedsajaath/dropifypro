@@ -26,7 +26,7 @@ class AccountManagerStoreRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'min:6', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
-            'contact_no' => ['required'],
+            'contact_no' => ['required', 'numeric',],
             'response_time' => ['required']
         ];
     }

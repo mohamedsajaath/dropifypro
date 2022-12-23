@@ -17,19 +17,16 @@
     <div class="row g-9 mb-8 justify-content-center">
         <div class="col-md-8 fv-row">
             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">Name :</label>
-                <div class="input-group-append">
-                <span class=""></span>
-                </div>
-            <input type="text" class="form-control form-control" placeholder="" name="name" />
+            <input type="text" class="form-control form-control" placeholder="" name="name" required/>
+
             <label class="d-flex align-items-center fs-6 fw-semibold mb-2 mt-5">E-Mail :</label>
-                <span class=""></span>
-            <input type="text" class="form-control form-control" placeholder="" name="email" />
+            <input type="text" class="form-control form-control" placeholder="" name="email" required/>
+
             <label class="d-flex align-items-center fs-6 fw-semibold mb-2 mt-5">WhatsApp No :</label>
-                <span class=""></span>
-            <input type="text" class="form-control form-control" placeholder="" name="contact_no" />
+            <input type="text" class="form-control form-control" placeholder="" name="contact_no" required/>
+
             <label class="d-flex align-items-center fs-6 fw-semibold mb-2 mt-5">Response Time :</label>
-                <span class=""></span>
-            <input type="text" class="form-control form-control" placeholder="" name="response_time" />
+            <input type="text" class="form-control form-control" placeholder="" name="response_time" required/>
         </div>
     </div>
 </div> `);
