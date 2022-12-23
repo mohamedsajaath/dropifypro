@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Helper\Service\MdCountryService;
 use App\Helper\Service\ProfileService;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\ProfileEmailUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
-use App\Models\MdCountry;
 use App\Models\User;
 
 class ProfileController extends Controller
 {
-    public function index()
+    public function index($page)
     {
-        return view('pages.admin.account_settings.overview');
+        return view('pages.admin.account.' . $page);
+    }
+
+    public function sellerIndex($page)
+    {
+        return view('pages.seller.account.' . $page);
     }
 
     /**
@@ -42,8 +44,7 @@ class ProfileController extends Controller
     public function updateDetails(ProfileUpdateRequest $request)
     {
         ProfileService::updateFromRequest($request);
-        //ToDo Redirect back with message
-        //return Redirect::back()->with('status', 'profile-updated')
+        return back()->with('status', 'profile-updated');
     }
 
     /**
@@ -56,11 +57,10 @@ class ProfileController extends Controller
     {
         $passwordValidated = ProfileService::validatePassword($request->confirmemailpassword);
         if (!$passwordValidated) {
-            //ToDo return Redirect::back()->with('status','Password does not match');
+            return back()->with('status', 'Password does not match');
         }
-
         ProfileService::updateFromRequest($request);
-        //ToDo return Redirect::back()->with('status','Password does not match');
+        return back()->with('status', 'Password-updated');
     }
 
     /**
@@ -71,26 +71,10 @@ class ProfileController extends Controller
      */
     public function updateImage(Request $request)
     {
-        $user = $request->user();
-        if ($request->has('avatar')) {
-            if (isset($user->avatar) && !empty($user->avatar) && file_exists(public_path('storage/' . $user->avatar))) {
-                unlink(public_path('storage/' . $user->avatar));
-            }
-
-            $extension = $request->avatar->getClientOriginalExtension();
-            $imageName = time() . "." . $extension;
-            $path = $request->avatar->storeAs('public/images', $imageName);
-            $user->image_url = str_replace('public/', '', $path);
-            $user->save();
-            if ($user->type == User::ADMIN) {
-                return Redirect::route('admin.overview')->with('status', 'profile-image-updated');
-            }
-            return Redirect::route('seller.overview')->with('status', 'profile-image-updated');
-        }
-        if ($user->type == User::ADMIN) {
-            return Redirect::route('admin.overview');
-        }
-        return Redirect::route('seller.overview');
+        $imageSaved = ProfileService::updateImageFromRequest($request);
+        if ($imageSaved) {
+            return back()->with('status', 'profile-image-updated');      
+        }return back()->with('status', 'please choose image');
     }
 
     /**

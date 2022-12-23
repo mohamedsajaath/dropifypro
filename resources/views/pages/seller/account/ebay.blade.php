@@ -16,36 +16,9 @@
                     <div class="card mb-5 mb-xl-10">
                         <div class="card-body pt-9 pb-0">
                             <!--begin::Details-->
-                            @include('pages.seller.account_settings.includes.index')
+                            @include('pages.seller.account.includes.index')
                             <!--end::Details-->
-                            <!--begin::Navs-->
-                            <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
-                                <!--begin::Nav item-->
-                                <li class="nav-item mt-2">
-                                    <a class="nav-link text-active-primary ms-0 me-10 py-5 "
-                                        href="{{ route('seller.overview') }}">Overview</a>
-                                </li>
-                                <!--end::Nav item-->
-                                <!--begin::Nav item-->
-                                <li class="nav-item mt-2">
-                                    <a class="nav-link text-active-primary ms-0 me-10 py-5"
-                                        href="{{ route('seller.profile') }}">Profile</a>
-                                </li>
-                                <!--end::Nav item-->
-                                <!--begin::Nav item-->
-                                <li class="nav-item mt-2">
-                                    <a class="nav-link text-active-primary ms-0 me-10 py-5 active"
-                                        href="{{ route('seller.ebay') }}">E-Bay </a>
-                                </li>
-                                <!--end::Nav item-->
-                                <!--begin::Nav item-->
-                                <li class="nav-item mt-2">
-                                    <a class="nav-link text-active-primary ms-0 me-10 py-5"
-                                        href="{{ route('seller.plan') }}">Plans</a>
-                                </li>
-                                <!--end::Nav item-->
-                            </ul>
-                            <!--begin::Navs-->
+                           
                         </div>
                     </div>
                     <!--end::Navbar-->

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @push('css')
-    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
 @endpush
 
 @section('content')
@@ -16,36 +15,8 @@
                     <div class="card mb-5 mb-xl-10">
                         <div class="card-body pt-9 pb-0">
                             <!--begin::Details-->
-                            @include('pages.admin.account_settings.includes.index')
+                            @include('pages.admin.account.includes.index')
                             <!--end::Details-->
-                            <!--begin::Navs-->
-                            <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
-                                <!--begin::Nav item-->
-                                <li class="nav-item mt-2">
-                                    <a class="nav-link text-active-primary ms-0 me-10 py-5 "
-                                        href="{{ route('admin.overview') }}">Overview</a>
-                                </li>
-                                <!--end::Nav item-->
-                                <!--begin::Nav item-->
-                                <li class="nav-item mt-2">
-                                    <a class="nav-link text-active-primary ms-0 me-10 py-5 active"
-                                        href="{{ route('admin.profile') }}">Profile</a>
-                                </li>
-                                <!--end::Nav item-->
-                                <!--begin::Nav item-->
-                                <li class="nav-item mt-2">
-                                    <a class="nav-link text-active-primary ms-0 me-10 py-5"
-                                        href="{{ route('admin.ebay') }}">E-Bay </a>
-                                </li>
-                                <!--end::Nav item-->
-                                <!--begin::Nav item-->
-                                <li class="nav-item mt-2">
-                                    <a class="nav-link text-active-primary ms-0 me-10 py-5"
-                                        href="{{ route('admin.plan') }}">Plans</a>
-                                </li>
-                                <!--end::Nav item-->
-                            </ul>
-                            <!--begin::Navs-->
                         </div>
                     </div>
                     <!--end::Navbar-->
@@ -137,7 +108,7 @@
                                     <!--begin::Input group-->
                                     <div class="row mb-6">
                                         <!--begin::Label-->
-                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">Full
+                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">
                                             Name</label>
                                         <!--end::Label-->
                                         <!--begin::Col-->
@@ -145,19 +116,10 @@
                                             <!--begin::Row-->
                                             <div class="row">
                                                 <!--begin::Col-->
-                                                <div class="col-lg-6 fv-row fv-plugins-icon-container">
-                                                    <input type="text" name="first_name"
+                                                <div class="col-lg-8 fv-row fv-plugins-icon-container">
+                                                    <input type="text" name="name"
                                                         class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
-                                                        placeholder="First name" value="{{ Auth::user()->first_name }}">
-                                                    <div class="fv-plugins-message-container invalid-feedback">
-                                                    </div>
-                                                </div>
-                                                <!--end::Col-->
-                                                <!--begin::Col-->
-                                                <div class="col-lg-6 fv-row fv-plugins-icon-container">
-                                                    <input type="text" name="last_name"
-                                                        class="form-control form-control-lg form-control-solid"
-                                                        placeholder="Last name" value="{{ Auth::user()->last_name }}">
+                                                        placeholder="Name" value="{{ Auth::user()->name }}">
                                                     <div class="fv-plugins-message-container invalid-feedback">
                                                     </div>
                                                 </div>
@@ -178,7 +140,7 @@
                                             <!--begin::Row-->
                                             <div class="row">
                                                 <!--begin::Col-->
-                                                <div class="col-lg-12 fv-row fv-plugins-icon-container">
+                                                <div class="col-lg-8 fv-row fv-plugins-icon-container">
                                                     <input type="text" name="address"
                                                         class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
                                                         placeholder="Address" value="{{ Auth::user()->address }}">
@@ -203,7 +165,7 @@
                                             <!--begin::Row-->
                                             <div class="row">
                                                 <!--begin::Col-->
-                                                <div class="col-lg-6 fv-row fv-plugins-icon-container">
+                                                <div class="col-lg-8 fv-row fv-plugins-icon-container">
                                                     <input type="text" name="city"
                                                         class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
                                                         placeholder="city" value="{{ Auth::user()->city }}">
@@ -228,7 +190,7 @@
                                             <!--begin::Row-->
                                             <div class="row">
                                                 <!--begin::Col-->
-                                                <div class="col-lg-6 fv-row fv-plugins-icon-container">
+                                                <div class="col-lg-8 fv-row fv-plugins-icon-container">
                                                     <input type="text" name="state"
                                                         class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
                                                         placeholder="State" value="{{ Auth::user()->state }}">
@@ -253,7 +215,7 @@
                                             <!--begin::Row-->
                                             <div class="row">
                                                 <!--begin::Col-->
-                                                <div class="col-lg-6 fv-row fv-plugins-icon-container">
+                                                <div class="col-lg-8 fv-row fv-plugins-icon-container">
                                                     <input type="text" name="zipcode"
                                                         class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
                                                         placeholder="Zipcode" value="{{ Auth::user()->zipcode }}">
@@ -271,40 +233,79 @@
                                     <div class="row mb-6">
                                         <!--begin::Label-->
                                         <label class="col-lg-4 col-form-label fw-semibold fs-6">
-                                            <span>Contact Phone</span>
+                                            Contact Phone
                                         </label>
                                         <!--end::Label-->
                                         <!--begin::Col-->
-                                        <div class="col-lg-4 fv-row fv-plugins-icon-container">
-                                            <input type="tel" name="phone_no"
-                                                class="form-control form-control-lg form-control-solid"
-                                                placeholder="Phone number" value="{{ Auth::user()->phone_no }}">
-                                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                                        <div class="col-lg-8">
+                                            <!--begin::Row-->
+                                            <div class="row">
+                                                <div class="col-lg-8 fv-row fv-plugins-icon-container">
+                                                    <input type="tel" name="phone_no"
+                                                        class="form-control form-control-lg form-control-solid"
+                                                        placeholder="Phone number" value="{{ Auth::user()->phone_no }}">
+                                                    <div class="fv-plugins-message-container invalid-feedback"></div>
+                                                </div>
+                                                <!--end::Col-->
+                                            </div>
                                         </div>
-                                        <!--end::Col-->
                                     </div>
                                     <!--end::Input group-->
                                     <!--begin::Input group-->
                                     <div class="row mb-6">
                                         <!--begin::Label-->
                                         <label class="col-lg-4 col-form-label fw-semibold fs-6">
-                                            <span>Country</span>
+                                            Country
                                         </label>
                                         <!--end::Label-->
                                         <!--begin::Col-->
-                                        <div class="col-lg-4 fv-row fv-plugins-icon-container">
-                                            <select name="country_id" aria-label="Select a Country"
-                                                data-control="select2" data-placeholder="Select a country..."
-                                                class="form-select form-select-solid">
-                                                <option value="">Select A Country</option>
-                                                @foreach (App\models\MdCountry::country() as $country)
-                                                    <option value="{{ $country->id }}"
-                                                        {{ $country->id == Auth::user()->country_id ? 'selected' : '' }}>
-                                                        {{ $country->name }}</option>
-                                                @endforeach
-                                            </select>
+                                        <div class="col-lg-8">
+                                            <!--begin::Row-->
+                                            <div class="row">
+                                                <div class="col-lg-8 fv-row fv-plugins-icon-container">
+                                                    <select name="country_id" aria-label="Select a Country"
+                                                        data-control="select2" data-placeholder="Select a country..."
+                                                        class="form-select form-select-solid">
+                                                        <option value="">Select A Country</option>
+                                                        @foreach (App\models\MdCountry::country() as $country)
+                                                            <option value="{{ $country->id }}"
+                                                                {{ $country->id == Auth::user()->country_id ? 'selected' : '' }}>
+                                                                {{ $country->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <!--end::Col-->
+                                            </div>
                                         </div>
-                                        <!--end::Col-->
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="row mb-6">
+                                        <!--begin::Label-->
+                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">
+                                            Currency
+                                        </label>
+                                        <!--end::Label-->
+                                        <!--begin::Col-->
+                                        <div class="col-lg-8">
+                                            <!--begin::Row-->
+                                            <div class="row">
+                                                <div class="col-lg-8 fv-row fv-plugins-icon-container">
+                                                    <select name="currency_id" aria-label="Select a Currency"
+                                                        data-control="select2" data-placeholder="Select a Currency..."
+                                                        class="form-select form-select-solid" required>
+                                                        <option value="">Select A Currency</option>
+                                                        @foreach (App\models\MdCountry::country() as $country)
+                                                            <option value="{{ $country->id }}"
+                                                                {{ $country->id == Auth::user()->currency_id ? 'selected' : '' }}>
+                                                                {{ $country->name . '  ( ' . $country->currency_name . ' )' }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <!--end::Col-->
+                                            </div>
+                                        </div>
                                     </div>
                                     <!--end::Input group-->
                             </div>
@@ -352,8 +353,7 @@
                                         <!--begin::Form-->
                                         <form id="kt_signin_change_email"
                                             class="form fv-plugins-bootstrap5 fv-plugins-framework"
-                                            novalidate="novalidate" action="{{ route('profile.update.email') }}"
-                                            method="POST">
+                                            action="{{ route('profile.update.email') }}" method="POST">
                                             @csrf
                                             @method('patch')
                                             <div class="row mb-6">
@@ -365,10 +365,8 @@
                                                             Address</label>
                                                         <input type="email"
                                                             class="form-control form-control-lg form-control-solid"
-                                                            id="emailaddress" placeholder="Email Address"
-                                                            name="emailaddress" value="">
-                                                        <div class="fv-plugins-message-container invalid-feedback">
-                                                        </div>
+                                                            id="email-address" placeholder="Email Address" name="email"
+                                                            value="" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
@@ -378,16 +376,15 @@
                                                             Password</label>
                                                         <input type="password"
                                                             class="form-control form-control-lg form-control-solid"
-                                                            name="confirmemailpassword" id="confirmemailpassword">
-                                                        <div class="fv-plugins-message-container invalid-feedback">
-                                                        </div>
+                                                            name="confirmemailpassword" id="confirm-email-password"
+                                                            required>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="d-flex">
-                                                <button id="kt_signin_submit" type="submit"
-                                                    class="btn btn-primary me-2 px-6">Update Email</button>
-                                                <button id="kt_signin_cancel" type="button"
+                                                <button type="submit" class="btn btn-primary me-2 px-6">Update
+                                                    Email</button>
+                                                <button type="reset"
                                                     class="btn btn-color-gray-400 btn-active-light-primary px-6">Cancel</button>
                                             </div>
                                         </form>
@@ -491,14 +488,14 @@
         </div>
         <!--end::Content wrapper-->
     </div>
-    <input id="message" type="hidden" value="{{ session('status') }}">
+    {{-- <input id="message" type="hidden" value="{{ session('status') }}"> --}}
 @endsection
 @push('script')
     <script src="{{ asset('assets/js/custom/account/settings/signin-methods.js') }}"></script>
     <script>
         loadBreadCrumbWithHeader("Account", "Profile", "Dashboard", "#")
     </script>
-    <script>
+    {{-- <script>
         const msg = $('#message').val();
         if (msg != "") {
             toastr.options = {
@@ -521,5 +518,5 @@
 
             toastr.error(msg);
         }
-    </script>
+    </script> --}}
 @endpush

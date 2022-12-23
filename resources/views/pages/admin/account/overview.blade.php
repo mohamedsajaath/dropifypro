@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('css')
-    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+
 @endpush
 
 @section('content')
@@ -16,7 +16,7 @@
                     <div class="card mb-5 mb-xl-10">
                         <div class="card-body pt-9 pb-0">
                             <!--begin::Details-->
-                            @include('pages.admin.account_settings.includes.index')
+                            @include('pages.admin.account.includes.index')
                             <!--end::Details-->
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                             </div>
                             <!--end::Card title-->
                             <!--begin::Action-->
-                            <a href="{{ route('admin.profile') }}" class="btn btn-primary align-self-center">Edit
+                            <a href="{{ route('admin.account.',['page'=>'profile']) }}" class="btn btn-primary align-self-center">Edit
                                 Profile</a>
                             <!--end::Action-->
                         </div>
@@ -125,7 +125,7 @@
                             <!--begin::Input group-->
                             <div class="row mb-7">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 fw-semibold text-muted">Country</label>
+                                <label class="col-lg-4 fw-semibold text-muted required">Country</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
@@ -137,11 +137,11 @@
                             <!--begin::Input group-->
                             <div class="row mb-7">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 fw-semibold text-muted">Currency</label>
+                                <label class="col-lg-4 fw-semibold text-muted required">Currency</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
-                                    <span class="fw-bold fs-6 text-gray-800">{{Auth::user()->currency}}</span>
+                                    <span class="fw-bold fs-6 text-gray-800">{{ App\models\MdCountry::userCurrency(Auth::user()->currency_id) }}</span>
                                 </div>
                                 <!--end::Col-->
                             </div>

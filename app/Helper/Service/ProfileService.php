@@ -22,4 +22,23 @@ class ProfileService
         if (Hash::check($confirmedPassword, $user->password,)) return true;
         return false;
     }
+
+    public static function updateImageFromRequest(Request $request)
+    {
+        $user = User::getCurrentUser();
+        if ($request->has('avatar')) {
+            if (isset($user->avatar) && !empty($user->avatar) && file_exists(public_path('storage/' . $user->avatar))) {
+                unlink(public_path('storage/' . $user->avatar));
+            }
+
+            $extension = $request->avatar->getClientOriginalExtension();
+            $imageName = time() . "." . $extension;
+            $path = $request->avatar->storeAs('public/images', $imageName);
+            $user->image_url = str_replace('public/', '', $path);
+            $user->save();  
+            return true;   
+        }return false;
+    }
+
+
 }
