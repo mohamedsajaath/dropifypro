@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug');
             $table->double('price_month', 8, 2);
             $table->double('price_year', 8, 2);
             $table->timestamps();

@@ -4,7 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "d7f385a7010855571403726d17b5a45e",
+=======
+<<<<<<< HEAD
+    "content-hash": "ccbd816a07b206f971042295b899d1ba",
+=======
+    "content-hash": "7b5927cb7d5e902f86aa7c0ac8b2836c",
+>>>>>>> 8147fcaaed28f3a7a7eec4f3174c28f6b4669cf5
+>>>>>>> 6f80b511ac043c423a866c833b33803afc87b6c3
     "packages": [
         {
             "name": "brick/math",
@@ -1466,6 +1474,18 @@
         },
         {
             "name": "league/flysystem",
+<<<<<<< HEAD
+            "version": "3.10.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem.git",
+                "reference": "a7790f3dd1b27af81d380e6b2afa77c16ab7e181"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a7790f3dd1b27af81d380e6b2afa77c16ab7e181",
+                "reference": "a7790f3dd1b27af81d380e6b2afa77c16ab7e181",
+=======
             "version": "3.11.0",
             "source": {
                 "type": "git",
@@ -1476,6 +1496,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/7e423e5dd240a60adfab9bde058d7668863b7731",
                 "reference": "7e423e5dd240a60adfab9bde058d7668863b7731",
+>>>>>>> 8147fcaaed28f3a7a7eec4f3174c28f6b4669cf5
                 "shasum": ""
             },
             "require": {
@@ -1537,7 +1558,11 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
+<<<<<<< HEAD
+                "source": "https://github.com/thephpleague/flysystem/tree/3.10.4"
+=======
                 "source": "https://github.com/thephpleague/flysystem/tree/3.11.0"
+>>>>>>> 8147fcaaed28f3a7a7eec4f3174c28f6b4669cf5
             },
             "funding": [
                 {
@@ -1553,7 +1578,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
+            "time": "2022-11-26T19:48:01+00:00"
+=======
             "time": "2022-12-02T14:39:57+00:00"
+>>>>>>> 8147fcaaed28f3a7a7eec4f3174c28f6b4669cf5
         },
         {
             "name": "league/mime-type-detection",
@@ -1715,6 +1744,18 @@
         },
         {
             "name": "nesbot/carbon",
+<<<<<<< HEAD
+            "version": "2.63.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/briannesbitt/Carbon.git",
+                "reference": "ad35dd71a6a212b98e4b87e97389b6fa85f0e347"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/ad35dd71a6a212b98e4b87e97389b6fa85f0e347",
+                "reference": "ad35dd71a6a212b98e4b87e97389b6fa85f0e347",
+=======
             "version": "2.64.0",
             "source": {
                 "type": "git",
@@ -1725,6 +1766,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/889546413c97de2d05063b8cb7b193c2531ea211",
                 "reference": "889546413c97de2d05063b8cb7b193c2531ea211",
+>>>>>>> 8147fcaaed28f3a7a7eec4f3174c28f6b4669cf5
                 "shasum": ""
             },
             "require": {
@@ -1735,7 +1777,11 @@
                 "symfony/translation": "^3.4 || ^4.0 || ^5.0 || ^6.0"
             },
             "require-dev": {
+<<<<<<< HEAD
+                "doctrine/dbal": "^2.0 || ^3.0",
+=======
                 "doctrine/dbal": "^2.0 || ^3.1.4",
+>>>>>>> 8147fcaaed28f3a7a7eec4f3174c28f6b4669cf5
                 "doctrine/orm": "^2.7",
                 "friendsofphp/php-cs-fixer": "^3.0",
                 "kylekatarnls/multi-tester": "^2.0",
@@ -1813,7 +1859,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
+            "time": "2022-10-30T18:34:28+00:00"
+=======
             "time": "2022-11-26T17:36:00+00:00"
+>>>>>>> 8147fcaaed28f3a7a7eec4f3174c28f6b4669cf5
         },
         {
             "name": "nette/schema",
@@ -5701,6 +5751,8 @@
             "time": "2020-07-09T08:09:16+00:00"
         },
         {
+<<<<<<< HEAD
+=======
             "name": "laravel/breeze",
             "version": "v1.15.3",
             "source": {
@@ -5762,6 +5814,7 @@
             "time": "2022-11-28T14:36:07+00:00"
         },
         {
+>>>>>>> 8147fcaaed28f3a7a7eec4f3174c28f6b4669cf5
             "name": "laravel/pint",
             "version": "v1.2.1",
             "source": {

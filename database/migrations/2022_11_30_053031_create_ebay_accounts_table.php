@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('refresh_token');
             $table->text('access_token');
             $table->date('connected_date');
+            $table->String('site_id');
             $table->timestamps();
         });
     }

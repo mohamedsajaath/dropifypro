@@ -60,8 +60,8 @@
                             </div>
                             <!--end::Card title-->
                             <!--begin::Action-->
-                            <a href="#" class="btn btn-primary er fs-6 px-8 py-4 my-5" data-bs-toggle="modal"
-                                data-bs-target="#kt_modal_upgrade_plan">Upgrade Plan</a>
+                            {{-- <a href="#" class="btn btn-primary er fs-6 px-8 py-4 my-5" data-bs-toggle="modal"
+                                data-bs-target="#kt_modal_upgrade_plan">Upgrade Plan</a> --}}
                             <!--end::Action-->
                         </div>
                         <!--begin::Card header-->

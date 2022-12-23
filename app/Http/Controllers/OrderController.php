@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
+use App\Helper\Service\OrderService;
 use Illuminate\Http\Request;
+
 
 class OrderController extends Controller
 {
@@ -14,7 +17,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = OrderService::getOrderById(Auth::user()->id);    
+        $order_items = OrderService::getOrderItemsById($orders[0]->id);
+    //    dd($orders);
+        return view('pages.seller.orders.paid.index')->with('Order_datas',["orders"=> $orders,"order_items"=>$order_items]);
     }
 
     /**

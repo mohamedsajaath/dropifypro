@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('product_variant_id');
             $table->integer('quantity');
             $table->date('date');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }

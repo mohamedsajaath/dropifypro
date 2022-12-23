@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\Service\Admin\PlanService;
+use App\Http\Requests\PlanRequest;
 use App\Models\Plan;
 use Illuminate\Http\Request;
 
 class PlanController extends Controller
 {
+    use ResponseWrapper;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +17,8 @@ class PlanController extends Controller
      */
     public function index()
     {
-        //
+        $plan_details = PlanService::show();
+        return view("pages.admin.account_settings.plans")->with("plan_details", $plan_details);
     }
 
     /**
@@ -24,7 +28,6 @@ class PlanController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -33,9 +36,16 @@ class PlanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PlanRequest $request)
     {
-        //
+        try {
+            $plan = new Plan();
+            $plan->fill($request->all());
+            PlanService::save($plan);
+            return self::response('Successfully Added');
+        } catch (\Exception $ex) {
+            return self::response($ex->getMessage(), [], 422);
+        }
     }
 
     /**
@@ -46,7 +56,6 @@ class PlanController extends Controller
      */
     public function show(Plan $plan)
     {
-        //
     }
 
     /**
@@ -55,9 +64,10 @@ class PlanController extends Controller
      * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Plan $plan)
+    public function edit($id)
     {
-        //
+        $plan = Plan::find($id);
+        return view("pages.admin.account_settings.includes.edit_plan_model")->with('plan', $plan);
     }
 
     /**
@@ -67,9 +77,20 @@ class PlanController extends Controller
      * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Plan $plan)
+    public function update(PlanRequest $request, Plan $plan)
     {
-        //
+        try {
+            $id = $request->id;
+            $plan = new Plan();
+            $plan = Plan::find($id);
+            $plan->name = $request->name;
+            $plan->price_month = $request->price_month;
+            $plan->price_year = $request->price_year;   
+            PlanService::save($plan);
+            return self::response('Successfully Updated');
+        } catch (\Exception $ex) {
+            return self::response($ex->getMessage(), [], 422);
+        }
     }
 
     /**

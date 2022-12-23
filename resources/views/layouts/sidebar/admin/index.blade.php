@@ -2,19 +2,16 @@
 {{-- DASHBOARD --}}
 
 
-<!-- <div class="menu-item here show menu-accordion">
-    <!--begin:Menu link
-
+ {{-- <div class="menu-item here show menu-accordion">
     <a class="menu-link" href="{{ route('admin.dashboard') }}">
         <span class="menu-icon">
-            <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg
            <span class="svg-icon svg-icon-2">
                <i class="bi bi-grid-1x2 fs-2"></i>
 												</span>
         </span>
         <span class="menu-title">Dashboard</span>
     </a>
-</div> -->
+</div>  --}}
 
 
 {{-- DASHBOARD --}}
@@ -25,7 +22,7 @@
 
 <div  class="menu-item here show menu-accordion">
     <!--begin:Menu link-->
-    <a class="menu-link" href="{{ route('admin.products.active') }}">
+    <a class="menu-link" href="{{ route('admin.products') }}">
         <span class="menu-icon">
             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
             <span class="svg-icon svg-icon-2">
@@ -219,7 +216,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link" href="{{route('admin.support.tickets')}}">
+            <a class="menu-link" href="{{route('admin.support.tickets.index')}}">
                 <span class="menu-bullet">
                     <span class="bullet bullet-dot"></span>
                 </span>
@@ -231,7 +228,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link" href="{{route('admin.support.account-managers')}}">
+            <a class="menu-link" href="{{route('admin.support.account-managers.index')}}">
                 <span class="menu-bullet">
                     <span class="bullet bullet-dot"></span>
                 </span>

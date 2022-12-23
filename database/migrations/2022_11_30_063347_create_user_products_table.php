@@ -17,7 +17,11 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('product_variant_id');
+<<<<<<< HEAD
             $table->text('ebay_item_id');
+=======
+            $table->String('ebay_item_id');
+>>>>>>> 6f80b511ac043c423a866c833b33803afc87b6c3
             $table->double('ebay_price', 8, 2);
             $table->date('date');
             $table->timestamps();

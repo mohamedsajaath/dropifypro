@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Redirect;
 
 class PasswordController extends Controller
 {
@@ -17,15 +18,17 @@ class PasswordController extends Controller
      */
     public function update(Request $request)
     {
+        
         $validated = $request->validateWithBag('updatePassword', [
-            'current_password' => ['required', 'current_password'],
-            'password' => ['required', Password::defaults(), 'confirmed'],
+            'currentpassword' => ['required', 'currentpassword'],
+            'newpassword' => ['required', Password::defaults(), 'confirmed'],
         ]);
 
         $request->user()->update([
-            'password' => Hash::make($validated['password']),
+            'password' => Hash::make($validated['newpassword']),
         ]);
-
-        return back()->with('status', 'password-updated');
+      
+        // return back()->with('status', 'password-updated');
+        return Redirect::route('admin.overview')->with('status', 'password-updated');
     }
 }

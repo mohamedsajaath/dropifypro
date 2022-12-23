@@ -72,7 +72,7 @@
                                     <tr>
                                         <!--begin::Category=-->
                                         <td class=" pe-0" style="padding-left: 10px;">
-                                            <a class="text-gray-600 text-hover-primary fs-5 fw-bold">SLR8745</a>
+                                            <a class="text-gray-600 text-hover-primary fs-5 fw-bold seller-slider">SLR8745</a>
                                         </td>
                                         <!--end::Category=-->
                                         <!--begin::SKU=-->

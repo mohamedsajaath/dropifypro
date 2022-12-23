@@ -2,7 +2,8 @@
 
 namespace App\Helper\Utility;
 
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 
 class DateTimeUtility
 {
@@ -65,12 +66,13 @@ class DateTimeUtility
     {
         return self::getFormattedTime(Carbon::now()->startOfMonth());
     }
+
     public static function getStartDate_ofTheWeekFromCurrentTime(): string
     {
         return self::getFormattedTime(Carbon::now()->startOfWeek(), 'Y-m-d');
     }
 
-    public static function getStartDate_ofTheYearFromCurrentTime():string
+    public static function getStartDate_ofTheYearFromCurrentTime(): string
     {
         return self::getFormattedTime(Carbon::now()->startOfYear(), 'Y-m-d');
     }
@@ -147,7 +149,8 @@ class DateTimeUtility
         return $date_obj->format($format);
     }
 
-    public static function getPreviousHoursAtomDateTime_fromPassedTime_byHours($before_hours, $time){
+    public static function getPreviousHoursAtomDateTime_fromPassedTime_byHours($before_hours, $time)
+    {
         $time = self::castToDateObject($time);
         $time = $time->subHours($before_hours);
         return self::getFormattedTime($time, \DateTimeInterface::ATOM);
@@ -249,7 +252,7 @@ class DateTimeUtility
     public static function getZoneConvertedDate($time, $to_zone, $from_zone = 'UTC')
     {
         $time .= " {$from_zone}";
-        return  Carbon::parse($time)->tz($to_zone);
+        return Carbon::parse($time)->tz($to_zone);
     }
 
     public static function getTimeRelativeDifferent($start_time, $end_time)
@@ -271,6 +274,23 @@ class DateTimeUtility
         $from = self::castToDateObject($start_date);
         $to = self::castToDateObject($end_date);
         return $to->diffInDays($from);
+    }
+
+    public static function getFutureDates($days)
+    {
+        //Get date from today to next 7 days
+        $date = self::getCurrentDateTime('Y-m-d');
+        $period = CarbonPeriod::create($date, $days);
+        $dates = [];
+        foreach ($period as $key => $date) {
+            if ($key === $days) {
+                $period->invert()->start($date); // invert() is an alias for invertDateInterval()
+            }
+
+            $dates[] = $date->format('Y-m-d');
+        }
+
+        return $dates;
     }
 
 
