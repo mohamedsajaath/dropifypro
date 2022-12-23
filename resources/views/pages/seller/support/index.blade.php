@@ -279,34 +279,20 @@
     {{-- create tickets --}}
     <script>
         $(document).on('click', '.create-ticket', function() {
-            $('.custom-modal-size').addClass('mw-500px').removeClass('mw-650px');
-            loadFormModal("", "", "Create Ticket", "Create new ticket here", "Create", "submit-btn",
-                `
-    <!--begin::Card body-->
+            $('.custom-modal-size').addClass('mw-450px').removeClass('mw-650px');
+            loadFormModal("", "", "CREATE TICKETS", "", "Create", "submit-btn",
+    `<!--begin::Card body-->
     <div class="card-body p-9 card mb-5">
         <form id="kt_modal_new_card_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">
             <!--begin::Input group-->
             <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
-                <!--begin::Label-->
-                <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
-                    <span class="required">Title :</span>
-                    <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
-                        aria-label="Specify a card holder's name" data-kt-initialized="1"></i>
-                </label>
-                <!--end::Label-->
+                <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">Title :</label>
                 <input type="text" class="form-control form-control-solid" placeholder="Title" name="card_name" value="">
             </div>
-            <!--end::Input group-->
-            <!--begin::Input group-->
             <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
-                <label class="fs-6 fw-semibold mb-2">
-                    <span class="required">Description :</span>
-                    <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
-                        aria-label="Specify a card holder's name" data-kt-initialized="1"></i>
-                </label>
+                <label class="fs-6 fw-semibold mb-2">Description :</label> 
                 <textarea class="form-control form-control-solid" rows="3" name="target_details" placeholder="Description"></textarea>
             </div>
-            <!--end::Input group-->
         </form>
     </div>
     <!--end::Card body--> `);
@@ -318,63 +304,64 @@
         $(document).on('click', '.account-manager', function() {
             $('.custom-modal-size').addClass('mw-550px').removeClass('mw-650px');
             loadDetailModal("My Account Manager", "",
-                `      
-            <!--begin::details View-->
-            <div class="card mb-5 mb-xl-10" id="kt_profile_details_view">               
-                <!--begin::Card body-->
-                <div class="card-body p-9">
-                    <!--begin::Row-->
-                    <div class="row mb-7">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 fw-semibold text-muted">MANAGER NAME</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8">
-                            <span class="fw-bold fs-6 text-gray-800">Patric Watson</span>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Row-->
-                    <!--begin::Input group-->
-                    <div class="row mb-7">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 fw-semibold text-muted">E-MAIL</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8 fv-row">
-                            <span class="fw-bold fs-6 text-gray-800">watson123@gmail.com</span>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Input group-->
-                    <!--begin::Input group-->
-                    <div class="row mb-7">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 fw-semibold text-muted">WHATSAPP NO</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8 d-flex align-items-center">
-                            <span class="fw-bold fs-6 text-gray-800">044 3276 454 935</span>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Input group-->
-                    <!--begin::Input group-->
-                    <div class="row mb-7">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 fw-semibold text-muted">RESPONSE TIME</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8">
-                            <a href="#" class="fw-semibold fs-6 text-gray-800 text-hover-primary">1-2 hours</a>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Input group-->
-                </div>
-                <!--end::Card body-->
+                `
+<!--begin::details View-->
+<div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
+    <!--begin::Card body-->
+    <div class="card-body p-9">
+        <!--begin::Row-->
+        <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-semibold text-muted">MANAGER NAME</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8">
+                <span class="fw-bold fs-6 text-gray-800">Patric Watson</span>
             </div>
-            <!--end::details View-->    `);
+            <!--end::Col-->
+        </div>
+        <!--end::Row-->
+        <!--begin::Input group-->
+        <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-semibold text-muted">E-MAIL</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8 fv-row">
+                <span class="fw-bold fs-6 text-gray-800">watson123@gmail.com</span>
+            </div>
+            <!--end::Col-->
+        </div>
+        <!--end::Input group-->
+        <!--begin::Input group-->
+        <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-semibold text-muted">WHATSAPP NO</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8 d-flex align-items-center">
+                <span class="fw-bold fs-6 text-gray-800">044 3276 454 935</span>
+            </div>
+            <!--end::Col-->
+        </div>
+        <!--end::Input group-->
+        <!--begin::Input group-->
+        <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-semibold text-muted">RESPONSE TIME</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8">
+                <a href="#" class="fw-semibold fs-6 text-gray-800 text-hover-primary">1-2 hours</a>
+            </div>
+            <!--end::Col-->
+        </div>
+        <!--end::Input group-->
+    </div>
+    <!--end::Card body-->
+</div>
+<!--end::details View--> 
+    `);
         });
     </script>
 
@@ -383,8 +370,11 @@
         $(document).on('click', '.view-tickets', function() {
             $('.custom-modal-size').addClass('mw-700px').removeClass('mw-650px');
             loadDetailModal("Ticket", "View Tickets Details", `
-
-    <div class="scroll-y h-lg-auto" data-kt-element="messages" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_header, #kt_app_header, #kt_app_toolbar, #kt_toolbar, #kt_footer, #kt_app_footer, #kt_chat_messenger_header, #kt_chat_messenger_footer" data-kt-scroll-wrappers="#kt_content, #kt_app_content, #kt_chat_messenger_body" data-kt-scroll-offset="5px" style="max-height: 350px;">
+    <div class="scroll-y h-lg-auto" data-kt-element="messages" data-kt-scroll="true"
+    data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto"
+    data-kt-scroll-dependencies="#kt_header, #kt_app_header, #kt_app_toolbar, #kt_toolbar, #kt_footer, #kt_app_footer, #kt_chat_messenger_header, #kt_chat_messenger_footer"
+    data-kt-scroll-wrappers="#kt_content, #kt_app_content, #kt_chat_messenger_body" data-kt-scroll-offset="5px"
+    style="max-height: 350px;">
     <!--begin::Message(in)-->
     <div class="d-flex justify-content-start mb-10">
         <!--begin::Wrapper-->
@@ -400,13 +390,15 @@
             </div>
             <!--end::User-->
             <!--begin::Text-->
-            <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start" data-kt-element="message-text">How likely are you to recommend our company to your friends and family ?</div>
+            <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start"
+                data-kt-element="message-text">How likely are you to recommend our company to your friends and family ?
+            </div>
             <!--end::Text-->
         </div>
         <!--end::Wrapper-->
     </div>
     <!--end::Message(in)-->
-    
+
     <!--begin::Message(out)-->
     <div class="d-flex justify-content-end mb-10">
         <!--begin::Wrapper-->
@@ -422,7 +414,9 @@
             </div>
             <!--end::User-->
             <!--begin::Text-->
-            <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end" data-kt-element="message-text">Hey there, we’re just writing to let you know that you’ve been subscribed to a repository on GitHub.</div>
+            <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end"
+                data-kt-element="message-text">Hey there, we’re just writing to let you know that you’ve been subscribed
+                to a repository on GitHub.</div>
             <!--end::Text-->
         </div>
         <!--end::Wrapper-->
@@ -443,7 +437,8 @@
             </div>
             <!--end::User-->
             <!--begin::Text-->
-            <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start" data-kt-element="message-text">Ok, Understood!</div>
+            <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start"
+                data-kt-element="message-text">Ok, Understood!</div>
             <!--end::Text-->
         </div>
         <!--end::Wrapper-->
@@ -464,7 +459,8 @@
             </div>
             <!--end::User-->
             <!--begin::Text-->
-            <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end" data-kt-element="message-text">You’ll receive notifications for all issues, pull requests!</div>
+            <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end"
+                data-kt-element="message-text">You’ll receive notifications for all issues, pull requests!</div>
             <!--end::Text-->
         </div>
         <!--end::Wrapper-->
@@ -485,8 +481,10 @@
             </div>
             <!--end::User-->
             <!--begin::Text-->
-            <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start" data-kt-element="message-text">You can unwatch this repository immediately by clicking here:
-            <a href="https://keenthemes.com">Keenthemes.com</a></div>
+            <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start"
+                data-kt-element="message-text">You can unwatch this repository immediately by clicking here:
+                <a href="https://keenthemes.com">Keenthemes.com</a>
+            </div>
             <!--end::Text-->
         </div>
         <!--end::Wrapper-->
@@ -507,7 +505,8 @@
             </div>
             <!--end::User-->
             <!--begin::Text-->
-            <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end" data-kt-element="message-text">Most purchased Business courses during this sale!</div>
+            <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end"
+                data-kt-element="message-text">Most purchased Business courses during this sale!</div>
             <!--end::Text-->
         </div>
         <!--end::Wrapper-->
@@ -528,7 +527,9 @@
             </div>
             <!--end::User-->
             <!--begin::Text-->
-            <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start" data-kt-element="message-text">Company BBQ to celebrate the last quater achievements and goals. Food and drinks provided</div>
+            <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start"
+                data-kt-element="message-text">Company BBQ to celebrate the last quater achievements and goals. Food and
+                drinks provided</div>
             <!--end::Text-->
         </div>
         <!--end::Wrapper-->
@@ -549,7 +550,8 @@
             </div>
             <!--end::User-->
             <!--begin::Text-->
-            <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end" data-kt-element="message-text"></div>
+            <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end"
+                data-kt-element="message-text"></div>
             <!--end::Text-->
         </div>
         <!--end::Wrapper-->
@@ -575,38 +577,37 @@
             </div>
             <!--end::User-->
             <!--begin::Text-->
-            <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start" data-kt-element="message-text">Right before vacation season we have the next Big Deal for you.</div>
+            <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start"
+                data-kt-element="message-text">Right before vacation season we have the next Big Deal for you.</div>
             <!--end::Text-->
         </div>
         <!--end::Wrapper-->
     </div>
     <!--end::Message(template for in)-->
-</div> `);
+</div>
+ `);
         });
     </script>
 
     {{-- Close --}}
     <script>
         $(document).on('click', '.close', function() {
-            $('.custom-modal-size').addClass('mw-650px').removeClass('mw-650px');
+            $('.custom-modal-size').addClass('mw-450px').removeClass('mw-650px');
             loadFormModal("", "", "Close Ticket", "Are you sure want to close?", "Yes,Close it!", "submit-btn",
                 `
-    <!--begin::Card body-->
-    <div class="card-body p-9 card mb-5">
-        <form id="kt_modal_new_card_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">
-            <!--begin::Input group-->
-            <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
-                <label class="fs-6 fw-semibold mb-2">
-                    <span class="required">Reason :</span>
-                    <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
-                        aria-label="Specify a card holder's name" data-kt-initialized="1"></i>
-                </label>
-                <textarea class="form-control form-control-solid" rows="3" name="target_details" placeholder="Reason"></textarea>
-            </div>
-            <!--end::Input group-->
-        </form>
-    </div>
-    <!--end::Card body--> `);
+<!--begin::Card body-->
+<div class="card-body">
+    <form id="kt_modal_new_card_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">
+        <!--begin::Input group-->
+        <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
+            <label class="fs-6 fw-semibold mb-2">Reason :</label>
+            <textarea class="form-control form-control-solid" rows="3" name="target_details" placeholder="Reason"></textarea>
+        </div>
+        <!--end::Input group-->
+    </form>
+</div>
+<!--end::Card body-->
+ `);
         });
     </script>
 @endpush

@@ -15,7 +15,7 @@ class RegisterPlanController extends Controller
     public function index(Request $request)
     {
         $register_Plan_details = ["id" =>$request->id, "package" => $request->package];
-        return view("pages.register.index")->with('register_Plan_details', $register_Plan_details);
+       return view("pages.register.index")->with('register_Plan_details', $register_Plan_details);
     }
 
     /**

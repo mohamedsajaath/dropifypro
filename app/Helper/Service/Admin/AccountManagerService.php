@@ -6,13 +6,14 @@ use App\Models\AccountManager;
 
 class AccountManagerService
 {
-    public static function save(AccountManager $AccountManager)
+    public static function storeFromRequest($request, $id = null)
     {
-        $AccountManager->save();
+        $accountManager = new AccountManager();
+        $accountManager->storeFromRequest($request, $id);
+        
     }
+    public static function deleteById($id){
 
-    public static function show()
-    {
-        return AccountManager::all();
+        AccountManager::deleteById($id);
     }
 }

@@ -4,13 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helper\Service\Admin\AccountManagerService;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AccountManagerRequest;
+use App\Http\Requests\AccountManagerUpdateRequest;
+use App\Http\Requests\AccountManagerStoreRequest;
 use App\Models\AccountManager;
 use Illuminate\Http\Request;
 
 class AccountManagerController extends Controller
 {
     use ResponseWrapperAdmin;
+
     /**
      * Display a listing of the resource.
      *
@@ -18,10 +20,8 @@ class AccountManagerController extends Controller
      */
     public function index()
     {
-        $account_manager_details = AccountManagerService::show();
-        
-        return view('pages.admin.support.account-managers.index')
-        ->with("account_manager_details", $account_manager_details);
+        $accountManagers = AccountManager::getAll();
+        return view('pages.admin.support.account_managers.index')->with("account_manager_details", $accountManagers);
     }
 
     /**
@@ -30,33 +30,26 @@ class AccountManagerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {       
-       // return view('pages.admin.support.account-managers.create');
+    {
+        // return view('pages.admin.support.account_managers.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AccountManagerStoreRequest $request)
     {
-        $inputs = $request->all();
-        $newAccountManager = new AccountManager();
-        $newAccountManager->fill($inputs);
-        $newAccountManager->save();
-        $result = "result";
-        $message = "Succesfully insert";
-        $errors = [];
-        $status = 200;
-        return response()->json(['result' => $result, 'message' => $message, 'errors' => $errors], $status);
+        AccountManagerService::storeFromRequest($request);
+        return self::response('Successfully inserted');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -67,49 +60,38 @@ class AccountManagerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $accountManager = AccountManager::find($id);
-        return view('pages.admin.support.account-managers.includes.edit')->with('account_managers', $accountManager);
+        $accountManager = AccountManager::findById($id);
+        return view('pages.admin.support.account_managers.includes.edit')->with('account_managers', $accountManager);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AccountManagerRequest $request, AccountManager $AccountManager)
+    public function update(AccountManagerUpdateRequest $request)
     {
-        try {
-            $id = $request->id;
-            $AccountManager = new AccountManager();
-            $AccountManager = AccountManager::find($id);
-            $AccountManager->name = $request->name;
-            $AccountManager->email = $request->email;
-            $AccountManager->contact_no = $request->contact_no;
-            $AccountManager->response_time = $request->response_time;
-            $AccountManager->save();
-            return self::response('Successfully Updated');
-        } catch (\Exception $ex) {
-            return self::response($ex->getMessage(), [], 422);
-        }
+        AccountManagerService::storeFromRequest($request, $request['id']);
+        return self::response('Successfully updated');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AccountManager $AccountManager)
+    public function destroy($id)
     {
-        // AccountManagerService::delete($AccountManager);
-        // return self::response('success', 'User deleted!');
-    }
 
+        AccountManagerService::deleteById($id);
+        return self::response('success', 'User deleted!');
+    }
 }

@@ -26,7 +26,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
 //HOME END
 
-Route::post('/register-with-plan-details', [RegisterPlanController::class, 'index'])->name('register.plan');
+Route::get('/register-with-plan-details', [RegisterPlanController::class, 'index'])->name('register.plan');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -78,10 +78,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/tickets/create', [TicketController::class, 'create'])->name('admin.support.tickets.create');
         Route::post('/tickets/store', [TicketController::class, 'store'])->name('admin.support.tickets.store');
 
-        Route::get('/account-managers/index', [AccountManagerController::class, 'index'])->name('admin.support.account-managers.index');
-        // Route::get('account-managers/create', [AccountManagerController::class, 'create'])->name('admin.account-managers.create');
-        Route::post('/account-managers/store', [AccountManagerController::class, 'store'])->name('admin.account-managers.store');
-        Route::get('/account-managers/edit/{id}', [AccountManagerController::class, 'edit'])->name('admin.account-managers.edit');
+        Route::get('/support/account-managers', [AccountManagerController::class, 'index'])->name('admin.support.account-managers.index');
+        Route::post('/support/account-managers/store', [AccountManagerController::class, 'store'])->name('admin.account-managers.store');
+        Route::get('/support/account-managers/edit/{id}', [AccountManagerController::class, 'edit'])->name('admin.account-managers.edit');
+        Route::post('/support/account-managers/update', [AccountManagerController::class, 'update'])->name('admin.account-managers.update');
+        Route::get('/support/account-managers/delete/{id}', [AccountManagerController::class, 'destroy'])->name('admin.account-managers.delete');
 
         Route::get('/admin/on-boardings', [OnBoardingController::class, 'index'])->name('admin.on-boardings.index');
         Route::post('/on-boardings', [OnBoardingController::class,'store'])->name('admin.on-boarding.store');
@@ -103,20 +104,19 @@ Route::middleware('auth')->group(function () {
         })->name('admin.manage-emails');
 
         // ADMIN ACCOUNT SETTING START
-        Route::get('/account/overview', [ProfileController::class, 'index'])->name('admin.overview');
-        /*Route::get('/account/overview', function () {
-            return view('pages.admin.account_settings.overview');
-        })->name('admin.overview');*/
+        // Route::get('/account/overview', [ProfileController::class, 'index'])->name('admin.overview');
+        Route::get('/account/{page}', [ProfileController::class, 'index'])->name('admin.account.');
+       
 
-        Route::get('/account/profile', function () {
-            return view('pages.admin.account_settings.profile');
-        })->name('admin.profile');
+        // Route::get('/account/profile', function () {
+        //     return view('pages.admin.account_settings.profile');
+        // })->name('admin.profile');
 
-        Route::get('/account_e-bay', function () {
-            return view('pages.admin.account_settings.ebay');
-        })->name('admin.ebay');
+        // Route::get('/account_e-bay', function () {
+        //     return view('pages.admin.account_settings.ebay');
+        // })->name('admin.ebay');
 
-        Route::get('/account_plan', [PlanController::class, 'index'])->name('admin.plan');
+        Route::get('/account-plan', [PlanController::class, 'index'])->name('admin.plan');
         Route::post('/plan', [PlanController::class, 'store'])->name('plan.store');
         Route::get('/plan/{id}', [PlanController::class, 'edit'])->name('plan.edit');
         Route::post('/plan/update', [PlanController::class, 'update'])->name('plan.update');
@@ -172,25 +172,11 @@ Route::middleware('auth')->group(function () {
         })->name('onboarding');
 
         // SELLER ACCOUNT SETTING START
-        Route::get('/seller/account_overview', function () {
-            return view('pages.seller.account_settings.overview');
-        })->name('seller.overview');
-
-        Route::get('/seller/account_profile', function () {
-            return view('pages.seller.account_settings.profile');
-        })->name('seller.profile');
-
-        Route::get('/seller/account_e-bay', function () {
-            return view('pages.seller.account_settings.ebay');
-        })->name('seller.ebay');
-
-        Route::get('/seller/account_plan', function () {
-            return view('pages.seller.account_settings.plans');
-        })->name('seller.plan');
+        Route::get('seller/account/{page}', [ProfileController::class, 'sellerIndex'])->name('seller.account.');
         // SELLER ACCOUNT SETTING END
+
     });
     //SELLER END
-
 
 
     //Royal- Mail-Api
