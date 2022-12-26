@@ -1,3 +1,17 @@
+let toast = {
+    success: function (msg) {
+        toastr.success(msg);
+    },
+    info: function (msg) {
+        toastr.info(msg);
+    },
+    error: function (msg) {
+        toastr.error(msg);
+    },
+    warning: function (msg) {
+        toastr.warning(msg);
+    },
+};
 
 function loadFormModal(
     action,
@@ -208,7 +222,6 @@ let isConfirmToProcess = (alert_type, description, title = 'Are you sure!',icon)
             })
     });
 }
-
 
 $(document).on("click", ".product-slider", function (e) {
     e.preventDefault();

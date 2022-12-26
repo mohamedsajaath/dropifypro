@@ -1,3 +1,4 @@
+
 <div class="row px-10 py-4 w-100 mb-5 ">
     <div class="col-lg-12 col-xl-12 col-xxl-12 mb-5 mb-xl-0">
         <!--begin::Timeline widget 3-->
@@ -26,15 +27,15 @@
                         <li class="nav-item p-0 ms-0" role="presentation">
                             <!--begin::Date-->
                             @if ($key == '0')
-                                <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger active"
+                                <a class="nav-link btn d-flex flex-column flex-center rounded-pill date-changer-btn min-w-45px py-4 px-3 btn-active-danger active"
                                    data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_1"
-                                   aria-selected="false" tabindex="-1" role="tab">
+                                   aria-selected="false" tabindex="-1" role="tab" data-date="{{ $date }}">
                                     <span class="fs-6 fw-bold">{{ $date }}</span>
                                 </a>
                             @else
-                                <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
+                                <a class="nav-link btn d-flex flex-column flex-center rounded-pill date-changer-btn min-w-45px py-4 px-3 btn-active-danger"
                                    data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_1"
-                                   aria-selected="false" tabindex="-1" role="tab">
+                                   aria-selected="false" tabindex="-1" role="tab" data-date="{{ $date }}">
                                     <span class="fs-6 fw-bold">{{ $date }}</span>
                                 </a>
                             @endif
@@ -44,78 +45,92 @@
                 </ul>
                 <!--end::Nav-->
                 <!--begin::Tab Content -->
-                <div class="tab-content mb-2 px-9">
+                <div class="tab-content  mb-2 px-9" id="remove-content">
                     <!--begin::Tap pane-->
-                    <div class="tab-pane fade show active" id="kt_timeline_widget_3_tab_content_4" role="tabpanel">
-                        <!--begin::Wrapper-->
-                        <div class="d-flex align-items-center mb-6">
-                            <!--begin::Bullet-->
-                            <span data-kt-element="bullet"
-                                  class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-info"></span>
-                            <!--end::Bullet-->
-                            <!--begin::Info-->
-                            <div class="flex-grow-1 me-5">
-                                <!--begin::Time-->
-                                <div class="text-gray-800 fw-semibold fs-2">{{ $onboarding->time}}
-                                    <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                </div>
-                                <!--end::Time-->
-                                <!--begin::Description-->
-                                <div class="text-gray-700 fw-semibold fs-6">Want New Updates On Ebay Listing</div>
-                                <!--end::Description-->
-                                <!--begin::Link-->
-                                <div class="text-gray-400 fw-semibold fs-7">Seller Name
-                                    <!--begin::Name-->
-                                    <a href="#" class="text-primary opacity-75-hover fw-semibold">Peter
-                                        Marcus</a>
-                                    <!--end::Name-->
-                                </div>
-                                <!--end::Link-->
-                            </div>
-                            <!--end::Info-->
-                            <!--begin::Action-->
-                            <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
-                               data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                <span class="svg-icon svg-icon-5 m-0">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                                fill="currentColor"></path>
-                                        </svg>
-                                    </span>
-                                <!--end::Svg Icon-->
-                            </a>
-                            <!--begin::Menu-->
-                            <div
-                                class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-200px py-4"
-                                data-kt-menu="true">
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a class="menu-link px-3 product-edit d-flex gap-5 edit_event"
-                                       data-id="{{ $onboarding->id}}"><i
-                                            class="bi bi-pencil"></i> Edit</a>
+@foreach($onboarding as $onboarding_result)
 
-                                    {{-- <td><button class="btn btn-sm btn-success edit_plan"
-                                        data-id="{{ $onboarding->id }}">Edit</button></td> --}}
-                                    </tr>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
+<div class="tab-pane fade show active" id="kt_timeline_widget_3_tab_content_4" role="tabpanel">
+    <!--begin::Wrapper-->
+    <div class="d-flex align-items-center mb-6">
+        <!--begin::Bullet-->
+        <span data-kt-element="bullet"
+              class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-info"></span>
+        <!--end::Bullet-->
+        <!--begin::Info-->
+        <div class="flex-grow-1 me-5">
+            <!--begin::Time-->
+            <div class="text-gray-800 fw-semibold fs-2">
+                
+                <span class="text-gray-400 fw-semibold fs-7">{{ $onboarding_result['start_time']}}-{{ $onboarding_result['end_time']}}</span>
+            </div>
+            <!--end::Time-->
+            <!--begin::Description-->
+            <div class="text-gray-700 fw-semibold fs-6">
 
-                                    <a class="menu-link px-3 delete-sweet d-flex gap-5"
-                                       href="/onboardings/{{$onboarding->id}}"><i class="bi bi-trash"></i>
-                                        Delete</a>
-                                </div>
-                                <!--end::Menu item-->
-                            </div>
-                            <!--end::Action-->
-                        </div>
-                        <!--end::Wrapper-->
+                @if($onboarding_result['title'] == "")
+                Booking Pending...
+                @else
+                {{$onboarding_result['title']}}
+                @endif
+            </div>
+            <!--end::Description-->
+            <!--begin::Link-->
+            @if($onboarding_result['user_id'] != "")
+            <div class="text-gray-400 fw-semibold fs-7">Seller Id
+                <!--begin::Name-->
+                <a href="#" class="text-primary opacity-75-hover fw-semibold">{{ $onboarding_result['user_id']}}</a>
+                <!--end::Name-->
+            </div>
+            @endif
+            <!--end::Link-->
+        </div>
+        <!--end::Info-->
+        <!--begin::Action-->
+        <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
+           data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+            <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+            <span class="svg-icon svg-icon-5 m-0">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
+                            fill="currentColor"></path>
+                    </svg>
+                </span>
+            <!--end::Svg Icon-->
+        </a>
+        <!--begin::Menu-->
+        <div
+            class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-200px py-4"
+            data-kt-menu="true">
+            <!--begin::Menu item-->
+            <div class="menu-item px-3">
+                <a class="menu-link px-3 product-edit d-flex gap-5 edit_event"
+                   data-id="{{ $onboarding_result['id'] }}"><i
+                        class="bi bi-pencil"></i> Edit</a>
 
-                    </div>
+                {{-- <td><button class="btn btn-sm btn-success edit_plan"
+                    data-id="{{ $onboarding->id }}">Edit</button></td> --}}
+                </tr>
+            </div>
+            <!--end::Menu item-->
+            <!--begin::Menu item-->
+            <div class="menu-item px-3">
+
+                <a class="menu-link px-3 delete-onboarding d-flex gap-5"
+                data-id="{{$onboarding_result['id']}}"><i class="bi bi-trash"></i>
+                    Delete</a>
+            </div>
+            <!--end::Menu item-->
+        </div>
+        <!--end::Action-->
+    </div>
+    <!--end::Wrapper-->
+
+</div>
+
+@endforeach
+                   
                     <!--end::Tap pane-->
                     <!--end::Tap pane-->
                 </div>

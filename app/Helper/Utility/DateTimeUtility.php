@@ -283,6 +283,7 @@ class DateTimeUtility
             }
 
             $dates[] = $date->format('Y-m-d');
+            
         }
 
         return $dates;

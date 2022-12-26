@@ -4,7 +4,7 @@ namespace App\Helper\Royalmail;
 use App\Models\royal_mail;
 
 class RoyalMailHelper{
-      
+
     public const baseUrl ="https://api.parcel.royalmail.com/api/v1/";
     public const subUrl = 'orders/';
 
@@ -17,14 +17,14 @@ class RoyalMailHelper{
         ];
         // dd($headers);
         $payload =array (
-          'items' => 
+          'items' =>
           array (
-            0 => 
+            0 =>
             array (
               'orderReference' => 'test0002',
-              'recipient' => 
+              'recipient' =>
               array (
-                'address' => 
+                'address' =>
                 array (
                   'fullName' => 'Hakeem',
                   'companyName' => 'Imara',
@@ -40,15 +40,15 @@ class RoyalMailHelper{
                 'emailAddress' => '071husain484@gmail.com',
                 'addressBookReference' => 'string',
               ),
-              'sender' => 
+              'sender' =>
               array (
                 'tradingName' => 'test_trading',
                 'phoneNumber' => '+44 (0) 1423 396979',
                 'emailAddress' => 'test@gmail.com',
               ),
-              'billing' => 
+              'billing' =>
               array (
-                'address' => 
+                'address' =>
                 array (
                   'fullName' => 'ABDHakeem',
                   'companyName' => 'Imara',
@@ -63,22 +63,22 @@ class RoyalMailHelper{
                 'phoneNumber' => '+44 (0) 1423 396979',
                 'emailAddress' => 'test@gmail.com',
               ),
-              'packages' => 
+              'packages' =>
               array (
-                0 => 
+                0 =>
                 array (
                   'weightInGrams' => 1,
                   'packageFormatIdentifier' => 'smallParcel',
                   'customPackageFormatIdentifier' => 'string',
-                  'dimensions' => 
+                  'dimensions' =>
                   array (
                     'heightInMms' => 5,
                     'widthInMms' => 5,
                     'depthInMms' => 5,
                   ),
-                  'contents' => 
+                  'contents' =>
                   array (
-                    0 => 
+                    0 =>
                     array (
                       'name' => 'Jeans',
                       'SKU' => 'test_sku',
@@ -102,7 +102,7 @@ class RoyalMailHelper{
               'otherCosts' => 100,
               'total' => 240,
               'currencyCode' => 'GBP',
-              'postageDetails' => 
+              'postageDetails' =>
               array (
                 'sendNotificationsTo' => 'sender',
                 'serviceCode' => 'olp1',
@@ -115,15 +115,15 @@ class RoyalMailHelper{
                 'commercialInvoiceNumber' => 'string',
                 'commercialInvoiceDate' => '2019-08-24T14:15:22Z',
               ),
-              'tags' => 
+              'tags' =>
               array (
-                0 => 
+                0 =>
                 array (
                   'key' => 'string',
                   'value' => 'string',
                 ),
               ),
-              'label' => 
+              'label' =>
               array (
                 'includeLabelInResponse' => true,
                 'includeCN' => true,
@@ -144,7 +144,7 @@ class RoyalMailHelper{
         'Authorization: Bearer '.$token,
         'Content-Type: application/json'
       ];
-      
+
 
 
       $response=self::doCurl(RoyalMailHelper::baseUrl . RoyalMailHelper::subUrl . $endpoint,'GET',$headers);
@@ -158,9 +158,9 @@ class RoyalMailHelper{
         'Content-Type: application/json'
       ];
       $payload =array (
-        'items' => 
+        'items' =>
         array (
-          0 => 
+          0 =>
           array (
             'orderIdentifier' => 1005,
             'orderReference' => '',
@@ -176,43 +176,6 @@ class RoyalMailHelper{
 
       $payload=json_encode($payload);
 
-      $response=self::doCurl(RoyalMailHelper::baseUrl . RoyalMailHelper::subUrl . $endpoint, 'PUT',$headers,$payload);
-      dd($response);
-    }
-
-    public static function doCurl($url, $type = "GET", $headers = [], $payload = '', $redirectURL = false, $cookies = true)
-    {
-        
-        $cookie = public_path('site_cookie');
-        if (!defined('cookie'))
-            define('cookie', $cookie . "/Royal-Mail");
-            
-
-
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $type);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_ENCODING, '');
-        curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 0);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_HTTP_VERSION, 'CURL_HTTP_VERSION_1_1');
-
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-        // curl_setopt($ch,CURLOPT_HTTPHEADER ,'Authorization: Bearer 4736df8b-c92f-4513-ad78-37b889fbfd7d' );
-        
-        $response = curl_exec($ch);
-        $info = curl_getinfo($ch);
-
-        // print_r($info);
-        if ($redirectURL) {
-            return $info['redirect_url'];
-        } else {
-            return $response;
-        }
-    }
-}
+            } catch (err) {
+                console.log(err);
+            }
