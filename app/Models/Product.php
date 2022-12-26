@@ -17,7 +17,10 @@ class Product extends Model
     public $variants;
 
     public function getImages(){
-        return $this->hasMany(ProductImage::class, 'product_id', 'id');   
+
+        $variants = ProductVariant::selectBy(['product_id'=>$this->id]);
+        $variantIds = $variants->pluck('id')->toArray();
+        return ProductImage::getProductImages($variantIds);
     }
 
     public function getVariants()

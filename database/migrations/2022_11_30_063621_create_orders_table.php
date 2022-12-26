@@ -17,11 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->tinyInteger('status');
-<<<<<<< HEAD
-            $table->text('ebay_order_id');
-=======
             $table->string('ebay_order_id');
->>>>>>> 6f80b511ac043c423a866c833b33803afc87b6c3
             $table->double('total_amount', 8, 2);
             $table->integer('total_quantity');
             $table->json('content')->nullable();

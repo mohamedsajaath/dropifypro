@@ -43,26 +43,28 @@ class ProductModelToApiPayloadMapper
     private function setImageDetails()
     {
         $imgArr = [];
-        foreach ($this->product->getImages as $image) {
+        foreach ($this->product->getImages() as $image) {
             $imgArr[] = ['PictureURL' => $image->image_url];
         }
         return $imgArr;
     }
 
+
+
     private function setVariantDetails()
     {
         $variantArr = [];
-        foreach ($this->product->getVariants as $getVariant) {
+        foreach ($this->product->getVariants as $Variant) {
             $variantArr[] = [
                 'Pictures' => [
                     'VariationSpecificPictureSet' => [
-                        $this->setImageDetails(),
+                        $this->setImageDetails($Variant),
                     ],
                 ],
                 'Variation' => [
-                    'Quantity' => $getVariant->quantity,
-                    'SKU' => $getVariant->sku,
-                    'StartPrice' => $getVariant->price,
+                    'Quantity' => $Variant->quantity,
+                    'SKU' => $Variant->sku,
+                    'StartPrice' => $Variant->price,
                 ],
             ];
         }

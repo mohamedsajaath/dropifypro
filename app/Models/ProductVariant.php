@@ -15,4 +15,9 @@ class ProductVariant extends Model
         'sku',
         'price',
     ];
+
+    public function getImages(){
+        
+        return ProductImage::getVariantImages($this->id);
+    }
 }

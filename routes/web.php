@@ -360,7 +360,7 @@ Route::get('/royal-mail-get-orders', [RoyalMailController::class, 'index']);
 Route::get('/royal-mail-update-orders', [RoyalMailController::class, 'update']);
 
 //ebay
-Route::get('/get-orders',[TestController::class, 'index']);
+Route::get('/test',[TestController::class, 'index']);
 
 
 
