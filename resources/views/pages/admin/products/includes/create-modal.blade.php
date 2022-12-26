@@ -33,21 +33,6 @@
     {{--TITLE--}}
 
 
-    {{-- SKU--}}
-    <div class="row mb-6">
-        <label class="col-lg-4 col-form-label fw-semibold fs-6">
-            <span class="required">Sku:</span>
-        </label>
-        <div class="col-lg-4 fv-row">
-            <input type="text" name="sku"
-                   class="form-control form-control-lg form-control-solid"
-                   placeholder="Sku" required/>
-        </div>
-    </div>
-    {{--SKU--}}
-
-
-
 
     {{--DESCRIPTION--}}
     <div class="row mb-6">
@@ -72,8 +57,9 @@
             <input type="number"
                    name="weight"
                    class="form-control form-control-lg form-control-solid"
+                   step="0.01"
                    placeholder="WEIGHT"/>
-            <select class="form-control form-select float-right form-control-solid w-50 weight-unit" name="weight-unit"
+            <select class="form-control form-select float-right form-control-solid w-50 weight-unit" name="weight_unit"
                     required>
                 <option value="lbs">lbs</option>
                 <option value="oz">oz</option>
@@ -128,15 +114,15 @@
 
     {{-- SPECIFICATION --}}
     <div class="card-body  mt-4">
-        <label class="active">Specification</label>
+        <label class="col-form-label fw-semibold fs-6">Specification</label>
         <div class="row mb-2">
-           <span style="border:1px solid #d3d3d3; border-radius:5px; margin:1rem; padding:1rem; width:100%;"
+           <span style="border:1px solid #d3d3d3; border-radius:5px; margin:10px; padding:1rem; width:98.5%;"
                  class="product-specification-container">
             <div class="col-lg-12 fv-row mt-4 d-flex specification-wrap" style="gap:10px;">
-                <input type="text" class="form-control w-50 h-50px" name="specification-type[]"
+                <input type="text" class="form-control w-50 h-50px" name="specification_type[]"
                        placeholder="Specification Type"/>
                 <input type="text" class="form-control w-50 min-h-50px"
-                          placeholder="Specification Value" name="specification-type-value[]"/>
+                       placeholder="Specification Value" name="specification_type_value[]"/>
              <span class="w-30px"></span>
                 <button type="button" class="btn btn-primary Specification-add-btn btn-sm h-40px"
                         data-bs-toggle="tooltip" data-bs-placement="top" title="add Variant"><i
@@ -201,16 +187,17 @@
              <span class="w-25"></span>
                 <button type="button" class="btn btn-primary variant-type-add-btn btn-sm h-40px"
                         data-bs-toggle="tooltip" data-bs-placement="top" title="add Variant"><i
-                        class="bi bi-plus-lg"></i></button>
-                                    <button type="button" class="btn btn-danger delete-variant-btn btn-sm h-40px d-none"
-                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Remove Variant"><i
-                                            class="bi bi-dash-lg"></i></button>
+                        class="bi bi-plus-lg"></i>
+                </button>
+                <button type="button" class="btn btn-danger delete-variant-btn btn-sm h-40px d-none"
+                        data-bs-toggle="tooltip" data-bs-placement="top" title="Remove Variant"><i
+                        class="bi bi-dash-lg"></i>
+                </button>
             </div>
            </span>
         </div>
     </div>
     {{--VARIANT TYPES--}}
-
 
 
     {{--VARIANT COMBINE BUTTON--}}

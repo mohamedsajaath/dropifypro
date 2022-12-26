@@ -12,6 +12,7 @@ class Product extends Model
     protected $fillable = [
         'name',
         'description',
+        'sku',
         'weight',
     ];
     public $variants;

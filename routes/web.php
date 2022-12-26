@@ -86,12 +86,16 @@ Route::middleware('auth')->group(function () {
         Route::post('/support/account-managers/update', [AccountManagerController::class, 'update'])->name('admin.account-managers.update');
         Route::get('/support/account-managers/delete/{id}', [AccountManagerController::class, 'destroy'])->name('admin.account-managers.delete');
 
-
         Route::get('/admin/on-boardings', [OnBoardingController::class, 'index'])->name('admin.on-boardings.index');
-        Route::post('/on-boardings', [OnBoardingController::class, 'store'])->name('admin.on-boarding.store');
-        Route::get('/on-boardings/{id}', [OnBoardingController::class, 'edit'])->name('admin.on-boarding.edit');
-        Route::post('/on-boardings/update/{id}', [OnBoardingController::class, 'update'])->name('admin.on-boarding.update');
-        Route::delete('/on-boardings', [OnBoardingController::class, 'destroy'])->name('admin.on-boarding.destroy');
+        Route::post('/on-boardings', [OnBoardingController::class,'store'])->name('admin.on-boarding.store');
+        Route::get('/on-boardings/{id}', [OnBoardingController::class,'edit'])->name('admin.on-boarding.edit');
+        Route::post('/on-boardings/update/{id}', [OnBoardingController::class,'update'])->name('admin.on-boarding.update');
+        Route::get('/on-boardings/delete/{id}', [OnBoardingController::class, 'destroy'])->name('admin.on-boarding.destroy');
+        
+        Route::get('/on-boardings/singleDate/{date}', [OnBoardingController::class, 'singleDate'])->name('admin.on-boardings.singleDate');
+
+
+
 
         Route::get('/wholesale-requests', function () {
             return view('pages.admin.wholesale-requests.index');
@@ -342,14 +346,6 @@ Route::get('/admin/account_plan', [PlanController::class, 'index'])->name('admin
 Route::post('/plan', [PlanController::class, 'store'])->name('plan.store');
 Route::get('/plan/{id}', [PlanController::class, 'edit'])->name('plan.edit');
 Route::post('/plan/update', [PlanController::class, 'update'])->name('plan.update');
-
-//  onboarding
-
-Route::get('/admin/on-boardings', [OnBoardingController::class, 'index'])->name('admin.on-boardings.index');
-Route::post('/on-boardings', [OnBoardingController::class,'store'])->name('admin.on-boarding.store');
-Route::get('/on-boardings/{id}', [OnBoardingController::class,'edit'])->name('admin.on-boarding.edit');
-Route::post('/on-boardings/update/{id}', [OnBoardingController::class,'update'])->name('admin.on-boarding.update');
-Route::delete('/on-boardings', [OnBoardingController::class, 'destroy'])->name('admin.on-boarding.destroy');
 
 // ADMIN ACCOUNT SETTING END
 

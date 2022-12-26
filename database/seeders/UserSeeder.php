@@ -32,7 +32,6 @@ class UserSeeder extends Seeder
             'temp_account' => User::FIXED_ACCOUNT,
             'image_url' => "",
         ]);
-
         DB::table('users')->insert([
             [
                 'name' => "Seller",
