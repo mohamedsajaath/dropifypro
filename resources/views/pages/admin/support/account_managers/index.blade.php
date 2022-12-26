@@ -17,21 +17,45 @@
     <div class="row g-9 mb-8 justify-content-center">
         <div class="col-md-8 fv-row">
             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">Name :</label>
-            <input type="text" class="form-control form-control" placeholder="" name="name" required/>
+            <input type="text" class="form-control form-control" placeholder="" name="name" maxlength="255" required/>
 
             <label class="d-flex align-items-center fs-6 fw-semibold mb-2 mt-5">E-Mail :</label>
-            <input type="text" class="form-control form-control" placeholder="" name="email" required/>
+            <input type="email" class="form-control form-control" placeholder="" name="email" maxlength="150" required/>
 
             <label class="d-flex align-items-center fs-6 fw-semibold mb-2 mt-5">WhatsApp No :</label>
-            <input type="text" class="form-control form-control" placeholder="" name="contact_no" required/>
+            <input type="text" class="form-control form-control" placeholder="" name="contact_no" maxlength="20" required/>
 
             <label class="d-flex align-items-center fs-6 fw-semibold mb-2 mt-5">Response Time :</label>
-            <input type="text" class="form-control form-control" placeholder="" name="response_time" required/>
+            <div class="input-group input-group-append">
+            <input type="number" class="form-control form-control" placeholder="" name="response_time" maxlength="5" required/>
+            <span class="input-group-text">min</span>
+            </div>
         </div>
     </div>
-</div> `);
-    });
+</div>
+     `);
+        });
     </script>
+
+    {{-- <script>
+        $(document).on('click', '.add-managers-btn', async function(e) {
+            e.preventDefault();
+            let form = $(this).closest('form');
+
+            function ValidateEmail(inputText) {
+                var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if (inputText.form.value.match(mailformat)) {
+                    alert("Valid email address!");
+                    document.email.focus();
+                    return true;
+                } else {
+                    alert("You have entered an invalid email address!");
+                    document.form.email.focus();
+                    return false;
+                }
+            }
+        });
+    </script> --}}
 
     <script>
         $(document).on('click', '.add-managers-btn', async function(e) {
@@ -98,18 +122,19 @@
             e.preventDefault();
             let manager_id = $(this).data('id');
             let url = baseUrl + `/admin/support/account-managers/delete/${manager_id}`;
-            if(await isConfirmToProcess("success", "", title = 'Are you sure! You want to delete','warning')){
+            if (await isConfirmToProcess("success", "", title = 'Are you sure! You want to delete',
+                    'warning')) {
                 try {
-                let ajaxRequest = new HttpRequest(url, 'get');
-                let response = await ajaxRequest.call();
-                console.log(response.message);
-                $("#kt_modal_new_target").modal("hide");
-                location.reload();
+                    let ajaxRequest = new HttpRequest(url, 'get');
+                    let response = await ajaxRequest.call();
+                    console.log(response.message);
+                    $("#kt_modal_new_target").modal("hide");
+                    location.reload();
 
-            } catch (err) {
-                console.log(err);
-                console.log("error");
-            }
+                } catch (err) {
+                    console.log(err);
+                    console.log("error");
+                }
             }
         });
     </script>
@@ -177,8 +202,9 @@
 </div>
 <!--end::Table container--> `);
 
-    $('select.assign-sellers').select2({
-    dropdownParent: $('#kt_modal_new_target'), });
-    });
+            $('select.assign-sellers').select2({
+                dropdownParent: $('#kt_modal_new_target'),
+            });
+        });
     </script>
 @endpush
