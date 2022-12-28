@@ -1,7 +1,5 @@
 
 {{-- DASHBOARD --}}
-
-
  {{-- <div class="menu-item here show menu-accordion">
     <a class="menu-link" href="{{ route('admin.dashboard') }}">
         <span class="menu-icon">
@@ -12,14 +10,8 @@
         <span class="menu-title">Dashboard</span>
     </a>
 </div>  --}}
-
-
 {{-- DASHBOARD --}}
-
-
 {{-- PRODUCTS --}}
-
-
 <div  class="menu-item here show menu-accordion">
     <!--begin:Menu link-->
     <a class="menu-link" href="{{ route('admin.products') }}">
@@ -33,15 +25,9 @@
         <span class="menu-title">Products</span>
     </a>
 </div>
-
-
 {{-- PRODUCTS --}}
-
-
 {{-- ORDERS --}}
-
-
-<div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+<div data-kt-menu-trigger="click" class="menu-item here menu-accordion {{\Request::is('*/orders')?'show':''}}">
     <!--begin:Menu link-->
     <span class="menu-link">
         <span class="menu-icon">
@@ -83,18 +69,12 @@
             <!--end:Menu link-->
         </div>
         <!--end:Menu item-->
-
     </div>
     <!--end:Menu sub-->
 </div>
-
-
 {{-- ORDERS --}}
-
 {{-- SELLERS --}}
-
-
-<div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+<div data-kt-menu-trigger="click" class="menu-item here menu-accordion">
     <!--begin:Menu link-->
     <span class="menu-link">
         <span class="menu-icon">
@@ -134,7 +114,6 @@
             <!--end:Menu link-->
         </div>
         <!--end:Menu item-->
-
     </div>
     <!--end:Menu sub-->
 </div>
@@ -145,7 +124,7 @@
 {{-- MEMBERSHIP --}}
 
 
-<div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+<div data-kt-menu-trigger="click" class="menu-item here menu-accordion">
     <!--begin:Menu link-->
     <span class="menu-link">
         <span class="menu-icon">
@@ -185,18 +164,12 @@
             <!--end:Menu link-->
         </div>
         <!--end:Menu item-->
-
     </div>
     <!--end:Menu sub-->
 </div>
-
-
 {{-- MEMBERSHIP --}}
-
 {{-- SUPPORT  --}}
-
-
-<div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+<div data-kt-menu-trigger="click" class="menu-item here menu-accordion">
     <!--begin:Menu link-->
     <span class="menu-link">
         <span class="menu-icon">
@@ -237,40 +210,24 @@
             <!--end:Menu link-->
         </div>
         <!--end:Menu item-->
-
-
     </div>
     <!--end:Menu sub-->
 </div>
-
-
 {{-- SUPPORT  --}}
-
-
 {{-- Onboarding --}}
-
-
 <div class="menu-item here show menu-accordion">
     <!--begin:Menu link-->
-
-    <a class="menu-link" href="{{route('admin.onboardings')}}">
+    <a class="menu-link {{\Request::is('*/onboardings')?'active':''}}" href="{{route('admin.onboardings.index')}}">
         <span class="menu-icon">
             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
            <span class="svg-icon svg-icon-2">
-                <i class="fa-regular fa-handshake fs-2"></i>
-												</span>
+                <i class="fa-regular fa-handshake fs-2"></i></span>
         </span>
         <span class="menu-title">Onboarding</span>
     </a>
 </div>
-
-
 {{-- Onboarding --}}
-
-
 {{-- WHOLESALE REQUESTS --}}
-
-
 <div class="menu-item here show menu-accordion">
     <!--begin:Menu link-->
     <a class="menu-link" href="{{route('admin.wholesale-requests')}}">
@@ -283,14 +240,8 @@
         <span class="menu-title">Wholesale Requests</span>
     </a>
 </div>
-
-
 {{-- WHOLESALE REQUESTS --}}
-
-
 {{-- MANAGE EMAILS --}}
-
-
 <div class="menu-item here show menu-accordion">
     <!--begin:Menu link-->
 
@@ -304,6 +255,4 @@
         <span class="menu-title">Manage Emails</span>
     </a>
 </div>
-
-
 {{-- MANAGE EMAILS --}}

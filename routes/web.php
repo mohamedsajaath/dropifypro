@@ -83,9 +83,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/support/account-managers/store', [AccountManagerController::class, 'store'])->name('admin.account-managers.store');
         Route::get('/support/account-managers/edit/{id}', [AccountManagerController::class, 'edit'])->name('admin.account-managers.edit');
 
-        Route::get('/onboardings', function () {
-            return view('pages.admin.onboardings.index');
-        })->name('admin.onboardings');
+        Route::resource('onboardings', OnboardingController::class)->names('admin.onboardings');
 
         Route::get('/wholesale-requests', function () {
             return view('pages.admin.wholesale-requests.index');
@@ -353,12 +351,11 @@ Route::get('/plan/{id}', [PlanController::class, 'edit'])->name('plan.edit');
 Route::post('/plan/update', [PlanController::class, 'update'])->name('plan.update');
 
 //  onboarding
-
-Route::get('/admin/on-boardings', [OnBoardingController::class, 'index'])->name('admin.on-boardings.index');
-Route::post('/on-boardings', [OnBoardingController::class,'store'])->name('admin.on-boarding.store');
-Route::get('/on-boardings/{id}', [OnBoardingController::class,'edit'])->name('admin.on-boarding.edit');
-Route::post('/on-boardings/update/{id}', [OnBoardingController::class,'update'])->name('admin.on-boarding.update');
-Route::delete('/on-boardings', [OnBoardingController::class, 'destroy'])->name('admin.on-boarding.destroy');
+Route::get('/onboardings', [OnBoardingController::class, 'index'])->name('admin.onboardings.index');
+Route::post('/onboardings', [OnBoardingController::class,'store'])->name('admin.onboarding.store');
+Route::get('/onboardings/{id}', [OnBoardingController::class,'edit'])->name('admin.onboarding.edit');
+Route::post('/onboardings/update/{id}', [OnBoardingController::class,'update'])->name('admin.onboarding.update');
+Route::delete('/onboardings', [OnBoardingController::class, 'destroy'])->name('admin.onboarding.destroy');
 
 // ADMIN ACCOUNT SETTING END
 

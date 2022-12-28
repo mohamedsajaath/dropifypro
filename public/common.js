@@ -1,4 +1,3 @@
-
 function loadFormModal(
     action,
     method,

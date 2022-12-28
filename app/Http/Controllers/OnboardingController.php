@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OnBoarding;
+use App\Models\Onboarding;
 use Illuminate\Http\Request;
 
-class OnBoardingController extends Controller
+class OnboardingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class OnBoardingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\OnBoarding  $onBoarding
+     * @param  \App\Models\Onboarding  $onBoarding
      * @return \Illuminate\Http\Response
      */
-    public function show(OnBoarding $onBoarding)
+    public function show(Onboarding $onboarding)
     {
         //
     }
@@ -52,10 +52,10 @@ class OnBoardingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\OnBoarding  $onBoarding
+     * @param  \App\Models\Onboarding  $onBoarding
      * @return \Illuminate\Http\Response
      */
-    public function edit(OnBoarding $onBoarding)
+    public function edit(Onboarding $onboarding)
     {
         //
     }
@@ -64,10 +64,10 @@ class OnBoardingController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\OnBoarding  $onBoarding
+     * @param  \App\Models\Onboarding  $onBoarding
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OnBoarding $onBoarding)
+    public function update(Request $request, Onboarding $onboarding)
     {
         //
     }
@@ -75,10 +75,10 @@ class OnBoardingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\OnBoarding  $onBoarding
+     * @param  \App\Models\Onboarding  $onBoarding
      * @return \Illuminate\Http\Response
      */
-    public function destroy(OnBoarding $onBoarding)
+    public function destroy(Onboarding $onBoarding)
     {
         //
     }

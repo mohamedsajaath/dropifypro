@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->text('title')->nullable();
             $table->date('date');
             $table->time('time');
-            $table->tinyInteger('status')->default(\App\Models\OnBoarding::STATUS_AVAILABLE);
+            $table->tinyInteger('status')->default(\App\Models\Onboarding::STATUS_AVAILABLE);
             $table->timestamps();
         });
     }

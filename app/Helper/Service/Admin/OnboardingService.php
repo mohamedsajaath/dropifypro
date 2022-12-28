@@ -2,20 +2,20 @@
 
 namespace App\Helper\Service\Admin;
 
-use App\Models\OnBoarding;
+use App\Models\Onboarding;
 
 class OnboardingService
 {
     public static function storeFromRequest($request)
     {
-        $onBoarding = new OnBoarding();
+        $onBoarding = new Onboarding();
         $onBoarding->loadFromRequest($request);
         $onBoarding->save();
     }
 
     public static function show()
     {
-        return OnBoarding::all();
+        return Onboarding::all();
     }
 
     public static function getDateRanges($days)
@@ -23,8 +23,8 @@ class OnboardingService
 
     }
 
-    public static function getOnBoardingByDate($date)
+    public static function getOnboardingByDate($date)
     {
-        return OnBoarding::findBy(['date' => $date]);
+        return Onboarding::findBy(['date' => $date]);
     }
 }

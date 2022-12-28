@@ -12,7 +12,7 @@ trait CommonQuery
         return self::findBy(['id' => $id], $columns);
     }
 
-    public static function findBy($whereCondition, $columns)
+    public static function findBy($whereCondition, $columns = ['*'])
     {
         return self::query()->where($whereCondition)
             ->select($columns)

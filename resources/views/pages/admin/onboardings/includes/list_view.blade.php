@@ -56,7 +56,7 @@
                             <!--begin::Info-->
                             <div class="flex-grow-1 me-5">
                                 <!--begin::Time-->
-                                <div class="text-gray-800 fw-semibold fs-2">{{ $onboarding->time}}
+                                <div class="text-gray-800 fw-semibold fs-2">{{ $onboarding->time ?? ''}}
                                     <span class="text-gray-400 fw-semibold fs-7">AM</span>
                                 </div>
                                 <!--end::Time-->
@@ -94,7 +94,7 @@
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
                                     <a class="menu-link px-3 product-edit d-flex gap-5 edit_event"
-                                       data-id="{{ $onboarding->id}}"><i
+                                       data-id="{{ $onboarding->id??''}}"><i
                                             class="bi bi-pencil"></i> Edit</a>
 
                                     {{-- <td><button class="btn btn-sm btn-success edit_plan"
@@ -106,7 +106,7 @@
                                 <div class="menu-item px-3">
 
                                     <a class="menu-link px-3 delete-sweet d-flex gap-5"
-                                       href="/onboardings/{{$onboarding->id}}"><i class="bi bi-trash"></i>
+                                       href="/onboardings/{{$onboarding->id??''}}"><i class="bi bi-trash"></i>
                                         Delete</a>
                                 </div>
                                 <!--end::Menu item-->
