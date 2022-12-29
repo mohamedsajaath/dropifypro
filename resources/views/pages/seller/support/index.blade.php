@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @push('css')
-    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+   
 @endpush
 @section('content')
     <div id="kt_app_content_container" class="app-container container-xxl">
@@ -274,7 +274,6 @@
     <script>
         loadBreadCrumbWithHeader("Support", "Details", "Dashboard", "#")
     </script>
-    <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
 
     {{-- create tickets --}}
     <script>

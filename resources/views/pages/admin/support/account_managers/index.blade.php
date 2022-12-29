@@ -6,7 +6,7 @@
     <script>
         loadBreadCrumbWithHeader("Account Managers", "", "", "")
     </script>
-    <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+
 
     <script>
         $(document).on('click', '.add-manager', function() {
