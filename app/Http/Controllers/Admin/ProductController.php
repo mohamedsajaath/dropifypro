@@ -7,6 +7,8 @@ use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use App\Helper\Service\admin;
 use App\Models\MdEbayCategory;
+use App\Helper\Service\ProductService;
+use Yajra\DataTables\DataTables;
 
 
 
@@ -19,17 +21,29 @@ class ProductController extends Controller
      */
     public function index()
     {
+        
+        // dd($products);
+
         $EbayCategories = new MdEbayCategory();
 
         $category = $EbayCategories->query()->get()->take(10);
 
-        return view('pages.Admin.products.index')->with(["ebay_category"=> $category]);
+        return view('pages.Admin.products.index')->with(["ebay_category" => $category]);
+    }
 
+    public function list()
+    {
+        $products = ProductService::getAllProducts();
+        return DataTables::of($products)
+            ->addColumn('image_base_path', function(){
+                return  asset('storage/');
+            })
+            ->addIndexColumn()
+            ->make(true);
     }
 
     public function create()
     {
-
     }
 
 
@@ -40,7 +54,6 @@ class ProductController extends Controller
 
 
         dd($request->all());
-
     }
 
     /**
