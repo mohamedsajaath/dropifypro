@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>dropifypro - Financial Services Website Template</title>
+    <title>Dropifypro  -  #1 Ebay Sellers Choice</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
@@ -400,7 +400,7 @@
                 gap: 20px;
                 justify-content: space-between;
               ">
-                       
+
                             @foreach ($plan_details as $plan_detail)
                                 <div class="card col-md-4 text-center" style="width: 20rem;">
                                     <div class="card-body">
@@ -416,7 +416,7 @@
                                             <span>{{ $plan_detail['price_month'] + 9.99 }}</span>
                                             /mo
                                         </div>
-                                        <a href="{{ route('register.plan',['id'=>$plan_detail->id,'package'=>"month"]) }}" 
+                                        <a href="{{ route('register.plan',['id'=>$plan_detail->id,'package'=>"month"]) }}"
                                             class="btn btn-sm btn-primary mt-4">£{{ $plan_detail['price_month'] }}
                                             /mo</a>
                                         @if ($plan_detail['name'] !== 'Business')
@@ -430,7 +430,7 @@
                                             /yr
                                         </div>
 
-                                        <a href="{{ route('register.plan',['id'=>$plan_detail->id,'package'=>"year"]) }}" 
+                                        <a href="{{ route('register.plan',['id'=>$plan_detail->id,'package'=>"year"]) }}"
                                             class="btn btn-sm btn-primary mt-4">£{{ $plan_detail['price_year'] }}
                                             /yr</a>
                                     </div>

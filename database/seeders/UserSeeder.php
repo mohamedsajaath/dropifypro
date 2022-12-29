@@ -32,11 +32,9 @@ class UserSeeder extends Seeder
             'temp_account' => User::FIXED_ACCOUNT,
             'image_url' => "",
         ]);
-
         DB::table('users')->insert([
             [
-                'first_name' => "Seller",
-                'last_name' => "seller",
+                'name' => "Seller",
                 'email' => 'seller@gmail.com',
                 'password' => Hash::make('12345678'),
                 'address' => "test",
