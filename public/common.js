@@ -1,4 +1,4 @@
-const baseURL = $('meta[name="base_url"]').attr('content');
+const baseUrl = $('meta[name="base_url"]').attr('content');
 const csrfToken = $('meta[name="csrf_token"]').attr('content');
 function  loadModal (modalId, url){
     return new Promise(function (resolve, reject) {

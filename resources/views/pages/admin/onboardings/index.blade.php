@@ -15,7 +15,7 @@
         const modalId = 'modal';
         $(document).on('click', '.add-onboarding', async function () {
             try {
-                let loadURL = `${baseURL}/admin/onboardings/create`;
+                let loadURL = `${baseUrl}/admin/onboardings/create`;
                 await loadModal(modalId, loadURL);
             }catch(err){
                 console.log(err);
@@ -42,7 +42,7 @@
         $(document).on('click', '.edit_event', async function () {
             try {
                 let onboardingId = $(this).data('id');
-                let loadUrl = baseURL + '/admin/onboardings/' + onboardingId + '/edit';
+                let loadUrl = baseUrl + '/admin/onboardings/' + onboardingId + '/edit';
                 await loadModal(modalId, loadUrl);
             }catch(err){
                 console.log(err);
