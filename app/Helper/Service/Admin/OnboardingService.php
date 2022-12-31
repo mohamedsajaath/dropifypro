@@ -6,25 +6,23 @@ use App\Models\Onboarding;
 
 class OnboardingService
 {
-    public static function storeFromRequest($request)
+    public static function save(Onboarding $onboarding)
     {
-        $onBoarding = new Onboarding();
-        $onBoarding->loadFromRequest($request);
-        $onBoarding->save();
+        $onboarding->save();
     }
 
-    public static function show()
+    public static function getAll()
     {
         return Onboarding::all();
-    }
-
-    public static function getDateRanges($days)
-    {
-
     }
 
     public static function getOnboardingByDate($date)
     {
         return Onboarding::findBy(['date' => $date]);
+    }
+
+    public static function deleteById($id)
+    {
+        Onboarding::deleteById($id);
     }
 }

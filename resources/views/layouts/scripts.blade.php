@@ -1,8 +1,6 @@
 <!--begin::Javascript-->
 <script>
-var hostUrl = "{{ asset('assets/') }}";
-let baseUrl = "{{url('/')}}";
-
+let hostUrl = "{{ asset('assets/') }}";
 </script>
 <!--begin::Global Javascript Bundle(mandatory for active pages)-->
 <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>

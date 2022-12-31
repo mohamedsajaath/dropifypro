@@ -23,15 +23,12 @@
         <!--begin::Modal body-->
         <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15 " id="modal-content-body">
             <!--begin:Form-->
-            <form id="kt_modal_new_target_form" class="form" action="${action}" method="${method}">
+            <form id="kt_modal_new_target_form" class="form" action="{{url('admin/onboardings')}}" method="POST">
                 <!--begin::Heading-->
                 <div class="mb-13 text-center">
                     <!--begin::Title-->
-                    <h1 class="mb-3">${title}</h1>
+                    <h1 class="mb-3">Define On-boarding slots</h1>
                     <!--end::Title-->
-                    <!--begin::Description-->
-                    <div class="text-muted fw-semibold fs-5">${description}</div>
-                    <!--end::Description-->
                 </div>
                 @csrf
                 <div class="modal-body py-10 px-lg-17">
@@ -66,8 +63,8 @@
                     <button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">
                         Cancel
                     </button>
-                    <button type="submit" id="kt_modal_new_target_submit" class="btn btn-primary ${submitButtonClass}">
-                        <span class="indicator-label">${submitButtonText}</span>
+                    <button type="submit" id="kt_modal_new_target_submit" class="btn btn-primary add-event">
+                        <span class="indicator-label">Add</span>
                         <span class="indicator-progress">Please wait...
             <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                     </button>

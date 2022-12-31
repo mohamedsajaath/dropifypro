@@ -10,19 +10,19 @@ use Illuminate\Http\Request;
 
 class OnBoardingController extends AbstractController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function getIndexView()
+    {
+        return 'pages.admin.onboardings.index';
+    }
+
+    public function getIndexData()
     {
         $dates = DateTimeUtility::getFutureDates(7);
         $onboarding = OnboardingService::getOnboardingByDate($dates[0]);
-        return view('pages.admin.onboardings.index')->with([
+        return [
             'dates' => $dates,
             'onboarding' => $onboarding,
-        ]);
+        ];
     }
 
     public function getCreateView()
@@ -30,15 +30,11 @@ class OnBoardingController extends AbstractController
         return 'pages.admin.onboardings.includes.create_modal';
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        OnboardingService::storeFromRequest($request);
+        $onBoarding = new Onboarding();
+        $onBoarding->loadFromRequest($request);
+        OnboardingService::save($onBoarding);
         return self::response('Successfully Added');
     }
 
@@ -47,61 +43,32 @@ class OnBoardingController extends AbstractController
         return 'pages.admin.onboardings.includes.create_modal';
     }
 
-    public function getFormData($id)
+    public function getEditData($id)
     {
         $onboarding = Onboarding::find($id);
         return ['on_boarding' => $onboarding];
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+     * Note:  make sure to send value keys, same as table attributes
+     **/
     public function update(Request $request, $id)
     {
+        try {
 
-        // try {
-        //     $id = $request->id;
-        //     $onboarding = new Onboarding();
-        //     $onboarding= OnBoarding::find($id);
-        //     $onboarding->date = $request->date;
-        //     $onboarding->time = $request->time;
-        //     // PlanService::save($plan);
-        //     return self::response('Successfully Updated');
-        // } catch (\Exception $ex) {
-        //     return self::response($ex->getMessage(), [], 422);
-        //  }
-
-        //     $onboarding = OnBoarding::find($id);
-        //     $onboarding  = $request->all();
-        //     $onboarding->update($request);
-        // return redirect('onboarding')->with('flash_message', 'onboarding Updated!');
-        $onboarding = Onboarding::find($request->id);
-        $onboarding->date = $request->date;
-        $onboarding->time = $request->time;
-        // $project->description = $request->input('description');
-        // $project->time_span = $request->input('time_span');
-        // $project->text_report = $request->input('text_report');
-        // $project->created_by = $request->input('created_by');
-
-        $onboarding->save();
-
-        return redirect('/')->with('success', 'Project aangepast');
+            $onboarding = OnBoarding::find($id);
+            $onboarding->loadFromRequest($request);
+            OnboardingService::save($onboarding);
+            return self::response('Successfully added');
+        }catch(\Exception $ex){
+            return self::response($ex->getMessage(),[],422);
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        Onboarding::destroy($id);
-        return redirect('onboarding')->with('flash_message', 'Event deleted!');
+        OnboardingService::deleteById($id);
+        return self::response('Event deleted!');
     }
 
     public function getOnboardingByDate($date)

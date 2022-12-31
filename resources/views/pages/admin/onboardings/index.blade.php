@@ -12,11 +12,14 @@
 @endsection
 @push('script')
     <script>
-        $(document).on('click', '.add-onboarding', function () {
-            let loadUrl = baseUrl + '/admin/onboardings/create';
-            $("#modal").load(loadUrl, function () {
-                $('#modal').modal('show');
-            });
+        const modalId = 'modal';
+        $(document).on('click', '.add-onboarding', async function () {
+            try {
+                let loadURL = `${baseURL}/admin/onboardings/create`;
+                await loadModal(modalId, loadURL);
+            }catch(err){
+                console.log(err);
+            }
         });
 
 
@@ -28,20 +31,22 @@
                 let ajaxRequest = new HttpRequest(url, 'POST');
                 ajaxRequest.set_data_by_form_object(form);
                 let response = await ajaxRequest.call();
-                console.log(response.message);
-                $("#kt_modal_new_target").modal("hide");
+                $("#" + modalId).modal("hide");
+                console.log(response.message)
             } catch (err) {
                 console.log(err);
                 console.log("error");
             }
         });
 
-        $(document).on('click', '.edit_event', function () {
-            let onboardingId = $(this).data('id');
-            let loadUrl = baseUrl + '/admin/onboardings/' + onboardingId + '/edit';
-            $("#modal").load(loadUrl, function () {
-                $('#modal').modal('show');
-            });
+        $(document).on('click', '.edit_event', async function () {
+            try {
+                let onboardingId = $(this).data('id');
+                let loadUrl = baseURL + '/admin/onboardings/' + onboardingId + '/edit';
+                await loadModal(modalId, loadUrl);
+            }catch(err){
+                console.log(err);
+            }
         });
 
         /*$(document).on("click", ".edit_event", async function () {
@@ -72,7 +77,7 @@
                 ajaxRequest.set_data_by_form_object(form);
                 let response = ajaxRequest.call();
                 console.log(response.message);
-                $("#kt_modal_new_target").modal("hide");
+                $("#" + modalId).modal("hide");
             } catch (err) {
                 console.log(err);
                 console.log("error");

@@ -1,3 +1,17 @@
+const baseURL = $('meta[name="base_url"]').attr('content');
+const csrfToken = $('meta[name="csrf_token"]').attr('content');
+function  loadModal (modalId, url){
+    return new Promise(function (resolve, reject) {
+        $('#' + modalId).load(url, function (response, status, xhr) {
+            if (status !== 'error') {
+                $('#' + modalId).modal('show');
+            } else {
+                reject(response);
+            }
+            resolve(true);
+        });
+    });
+}
 function loadFormModal(
     action,
     method,
