@@ -19,9 +19,9 @@ class OrderController extends Controller
     {
         $orders = OrderService::getOrderById(Auth::user()->id);    
         // $order_items = OrderService::getOrderItemsById($orders[0]->id);
-    //    dd($orders);
+    //   dd($orders);
         // return view('pages.seller.orders.paid.index')->with('Order_datas',["orders"=> $orders,"order_items"=>$order_items]);
-        return view('pages.seller.orders.paid.index')->with("orders", $orders);
+       return view('pages.seller.orders.paid.index')->with("orders", $orders);
     }
 
     /**

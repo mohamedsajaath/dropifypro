@@ -1,5 +1,5 @@
 <?php
-namespace App\Service;
+namespace App\Helper\Service;
 
 use App\Helper\Handler\EbayHandler;
 use App\Helper\Mapper\Order\OrderApiToModel;
@@ -30,19 +30,11 @@ class OrderService{
 
     public static function saveWithContent(Order $order)
     {
-        //save order(id field will be there after saving)
-        $order->save();
-        // loop each order items
-        foreach ($order->orderItems as $orderItem) {
-            // set order id to item
-            $orderItem->order_id = $order->id;
-            // call OrderItemService save()
-            OrderItemService::saveOrUpdate($orderItem);
-        }
-        //save customer detail
-        OrderCustomerService::save($order->customer);
-        //WalletService::consumeCaculatedAmount(Order)
-            
+        $orders = Order::join('users', 'orders.user_id', '=', 'users.id')
+            ->select('orders.*', 'users.name as uname')
+            ->where('orders.user_id', '=', $id)
+            ->get();
+        return $orders;
     }
 
     public static function getOrderItemsById($id)
@@ -52,7 +44,7 @@ class OrderService{
             ->join('order_item_product_variants', 'order_items.id', '=', 'order_item_product_variants.order_item_id')
             ->join('product_variants', 'product_variants.id', '=', 'order_item_product_variants.product_variant_id')
             ->join('products', 'product_variants.product_id', '=', 'products.id')
-            ->select('orders.*', 'order_items.*','order_items.quantity as item_quantity', 'order_customers.name as cname', 'products.*', 'product_variants.*')
+            ->select('orders.*', 'order_items.*', 'order_customers.name as cname', 'products.*', 'product_variants.*')
             ->where('order_items.order_id', '=', $id)
             ->get();
         return $order_items;
@@ -61,7 +53,7 @@ class OrderService{
     public static function getOrderById($id)
     {
         $orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-            ->select('orders.*', 'users.first_name as fname')
+            ->select('orders.*', 'users.name as fname')
             ->where('orders.user_id', '=', $id)
             ->get();
         return $orders;

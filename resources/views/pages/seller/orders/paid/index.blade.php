@@ -48,53 +48,55 @@
                         </tr>
                     </thead>
                     <tbody>
-                      
+                        {{-- {{dd($orders)}} --}}
                         @foreach ($orders as $order)
-                         {{-- {{dd($orders)}} --}}
+                            {{-- {{dd($orders)}} --}}
                             <tr>
-                                <td data-bs-toggle="collapse" data-bs-target="#collapse{{ $order->id }}">{{ $order->id }}</td>
-                                <td>{{ $order->fname }}</td>
+                                <td data-bs-toggle="collapse" data-bs-target="#collapse{{ $order->id }}">
+                                    {{ $order->id }}</td>
+                                <td>{{ $order->uname }}</td>
                                 <td>{{ $order->created_at }}</td>
                                 <td>{{ $order->ebay_order_id }}</td>
                                 <td>{{ $order->total_amount }}</td>
                                 <td>{{ $order->total_quantity }}</td>
                             </tr>
-                       
-                        <tr id="collapse{{ $order->id }}" class="collapse hide">
-                            <td colspan="6">
-                                <table class="table table-striped text-uppercase table-row-bordered gy-5 gs-7">
-                                    <thead>
-                                        <tr class="fw-semibold fs-6 text-gray-400">
-                                            <th>Product Id</th>
-                                            <th>Product Title</th>
-                                            <th>Product Image</th>
-                                            <th>Amount</th>
-                                            <th>Sku</th>
-                                            <th>Quantity</th>
-                                            <th>Customer</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {{-- {{dd($Order_datas['order_items'])}} --}}
-                                        @php
-                                             $order_items = App\Helper\Service\OrderService::getOrderItemsById($order->id)
-                                        @endphp
-                                        {{-- {{ dd($order_items)}} --}}
-                                        @foreach ($order_items as $order_item)
-                                        <tr>
-                                            <th>{{ $order_item->product_id }}</th>
-                                            <td>{{ $order_item->title }}</td>
-                                            <td><img class="w-50px ms-n1" src="{{ asset('assets/media/images/add_image.png') }}" ></td>
-                                            <td>{{ $order_item->amount }}</td>
-                                            <td>{{ $order_item->sku }}</td>
-                                            <td>{{ $order_item->item_quantity }}</td>
-                                            <td>{{ $order_item->cname }}</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
+
+                            <tr id="collapse{{ $order->id }}" class="collapse hide">
+                                <td colspan="6">
+                                    <table class="table table-striped text-uppercase table-row-bordered gy-5 gs-7">
+                                        <thead>
+                                            <tr class="fw-semibold fs-6 text-gray-400">
+                                                <th>Product Id</th>
+                                                <th>Product Title</th>
+                                                <th>Product Image</th>
+                                                <th>Amount</th>
+                                                <th>Sku</th>
+                                                <th>Quantity</th>
+                                                <th>Customer</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{-- {{dd($Order_datas['order_items'])}} --}}
+                                            @php
+                                                $order_items = App\Helper\Service\OrderService::getOrderItemsById($order->id);
+                                            @endphp
+                                            {{-- {{ dd($order_items)}} --}}
+                                            @foreach ($order_items as $order_item)
+                                                <tr>
+                                                    <th>{{ $order_item->product_id }}</th>
+                                                    <td>{{ $order_item->title }}</td>
+                                                    <td><img class="w-50px ms-n1"
+                                                            src="{{ asset('assets/media/images/add_image.png') }}"></td>
+                                                    <td>{{ $order_item->amount }}</td>
+                                                    <td>{{ $order_item->sku }}</td>
+                                                    <td>{{ $order_item->item_quantity }}</td>
+                                                    <td>{{ $order_item->cname }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
@@ -151,7 +153,6 @@
     </div>
 @endsection
 @push('script')
-    <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script>
         loadBreadCrumbWithHeader("Orders", "Paid", "Dashboard", "#")
     </script>

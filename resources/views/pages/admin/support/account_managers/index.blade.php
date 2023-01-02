@@ -6,7 +6,8 @@
     <script>
         loadBreadCrumbWithHeader("Account Managers", "", "", "")
     </script>
-    <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+
+
     <script>
         $(document).on('click', '.add-manager', function() {
             $('.custom-modal-size').addClass('mw-550px').removeClass('mw-650px');

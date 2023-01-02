@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @push('css')
-    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+   
 @endpush
 @section('content')
     @include('pages.seller.support.includes.table_details')
@@ -9,7 +9,6 @@
     <script>
         loadBreadCrumbWithHeader("Support", "", "", "")
     </script>
-    <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
 
     {{-- create tickets --}}
     <script>
