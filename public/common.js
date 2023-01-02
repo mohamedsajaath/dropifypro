@@ -12,6 +12,92 @@ let toast = {
         toastr.warning(msg);
     },
 };
+toastr.options = {
+    closeButton: false,
+    debug: false,
+    newestOnTop: false,
+    progressBar: false,
+    positionClass: "toastr-top-right",
+    preventDuplicates: false,
+    onclick: null,
+    showDuration: "300",
+    hideDuration: "1000",
+    timeOut: "5000",
+    extendedTimeOut: "1000",
+    showEasing: "swing",
+    hideEasing: "linear",
+    showMethod: "fadeIn",
+    hideMethod: "fadeOut",
+};
+let initDataTable = (
+    table,
+    columns,
+    formId,
+    aaSorting = [],
+    columnDefs = [],
+    pageLength = 10,
+    lengthMenu = [
+        [10, 25, 50, 100, -1],
+        [10, 25, 50, 100, "All"],
+    ],
+    dt_url = null,
+    others = {}
+) => {
+    let url = dt_url === null ? table.attr("data-url") : dt_url;
+
+    return new Promise(function (resolve, reject) {
+        let dt_feed = {
+            processing: true,
+            serverSide: true,
+            retrieve: true,
+            filter:true,
+            searching:true,
+            responsive: {
+                details: {
+                    type: "column",
+                },
+            },
+            select: {
+                style: 'multi',
+                selector: 'td:first-child input[type="checkbox"]',
+                className: 'row-selected'
+            },
+            columnDefs: columnDefs,
+            ajax: {
+                url: url,
+                data: function (d) {
+                    d.form_data = $("#" + formId).serialize();
+                },
+            },
+            pageLength: pageLength,
+            lengthMenu: lengthMenu,
+            aaSorting: aaSorting,
+            columns: columns,
+            language: {
+                searchPlaceholder: "Search...",
+                sSearch: "",
+                lengthMenu: "Show _MENU_",
+            },
+            initComplete: function () {
+                const filterSearch = $('[data-kt-docs-table-filter="search"]');
+                if(filterSearch.length > 0){
+                filterSearch.on('keyup', function(e) {
+                    t.search(e.target.value).draw();
+                });
+            }
+    
+                resolve(t);
+            },
+        };
+
+        for (let key in others) {
+            dt_feed[key] = others[key];
+        }
+
+        let t = table.DataTable(dt_feed);
+        
+    });
+};
 
 function loadFormModal(
     action,

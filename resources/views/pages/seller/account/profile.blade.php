@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('css')
-    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+    
 @endpush
 
 @section('content')
@@ -298,7 +298,8 @@
                                                         @foreach (App\models\MdCountry::country() as $country)
                                                             <option value="{{ $country->id }}"
                                                                 {{ $country->id == Auth::user()->currency_id ? 'selected' : '' }}>
-                                                                {{ $country->name. '  ( '. $country->currency_name.' )'  }}</option>
+                                                                {{ $country->name . '  ( ' . $country->currency_name . ' )' }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -493,30 +494,17 @@
     <script>
         loadBreadCrumbWithHeader("Account", "Profile", "Dashboard", "#")
     </script>
-    {{-- <script>
-        if (count($errors) > 0) {
-            toastr.error("{{ $errors }}");
-        }
-        if (session('status')) {
-            toastr.error("{{ session('status') }}");
-        }
+    <script>
+        @if (session('status') == 'error')
+            toast.error("{{ session('message') }}");
+        @elseif (session('status') == 'success')
+            toast.success("{{ session('message') }}");
+        @endif
 
-        toastr.options = {
-            "closeButton": false,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toastr-top-right",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        };
-    </script> --}}
+        @if (count($errors) > 0)
+            @foreach ($errors->all() as $error)
+                toast.error("{{ $error }}");
+            @endforeach
+        @endif
+    </script>
 @endpush

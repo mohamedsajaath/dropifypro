@@ -4,10 +4,6 @@
 
 @push('css')
 
-    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
-
-
-
 @endpush
 
 @section('content')
@@ -276,7 +272,6 @@
 
 @push('script')
 
-    <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
 
     <script>
 

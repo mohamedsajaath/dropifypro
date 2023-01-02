@@ -2,7 +2,7 @@
 
 
 @push('css')
-    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+   
 @endpush
 @section('content')
     <div class="card mb-5 mb-xl-8 mx-8">
@@ -96,7 +96,6 @@
         </div>
     @endsection
     @push('script')
-        <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
         <script>
             $("#wallet_datatable").DataTable({
 

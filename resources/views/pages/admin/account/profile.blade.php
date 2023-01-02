@@ -488,35 +488,25 @@
         </div>
         <!--end::Content wrapper-->
     </div>
-    {{-- <input id="message" type="hidden" value="{{ session('status') }}"> --}}
+
 @endsection
 @push('script')
     <script src="{{ asset('assets/js/custom/account/settings/signin-methods.js') }}"></script>
     <script>
         loadBreadCrumbWithHeader("Account", "Profile", "Dashboard", "#")
     </script>
-    {{-- <script>
-        const msg = $('#message').val();
-        if (msg != "") {
-            toastr.options = {
-                "closeButton": false,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": false,
-                "positionClass": "toastr-top-right",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            };
+     <script>
+        @if (session('status') == 'error')
+            toast.error("{{ session('message') }}");
+        @elseif (session('status') == 'success')
+            toast.success("{{ session('message') }}");
+        @endif
 
-            toastr.error(msg);
-        }
-    </script> --}}
+        @if (count($errors) > 0)
+            @foreach ($errors->all() as $error)
+                toast.error("{{ $error }}");
+            @endforeach
+        @endif
+    
+    </script>
 @endpush

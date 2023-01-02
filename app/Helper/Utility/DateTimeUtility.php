@@ -105,17 +105,22 @@ class DateTimeUtility
 
     public static function getCurrentDateTimeWithAtomFormat(): string
     {
-        return self::getFormattedTime(Carbon::now(), DateTimeInterface::ATOM);
+        return self::getFormattedTime(Carbon::now(), \DateTimeInterface::ATOM);
     }
 
     public static function getCurrentDateTimeWithISO8601Format(): string
     {
-        return self::getFormattedTime(Carbon::now(), DateTimeInterface::ISO8601);
+        return self::getFormattedTime(Carbon::now(), \DateTimeInterface::ISO8601);
     }
 
     public static function getCurrentDate(): string
     {
         return self::getFormattedTime(Carbon::now(), 'Y-m-d');
+    }
+
+    public static function getPreviousDate(): string
+    {
+        return self::getFormattedTime(Carbon::now()->subDays(1), 'Y-m-d');
     }
 
     public static function getCurrent24hTime(): string
@@ -148,7 +153,7 @@ class DateTimeUtility
     {
         $time = self::castToDateObject($time);
         $time = $time->subHours($before_hours);
-        return self::getFormattedTime($time, DateTimeInterface::ATOM);
+        return self::getFormattedTime($time, \DateTimeInterface::ATOM);
     }
 
     public static function getPreviousDateTime_fromPassedTime($before_no_of_days, $time, $format = 'Y-m-d H:i:s'): string
@@ -221,7 +226,7 @@ class DateTimeUtility
     {
         $date = Carbon::now();
         $date = $date->addMonth($after_no_of_months);
-        return self::getFormattedTime($date, DateTimeInterface::ATOM);
+        return self::getFormattedTime($date, \DateTimeInterface::ATOM);
     }
 
     public static function getFirstDateOfTheYear($format = 'Y-m-d', $time = '')

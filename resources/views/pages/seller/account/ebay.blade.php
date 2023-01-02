@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('css')
-    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+ 
 @endpush
 
 @section('content')

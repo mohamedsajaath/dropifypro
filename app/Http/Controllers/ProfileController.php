@@ -44,7 +44,7 @@ class ProfileController extends Controller
     public function updateDetails(ProfileUpdateRequest $request)
     {
         ProfileService::updateFromRequest($request);
-        return back()->with('status', 'profile-updated');
+        return back()->with(['status'=>'success','message'=>'profile-updated']);
     }
 
     /**
@@ -57,10 +57,10 @@ class ProfileController extends Controller
     {
         $passwordValidated = ProfileService::validatePassword($request->confirmemailpassword);
         if (!$passwordValidated) {
-            return back()->with('status', 'Password does not match');
+            return back()->with(['status'=>'error','message'=> 'Password does not match']);
         }
         ProfileService::updateFromRequest($request);
-        return back()->with('status', 'Password-updated');
+        return back()->with(['status'=>'success','message'=>'E-mail-updated']);
     }
 
     /**
@@ -73,8 +73,8 @@ class ProfileController extends Controller
     {
         $imageSaved = ProfileService::updateImageFromRequest($request);
         if ($imageSaved) {
-            return back()->with('status', 'profile-image-updated');      
-        }return back()->with('status', 'please choose image');
+            return back()->with(['status'=>'success','message'=>'profile-image-updated']);      
+        }return back()->with(['status'=>'error','message'=> 'please choose image']);
     }
 
     /**

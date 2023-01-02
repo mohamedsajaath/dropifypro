@@ -32,21 +32,22 @@ class UserSeeder extends Seeder
             'temp_account' => User::FIXED_ACCOUNT,
             'image_url' => "",
         ]);
-
         DB::table('users')->insert([
-            'name' => "Seller",
-            'email' => 'seller@gmail.com',
-            'password' => Hash::make('12345678'),
-            'address' => "test",
-            'city' => "test",
-            'state' => "test",
-            'zipcode' => "test",
-            'country_id' => "213",
-            'currency_id' => "213",
-            'phone_no' => "+94771231234",
-            'type' => User::SELLER,
-            'temp_account' => User::FIXED_ACCOUNT,
-            'image_url' => "",
+            [
+                'name' => "Seller",
+                'email' => 'seller@gmail.com',
+                'password' => Hash::make('12345678'),
+                'address' => "test",
+                'city' => "test",
+                'state' => "test",
+                'zipcode' => "test",
+                'country_id' => "213",
+                'currency_id' => "213",
+                'phone_no' => "+94771231234",
+                'type' => User::SELLER,
+                'temp_account' => User::FIXED_ACCOUNT,
+                'image_url' => "",
+            ]
         ]);
 
     }
