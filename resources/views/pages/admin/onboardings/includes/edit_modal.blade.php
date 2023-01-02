@@ -9,7 +9,7 @@
                 <label class="fs-6 fw-semibold mb-2 required">Event Start Date</label>
                 <!--end::Label-->
                 <!--begin::Input-->
-                <input type="date" class="form-control form-control-solid" name="date"
+                <input type="date" class="form-control form-control-solid" id="editDatePicker" min="{{ $date }}" name="date"
                     value="{{ $onboarding->date }}" />
                 <!--end::Input-->
                 <div class="fv-plugins-message-container invalid-feedback"></div>

@@ -7,8 +7,10 @@
                 <label class="fs-6 fw-semibold mb-2 required">Event Start Date</label>
                 <!--end::Label-->
                 <!--begin::Input-->
-                <input type="date" class="form-control form-control-solid" name="date"/>
+                <input type="date" class="form-control form-control-solid datePicker" min="" name="date" />
                 <!--end::Input-->
+
+
                 <div class="fv-plugins-message-container invalid-feedback"></div>
                 <div class="fv-plugins-message-container invalid-feedback"></div>
             </div>
@@ -19,7 +21,7 @@
                 <label class="fs-6 fw-semibold mb-2">Event Start Time</label>
                 <!--end::Label-->
                 <!--begin::Input-->
-                <input type="time" class="form-control form-control-solid" name="start_time"/>
+                <input type="time" class="form-control form-control-solid" name="start_time" />
                 <!--end::Input-->
             </div>
             <div class="fv-row mb-9">
@@ -27,7 +29,7 @@
                 <label class="fs-6 fw-semibold mb-2">Event End Time</label>
                 <!--end::Label-->
                 <!--begin::Input-->
-                <input type="time"  class="form-control form-control-solid" name="end_time"/>
+                <input type="time" class="form-control form-control-solid" name="end_time" />
                 <!--end::Input-->
             </div>
         </div>
