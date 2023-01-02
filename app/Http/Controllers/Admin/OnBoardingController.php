@@ -18,7 +18,7 @@ class OnBoardingController extends AbstractController
     public function getIndexData()
     {
         $dates = DateTimeUtility::getFutureDates(7);
-        $onboarding = OnboardingService::getOnboardingByDate($dates[0]);
+        $onboarding = OnboardingService::getOnboardingByDate($dates[0]) ?? [];
         return [
             'dates' => $dates,
             'onboarding' => $onboarding,
