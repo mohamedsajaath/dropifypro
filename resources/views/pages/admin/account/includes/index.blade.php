@@ -3,24 +3,24 @@
     <!--begin::Nav item-->
     <li class="nav-item mt-2">
         <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ \Request::is('admin/account/overview') ? 'active' : '' }}"
-            href="{{ route('admin.account.', ['page' => 'overview']) }}">Overview</a>
+            href="{{ route('admin.account', ['page' => 'overview']) }}">Overview</a>
     </li>
     <!--end::Nav item-->
     <!--begin::Nav item-->
     <li class="nav-item mt-2">
         <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ \Request::is('admin/account/profile') ? 'active' : '' }}"
-            href="{{ route('admin.account.', ['page' => 'profile']) }}">Profile</a>
+            href="{{ route('admin.account', ['page' => 'profile']) }}">Profile</a>
     </li>
     <!--end::Nav item-->
     <!--begin::Nav item-->
     <li class="nav-item mt-2">
         <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ \Request::is('admin/account/ebay') ? 'active' : '' }}"
-            href="{{ route('admin.account.', ['page' => 'ebay']) }}">E-Bay </a>
+            href="{{ route('admin.account', ['page' => 'ebay']) }}">E-Bay </a>
     </li>
     <!--end::Nav item-->
     <!--begin::Nav item-->
     <li class="nav-item mt-2">
-        <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ \Request::is('admin/account-plan') ? 'active' : '' }}" 
+        <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ \Request::is('admin/account-plan') ? 'active' : '' }}"
         href="{{ route('admin.plan') }}">Plans</a>
     </li>
     <!--end::Nav item-->

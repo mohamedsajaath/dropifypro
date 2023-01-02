@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/*Temporary url to be removed*/
+Route::get('/admin/account', [Controller\HomeController::class, 'index'])->name('admin.account');
+
 Route::get("clear", function () {
     \Illuminate\Support\Facades\Artisan::call("cache:clear");
     \Illuminate\Support\Facades\Artisan::call("view:clear");
@@ -23,10 +27,10 @@ Route::get("clear", function () {
 Route::get('/', [Controller\HomeController::class, 'index'])->name('home');
 Route::post('/register-with-plan-details', [Controller\RegisterPlanController::class, 'index'])->name('register.plan');
 
+Route::resource('/admin/onboardings', AdminController\OnboardingController::class)->names('admin.onboardings');
+
 /************************************* ADMIN ROUTES *************************************/
 Route::prefix('admin')->middleware(['auth','auth.admin'])->group(function () {
-    Route::resource('onboardings', AdminController\OnboardingController::class)->names('admin.onboardings');
-
 
     Route::get('/dashboard', function () {
         return view('pages.admin.dashboard.index');

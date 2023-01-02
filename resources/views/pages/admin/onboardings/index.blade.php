@@ -50,23 +50,6 @@
             }
         });
 
-        /*$(document).on("click", ".edit_event", async function () {
-            // $('.custom-modal-size').addClass('mw-1000px').removeClass('mw-650px');
-            // let onboarding_id = $(this).data('id');
-            let onboarding_id = $(this).data('id');
-            let url = "{{ url('/onboardings/') }}" + "/" + onboarding_id;
-            await loadEditFormModal(
-                "",
-                "post",
-                "Edit onboarding",
-                "",
-                "Update",
-                "edit_onboarding_submit",
-                url
-            );
-            // $('.edit_plan_submit').attr('data-id',plan_id);
-        });*/
-
         $(document).on("click", ".edit_onboarding_submit", function (e) {
             e.preventDefault();
             // console.log( $(this).closest('form'))

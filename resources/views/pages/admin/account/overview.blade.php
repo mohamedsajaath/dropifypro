@@ -31,7 +31,7 @@
                             </div>
                             <!--end::Card title-->
                             <!--begin::Action-->
-                            <a href="{{ route('admin.account.',['page'=>'profile']) }}" class="btn btn-primary align-self-center">Edit
+                            <a href="{{ route('admin.account',['page'=>'profile']) }}" class="btn btn-primary align-self-center">Edit
                                 Profile</a>
                             <!--end::Action-->
                         </div>

@@ -18,7 +18,7 @@ class PasswordController extends Controller
      */
     public function update(Request $request)
     {
-        
+
         $validated = $request->validateWithBag('updatePassword', [
             'currentpassword' => ['required', 'currentpassword'],
             'newpassword' => ['required', Password::defaults(), 'confirmed'],
@@ -27,8 +27,8 @@ class PasswordController extends Controller
         $request->user()->update([
             'password' => Hash::make($validated['newpassword']),
         ]);
-      
+
         // return back()->with('status', 'password-updated');
-        return Redirect::route('admin.account.',['page'=>'overview'])->with('status', 'password-updated');
+        return Redirect::route('admin.account',['page'=>'overview'])->with('status', 'password-updated');
     }
 }
