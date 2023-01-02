@@ -3,7 +3,6 @@
     @include('pages.admin.support.tickets.includes.table-details')
 @endsection
 @push('script')
-    <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script>
         loadBreadCrumbWithHeader("Tickets", "Details", "Dashboard", "{{ route('admin.dashboard') }}")
     </script>

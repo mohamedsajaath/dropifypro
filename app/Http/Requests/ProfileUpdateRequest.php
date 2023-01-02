@@ -16,13 +16,13 @@ class ProfileUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
             'state' => ['required', 'string', 'max:255'],
             'zipcode' => ['required', 'string', 'max:255'],
             'country_id' => ['required'],
+            'currency_id' => ['required'],
             'phone_no' => ['required', 'string', 'max:255'],
         ];
     }

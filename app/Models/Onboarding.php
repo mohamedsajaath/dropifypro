@@ -18,7 +18,8 @@ class Onboarding extends Model
         'user_id',
         'title',
         'date',
-        'time',
+        'start_time',
+        'end_time',
         'status',
     ];
 }

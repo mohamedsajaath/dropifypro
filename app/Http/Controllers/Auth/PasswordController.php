@@ -29,6 +29,6 @@ class PasswordController extends Controller
         ]);
       
         // return back()->with('status', 'password-updated');
-        return Redirect::route('admin.overview')->with('status', 'password-updated');
+        return Redirect::route('admin.account.',['page'=>'overview'])->with('status', 'password-updated');
     }
 }

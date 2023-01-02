@@ -8,5 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory, CommonQuery;
+    protected $table = 'products';
+    protected $fillable = [
+        'name',
+        'description',
+        'sku',
+        'weight',
+    ];
     public $variants;
+
+    public function getImages(){
+
+        $variants = ProductVariant::selectBy(['product_id'=>$this->id]);
+        $variantIds = $variants->pluck('id')->toArray();
+        return ProductImage::getProductImages($variantIds);
+    }
+
+    public function getVariants()
+    {
+        return $this->hasMany(ProductVariant::class, 'product_id', 'id');
+    }
 }

@@ -2,7 +2,7 @@
 
 
 @push('css')
-    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+   
 @endpush
 @section('content')
     <div class="card card-flush m-10" data-select2-id="select2-data-125-ss3g">

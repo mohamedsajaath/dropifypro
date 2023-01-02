@@ -1,3 +1,4 @@
+
 @csrf
 <input type="hidden" name="id" value="{{ $onboarding->id }}" />
 <div class="modal-body py-10 px-lg-17">
@@ -8,24 +9,36 @@
                 <label class="fs-6 fw-semibold mb-2 required">Event Start Date</label>
                 <!--end::Label-->
                 <!--begin::Input-->
-                <input type="date" class="form-control form-control-solid" name="date"
+                <input type="date" class="form-control form-control-solid" id="editDatePicker" min="{{ $date }}" name="date"
                     value="{{ $onboarding->date }}" />
                 <!--end::Input-->
                 <div class="fv-plugins-message-container invalid-feedback"></div>
                 <div class="fv-plugins-message-container invalid-feedback"></div>
             </div>
         </div>
+
+
         <div class="col" data-kt-calendar="datepicker">
             <div class="fv-row mb-9">
                 <!--begin::Label-->
                 <label class="fs-6 fw-semibold mb-2">Event Start Time</label>
                 <!--end::Label-->
                 <!--begin::Input-->
-                <input type="time" class="form-control form-control-solid" name="time"
-                    value="{{ $onboarding->time }}" />
+                <input type="time" class="form-control form-control-solid" name="start_time"
+                value="{{ $onboarding->start_time }}"/>
+                <!--end::Input-->
+            </div>
+            <div class="fv-row mb-9">
+                <!--begin::Label-->
+                <label class="fs-6 fw-semibold mb-2">Event End Time</label>
+                <!--end::Label-->
+                <!--begin::Input-->
+                <input type="time"  class="form-control form-control-solid" name="end_time"
+                value="{{ $onboarding->end_time }}"/>
                 <!--end::Input-->
             </div>
         </div>
+
     </div>
     <!--end::Input group-->
 

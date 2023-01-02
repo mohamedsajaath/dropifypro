@@ -1600,6 +1600,5 @@
 </div>
 @push('script')
     <script src="{{ asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
-    <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset('assets/js/custom/apps/calendar/calendar.js') }}"></script>
 @endpush

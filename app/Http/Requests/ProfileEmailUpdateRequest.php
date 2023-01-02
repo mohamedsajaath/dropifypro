@@ -25,7 +25,7 @@ class ProfileEmailUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'emailaddress' => ['required', 'string', 'email'],
+            'email' => ['required', 'string', 'email','unique:users,email'],
             'confirmemailpassword' => ['required', 'string'],
         ];
     }
