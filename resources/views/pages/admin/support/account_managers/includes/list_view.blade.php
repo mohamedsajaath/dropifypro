@@ -28,13 +28,13 @@
             <table id="kt_datatable_column_rendering"
                 class="table table-hover table-rounded table-row-bordered gy-5 gs-7 table-striped">
                 <thead>
-                    <tr class="fw-semibold fs-6 text-gray-400 text-uppercase">
-                        <th class="fw-bold fs-6">MANAGER NAME</th>
-                        <th class="fw-bold fs-6">E-MAIL</th>
-                        <th class="fw-bold fs-6">WHATSAPP NO</th>
-                        <th class="fw-bold fs-6 text-center">RESPONSE TIME</th>
-                        <th class="fw-bold fs-6 text-center">ASSIGNED SELLERS</th>
-                        <th class="fw-bold fs-6 text-end">ACTIONS</th>
+                    <tr class="fw-semibold fs-6 text-gray-400">
+                        <th class="fw-bold fs-6">Name</th>
+                        <th class="fw-bold fs-6">Email</th>
+                        <th class="fw-bold fs-6">Whatsapp Number</th>
+                        <th class="fw-bold fs-6 text-center">Response Tim (Minutes)</th>
+                        <th class="fw-bold fs-6 text-center">Assigned Sellers</th>
+                        <th class="fw-bold fs-6 text-end">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,7 +73,7 @@
                                     </div>
                                     <!--end::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a class="menu-link px-3 acc-delete d-flex gap-5" 
+                                        <a class="menu-link px-3 acc-delete d-flex gap-5"
                                         data-id="{{ $account_manager_detail->id }}">
                                             <i class="bi bi-trash"></i>Delete
                                         </a>

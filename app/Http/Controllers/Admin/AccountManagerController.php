@@ -13,6 +13,11 @@ class AccountManagerController extends Controller
 {
     use ResponseWrapperAdmin;
 
+    public function __construct()
+    {
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +26,8 @@ class AccountManagerController extends Controller
     public function index()
     {
         $accountManagers = AccountManager::getAll();
-        return view('pages.admin.support.account_managers.index')->with("account_manager_details", $accountManagers);
+        return view('pages.admin.support.account_managers.index')
+            ->with(['account_manager_details' => $accountManagers]);
     }
 
     /**
@@ -31,7 +37,7 @@ class AccountManagerController extends Controller
      */
     public function create()
     {
-        // return view('pages.admin.support.account_managers.create');
+        return view('pages.admin.support.account_managers.includes.create');
     }
 
     /**
@@ -40,7 +46,7 @@ class AccountManagerController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request  $request)
+    public function store(Request $request)
     {
         AccountManagerService::storeFromRequest($request);
         return self::response('Successfully inserted');
