@@ -52,12 +52,12 @@ abstract class AbstractController extends Controller
 
     protected function getCreateView()
     {
-        throw new NotImplementedException($this->childClass . ".getCreateView method not implemented");
+        throw new \Exception($this->childClass . ".getCreateView method not implemented");
     }
 
     protected function getEditView()
     {
-        throw new NotImplementedException($this->childClass . '.getEditView method not implemented');
+        throw new \Exception($this->childClass . '.getEditView method not implemented');
     }
 
     protected function getCreateData()

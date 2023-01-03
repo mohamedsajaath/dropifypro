@@ -45,11 +45,11 @@
                 </ul>
                 <!--end::Nav-->
                 <!--begin::Tab Content -->
-                <div class="tab-content  mb-2 px-9" id="remove-content">
+                <div class="tab-content  mb-2 px-9" id="onboarding-content">
                     <!--begin::Tap pane-->
 @foreach($onboarding as $onboarding_result)
 
-<div class="tab-pane fade show active" id="kt_timeline_widget_3_tab_content_4" role="tabpanel">
+<div class="tab-pane fade show active content-wrapper" role="tabpanel" data-content-id="{{$onboarding_result['id']}}">
     <!--begin::Wrapper-->
     <div class="d-flex align-items-center mb-6">
         <!--begin::Bullet-->
@@ -85,45 +85,15 @@
             <!--end::Link-->
         </div>
         <!--end::Info-->
-        <!--begin::Action-->
-        <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
-           data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-            <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-            <span class="svg-icon svg-icon-5 m-0">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                            fill="currentColor"></path>
-                    </svg>
-                </span>
-            <!--end::Svg Icon-->
-        </a>
-        <!--begin::Menu-->
-        <div
-            class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-200px py-4"
-            data-kt-menu="true">
-            <!--begin::Menu item-->
-            <div class="menu-item px-3">
-                <a class="menu-link px-3 product-edit d-flex gap-5 edit_event"
-                   data-id="{{ $onboarding_result['id'] }}"><i
-                        class="bi bi-pencil"></i> Edit</a>
-
-                {{-- <td><button class="btn btn-sm btn-success edit_plan"
-                    data-id="{{ $onboarding->id }}">Edit</button></td> --}}
-                </tr>
+        <div class="dropdown">
+            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Actions
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item edit_event" href="#" data-id="{{$onboarding_result['id']}}">Edit</a>
+                <a class="dropdown-item delete-onboarding" href="#" data-id="{{$onboarding_result['id']}}">Delete</a>
             </div>
-            <!--end::Menu item-->
-            <!--begin::Menu item-->
-            <div class="menu-item px-3">
-
-                <a class="menu-link px-3 delete-onboarding d-flex gap-5"
-                data-id="{{$onboarding_result['id']}}"><i class="bi bi-trash"></i>
-                    Delete</a>
-            </div>
-            <!--end::Menu item-->
         </div>
-        <!--end::Action-->
     </div>
     <!--end::Wrapper-->
 

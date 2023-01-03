@@ -1,6 +1,42 @@
 const baseUrl = $('meta[name="base_url"]').attr('content');
-const csrfToken = $('meta[name="csrf_token"]').attr('content');
-function  loadModal (modalId, url){
+const csrfToken = $('meta[name="csrf"]').attr('content');
+function  isConfirmToProcess(alert_type, description, title = 'Are you sure!',icon){
+    return new Promise((resolve, reject)=>{
+        Swal.fire({
+            title: title,
+            text: description,
+            icon:icon,
+            type: alert_type,
+            showCancelButton: true,
+            showLoaderOnConfirm: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes',
+            confirmButtonClass: 'btn btn-primary',
+            cancelButtonClass: 'btn btn-danger ml-1',
+            buttonsStyling: false,
+        })
+            .then(async function (result) {
+                if (result.value) {
+                    resolve(true);
+                }else{
+                    resolve(false);
+                }
+            })
+    });
+}
+
+function loadButton(btn, loadingText = 'Submitting...') {
+    btn.attr('disabled', true);
+    btn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ' + loadingText);
+}
+
+function resetButton(btn, originalText = 'Submit') {
+    btn.attr('disabled', false);
+    btn.html(originalText);
+}
+
+function loadModal(modalId, url) {
     return new Promise(function (resolve, reject) {
         $('#' + modalId).load(url, function (response, status, xhr) {
             if (status !== 'error') {
@@ -12,6 +48,7 @@ function  loadModal (modalId, url){
         });
     });
 }
+
 let toast = {
     success: function (msg) {
         toastr.success(msg);
