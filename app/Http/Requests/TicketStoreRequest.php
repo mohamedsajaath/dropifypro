@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AccountManagerUpdateRequest extends FormRequest
+class TicketStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,8 @@ class AccountManagerUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string'],
-            'email' => ['required', 'email', 'unique:users'],
-            'contact_no' => ['required', 'numeric'],
-            'response_time' => ['required', 'regex:/^[0-9]+(\.[0-9][0-9]?)?$/']
+            'title' => ['required', 'string'],
+            'description' => ['required', 'string']
         ];
     }
 }

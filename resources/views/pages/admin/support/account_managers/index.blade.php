@@ -11,23 +11,24 @@
     <script>
         $(document).on('click', '.add-manager', function() {
             $('.custom-modal-size').addClass('mw-550px').removeClass('mw-650px');
-            loadFormModal("", "", "ADD MANAGER", "", "Submit", "add-managers-btn",
-                `@csrf
+            loadFormModal("", "", "ADD MANAGER", "", "Submit", "add-managers-btn",  
+                `
+@csrf
 <div class="container">
     <div class="row g-9 mb-8 justify-content-center">
         <div class="col-md-8 fv-row">
             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">Name :</label>
-            <input type="text" class="form-control form-control" placeholder="" name="name" maxlength="255" required/>
+            <input type="text" class="form-control form-control" placeholder="" name="name" required/>
 
             <label class="d-flex align-items-center fs-6 fw-semibold mb-2 mt-5">E-Mail :</label>
-            <input type="email" class="form-control form-control" placeholder="" name="email" maxlength="150" required/>
+            <input type="email" class="form-control form-control" placeholder="" name="email" required/>
 
             <label class="d-flex align-items-center fs-6 fw-semibold mb-2 mt-5">WhatsApp No :</label>
-            <input type="text" class="form-control form-control" placeholder="" name="contact_no" maxlength="20" required/>
+            <input type="text" class="form-control form-control" placeholder="" name="contact_no" required/>
 
             <label class="d-flex align-items-center fs-6 fw-semibold mb-2 mt-5">Response Time :</label>
             <div class="input-group input-group-append">
-            <input type="number" class="form-control form-control" placeholder="" name="response_time" maxlength="5" required/>
+            <input type="number" class="form-control form-control" placeholder="" name="response_time" required/>
             <span class="input-group-text">min</span>
             </div>
         </div>
@@ -37,29 +38,10 @@
         });
     </script>
 
-    {{-- <script>
-        $(document).on('click', '.add-managers-btn', async function(e) {
-            e.preventDefault();
-            let form = $(this).closest('form');
-
-            function ValidateEmail(inputText) {
-                var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                if (inputText.form.value.match(mailformat)) {
-                    alert("Valid email address!");
-                    document.email.focus();
-                    return true;
-                } else {
-                    alert("You have entered an invalid email address!");
-                    document.form.email.focus();
-                    return false;
-                }
-            }
-        });
-    </script> --}}
-
+    {{-- Store --}}
     <script>
-        $(document).on('click', '.add-managers-btn', async function(e) {
-            e.preventDefault();
+        $(document).on('submit', 'form', async function(e) {
+            e.preventDefault()
             let form = $(this).closest('form');
             try {
                 const url = "{{ route('admin.account-managers.store') }}";
@@ -78,7 +60,7 @@
         });
     </script>
 
-    {{-- edit manager --}}
+    {{-- Edit manager --}}
     <script>
         $(document).on("click", ".edit-manager", async function() {
             let manager_id = $(this).data('id');
@@ -95,10 +77,10 @@
         });
     </script>
 
-    {{-- update manager --}}
+    {{-- Update manager --}}
     <script>
-        $(document).on("click", ".edit_managers_btn", async function(e) {
-            e.preventDefault();
+        $(document).on('submit', 'form', async function(e) {
+            e.preventDefault()
             let form = $(this).closest('form');
             try {
                 const url = "{{ route('admin.account-managers.update') }}";
@@ -206,5 +188,19 @@
                 dropdownParent: $('#kt_modal_new_target'),
             });
         });
+    </script>
+
+    <script>
+        @if (session('status') == 'error')
+            toast.error("{{ session('message') }}");
+        @elseif (session('status') == 'success')
+            toast.success("{{ session('message') }}");
+        @endif
+
+        @if (count($errors) > 0)
+            @foreach ($errors->all() as $error)
+                toast.error("{{ $error }}");
+            @endforeach
+        @endif
     </script>
 @endpush

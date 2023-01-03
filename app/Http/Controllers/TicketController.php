@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\Mapper\Admin\TicketMapper;
+use App\Http\Controllers\Controller;
+use App\Helper\Service\Admin\TicketService;
 use App\Models\Ticket;
+use App\Models\TicketContent;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
@@ -14,7 +18,8 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        $tickets = Ticket::getAll();
+        return view('pages.seller.support.index')->with(["tickets"=> $tickets]);
     }
 
     /**
@@ -35,16 +40,22 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ticket = TicketMapper::getRequestToModel($request);
+        TicketService::save($ticket);
+        return self::response('Successfully inserted');
+    }
+
+    public function storeCloseReason(){
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Ticket  $ticket
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Ticket $ticket)
+    public function show($id)
     {
         //
     }
@@ -52,10 +63,10 @@ class TicketController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Ticket  $ticket
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ticket $ticket)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +75,10 @@ class TicketController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Ticket  $ticket
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ticket $ticket)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,11 +86,16 @@ class TicketController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Ticket  $ticket
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ticket $ticket)
+    public function destroy($id)
     {
         //
+    }
+
+    public function ticketDetails()
+    {
+        return view('pages.seller.support.includes.ticket_details')->with('ticket',['nafris']);
     }
 }

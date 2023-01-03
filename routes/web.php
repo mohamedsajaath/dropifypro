@@ -93,9 +93,9 @@ Route::middleware('auth')->group(function () {
             return view('pages.admin.memberships.cancelled.index');
         })->name('admin.sellers.memberships.cancelled');
 
-        Route::get('/tickets/index', [TicketController::class, 'index'])->name('admin.support.tickets.index');
-        Route::get('/tickets/create', [TicketController::class, 'create'])->name('admin.support.tickets.create');
+        Route::get('/tickets', [TicketController::class, 'index'])->name('admin.support.tickets.index');
         Route::post('/tickets/store', [TicketController::class, 'store'])->name('admin.support.tickets.store');
+        Route::get('/support/tickets/ticket-details', [TicketController::class, 'ticketDetails'])->name('admin.support.tickets.ticket-details');
 
         Route::get('/support/account-managers', [AccountManagerController::class, 'index'])->name('admin.support.account-managers.index');
         Route::post('/support/account-managers/store', [AccountManagerController::class, 'store'])->name('admin.account-managers.store');
@@ -169,9 +169,10 @@ Route::middleware('auth')->group(function () {
             return view('pages.seller.sales-report.index');
         })->name('sales-report');
 
-        Route::get('/support', function () {
-            return view('pages.seller.support.index');
-        })->name('support');
+        Route::get('/support/tickets', [App\Http\Controllers\TicketController::class, 'index'])->name('seller.support.ticket');
+        Route::post('support/tickets/store', [App\Http\Controllers\TicketController::class, 'store'])->name('seller.support.store');
+        Route::get('/support/ticket-details', [App\Http\Controllers\TicketController::class, 'ticketDetails'])->name('seller.support.ticket-details');
+        Route::post('support/close-ticket/store', [App\Http\Controllers\TicketController::class, 'store'])->name('seller.support.close_ticket.reason');
 
         Route::get('/wholesale-request', function () {
             return view('pages.seller.wholesale-request.index');
@@ -184,6 +185,14 @@ Route::middleware('auth')->group(function () {
         // SELLER ACCOUNT SETTING START
         Route::get('seller/account/{page}', [ProfileController::class, 'sellerIndex'])->name('seller.account.');
         // SELLER ACCOUNT SETTING END
+
+
+
+
+
+
+
+
 
     });
     //SELLER END
