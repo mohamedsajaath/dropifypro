@@ -24,6 +24,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+Route::get('/getCategory', [ProductController::class, 'getCategory'])->name('getCategory');
+
 //HOME START
 Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -57,6 +61,17 @@ Route::middleware('auth')->group(function () {
         Route::get('/products/recommend', function () {
             return view('pages.admin.products.recommend.index');
         })->name('admin.products.recommend');
+
+
+
+
+
+
+
+
+
+
+
 
 
         Route::get('/orders/paid', function () {
@@ -93,7 +108,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/on-boardings/{id}', [OnBoardingController::class,'edit'])->name('admin.on-boarding.edit');
         Route::post('/on-boardings/update/{id}', [OnBoardingController::class,'update'])->name('admin.on-boarding.update');
         Route::get('/on-boardings/delete/{id}', [OnBoardingController::class, 'destroy'])->name('admin.on-boarding.destroy');
-        
+
         Route::get('/on-boardings/singleDate/{date}', [OnBoardingController::class, 'singleDate'])->name('admin.on-boardings.singleDate');
 
 

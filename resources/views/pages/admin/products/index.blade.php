@@ -16,14 +16,50 @@
             })
             $('.custom-modal-size').addClass('mw-75').removeClass('mw-650px');
             await loadFormModal("", "", "Add New Product", "", "Proceed", "add-product-btn", `
-         @include('pages.admin.products.includes.create-modal')
+                  @include('pages.admin.products.includes.create-modal')
             `);
             $(".variant-type-values").select2({
                 tags: true,
                 tokenSeparators: [',', ' ']
             });
 
+
+            let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             $('select.category').select2({
+                dropdownParent: $('#kt_modal_new_target'),
+                placeholder: "Select a Category",
+                ajax: {
+                    url: '{{ route('getCategory') }}',
+                    dataType: 'json',
+                    // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+                    data: function (params) {
+                        let query = {
+                            search: params.term,
+                            type: 'public'
+                        }
+
+                        // Query parameters will be ?search=[term]&type=public
+                        return query;
+                    }
+                },
+                processResults: function (data, params) {
+                    params.page = params.page || 1;
+                        console.log(data);
+                    return {
+
+                        results: data.results,
+                        pagination: {
+                            more: (params.page * 10) < data.count_filtered
+                        }
+                    };
+                }
+
+            });
+
+
+
+
+            $('select.variant-type').select2({
                 dropdownParent: $('#kt_modal_new_target'),
             });
             $('select.weight-unit').select2({
@@ -46,14 +82,14 @@
     </script>
     <script>
         let columns = [{
-                data: 'DT_RowIndex',
-                name: 'DT_RowIndex',
-                searchable: false,
-                sortable: false
-            },
+            data: 'DT_RowIndex',
+            name: 'DT_RowIndex',
+            searchable: false,
+            sortable: false
+        },
             {
                 data: 'image_url',
-                render: function(data, type, row) {
+                render: function (data, type, row) {
                     const imagePath = row.image_base_path + '/' + data
                     return `<img class="w-50px ms-n1" src="${imagePath}" alt="product" />`;
 
@@ -62,7 +98,7 @@
                 sortable: false
             },
             {
-                data: 'name',
+                data: 'title',
                 name: 'name',
             },
             {
@@ -83,7 +119,7 @@
             },
             {
 
-                render: function(data, type, row) {
+                render: function (data, type, row) {
                     return `<span class="fw-bold ms-3">226 <span class="badge badge-light-success fs-base">
                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
                     <span class="svg-icon svg-icon-5 svg-icon-success ms-n1">
@@ -105,7 +141,7 @@
             },
             {
 
-                render: function(data, type, row) {
+                render: function (data, type, row) {
                     return `<span class="fw-bold ms-3" data-bs-toggle="tooltip" data-bs-placement="Bottom" title="Reccommended"><span
                     class="badge badge-circle badge-success h-15px w-15px"></span></span>
                     `;
@@ -114,7 +150,7 @@
                 sortable: false
             },
             {
-                render: function(data, type, row) {
+                render: function (data, type, row) {
                     return `
             <div class="dropdown show">
                  <a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
@@ -135,7 +171,7 @@
             },
 
         ];
-        $(document).ready(async function(e) {
+        $(document).ready(async function (e) {
             await initDataTable($('table'), columns, 'filter');
             // dt = $("#kt_datatable_column_rendering").DataTable();
 

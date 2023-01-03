@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             MdCountrySeeder::class,
-            MdEbayCategorySeeder::class,
-            PlanSeeder::class
+            PlanSeeder::class,
+            MdEbayCategoryListSeeder::class
         ]);
     }
 }

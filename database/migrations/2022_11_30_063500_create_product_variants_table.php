@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->string('sku');
             $table->double('price', 8, 2);
+            $table->double('rsp', 8, 2);
             $table->timestamps();
         });
     }

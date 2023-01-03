@@ -6,12 +6,10 @@
     <div class="row mb-6">
         <label class="col-lg-4 col-form-label required fw-semibold fs-6">Categories:</label>
         <div class="col-lg-8 fv-row">
-            <select class="form-control form-select float-right category form-control-solid" name="category_id"
+            <select class="form-control form-select float-right category form-control-solid" name="category_id" id="dropdown"
                     required>
-                <option value="" selected>Category</option>
-                @foreach($ebay_category as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
+{{--                <option value="" selected>Category</option>--}}
+
             </select>
         </div>
     </div>
@@ -152,14 +150,14 @@
         <div class="row mb-6 d-flex w-50">
             <div class="form-check w-50">
                 <input class="form-check-input" type="radio"
-                       name="variation" id="variation" value="variant_product" checked>
+                       name="hasVariation" id="variation" value="1" checked>
                 <label class="form-check-label" for="exampleRadios1">
                     Variation Product
                 </label>
             </div>
             <div class="form-check w-50">
                 <input class="form-check-input" type="radio"
-                       name="variation" id="nonvariation" value="non_variant_product">
+                       name="hasVariation" id="nonvariation" value="0">
                 <label class="form-check-label" for="exampleRadios2">
                     Non Variation Product
                 </label>
@@ -169,9 +167,7 @@
     {{--VARIATION BUTTON--}}
 
 
-    <span class="variant-type">
 
-    </span>
 
 
     {{-- VARIANT TYPES   --}}
@@ -181,6 +177,13 @@
             <span style="border:1px solid #d3d3d3; border-radius:5px; padding:1rem; width:90%;"
                   class="variant-type-container remove-container">
             <div class="col-lg-12 fv-row mt-4 d-flex variant-wrap" style="gap:10px;">
+{{--                <select class="form-control form-select float-right variant-type form-control-solid">--}}
+{{--                <option value="" selected>Variation Type</option>--}}
+{{--                @foreach($ebay_category as $category)--}}
+{{--                            <option value="{{ $category->id }}">{{ $category->name }}</option>--}}
+{{--                    @endforeach--}}
+{{--            </select>--}}
+
                 <input type="text" class="form-control variant-type w-50 h-50px" placeholder="Variation Type"/>
                 <select class="form-control variant-type-values" multiple="multiple">
                 </select>

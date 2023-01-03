@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('reference');
             $table->string('file_name');
             $table->string('storage_name');
-            $table->longText('image_url');
+            $table->longText('image_url')->nullable();
             $table->timestamps();
         });
     }

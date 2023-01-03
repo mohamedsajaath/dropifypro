@@ -36,47 +36,45 @@ class ProductRequest extends FormRequest
             'quantity' => ['required_if:variation,non_variant_product','numeric'],
             'price' => ['required_if:variation,non_variant_product','numeric'],
             'rsp' => ['required_if:variation,non_variant_product','numeric'],
-            'variant_type' => ['required_if:variation,variant_product','array'],
-            'variant_value' => ['required_if:variation,variant_product','array']
         ];
     }
 
 
-    public function withValidator(Validator $validator)
-    {
-        if ($validator->fails()) return;
-        $validator->after(function (Validator $validator) {
-
-
-            $specificationTypeArray = $this->specification_type;
-            $specificationValueArray = $this->specification_type_value;
-
-
-            for($i = 0;$i < Count($specificationTypeArray);$i++){
-               $specificationType = $specificationTypeArray[$i];
-               $condition = isset($specificationType) || isset($specificationType);
-               if($condition){
-                   $validator->errors()->add('name', 'Specification type or value is empty');
-               }
-            }
-
-//
-//           $variationTypeArray = $this->variant_type;
+//    public function withValidator(Validator $validator)
+//    {
+//        if ($validator->fails()) return;
+//        $validator->after(function (Validator $validator) {
 //
 //
-//            for($h = 0;$h <Count($variationTypeArray);$h++){
-//                $variantType = $variationTypeArray[$h];
-//                $condition = empty($variantType) || empty($variantType);
-//               if($condition) {
-//                   dd("empty");
-//              }
+//            $specificationTypeArray = $this->specification_type;
+//            $specificationValueArray = $this->specification_type_value;
+//
+//
+//            for($i = 0;$i < Count($specificationTypeArray);$i++){
+//               $specificationType = $specificationTypeArray[$i];
+//               $condition = isset($specificationType) || isset($specificationType);
+//               if($condition){
+//                   $validator->errors()->add('name', 'Specification type or value is empty');
+//               }
 //            }
-
 //
-//            $marketplaceId = $this->route('marketplace');
-//           if(SellerMarketplace::checkIsConnectedWithSellersByMarketplaceId($marketplaceId)){
-//              $validator->errors()->add('name', 'The marketplace connected with sellers');
-//            }
-        });
-    }
+////
+////           $variationTypeArray = $this->variant_type;
+////
+////
+////            for($h = 0;$h <Count($variationTypeArray);$h++){
+////                $variantType = $variationTypeArray[$h];
+////                $condition = empty($variantType) || empty($variantType);
+////               if($condition) {
+////                   dd("empty");
+////              }
+////            }
+//
+////
+////            $marketplaceId = $this->route('marketplace');
+////           if(SellerMarketplace::checkIsConnectedWithSellersByMarketplaceId($marketplaceId)){
+////              $validator->errors()->add('name', 'The marketplace connected with sellers');
+////            }
+//        });
+//    }
 }
