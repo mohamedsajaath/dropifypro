@@ -11,15 +11,28 @@ class MdEbayCategoryService
 
     public static function getCategory($request)
     {
-//        dd($request->all());
         $requestData = $request->all();
-        $EbayCategories = new MdEbayCategoryList();
-        return $EbayCategories->query()->take(5)->where('category_name_list', 'LIKE', '%' . $requestData['search'] . '%')->get();
+        $ebayCategories = new MdEbayCategoryList();
+        $ebayCategoryListsQuery = $ebayCategories->where('category_name_list', 'LIKE', '%' . $requestData['search'] . '%');
 
-//        return response()->json([[
-//            "id"=>4656 ,"node_id"=>"zdgsdfgfsdgfdsgdf","name"=>"gfgfdgdf","full_name"=>"sfdfdsf"
-//        ]]);
+        $ebayCategoryListCountQuery = clone $ebayCategoryListsQuery;
+        $totalCategoryListCount = $ebayCategoryListCountQuery->count();
 
+        $ebayCategoryLists = $ebayCategoryListsQuery->limit(10)->get();
 
+        $results = [];
+        foreach ($ebayCategoryLists as $ebayCategoryList) {
+            $results[] = [
+                'id' => $ebayCategoryList->category_id,
+                'text' => $ebayCategoryList->category_name_list
+            ];
+        }
+
+        return [
+            'results' => $results,
+            'pagination' => [
+                'more' => true
+            ]
+        ];
     }
 }

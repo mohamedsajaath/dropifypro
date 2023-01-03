@@ -104,5 +104,20 @@ class ProductController extends Controller
     public function getCategory(Request $request){
 //        dd($request);
         return MdEbayCategoryService::getCategory($request);
+        return '{
+  "results": [
+    {
+      "id": 1,
+      "text": "Option 1"
+    },
+    {
+      "id": 2,
+      "text": "Option 2"
+    }
+  ],
+  "pagination": {
+    "more": true
+  }
+}';
     }
 }

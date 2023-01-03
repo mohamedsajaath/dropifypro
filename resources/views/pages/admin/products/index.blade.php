@@ -44,9 +44,7 @@
                 },
                 processResults: function (data, params) {
                     params.page = params.page || 1;
-                        console.log(data);
                     return {
-
                         results: data.results,
                         pagination: {
                             more: (params.page * 10) < data.count_filtered
@@ -55,8 +53,6 @@
                 }
 
             });
-
-
 
 
             $('select.variant-type').select2({
