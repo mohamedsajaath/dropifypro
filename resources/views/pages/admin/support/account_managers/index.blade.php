@@ -8,11 +8,11 @@
 @endsection
 @push('script')
     <script>
-        const modalId = 'modal';
-        $(document).on('click', '.add-manager', async function () {
+        const modalId = 'common-modal';
+        $(document).on('click', '#add-manager', async function () {
             try {
                 let loadURL = `${baseUrl}/admin/support/account-managers/create`;
-                await loadModal('modal', loadURL);
+                await loadModal(modalId, loadURL);
             }catch(err){
                 console.log(err);
             }

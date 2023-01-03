@@ -16,7 +16,7 @@
             <!--end::Search-->
         </div>
         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-            <button type="button" class="btn btn-primary add-manager">Add Manager</button>
+            <button type="button" class="btn btn-primary" id="add-manager">Add Manager</button>
         </div>
     </div>
     <!--end::Header-->

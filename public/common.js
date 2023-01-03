@@ -3,8 +3,12 @@ const csrfToken = $('meta[name="csrf_token"]').attr('content');
 function  loadModal (modalId, url){
     return new Promise(function (resolve, reject) {
         $('#' + modalId).load(url, function (response, status, xhr) {
+            var myModal = new bootstrap.Modal(document.getElementById(modalId), {
+                keyboard: false
+            })
             if (status !== 'error') {
-                $('#' + modalId).modal('show');
+                //$('#' + modalId).modal('show');
+                myModal.toggle()
             } else {
                 reject(response);
             }
