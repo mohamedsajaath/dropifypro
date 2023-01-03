@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="modal"></div>
+{{--<div class="modal fade" id="modal" ></div>--}}
 <div class="modal fade" id="custom-modal">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">

@@ -27,6 +27,7 @@ Route::get("clear", function () {
 Route::get('/', [Controller\HomeController::class, 'index'])->name('home');
 Route::post('/register-with-plan-details', [Controller\RegisterPlanController::class, 'index'])->name('register.plan');
 
+Route::post('/admin/onboarding/{date}/', [AdminController\OnBoardingController::class,'getByDate']);
 Route::resource('/admin/onboardings', AdminController\OnboardingController::class)->names('admin.onboardings');
 
 Route::resource('/admin/support/account-managers', AdminController\AccountManagerController::class)->names('admin.support.account-managers');
