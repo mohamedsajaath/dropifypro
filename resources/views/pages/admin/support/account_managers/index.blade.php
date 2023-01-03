@@ -1,39 +1,21 @@
 @extends('layouts.app')
 @section('content')
-    @include('pages.admin.support.account_managers.includes.details-table')
+    @include('includes.bread_crumb_with_header',[
+        'header'=>'Account Managers',
+        'bread_crumbs'=>['Dashboard'=>route('dashboard'),'Support'=>'']
+    ])
+    @include('pages.admin.support.account_managers.includes.list_view')
 @endsection
 @push('script')
     <script>
-        loadBreadCrumbWithHeader("Account Managers", "", "", "")
-    </script>
-
-
-    <script>
-        $(document).on('click', '.add-manager', function() {
-            $('.custom-modal-size').addClass('mw-550px').removeClass('mw-650px');
-            loadFormModal("", "", "ADD MANAGER", "", "Submit", "add-managers-btn",
-                `@csrf
-<div class="container">
-    <div class="row g-9 mb-8 justify-content-center">
-        <div class="col-md-8 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-semibold mb-2">Name :</label>
-            <input type="text" class="form-control form-control" placeholder="" name="name" maxlength="255" required/>
-
-            <label class="d-flex align-items-center fs-6 fw-semibold mb-2 mt-5">E-Mail :</label>
-            <input type="email" class="form-control form-control" placeholder="" name="email" maxlength="150" required/>
-
-            <label class="d-flex align-items-center fs-6 fw-semibold mb-2 mt-5">WhatsApp No :</label>
-            <input type="text" class="form-control form-control" placeholder="" name="contact_no" maxlength="20" required/>
-
-            <label class="d-flex align-items-center fs-6 fw-semibold mb-2 mt-5">Response Time :</label>
-            <div class="input-group input-group-append">
-            <input type="number" class="form-control form-control" placeholder="" name="response_time" maxlength="5" required/>
-            <span class="input-group-text">min</span>
-            </div>
-        </div>
-    </div>
-</div>
-     `);
+        const modalId = 'modal';
+        $(document).on('click', '.add-manager', async function () {
+            try {
+                let loadURL = `${baseUrl}/admin/support/account-managers/create`;
+                await loadModal('modal', loadURL);
+            }catch(err){
+                console.log(err);
+            }
         });
     </script>
 
@@ -58,7 +40,7 @@
     </script> --}}
 
     <script>
-        $(document).on('click', '.add-managers-btn', async function(e) {
+        $(document).on('click', '.add-managers-btn', async function (e) {
             e.preventDefault();
             let form = $(this).closest('form');
             try {
@@ -80,7 +62,7 @@
 
     {{-- edit manager --}}
     <script>
-        $(document).on("click", ".edit-manager", async function() {
+        $(document).on("click", ".edit-manager", async function () {
             let manager_id = $(this).data('id');
             let url = baseUrl + `/admin/support/account-managers/edit/${manager_id}`;
             await loadEditFormModal(
@@ -97,11 +79,11 @@
 
     {{-- update manager --}}
     <script>
-        $(document).on("click", ".edit_managers_btn", async function(e) {
+        $(document).on("click", ".edit_managers_btn", async function (e) {
             e.preventDefault();
             let form = $(this).closest('form');
             try {
-                const url = "{{ route('admin.account-managers.update') }}";
+                const url = baseUrl+'/admin/support/account-managers/1/edit';
                 let ajaxRequest = new HttpRequest(url, 'POST');
                 ajaxRequest.set_data_by_form_object(form);
                 let response = await ajaxRequest.call();
@@ -118,12 +100,12 @@
 
     {{-- Delete Sellers --}}
     <script>
-        $(document).on("click", ".acc-delete", async function(e) {
+        $(document).on("click", ".acc-delete", async function (e) {
             e.preventDefault();
             let manager_id = $(this).data('id');
             let url = baseUrl + `/admin/support/account-managers/delete/${manager_id}`;
             if (await isConfirmToProcess("success", "", title = 'Are you sure! You want to delete',
-                    'warning')) {
+                'warning')) {
                 try {
                     let ajaxRequest = new HttpRequest(url, 'get');
                     let response = await ajaxRequest.call();
@@ -141,7 +123,7 @@
 
     {{-- Assign Sellers --}}
     <script>
-        $(document).on('click', '.assign-sellers', function() {
+        $(document).on('click', '.assign-sellers', function () {
             $('.custom-modal-size').addClass('mw-600px').removeClass('mw-650px');
             loadDetailModal("ASSIGN SELLERS", "",
                 `

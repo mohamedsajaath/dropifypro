@@ -50,7 +50,8 @@
                 <span class="menu-bullet">
                     <span class="bullet bullet-dot"></span>
                 </span>
-                <span class="menu-title">Paid <span class="badge badge-outline bc-orange-b m-2 badge-sm" >21</span></span>
+                <span class="menu-title">Paid <span
+                        class="badge badge-outline bc-orange-b m-2 badge-sm">21</span></span>
 
             </a>
             <!--end:Menu link-->
@@ -63,7 +64,8 @@
                 <span class="menu-bullet">
                     <span class="bullet bullet-dot"></span>
                 </span>
-                <span class="menu-title">Unpaid <span class="badge badge-outline bc-orange-b m-2 badge-sm" >36</span></span>
+                <span class="menu-title">Unpaid <span
+                        class="badge badge-outline bc-orange-b m-2 badge-sm">36</span></span>
 
             </a>
             <!--end:Menu link-->
@@ -185,7 +187,9 @@
     </span>
     <!--end:Menu link-->
     <!--begin:Menu sub-->
-    <div class="menu-sub menu-sub-accordion">
+    <div
+        class="menu-sub menu-sub-accordion
+        {{\Request::is('*/tickets*') || \Request::is('*/account-managers*')?'show':''}}">
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
@@ -201,7 +205,8 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link" href="{{route('admin.support.account-managers.index')}}">
+            <a class="menu-link {{\Request::is('*/account-managers')?'active':''}}"
+               href="{{route('admin.support.account-managers.index')}}">
                 <span class="menu-bullet">
                     <span class="bullet bullet-dot"></span>
                 </span>

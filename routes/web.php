@@ -29,6 +29,12 @@ Route::post('/register-with-plan-details', [Controller\RegisterPlanController::c
 
 Route::resource('/admin/onboardings', AdminController\OnboardingController::class)->names('admin.onboardings');
 
+Route::resource('/admin/support/account-managers', AdminController\AccountManagerController::class)->names('admin.support.account-managers');
+// Route::get('account-managers/create', [AdminController\AccountManagerController::class, 'create'])->name('admin.account-managers.create');
+/*Route::post('/account-managers/store', [AdminController\AccountManagerController::class, 'store'])->name('admin.account-managers.store');
+Route::get('/account-managers/edit/{id}', [AdminController\AccountManagerController::class, 'edit'])->name('admin.account-managers.edit');
+Route::post('/account-managers/update', [AdminController\AccountManagerController::class, 'update'])->name('admin.account-managers.update');*/
+
 /************************************* ADMIN ROUTES *************************************/
 Route::prefix('admin')->middleware(['auth','auth.admin'])->group(function () {
 
@@ -38,6 +44,7 @@ Route::prefix('admin')->middleware(['auth','auth.admin'])->group(function () {
 
 
     Route::get('/products', [\App\Http\Controllers\admin\ProductController::class, 'index'])->name('admin.products');
+    Route::get('/products/list', [\App\Http\Controllers\admin\ProductController::class, 'index'])->name('admin.products.list');
     Route::post('/products/create', [\App\Http\Controllers\admin\ProductController::class, 'store'])->name('admin.products.store');
     Route::get('/products/recommend', function () {
         return view('pages.admin.products.recommend.index');
@@ -231,13 +238,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/support/tickets', function () {
             return view('pages.admin.support.tickets.index');
         })->name('admin.support.tickets');
-
-
-        Route::get('/account-managers/index', [AdminController\AccountManagerController::class, 'index'])->name('admin.support.account-managers.index');
-        // Route::get('account-managers/create', [AdminController\AccountManagerController::class, 'create'])->name('admin.account-managers.create');
-        Route::post('/account-managers/store', [AdminController\AccountManagerController::class, 'store'])->name('admin.account-managers.store');
-        Route::get('/account-managers/edit/{id}', [AdminController\AccountManagerController::class, 'edit'])->name('admin.account-managers.edit');
-        Route::post('/account-managers/update', [AdminController\AccountManagerController::class, 'update'])->name('admin.account-managers.update');
 
 
         Route::get('/wholesale-requests', function () {
