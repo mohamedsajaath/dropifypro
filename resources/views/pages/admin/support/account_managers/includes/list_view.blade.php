@@ -16,7 +16,7 @@
             <!--end::Search-->
         </div>
         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-            <button type="button" class="btn btn-primary" id="add-manager">Add Manager</button>
+            <button type="button" class="btn btn-primary add-manager">Add Manager</button>
         </div>
     </div>
     <!--end::Header-->
@@ -25,7 +25,7 @@
         <!--begin::Table container-->
         <div class="table-responsive">
             <!--begin::Table-->
-            <table id="kt_datatable_column_rendering"
+            <table id="accountManager-content"
                 class="table table-hover table-rounded table-row-bordered gy-5 gs-7 table-striped">
                 <thead>
                     <tr class="fw-semibold fs-6 text-gray-400">
@@ -73,7 +73,7 @@
                                     </div>
                                     <!--end::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a class="menu-link px-3 acc-delete d-flex gap-5"
+                                        <a class="menu-link px-3 acc-delete d-flex gap-5 delete-manager"
                                         data-id="{{ $account_manager_detail->id }}">
                                             <i class="bi bi-trash"></i>Delete
                                         </a>

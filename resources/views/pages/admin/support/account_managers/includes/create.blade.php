@@ -1,9 +1,11 @@
 @extends('layouts.modals.modal-base.index')
 @section('title','Add Manager')
 @section('content')
+
     <form id="kt_ecommerce_settings_general_form" class="form fv-plugins-bootstrap5 fv-plugins-framework"
           action="{{route('admin.support.account-managers.store')}}" method="POST">
         <!--begin::Input group-->
+        @csrf
         <div class="fv-row mb-3 fv-plugins-icon-container">
             <label class="fs-6 fw-semibold form-label mt-3">
                 <span class="required">Name</span>

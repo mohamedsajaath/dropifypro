@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+require __DIR__ . '/auth.php';
+
 /*Temporary url to be removed*/
 Route::get('/admin/account', [Controller\HomeController::class, 'index'])->name('admin.account');
 
@@ -114,7 +116,7 @@ Route::prefix('admin')->middleware(['auth','auth.admin'])->group(function () {
 
 
 /************************************* SELLER ROUTES *************************************/
-Route::middleware(['auth, auth.seller'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('pages.seller.dashboard.index');
     })->name('dashboard');
@@ -351,4 +353,3 @@ Route::middleware('auth')->group(function () {
 
 
 });
-require __DIR__ . '/auth.php';
