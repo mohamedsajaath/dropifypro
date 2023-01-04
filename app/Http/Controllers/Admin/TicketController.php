@@ -74,6 +74,6 @@ class TicketController extends AbstractController
     }
 
     public function ticketDetails(){
-        return 'pages.admin.support.tickets.includes.ticket-details';
+        return view('pages.admin.support.tickets.includes.ticket-details');
     }
 }
