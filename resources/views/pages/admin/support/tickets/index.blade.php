@@ -1,46 +1,29 @@
 @extends('layouts.app')
 @section('content')
+    @include('includes.bread_crumb_with_header', [
+        'header' => 'Tickets',
+        'bread_crumbs' => ['Dashboard' => route('dashboard'), 'Support' => ''],
+    ])
     @include('pages.admin.support.tickets.includes.table-details')
 @endsection
 @push('script')
-    <script>
-        loadBreadCrumbWithHeader("Tickets", "Details", "Dashboard", "{{ route('admin.dashboard') }}")
-    </script>
-
 
     {{-- create tickets --}}
     <script>
-        $(document).on('click', '.create-ticket', function() {
-            $('.custom-modal-size').addClass('mw-500px').removeClass('mw-650px');
-            loadFormModal("", "", "Create Ticket", "Create new ticket here", "Create", "submit-btn",
-                `<!--begin::Card body-->
-<div class="card-body p-9 card mb-5">
-    <form id="kt_modal_new_card_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">
-        <!--begin::Input group-->
-        <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
-            <!--begin::Label-->
-            <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
-                <span class="required">Title :</span>
-                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
-                    aria-label="Specify a card holder's name" data-kt-initialized="1"></i>
-            </label>
-            <!--end::Label-->
-            <input type="text" class="form-control form-control-solid" placeholder="Title" name="card_name" value="">
-        </div>
-        <!--end::Input group-->
-        <!--begin::Input group-->
-        <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
-            <label class="fs-6 fw-semibold mb-2">
-                <span class="required">Description :</span>
-                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
-                    aria-label="Specify a card holder's name" data-kt-initialized="1"></i>
-            </label>
-            <textarea class="form-control form-control-solid" rows="3" name="target_details" placeholder="Description"></textarea>
-        </div>
-        <!--end::Input group-->
-    </form>
-</div>
-<!--end::Card body-->`);
+        const modalId = 'modal';
+        $(document).on('click', '.add-manager', async function() {
+            const btn = $(this);
+            const btnTitle = btn.html();
+            try {
+                loadButton(btn, 'Loading ...');
+                let loadURL = `${baseUrl}/admin/support/account-managers/create`;
+                await loadModal(modalId, loadURL);
+            } catch (err) {
+                toast.error("Could not load add event popup. (error_ref: add_account_manager)");
+                console.log("add_account_manager", err);
+            } finally {
+                resetButton(btn, btnTitle);
+            }
         });
     </script>
 

@@ -2,38 +2,37 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\AbstractController;
 use App\Models\Ticket;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TicketController extends Controller
+class TicketController extends AbstractController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function getIndexView()
     {
-        return view('pages.admin.support.tickets.index');
+        return 'pages.admin.support.tickets.index';
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function getIndexData()
+    {
+        $ticket = Ticket::getAll();
+        return [
+            'tickets' => $ticket,
+        ];
+        // $dates = DateTimeUtility::getFutureDates(7);
+        // $onboarding = OnboardingService::getOnboardingByDate($dates[0]) ?? [];
+        // return [
+        //     'dates' => $dates,
+        //     'onboarding' => $onboarding,
+        // ];
+    }
+
     public function create()
     {
         return view('pages.admin.support.tickets.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //get all request data as array
@@ -54,48 +53,27 @@ class TicketController extends Controller
         return response()->json(['result' => $result, 'message' => $message, 'errors' => $errors], $status);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
+    }
+
+    public function ticketDetails(){
+        return 'pages.admin.support.tickets.includes.ticket-details';
     }
 }

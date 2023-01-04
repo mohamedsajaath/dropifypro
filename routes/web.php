@@ -33,10 +33,9 @@ Route::post('/admin/onboarding/{date}/', [AdminController\OnBoardingController::
 Route::resource('/admin/onboardings', AdminController\OnboardingController::class)->names('admin.onboardings');
 
 Route::resource('/admin/support/account-managers', AdminController\AccountManagerController::class)->names('admin.support.account-managers');
-// Route::get('account-managers/create', [AdminController\AccountManagerController::class, 'create'])->name('admin.account-managers.create');
-/*Route::post('/account-managers/store', [AdminController\AccountManagerController::class, 'store'])->name('admin.account-managers.store');
-Route::get('/account-managers/edit/{id}', [AdminController\AccountManagerController::class, 'edit'])->name('admin.account-managers.edit');
-Route::post('/account-managers/update', [AdminController\AccountManagerController::class, 'update'])->name('admin.account-managers.update');*/
+
+Route::get('/admin/support/ticket_details/', [AdminController\AccountManagerController::class, 'ticketDetails'])->names('admin.support.ticket-details');
+Route::resource('/admin/support/tickets', AdminController\TicketController::class)->names('admin.support.tickets');
 
 /************************************* ADMIN ROUTES *************************************/
 Route::prefix('admin')->middleware(['auth','auth.admin'])->group(function () {

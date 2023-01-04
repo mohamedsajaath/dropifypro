@@ -17,7 +17,6 @@ class AccountManagerController extends AbstractController
 
     public function __construct()
     {
-
     }
 
     public function getIndexView()
@@ -43,7 +42,7 @@ class AccountManagerController extends AbstractController
         $accountManager = new AccountManager();
         $accountManager->storeFromRequest($request);
         $accountManager = AccountManagerService::save($accountManager);
-        $response = ['message' => 'Successfully Added', 'event'=> $accountManager];
+        $response = ['message' => 'Successfully Added', 'event' => $accountManager];
         return response()->json($response);
     }
 
@@ -62,12 +61,6 @@ class AccountManagerController extends AbstractController
         $accountManager = AccountManager::find($id);
         return ['account_managers' => $accountManager];
     }
-    
-    // public function edit($id)
-    // {
-    //     $accountManager = AccountManager::findById($id);
-    //     return view('pages.admin.support.account_managers.includes.edit')->with('account_managers', $accountManager);
-    // }
 
     public function update(Request $request, $id)
     {
@@ -77,8 +70,8 @@ class AccountManagerController extends AbstractController
             $accountManager->loadFromRequest($request);
             AccountManagerService::save($accountManager);
             return self::response('Successfully added');
-        }catch(\Exception $ex){
-            return self::response($ex->getMessage(),[],422);
+        } catch (\Exception $ex) {
+            return self::response($ex->getMessage(), [], 422);
         }
     }
 
@@ -87,12 +80,4 @@ class AccountManagerController extends AbstractController
         AccountManagerService::deleteById($id);
         return self::response('Event deleted!');
     }
-
-    
-    // public function destroy($id)
-    // {
-
-    //     AccountManagerService::deleteById($id);
-    //     return self::response('success', 'User deleted!');
-    // }
 }
