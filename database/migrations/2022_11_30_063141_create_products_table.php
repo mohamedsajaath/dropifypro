@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->longText('description');
             $table->double('weight', 8, 2);
+            $table->string('weight_unit');
             $table->timestamps();
         });
     }

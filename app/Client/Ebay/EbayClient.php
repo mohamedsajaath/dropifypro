@@ -228,8 +228,8 @@ class EbayClient
         }
 
         $xml = $this->constructXML($request, $callName);
-        // ProcessHitCounter::getInstance()->incrementEbayHit();
-        return $this->call($xml, $callName);
+    //  dd($xml);
+         return $this->call($xml, $callName);
     }
 
     private function call($xml, $callName)
@@ -237,16 +237,22 @@ class EbayClient
         //ToDo: move the credentials to database and bring from handler
         $headers = [
             'X-EBAY-API-COMPATIBILITY-LEVEL' => '1179',
-            'X-EBAY-API-DEV-NAME' => config('creds.ebay.dev_id'),
-            'X-EBAY-API-APP-NAME' => config('creds.ebay.app_id'),
-            'X-EBAY-API-CERT-NAME' => config('creds.ebay.cert_id'),
-            'X-EBAY-API-SITEID' => $this->siteId,
+            // 'X-EBAY-API-DEV-NAME' => config('creds.ebay.dev_id'),
+            'X-EBAY-API-DEV-NAME' => ('d2b04190-4031-449e-bb20-7bc5beb11ce0'),
+            'X-EBAY-API-APP-NAME' => ('ImaraSof-cc66-4b8b-a436-4223d96d35a7'),
+            // 'X-EBAY-API-APP-NAME' => config('creds.ebay.app_id'),
+            // 'X-EBAY-API-CERT-NAME' => config('creds.ebay.cert_id'),
+            'X-EBAY-API-CERT-NAME' => ('fcee5e32-555b-411e-9d34-e80fbcd0d385'),
+            // 'X-EBAY-API-SITEID' => $this->siteId,
+            'X-EBAY-API-SITEID' => 0,
             'X-EBAY-API-CALL-NAME' => $callName,
             'Content-Type' => 'application/xml'
         ];
+        //  dd($headers);
 
         try {
             $response = Http::withHeaders($headers)->send('POST', 'https://api.ebay.com/ws/api.dll', ['body' => $xml]);
+            // dd($response);
             //Testing purpose
             // $response = Http::withHeaders($headers)->send('POST', 'https://api.sandbox.ebay.com/ws/api.dll', ['body' => $xml]);
             if ($response->ok()) {
@@ -259,5 +265,10 @@ class EbayClient
             throw new \Exception('Connection error');
         }
 
+    }
+
+    public function listItem(array $payload){
+        
+        return $this->sendRequest($payload, 'AddFixedPriceItem');
     }
 }

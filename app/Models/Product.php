@@ -14,6 +14,7 @@ class Product extends Model
         'description',
         'sku',
         'weight',
+        'weight_unit',
     ];
     public $variants;
 
@@ -27,5 +28,11 @@ class Product extends Model
     public function getVariants()
     {
         return $this->hasMany(ProductVariant::class, 'product_id', 'id');
+    }
+
+    
+    public function isVariantProduct()
+    {
+        return $this->getVariants->count() > 1;
     }
 }
