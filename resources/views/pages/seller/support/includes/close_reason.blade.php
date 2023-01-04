@@ -1,3 +1,4 @@
+@csrf
 <!--begin::Card body-->
 <div class="card-body p-9 card mb-5">
     <form id="kt_modal_new_card_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">

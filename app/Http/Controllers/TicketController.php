@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\AbstractController;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 
@@ -20,10 +21,9 @@ class TicketController extends AbstractController
         ];
     }
 
-
-    public function create()
+    public function getCreateView()
     {
-        //
+        return 'pages.seller.support.includes.create';
     }
 
     public function store(Request $request)
