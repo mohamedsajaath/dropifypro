@@ -16,13 +16,8 @@ class MdEbayCategoryService
         $offset = ($page - 1) * 10;
 
         $ebayCategories = new MdEbayCategoryList();
-        $ebayCategoryListsQuery = $ebayCategories->where('category_name_list', 'LIKE', '%' . $q . '%')
-            ->limit(10)->offset($offset);
-
-        $ebayCategoryListCountQuery = clone $ebayCategoryListsQuery;
-        $totalCategoryListCount = $ebayCategoryListCountQuery->count();
-
-        $ebayCategoryLists = $ebayCategoryListsQuery->get();
+        $ebayCategoryLists = $ebayCategories->where('category_name_list', 'LIKE', '%' . $q . '%')
+            ->limit(10)->offset($offset)->get();
 
         $results = [];
         foreach ($ebayCategoryLists as $ebayCategoryList) {
@@ -32,11 +27,11 @@ class MdEbayCategoryService
             ];
         }
 
-        //ToDo Check the result count and return pagination accordingly
+
         return [
             'results' => $results,
             'pagination' => [
-                'more' => $totalCategoryListCount
+                'more' => $ebayCategoryLists->count() < 10 ? false : true
             ]
         ];
     }
