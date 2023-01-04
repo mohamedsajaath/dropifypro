@@ -35,7 +35,8 @@
                     data: function (params) {
                         let query = {
                             search: params.term,
-                            type: 'public'
+                            type: 'public',
+                            page: params.page || 1
                         }
 
                         // Query parameters will be ?search=[term]&type=public
@@ -43,12 +44,8 @@
                     }
                 },
                 processResults: function (data, params) {
-                    params.page = params.page || 1;
                     return {
                         results: data.results,
-                        pagination: {
-                            more: (params.page * 10) < data.count_filtered
-                        }
                     };
                 }
 
