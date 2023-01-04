@@ -19,7 +19,8 @@ class ProfileController extends Controller
 
     public function sellerIndex($page)
     {
-        return view('pages.seller.account.' . $page);
+        echo "Seller account route issue - Fix";
+        //return view('pages.seller.account.' . $page);
     }
 
     /**
@@ -73,7 +74,7 @@ class ProfileController extends Controller
     {
         $imageSaved = ProfileService::updateImageFromRequest($request);
         if ($imageSaved) {
-            return back()->with(['status'=>'success','message'=>'profile-image-updated']);      
+            return back()->with(['status'=>'success','message'=>'profile-image-updated']);
         }return back()->with(['status'=>'error','message'=> 'please choose image']);
     }
 

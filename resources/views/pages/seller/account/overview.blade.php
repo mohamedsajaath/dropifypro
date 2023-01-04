@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('css')
-  
+
 @endpush
 
 @section('content')
@@ -32,7 +32,7 @@
                             </div>
                             <!--end::Card title-->
                             <!--begin::Action-->
-                            <a href="{{ route('seller.account.', ['page' => 'profile']) }}"
+                            <a href=""
                                 class="btn btn-primary align-self-center">Edit
                                 Profile</a>
                             <!--end::Action-->
