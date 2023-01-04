@@ -20,12 +20,6 @@ class TicketController extends AbstractController
         return [
             'tickets' => $ticket,
         ];
-        // $dates = DateTimeUtility::getFutureDates(7);
-        // $onboarding = OnboardingService::getOnboardingByDate($dates[0]) ?? [];
-        // return [
-        //     'dates' => $dates,
-        //     'onboarding' => $onboarding,
-        // ];
     }
 
     public function create()

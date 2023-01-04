@@ -32,11 +32,14 @@ Route::post('/register-with-plan-details', [Controller\RegisterPlanController::c
 Route::post('/admin/onboarding/{date}/', [AdminController\OnBoardingController::class,'getByDate']);
 Route::resource('/admin/onboardings', AdminController\OnboardingController::class)->names('admin.onboardings');
 
-
+// Admin
 Route::resource('/admin/support/account-managers', AdminController\AccountManagerController::class)->names('admin.support.account-managers');
 
 Route::get('/support/tickets/ticket-details', [AdminController\TicketController::class, 'ticketDetails'])->name('admin.support.tickets.ticket-details');
 Route::resource('/admin/support/tickets', AdminController\TicketController::class)->names('admin.support.tickets');
+
+// Seller
+Route::resource('/seller/support/tickets', Controller\TicketController::class)->names('seller.support.tickets');
 
 /************************************* ADMIN ROUTES *************************************/
 Route::prefix('admin')->middleware(['auth','auth.admin'])->group(function () {
