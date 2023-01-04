@@ -36,8 +36,7 @@
         `);
 
 
-
-            $(this).remove();
+        $(this).remove();
 
     });
 
@@ -46,8 +45,7 @@
     });
 
 
-
-    $(document).on('change', '[name=variation]', function () {
+    $(document).on('change', '[name=hasVariation]', function () {
 
         if ($('#nonvariation').is(':checked')) {
             $('.variant-row').html(``);
@@ -152,23 +150,31 @@
         $('.variant-row').append(`
       <span style="border:1px solid #d3d3d3; border-radius:5px; padding:1rem; width:90%;" class="variant-type-container remove-container mt-4">
             <div class="col-lg-12 fv-row mt-4 d-flex" style="gap:10px;">
+<!--          <select class="form-control form-select float-right variant-type form-control-solid">-->
+<!--                <option value="" selected>Variation Type</option>-->
 
-                <input type="text" class="form-control variant-type w-50 h-50px" placeholder="Variation Type"/>
-                <select class="form-control variant-type-values" multiple="multiple">
-                </select>
-             <span class="w-25"></span>
-                <button type="button" class="btn btn-primary variant-type-add-btn btn-sm h-40px" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove Variant"><i class="bi bi-plus-lg"></i></button>
-                <button type="button" class="btn btn-danger delete-variant-btn btn-sm h-40px" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove Variant"><i class="bi bi-dash-lg"></i></button>
-            </div>
+<!--        <option value=""></option>-->
 
-            </span>
-        `);
+<!--        </select>-->
+
+            <input type="text" class="form-control variant-type w-50 h-50px" placeholder="Variation Type"/>
+            <select class="form-control variant-type-values" multiple="multiple">
+            </select>
+         <span class="w-25"></span>
+            <button type="button" class="btn btn-primary variant-type-add-btn btn-sm h-40px" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove Variant"><i class="bi bi-plus-lg"></i></button>
+            <button type="button" class="btn btn-danger delete-variant-btn btn-sm h-40px" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove Variant"><i class="bi bi-dash-lg"></i></button>
+        </div>
+
+        </span>
+`);
 
         $(".variant-type-values").select2({
             tags: true,
             tokenSeparators: [',', ' ']
         });
-
+        $('select.variant-type').select2({
+            dropdownParent: $('#kt_modal_new_target'),
+        });
 
         if ($(this).find('.delete-variant-btn').length !== 0) {
             $(this).after(`
@@ -193,6 +199,9 @@
         let values = $('.variant-row').find('.variant-type-values');
         let valuesArr = [];
 
+        $('.variant-row').append(`
+          <span class="variant-type"></span>
+        `);
         values.each(function () {
             valuesArr.push($(this).val());
         });
@@ -206,14 +215,15 @@
             let typevalue = ``;
 
             for (let s = 0; s < combinedValue[i].length; s++) {
-                console.log(combinedValue[i][s]);
-                typevalue = ` <td>${combinedValue[i][s]}</td> <input type="hidden" name="variant_value[${s}][]" value="${combinedValue[i][s]}"/>` + typevalue;
+                typevalue = ` <td>${combinedValue[i][s]}</td> <input type="hidden" class="variant-value-input" name="variant_value[${s}][]" value="${combinedValue[i][s]}" disabled/>` + typevalue;
             }
 
             $('.variant-row').append(`
+
                     <span class="variant-type-combination-container d-flex" style="gap:10px; border:1px solid #d3d3d3; border-radius:5px; margin:2rem; padding:1rem; width:90%; flex-wrap: wrap">
                             <input type="checkbox" name="variation-combination" class="form-check-input variation-combination">
                             <label> Select Combination</label><br>
+
                         <span class="variant-type-combination-container-combined d-flex w-100" style="flex-wrap: wrap; gap:10px;">
                            <table class="table table-bordered  text-center">
                               <tr class="head" style="font-weight:bold;">
@@ -232,19 +242,16 @@
         types.each(function () {
             let variantType = $(this).val();
             $('.variant-type-combination-container-combined .head').prepend(`
-                        <th name="variant_type[][]">${variantType}</th>
+                        <th>${variantType}</th>
                 `);
 
             $('.variant-type').append(`
-            <input type="hidden" name="variant_type[]" value="${variantType}"/>
+            <input type="hidden" name="variant_type[]" class="variant-type-input" value="${variantType}" />
             `);
         });
 
         $('.remove-container').remove();
     });
-
-
-
 
 
     $(document).on('click', '.delete-variant-image-btn', function () {
@@ -291,12 +298,15 @@
 
                             </a>
                            </div>`
-            )
+            );
+            // $(this).closest('.variant-type-combination-container').find('.variant-type-input').prop( "disabled", false );
+            $(this).closest('.variant-type-combination-container').find('.variant-value-input').prop( "disabled", false );
         } else {
             $(this).closest('.variant-type-combination-container').find('.variant-details').remove();
+            // $(this).closest('.variant-type-combination-container').find('.variant-type-input').prop( "disabled", true );
+            $(this).closest('.variant-type-combination-container').find('.variant-value-input').prop( "disabled", true );
         }
     });
-
 
 
     $(document).on('submit', '#kt_modal_new_target_form', async function (e) {
@@ -306,11 +316,19 @@
             let ajaxRequest = new HttpRequest(url, 'POST');
             ajaxRequest.set_data_by_form_object($(this));
             let response = await ajaxRequest.call();
+
             console.log(response.message);
+            alert(response.message);
+            $("#kt_modal_new_target").modal("hide");
+            $('table#kt_datatable_column_rendering').DataTable().ajax.reload();
+
+            toastr.success(response.message);
+
 
         } catch (err) {
             console.log(err);
         }
+
     });
 
     function setCombinedValue(arr, combinedValue) {

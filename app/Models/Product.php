@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory, CommonQuery;
+
     protected $table = 'products';
     protected $fillable = [
         'name',
@@ -16,11 +17,14 @@ class Product extends Model
         'weight',
         'weight_unit',
     ];
-    public $variants;
 
-    public function getImages(){
+    public $specifications;
+    public $images;
+    public $variations;
 
-        $variants = ProductVariant::selectBy(['product_id'=>$this->id]);
+    public function getImages()
+    {
+        $variants = ProductVariant::selectBy(['product_id' => $this->id]);
         $variantIds = $variants->pluck('id')->toArray();
         return ProductImage::getProductImages($variantIds);
     }

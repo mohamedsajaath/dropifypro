@@ -1,14 +1,17 @@
 <?php
 
 namespace App\Helper\Service\Admin;
+
 use App\Models\Product;
+use App\Helper\Mapper\Admin\ProductMapper;
 
 class ProductService
 {
 
-    public static function store(array $request){
+    public static function save(Product $product)
+    {
+        $product->save();
 
-        dd($request);
-
+        return $product->id;
     }
 }

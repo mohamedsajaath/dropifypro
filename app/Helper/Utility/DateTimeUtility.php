@@ -288,16 +288,17 @@ class DateTimeUtility
             }
 
             $dates[] = $date->format('Y-m-d');
-            
+
         }
 
         return $dates;
     }
 
-
     private static function castToDateObject($time)
     {
-        if (!self::isObject($time)) return Carbon::parse($time);
+        if (!self::isObject($time)) {
+            return Carbon::parse($time);
+        }
 
         return $time;
     }

@@ -1,8 +1,7 @@
-
 {{-- DASHBOARD --}}
 
 
- {{-- <div class="menu-item here show menu-accordion">
+{{-- <div class="menu-item here show menu-accordion">
     <a class="menu-link" href="{{ route('admin.dashboard') }}">
         <span class="menu-icon">
            <span class="svg-icon svg-icon-2">
@@ -20,13 +19,13 @@
 {{-- PRODUCTS --}}
 
 
-<div  class="menu-item here show menu-accordion">
+<div class="menu-item here show menu-accordion">
     <!--begin:Menu link-->
     <a class="menu-link" href="{{ route('admin.products') }}">
         <span class="menu-icon">
             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
             <span class="svg-icon svg-icon-2">
-               <i class="bi bi-box-seam fs-2"></i>
+                <i class="bi bi-box-seam fs-2"></i>
             </span>
             <!--end::Svg Icon-->
         </span>
@@ -60,11 +59,12 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link" href="{{route('admin.orders.paid')}}">
+            <a class="menu-link" href="{{ route('admin.orders.paid') }}">
                 <span class="menu-bullet">
                     <span class="bullet bullet-dot"></span>
                 </span>
-                <span class="menu-title">Paid <span class="badge badge-outline bc-orange-b m-2 badge-sm" >21</span></span>
+                <span class="menu-title">Paid <span
+                        class="badge badge-outline bc-orange-b m-2 badge-sm">21</span></span>
 
             </a>
             <!--end:Menu link-->
@@ -73,11 +73,12 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link" href="{{route('admin.orders.unpaid')}}">
+            <a class="menu-link" href="{{ route('admin.orders.unpaid') }}">
                 <span class="menu-bullet">
                     <span class="bullet bullet-dot"></span>
                 </span>
-                <span class="menu-title">Unpaid <span class="badge badge-outline bc-orange-b m-2 badge-sm" >36</span></span>
+                <span class="menu-title">Unpaid <span
+                        class="badge badge-outline bc-orange-b m-2 badge-sm">36</span></span>
 
             </a>
             <!--end:Menu link-->
@@ -113,7 +114,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link" href="{{route('admin.sellers.wallet')}}">
+            <a class="menu-link" href="{{ route('admin.sellers.wallet') }}">
                 <span class="menu-bullet">
                     <span class="bullet bullet-dot"></span>
                 </span>
@@ -125,7 +126,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link" href="{{ route('admin.sellers.ebay-accounts')}}">
+            <a class="menu-link" href="{{ route('admin.sellers.ebay-accounts') }}">
                 <span class="menu-bullet">
                     <span class="bullet bullet-dot"></span>
                 </span>
@@ -151,7 +152,7 @@
         <span class="menu-icon">
             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
             <span class="svg-icon svg-icon-2">
-               <i class="bi bi-person-bounding-box fs-2"></i>
+                <i class="bi bi-person-bounding-box fs-2"></i>
             </span>
             <!--end::Svg Icon-->
         </span>
@@ -164,7 +165,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link" href="{{ route('admin.sellers.memberships.active')}}">
+            <a class="menu-link" href="{{ route('admin.sellers.memberships.active') }}">
                 <span class="menu-bullet">
                     <span class="bullet bullet-dot"></span>
                 </span>
@@ -176,7 +177,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link" href="{{ route('admin.sellers.memberships.cancelled')}}">
+            <a class="menu-link" href="{{ route('admin.sellers.memberships.cancelled') }}">
                 <span class="menu-bullet">
                     <span class="bullet bullet-dot"></span>
                 </span>
@@ -202,8 +203,7 @@
         <span class="menu-icon">
             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
             <span class="svg-icon svg-icon-2">
-          <i class="bi bi-headset fs-2"></i>
-
+                <i class="bi bi-headset fs-2"></i>
             </span>
             <!--end::Svg Icon-->
         </span>
@@ -216,7 +216,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link" href="{{route('admin.support.tickets.index')}}">
+            <a class="menu-link" href="{{ route('admin.support.tickets.index') }}">
                 <span class="menu-bullet">
                     <span class="bullet bullet-dot"></span>
                 </span>
@@ -228,7 +228,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link" href="{{route('admin.support.account-managers.index')}}">
+            <a class="menu-link" href="{{ route('admin.support.account-managers.index') }}">
                 <span class="menu-bullet">
                     <span class="bullet bullet-dot"></span>
                 </span>
@@ -237,73 +237,52 @@
             <!--end:Menu link-->
         </div>
         <!--end:Menu item-->
-
-
     </div>
     <!--end:Menu sub-->
 </div>
-
-
 {{-- SUPPORT  --}}
 
-
 {{-- Onboarding --}}
-
-
 <div class="menu-item here show menu-accordion">
     <!--begin:Menu link-->
 
-    <a class="menu-link" href="{{route('admin.on-boardings.index')}}">
+    <a class="menu-link" href="{{ route('admin.on-boardings.index') }}">
         <span class="menu-icon">
             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-           <span class="svg-icon svg-icon-2">
+            <span class="svg-icon svg-icon-2">
                 <i class="fa-regular fa-handshake fs-2"></i>
-												</span>
+            </span>
         </span>
         <span class="menu-title">Onboarding</span>
     </a>
 </div>
-
-
 {{-- Onboarding --}}
-
-
 {{-- WHOLESALE REQUESTS --}}
-
-
 <div class="menu-item here show menu-accordion">
     <!--begin:Menu link-->
-    <a class="menu-link" href="{{route('admin.wholesale-requests')}}">
+    <a class="menu-link" href="{{ route('admin.wholesale-requests') }}">
         <span class="menu-icon">
             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-           <span class="svg-icon svg-icon-2">
+            <span class="svg-icon svg-icon-2">
                 <i class="bi bi-truck fs-2"></i>
-           </span>
+            </span>
         </span>
         <span class="menu-title">Wholesale Requests</span>
     </a>
 </div>
-
-
 {{-- WHOLESALE REQUESTS --}}
-
-
 {{-- MANAGE EMAILS --}}
-
-
 <div class="menu-item here show menu-accordion">
     <!--begin:Menu link-->
 
-    <a class="menu-link" href="{{route('admin.manage-emails')}}">
+    <a class="menu-link" href="{{ route('admin.manage-emails') }}">
         <span class="menu-icon">
             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-           <span class="svg-icon svg-icon-2">
-               <i class="bi bi-envelope fs-2"></i>
-           </span>
+            <span class="svg-icon svg-icon-2">
+                <i class="bi bi-envelope fs-2"></i>
+            </span>
         </span>
         <span class="menu-title">Manage Emails</span>
     </a>
 </div>
-
-
 {{-- MANAGE EMAILS --}}

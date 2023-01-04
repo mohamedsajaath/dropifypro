@@ -25,7 +25,7 @@ class AccountManagerUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email', 'unique:users'],
             'contact_no' => ['required', 'numeric'],
             'response_time' => ['required', 'regex:/^[0-9]+(\.[0-9][0-9]?)?$/']
         ];

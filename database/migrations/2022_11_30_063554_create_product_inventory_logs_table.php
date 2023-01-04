@@ -16,14 +16,14 @@ return new class extends Migration
         Schema::create('product_inventory_logs', function (Blueprint $table) {
             $table->id();
             $table->integer('product_variant_id');
-            $table->integer('previous_quantity');
-            $table->integer('current_quantity');
-            $table->integer('user_id'); //added by
-            $table->double('amount', 8, 2);
-            $table->date('date');
-            $table->text('note');
-            $table->tinyInteger('reference_type');
-            $table->tinyInteger('reference_value');
+            $table->integer('previous_quantity')->nullable();
+            $table->integer('current_quantity')->nullable();
+            $table->integer('user_id')->nullable(); //added by
+            $table->double('amount', 8, 2)->nullable();
+            $table->date('date')->nullable();
+            $table->text('note')->nullable();
+            $table->tinyInteger('reference_type')->nullable();
+            $table->tinyInteger('reference_value')->nullable();
             $table->timestamps();
         });
     }

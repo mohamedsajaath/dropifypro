@@ -25,7 +25,7 @@ class AccountManagerStoreRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email', 'unique:posts', 'email address'],
             'contact_no' => ['required'],
             'response_time' => ['required', 'regex:/^[0-9]+(\.[0-9][0-9]?)?$/']
         ];

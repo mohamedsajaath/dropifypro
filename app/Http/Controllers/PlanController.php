@@ -6,6 +6,7 @@ use App\Helper\Service\Admin\PlanService;
 use App\Http\Requests\PlanRequest;
 use App\Models\Plan;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class PlanController extends Controller
 {
@@ -17,8 +18,22 @@ class PlanController extends Controller
      */
     public function index()
     {
-        $plan_details = PlanService::show();
-        return view("pages.admin.account.plans")->with("plan_details", $plan_details);
+        // $plan_details = PlanService::show();
+        // return view("pages.admin.account.plans")->with("plan_details", $plan_details);
+        return view("pages.admin.account.plans");
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function list()
+    {
+        $plans = Plan::query();
+        return DataTables::of($plans)
+            ->addIndexColumn()
+            ->make(true);
     }
 
     /**
@@ -67,7 +82,7 @@ class PlanController extends Controller
     public function edit($id)
     {
         $plan = Plan::find($id);
-       // return view("pages.admin.account.includes.edit_plan_model")->with('plan', $plan);
+        // return view("pages.admin.account.includes.edit_plan_model")->with('plan', $plan);
     }
 
     /**
@@ -85,7 +100,7 @@ class PlanController extends Controller
             $plan = Plan::find($id);
             $plan->name = $request->name;
             $plan->price_month = $request->price_month;
-            $plan->price_year = $request->price_year;   
+            $plan->price_year = $request->price_year;
             PlanService::save($plan);
             return self::response('Successfully Updated');
         } catch (\Exception $ex) {

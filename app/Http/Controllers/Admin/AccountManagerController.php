@@ -83,6 +83,22 @@ class AccountManagerController extends Controller
     }
 
     /**
+     * Update the user's profile Email information.
+     *
+     * @param \App\Http\Requests\ProfileEmailUpdateRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    // public function updateEmail(AccountManagerStoreRequest $request)
+    // {
+    //     $emailValidated = AccountManagerService::validateemail($request->confirmemail);
+    //     if (!$emailValidated) {
+    //         return back()->with(['status'=>'error','message'=> 'Enter Valid Email']);
+    //     }
+    //     AccountManagerService::updateFromRequest($request);
+    //     return back()->with(['status'=>'success','message'=>'Email-Created']);
+    // }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param int $id
@@ -90,7 +106,6 @@ class AccountManagerController extends Controller
      */
     public function destroy($id)
     {
-
         AccountManagerService::deleteById($id);
         return self::response('success', 'User deleted!');
     }

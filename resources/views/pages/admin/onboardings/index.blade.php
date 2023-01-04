@@ -13,17 +13,14 @@
     </script>
 
     <script>
-        $(document).on('click', '.add-onboarding', function () {
-            loadFormModal("", "", "add On-boarding", "", "Add", "add-event", `
+        $(document).on('click', '.add-onboarding', function() {
+            loadFormModal("", "", "Add On-boarding", "", "Add", "add-event", `
     @include('pages.admin.onboardings.includes.add-modal')
             `);
         });
-
-
-        $(document).on('click', '.add-event', async function (e) {
+        $(document).on('click', '.add-event', async function(e) {
             e.preventDefault();
-            let form = $(this).closest('form');
-            ;
+            let form = $(this).closest('form');;
             try {
                 const url = "{{ route('admin.on-boarding.store') }}";
                 let ajaxRequest = new HttpRequest(url, 'POST');
@@ -38,14 +35,11 @@
             }
         });
     </script>
-
-
     <script>
-        $(document).on("click", ".edit_event", async function () {
+        $(document).on("click", ".edit_event", async function() {
             // $('.custom-modal-size').addClass('mw-1000px').removeClass('mw-650px');
             // let onboarding_id = $(this).data('id');
             let onboarding_id = $(this).data('id');
-            
             let url = "{{ url('/admin/on-boardings/') }}" + "/" + onboarding_id;
             await loadEditFormModal(
                 "",
@@ -56,10 +50,17 @@
                 "edit_onboarding_submit",
                 url
             );
-            $('.edit_onboarding_submit').attr('data-id',onboarding_id);
+            $('.edit_onboarding_submit').attr('data-id', onboarding_id);
+            let now = new Date();
+            let day = ("0" + now.getDate()).slice(-2);
+            let month = ("0" + (now.getMonth() + 1)).slice(-2);
+            let today = now.getFullYear() + "-" + (month) + "-" + (day);
+            console.log(today);
+            console.log($('#editDatePicker'));
+            $('#editDatePicker').attr("min", today);
         });
 
-        $(document).on("click", ".edit_onboarding_submit", function (e) {
+        $(document).on("click", ".edit_onboarding_submit", function(e) {
             e.preventDefault();
             // console.log( $(this).closest('form'))
             // $(this).closest('form');
@@ -67,7 +68,7 @@
             console.log(id);
             let form = $(this).closest('form');
             try {
-                const url = "{{ url('/admin/on-boardings/update') }}"+"/"+id;
+                const url = "{{ url('/admin/on-boardings/update') }}" + "/" + id;
                 let ajaxRequest = new HttpRequest(url, 'POST');
                 ajaxRequest.set_data_by_form_object(form);
                 let response = ajaxRequest.call();
@@ -82,33 +83,34 @@
 
         })
 
-        $(document).on("click",".delete-onboarding",async function(){   
-       let id=$(this).data('id');
+        $(document).on("click", ".delete-onboarding", async function() {
+            let id = $(this).data('id');
             let url = baseUrl + `/admin/on-boardings/delete/${id}`;
-            if(await isConfirmToProcess("Warning", "", title = 'Are you sure! You want to delete','warning')){
+            if (await isConfirmToProcess("Warning", "", title = 'Are you sure! You want to delete',
+                    'warning')) {
                 try {
-                let ajaxRequest = new HttpRequest(url, 'get');
-                let response = await ajaxRequest.call();
-                console.log(response.message);
-            
-            } catch (err) {
-                console.log(err);
-                console.log("error");
+                    let ajaxRequest = new HttpRequest(url, 'get');
+                    let response = await ajaxRequest.call();
+                    console.log(response.message);
+
+                } catch (err) {
+                    console.log(err);
+                    console.log("error");
+                }
+                location.reload();
             }
-            location.reload();
-        }
         });
 
 
-        $(document).on('click','.date-changer-btn',async function(){
-        let date = $(this).data('date');
+        $(document).on('click', '.date-changer-btn', async function() {
+            let date = $(this).data('date');
             try {
-                const url = "{{ url('/admin/on-boardings/singleDate/') }}"+"/"+date;
+                const url = "{{ url('/admin/on-boardings/singleDate/') }}" + "/" + date;
                 let ajaxRequest = new HttpRequest(url, 'get');
                 let response = await ajaxRequest.call();
                 console.log(response['onboarding']);
                 $('#remove-content').html("");
-                for(let i = 0;i < response['onboarding'].length;i++){
+                for (let i = 0; i < response['onboarding'].length; i++) {
                     $('#remove-content').append(`
                     <div class="tab-pane fade show active" id="kt_timeline_widget_3_tab_content_4" role="tabpanel">
     <!--begin::Wrapper-->
@@ -129,10 +131,7 @@
             <div class="text-gray-700 fw-semibold fs-6 onboarding-title">
         
                 Booking Pending...
-            
-               
-           
-            </div>
+             </div>
             <!--end::Description-->
             <!--begin::Link-->
 
@@ -188,13 +187,34 @@
                     `);
 
 
-                 
+
                 }
-          
+
             } catch (err) {
                 console.log(err);
                 console.log("error");
             }
         });
     </script>
+    <script>
+        $(document).on('click', '.add-onboarding', function() {
+            var now = new Date();
+            var day = ("0" + now.getDate()).slice(-2);
+            var month = ("0" + (now.getMonth() + 1)).slice(-2);
+            var today = now.getFullYear() + "-" + (month) + "-" + (day);
+            $('.datePicker').attr("min", today);
+
+        });
+    </script>
+    {{-- <script>
+        $(document).on('click','.edit_event', function() {
+          
+            var now = new Date();
+          var day = ("0" + now.getDate()).slice(-2);
+          var month = ("0" + (now.getMonth() + 1)).slice(-2);
+          var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+         $('.edit-datePicker').attr("min",today);
+        
+      });
+          </script> --}}
 @endpush

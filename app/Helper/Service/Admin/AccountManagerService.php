@@ -2,7 +2,9 @@
 
 namespace App\Helper\Service\Admin;
 
+use Illuminate\Http\Request;
 use App\Models\AccountManager;
+use Illuminate\Support\Facades\Hash;
 
 class AccountManagerService
 {
@@ -16,4 +18,18 @@ class AccountManagerService
 
         AccountManager::deleteById($id);
     }
+
+    public static function updateFromRequest(Request $request)
+    {
+        $user = AccountManager::getCurrentUser();
+        $user->loadFromRequest($request);
+        return $user->save();
+    }
+
+    // public static function validateEmail($confirmedEmail)
+    // {
+    //     $user = AccountManager::getCurrentUser();
+    //     if (Hash::check($confirmedEmail, $user->email,)) return true;
+    //     return false;
+    // }
 }

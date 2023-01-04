@@ -73,8 +73,8 @@
                                     </div>
                                     <!--end::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a class="menu-link px-3 acc-delete d-flex gap-5" 
-                                        data-id="{{ $account_manager_detail->id }}">
+                                        <a class="menu-link px-3 acc-delete d-flex gap-5"
+                                            data-id="{{ $account_manager_detail->id }}">
                                             <i class="bi bi-trash"></i>Delete
                                         </a>
                                     </div>

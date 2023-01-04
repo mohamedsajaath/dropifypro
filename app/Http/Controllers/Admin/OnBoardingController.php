@@ -69,8 +69,9 @@ class OnBoardingController extends Controller
      */
     public function edit($id)
     {
+        $date = DateTimeUtility::getCurrentDate();
         $onboarding = OnBoarding::find($id);
-        return view("pages.admin.onboardings.includes.edit_modal")->with(['onboarding' => $onboarding]);
+        return view("pages.admin.onboardings.includes.edit_modal")->with(['onboarding' => $onboarding,'date'=>$date]);
     }
 
     /**

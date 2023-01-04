@@ -5,9 +5,11 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
-use App\Helper\Service\admin;
 use App\Helper\Service\Admin\MdEbayCategoryService;
-use App\Helper\Service\Admin\Product;
+use App\Helper\Mapper\Admin\ProductMapper;
+use App\Helper\Service\ProductService;
+use Yajra\DataTables\DataTables;
+use App\Helper\Service\Admin as AdminServices;
 
 
 class ProductController extends Controller
@@ -19,8 +21,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $category = MdEbayCategoryService::getCategory();
-        return view('pages.Admin.products.index')->with(["ebay_category"=> $category]);
+        return view('pages.Admin.products.index')->with(["ebay_category" => ""]);
     }
 
     public function create()
@@ -29,21 +30,36 @@ class ProductController extends Controller
     }
 
 
-
-
     public function store(ProductRequest $request)
     {
+        $productMapper = new ProductMapper($request->all());
+        $product = $productMapper->getProduct();
+        $productId = AdminServices\ProductService::save($product);
+        AdminServices\ProductItemSpecificationService::save($productId, $product->specifications);
+        AdminServices\ProductImageService::save($productId,$product->images);
+        AdminServices\ProductVariationService::save($productId,$product->variations);
 
-        Product::store($request->all());
+        return self::response('product Added Successfully');
 
 
+    }
 
+
+    public function list()
+    {
+        $products = ProductService::getAllProducts();
+        return DataTables::of($products)
+            ->addColumn('image_base_path', function () {
+                return asset('storage/');
+            })
+            ->addIndexColumn()
+            ->make(true);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -54,7 +70,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -65,8 +81,8 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -77,11 +93,16 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
+    }
+
+    public function getCategory(Request $request){
+//        dd($request);
+        return MdEbayCategoryService::getCategory($request);
     }
 }

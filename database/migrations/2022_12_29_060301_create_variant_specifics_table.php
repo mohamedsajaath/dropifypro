@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('md_ebay_categories', function (Blueprint $table) {
+        Schema::create('variant_specifics', function (Blueprint $table) {
             $table->id();
-            $table->integer('category_id')->index('ebay_category_index');
-            $table->integer('level')->default(0);
-            $table->string('name', 50);
-            $table->integer('parent_id')->index('parent_id_index');
-            $table->tinyInteger('leaf_category');
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('md_ebay_categories');
+        Schema::dropIfExists('variant_specifics');
     }
 };
