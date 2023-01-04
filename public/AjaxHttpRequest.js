@@ -53,12 +53,15 @@ class HttpRequest {
                     resolve(data);
                 },
                 error: function (jqXHR, exception) {
-                    jqXHR.responseJSON = undefined;
                     let msg = '';
                     if (jqXHR.status === 0) {
                         msg = 'Not connect.Verify Network.';
                         console.log('Not connect.Verify Network.');
-                    } else if (jqXHR.status === 404) {
+                    }else if (jqXHR.status === 403) {
+                        console.log('Unauthorized calling. [403]');
+                        msg = jqXHR.responseJSON.message;
+                    }
+                    else if (jqXHR.status === 404) {
                         console.log('Requested page not found. [404]');
                         msg = 'Requested page not found';
                     } else if (jqXHR.status === 422) {
@@ -66,11 +69,13 @@ class HttpRequest {
                         if (jqXHR.hasOwnProperty('responseJSON')) {
                             msg += jqXHR.responseJSON.message;
                             let errors = jqXHR.responseJSON.hasOwnProperty('errors') ? jqXHR.responseJSON.errors : null;
-                            if (!isEmpty(errors)) {
+                            if (!(!errors || errors.length === 0 || errors === '' || errors.length === 0 || typeof errors === undefined || errors === null)) {
                                 let i = 0;
                                 for (let key in errors) {
                                     if (errors.hasOwnProperty(key)) {
-                                        msg += "<br/>\u2022" + errors[key];
+                                        if(!msg.includes(errors[key])) {
+                                            msg += "<br/>\u2022" + errors[key];
+                                        }
                                     }
                                     i++;
                                 }
@@ -85,11 +90,7 @@ class HttpRequest {
                         msg = 'Time out error.';
                     } else if (exception === 'abort') {
                         msg = 'Ajax request aborted.';
-                    } else if (jqXHR.responseJSON.hasOwnProperty('message')
-                        && jqXHR.responseJSON.message === 'CSRF token mismatch.') {
-                        console.log('CSRF token mismatched, page is reloaded');
-                        location.reload();
-                    } else {
+                    }else {
                         msg = 'Uncaught Error.\n' + jqXHR.responseText;
                     }
                     reject(msg);

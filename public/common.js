@@ -1,3 +1,13 @@
+function loadButton(btn, loadingText = 'Submitting...') {
+    btn.attr('disabled', true);
+    btn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ' + loadingText);
+}
+
+function resetButton(btn, originalText = 'Submit') {
+    btn.attr('disabled', false);
+    btn.html(originalText);
+}
+
 let toast = {
     success: function (msg) {
         toastr.success(msg);
@@ -85,7 +95,7 @@ let initDataTable = (
                     t.search(e.target.value).draw();
                 });
             }
-    
+
                 resolve(t);
             },
         };
@@ -95,7 +105,7 @@ let initDataTable = (
         }
 
         let t = table.DataTable(dt_feed);
-        
+
     });
 };
 

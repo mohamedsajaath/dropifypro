@@ -310,23 +310,21 @@
 
 
     $(document).on('submit', '#kt_modal_new_target_form', async function (e) {
+        let btn = $('.add-product-btn');
         e.preventDefault()
         try {
+            loadButton(btn)
             const url = "{{ route('admin.products.store') }}";
             let ajaxRequest = new HttpRequest(url, 'POST');
             ajaxRequest.set_data_by_form_object($(this));
             let response = await ajaxRequest.call();
-
-            console.log(response.message);
-            alert(response.message);
             $("#kt_modal_new_target").modal("hide");
             $('table#kt_datatable_column_rendering').DataTable().ajax.reload();
-
             toastr.success(response.message);
-
-
         } catch (err) {
-            console.log(err);
+            toastr.error(err);
+        }finally {
+            resetButton(btn,'Proceed')
         }
 
     });
