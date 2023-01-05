@@ -34,4 +34,9 @@ class Product extends Model
     {
         return $this->hasMany(ProductVariant::class, 'product_id', 'id');
     }
+    
+    public function isVariantProduct()
+    {
+        return $this->getVariants->count() > 1;
+    }
 }
