@@ -50,4 +50,7 @@ class TicketController extends AbstractController
     {
         //
     }
+    public function ticketDetails(){
+        return view('pages.seller.support.includes.ticket_view');
+    }
 }

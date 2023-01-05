@@ -39,6 +39,7 @@ Route::get('/support/tickets/ticket-details', [AdminController\TicketController:
 Route::resource('/admin/support/tickets', AdminController\TicketController::class)->names('admin.support.tickets');
 
 // Seller
+Route::get('/support/ticket-details', [Controller\TicketController::class, 'ticketDetails'])->name('seller.support.ticket_view');
 Route::resource('/seller/support/tickets', Controller\TicketController::class)->names('seller.support.tickets');
 
 /************************************* ADMIN ROUTES *************************************/
