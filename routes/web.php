@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/getCategory', [ProductController::class, 'getCategory'])->name('getCategory');
+Route::get('/test', [TestController::class, 'index']);
 
 //HOME START
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -61,19 +62,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/products/recommend', function () {
             return view('pages.admin.products.recommend.index');
         })->name('admin.products.recommend');
-
-
-
-
-
-
-
-
-
-
-
-
-
         Route::get('/orders/paid', function () {
             return view('pages.admin.orders.paid.index');
         })->name('admin.orders.paid');
@@ -131,6 +119,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/plan/{id}', [PlanController::class, 'edit'])->name('plan.edit');
         Route::post('/plan/update', [PlanController::class, 'update'])->name('plan.update');
         // ADMIN ACCOUNT SETTING END
+        
 
     });
     //ADMIN END

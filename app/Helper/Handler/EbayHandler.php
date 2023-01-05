@@ -31,14 +31,28 @@ class EbayHandler
         return $orderCollections;
     }
 
-    public static function listProduct(Product $product)
+    public static function listProduct(Product $product, $access_token)
     {
-        Product::findBy(1);
+        // dd($product);
         // mapper model to api payload
-        ProductModelToApiPayloadMapper::getPayload();
+        $ProductModelToApiPayload = new ProductModelToApiPayloadMapper($product);
+        $payload =  $ProductModelToApiPayload->getPayload();
+        //  dd($payload);
         // call client
-        
-        // response
+        $ebay = new EbayClient($access_token, 0);
+        $response = $ebay->listItem($payload);
 
+        if ($response['Ack'] == 'Failure') {
+            foreach ($response['Errors'] as $key => $error) {
+                $errorResult = array();
+                $shortMsg = $response['Errors'][$key]['ShortMessage'];
+                $longMsg = $response['Errors'][$key]['LongMessage'];
+                $errorResult['ShortError'] = $shortMsg;
+                $errorResult['LongError'] = $longMsg;
+                $result[] = $errorResult;
+            }
+            dd($result);
+        }
+        
     }
 }

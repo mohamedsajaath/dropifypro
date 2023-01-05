@@ -11,7 +11,8 @@ class Product extends Model
 
     protected $table = 'products';
     protected $fillable = [
-        'name',
+        'category_id',
+        'title',
         'description',
         'sku',
         'weight',
@@ -33,4 +34,13 @@ class Product extends Model
     {
         return $this->hasMany(ProductVariant::class, 'product_id', 'id');
     }
+
+    
+    public function isVariantProduct()
+    {
+        return $this->getVariants->count() > 1;
+    }
+
+   
+        
 }
