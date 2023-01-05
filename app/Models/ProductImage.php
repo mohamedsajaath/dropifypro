@@ -22,9 +22,9 @@ class ProductImage extends Model
     const PRODUCT_IMAGE = 'product_image';
     const  VARIANT_IMAGE= 'variant_image';
 
-    public static function getProductImages(array $product_ids)
+    public static function getProductImages(array $variant_ids)
     {
-        return ProductImage::whereIn('reference_id', $product_ids)
+        return ProductImage::whereIn('reference_id', $variant_ids)
         ->where('reference', '=', self::PRODUCT_IMAGE)
         ->get();
     }

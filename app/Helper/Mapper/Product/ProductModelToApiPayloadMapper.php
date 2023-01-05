@@ -180,20 +180,20 @@ class ProductModelToApiPayloadMapper
 
 
 
-        // $productImageDetails = $this->getProductImageDetails();
+        $productImageDetails = $this->getProductImageDetails();
 
-        // if (!empty($productImageDetails)) {
-        //     $payload['Item']['PictureDetails'] = $productImageDetails;
-        // }
+        if (!empty($productImageDetails)) {
+            $payload['Item']['PictureDetails'] = $productImageDetails;
+        }
 
-        // if ($this->product->isVariantProduct()) {
-        //     $payload['Item']['Variations'] = $this->getVariantDetails();
-        // } else {
-        //     $variant = $this->product->getVariants[0];
-        //     $payload['Item']['Quantity'] = $variant->quantity;
-        //     $payload['Item']['SKU'] = $variant->sku;
-        //     $payload['Item']['StartPrice'] = number_format($variant->price, 2);
-        // }
+        if ($this->product->isVariantProduct()) {
+            $payload['Item']['Variations'] = $this->getVariantDetails();
+        } else {
+            $variant = $this->product->getVariants[0];
+            $payload['Item']['Quantity'] = $variant->quantity;
+            $payload['Item']['SKU'] = $variant->sku;
+            $payload['Item']['StartPrice'] = number_format($variant->price, 2);
+        }
 
         return $payload;
     }
