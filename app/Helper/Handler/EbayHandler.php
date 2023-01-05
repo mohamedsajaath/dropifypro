@@ -40,7 +40,7 @@ class EbayHandler
         // call client
         $ebay = new EbayClient($access_token, 0);
         $response = $ebay->listItem($payload);
-        // dd($response);
+        dd($response);
         $result = [];
         if ($response['Ack'] == 'Failure') {
             if(isset($response['Errors'][0])) {
