@@ -176,7 +176,7 @@ class ProductModelToApiPayloadMapper
     {
         $imgArr = [];
         foreach ($this->product->getImages() as $image) {
-            $imgArr[] = ['PictureURL' => $image->image_url];
+            $imgArr[] = ['PictureURL' => 'http://3.11.148.118/dropifypro/public/storage/'.$image->image_url];
         }
         return $imgArr;
     }
@@ -185,7 +185,7 @@ class ProductModelToApiPayloadMapper
     {
         $imgArr = [];
         foreach ($variant->getImages() as $image) {
-            $imgArr[] = ['PictureURL' => $image->image_url];
+            $imgArr[] = ['PictureURL' => 'http://3.11.148.118/dropifypro/public/storage/'.$image->image_url];
         }
         return $imgArr;
     }
