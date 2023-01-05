@@ -8,8 +8,6 @@
         <div class="col-lg-8 fv-row">
             <select class="form-control form-select float-right category form-control-solid" name="category_id" id="dropdown"
                     required>
-{{--                <option value="" selected>Category</option>--}}
-
             </select>
         </div>
     </div>
