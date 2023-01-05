@@ -54,8 +54,8 @@ class EbayHandler
                 }
             }
             else{
-                $shortMsg = $response['Errors'][0]['ShortMessage'];
-                $longMsg = $response['Errors'][0]['LongMessage'];
+                $shortMsg = $response['Errors']['ShortMessage'];
+                $longMsg = $response['Errors']['LongMessage'];
                 $errorResult['ShortError'] = $shortMsg;
                 $errorResult['LongError'] = $longMsg;
                 $result[] = $errorResult;
