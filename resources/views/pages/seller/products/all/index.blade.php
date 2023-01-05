@@ -61,7 +61,7 @@
 
 
 
-                    <div class="col-sm-4 col-xxl-2 mb-5">
+                    <div class="col-sm-6 col-xxl-4 col-md-4 mb-5">
                         <!--begin::Card widget 14-->
                         <div class="card card-flush h-xl-500" style="border: solid 1px #e8e7e7;">
                             <!--begin::Body-->
@@ -170,7 +170,7 @@
                                         </span>
                             </div>
                                     <!--begin::Image-->
-                            <div class="owl-carousel owl-theme">
+                            <div class="owl-carousel">
                                      @foreach($product_image as $image)
                                                                         @if($image['reference_id'] == $product['id'])
                                     <div>
@@ -193,7 +193,7 @@
                                 <!--end::Link-->
                                 <!--begin::Link-->
                                 <a class="btn btn-sm btn-light flex-shrink-0"
-                                   href="../../demo1/dist/apps/ecommerce/sales/listing.html">View Item</a>
+                                   href="{{ url('/product/view') }}/{{ $product['id'] }}">View Item</a>
                                 <!--end::Link-->
                             </div>
                             <!--end::Footer-->
