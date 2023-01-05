@@ -31,5 +31,11 @@ class ProductVariant extends Model
         'rsp'
     ];
 
+    public function getImages()
+    {
+        return ProductImage::getVariantImages($this->id);
+    }
+
+
 
 }

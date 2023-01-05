@@ -18,6 +18,7 @@ class ProductService
 
     public static function upload($userId, Product $product)
     {
+
         $ebayAccounts = EbayAccountService::getByUserId($userId);
         foreach ($ebayAccounts as $ebayAccount) {
             EbayHandler::listProduct($product, $ebayAccount->access_token);

@@ -37,13 +37,12 @@ class ProductModelToApiPayloadMapper
             // ],
             'Item' =>
             [
-                'Title' => 'Laptop',
-                'Description' => 'Good',
+                'Title' => $this->product->title,
+                'Description' => $this->product->description,
                 'PrimaryCategory' =>
                 [
-                    'CategoryID' => '177',
+                    'CategoryID' => $this->product->category_id,
                 ],
-                'StartPrice' => '20.0',
                 'ConditionID' => '1000',
                 'Country' => 'US',
                 'Currency' => 'USD',
@@ -52,7 +51,7 @@ class ProductModelToApiPayloadMapper
                 'ListingType' => 'FixedPriceItem',
                 'PictureDetails' =>
                 [
-                    'PictureURL' => 'https://mysamplepicture.com/3.jpg',
+                    $this->getProductImageDetails(),
                 ],
                 'PostalCode' => '95125',
                 'ProductListingDetails' =>
@@ -67,85 +66,59 @@ class ProductModelToApiPayloadMapper
                 [
                     'NameValueList' =>
                     [
-                        0 =>
+
                         [
-                            'Name' => 'Brand',
-                            'Value' => 'Apple',
-                        ],
-                        1 =>
-                        [
-                            'Name' => 'Screen Size',
-                            'Value' => '13.3 in',
-                        ],
-                        2 =>
-                        [
-                            'Name' => 'Processor',
-                            'Value' => 'Intel Core 2 Duo',
-                        ],
-                        3 =>
-                        [
-                            'Name' => 'Model',
-                            'Value' => 'MacBook Pro 13.3',
-                        ],
-                        4 =>
-                        [
-                            'Name' => 'Release Year',
-                            'Value' => '2009',
-                        ],
-                        5 =>
-                        [
-                            'Name' => 'Hard Drive Capacity',
-                            'Value' => '160 GB',
-                        ],
-                        6 =>
-                        [
-                            'Name' => 'SSD Capacity',
-                            'Value' => '8 GB',
-                        ],
-                        7 =>
-                        [
-                            'Name' => 'Features',
-                            'Value' =>
-                            [
-                                0 => 'Apple Mac OS X 10.7 Mountain Lion',
-                                1 => 'LED-backlit Glass Display',
-                                2 => 'Glass Trackpad',
-                                3 => 'FireWire 800 port',
-                                4 => 'Bluetooth 2.1+EDR',
-                                5 => 'Mini DisplayPort video output',
-                                6 => 'Secure Digital card slot',
+                            'Name' => 'Size',
+                            'Value' => [
+                                0 => 'Small',
+                                // 1=>'Medium',
+                                // 2=>'Large'
                             ],
                         ],
-                        8 =>
+                        [
+                            'Name' => 'SizeType',
+                            'Value' => [
+                                0 => 'UK',
+                                // 1=>'Medium',
+                                // 2=>'Large'
+                            ],
+                        ],
                         [
                             'Name' => 'Color',
-                            'Value' => 'Silver',
+                            'Value' => [
+                                0 => 'Blue',
+                                // 1=>'Medium',
+                                // 2=>'Large'
+                            ],
                         ],
-                        9 =>
                         [
-                            'Name' => 'Storage Type',
-                            'Value' => 'HDD (Hard Disk Drive)',
+                            'Name' => 'Inseam',
+                            'Value' => [
+                                0 => '26"',
+                                // 1=>'Medium',
+                                // 2=>'Large'
+                            ],
                         ],
-                        10 =>
                         [
-                            'Name' => 'Processor Speed',
-                            'Value' => '226 MHz',
+                            'Name' => 'Style',
+                            'Value' => 'Latest',
                         ],
-                        11 =>
+                        
                         [
-                            'Name' => 'Operating System',
-                            'Value' => 'Mac OS X',
+                            'Name' => 'Type',
+                            'Value' => 'Cotton',
                         ],
-                        12 =>
+
                         [
-                            'Name' => 'MPN',
-                            'Value' => 'MB990LL/A',
+                            'Name' => 'Department',
+                            'Value' => 'Clothing',
                         ],
-                        13 =>
+
                         [
-                            'Name' => 'Series',
-                            'Value' => 'MacBook Pro',
+                            'Name' => 'Brand',
+                            'Value' => 'Polo',
                         ],
+
                     ],
                 ],
                 'Quantity' => '1',
@@ -180,20 +153,20 @@ class ProductModelToApiPayloadMapper
 
 
 
-        // $productImageDetails = $this->getProductImageDetails();
+        $productImageDetails = $this->getProductImageDetails();
 
-        // if (!empty($productImageDetails)) {
-        //     $payload['Item']['PictureDetails'] = $productImageDetails;
-        // }
+        if (!empty($productImageDetails)) {
+            $payload['Item']['PictureDetails'] = $productImageDetails;
+        }
 
-        // if ($this->product->isVariantProduct()) {
-        //     $payload['Item']['Variations'] = $this->getVariantDetails();
-        // } else {
-        //     $variant = $this->product->getVariants[0];
-        //     $payload['Item']['Quantity'] = $variant->quantity;
-        //     $payload['Item']['SKU'] = $variant->sku;
-        //     $payload['Item']['StartPrice'] = number_format($variant->price, 2);
-        // }
+        if ($this->product->isVariantProduct()) {
+            $payload['Item']['Variations']['Variation'] = $this->getVariantDetails();
+        } else {
+            $variant = $this->product->getVariants[0];
+            $payload['Item']['Quantity'] = $variant->quantity;
+            $payload['Item']['SKU'] = $variant->sku;
+            $payload['Item']['StartPrice'] = number_format($variant->price, 2);
+        }
 
         return $payload;
     }
@@ -219,12 +192,11 @@ class ProductModelToApiPayloadMapper
 
     private function getVariantDetails()
     {
-        $variantArr = [];
         $pictures = [];
         $variants = [];
-        foreach ($this->product->getVariants as $Variant) {
+        foreach ($this->product->getVariants as $variant) {
 
-            $variantImageDetails =  $this->getVariantImageDetails($Variant);
+            $variantImageDetails =  $this->getVariantImageDetails($variant);
 
             if (!empty($variantImageDetails)) {
                 $pictures[] = [
@@ -236,9 +208,9 @@ class ProductModelToApiPayloadMapper
 
 
             $variants[] = [
-                'Quantity' => $Variant->quantity,
-                'SKU' => $Variant->sku,
-                'StartPrice' => number_format($Variant->price, 2),
+                'Quantity' => $variant->quantity,
+                'SKU' => $variant->sku,
+                'StartPrice' => number_format($variant->price, 2),
             ];
 
 
