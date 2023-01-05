@@ -15,8 +15,8 @@ class CreateMdEbayCategoryListsTable extends Migration
     {
         Schema::create('md_ebay_category_lists', function (Blueprint $table) {
             $table->id();
-            $table->integer('category_id')->index('leaf_cat_index');
-            $table->text('category_name_list')->index('cat_name');
+            $table->integer('category_id');
+            $table->text('category_name_list');
             $table->timestamps();
         });
     }

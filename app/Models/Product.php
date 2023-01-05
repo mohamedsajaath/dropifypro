@@ -11,7 +11,8 @@ class Product extends Model
 
     protected $table = 'products';
     protected $fillable = [
-        'name',
+        'category_id',
+        'title',
         'description',
         'sku',
         'weight',
@@ -39,4 +40,7 @@ class Product extends Model
     {
         return $this->getVariants->count() > 1;
     }
+
+   
+        
 }

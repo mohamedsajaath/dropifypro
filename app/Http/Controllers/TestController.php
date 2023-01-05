@@ -20,6 +20,6 @@ class TestController extends Controller
         $user_id = 3;
         $product_id =1;
         $productService = ProductService::listById($user_id,$product_id);
-        dd($productService);
+        return $productService;
     }
 }

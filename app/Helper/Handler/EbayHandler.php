@@ -41,7 +41,18 @@ class EbayHandler
         // call client
         $ebay = new EbayClient($access_token, 0);
         $response = $ebay->listItem($payload);
-        dd($response);
-        // response
+
+        if ($response['Ack'] == 'Failure') {
+            foreach ($response['Errors'] as $key => $error) {
+                $errorResult = array();
+                $shortMsg = $response['Errors'][$key]['ShortMessage'];
+                $longMsg = $response['Errors'][$key]['LongMessage'];
+                $errorResult['ShortError'] = $shortMsg;
+                $errorResult['LongError'] = $longMsg;
+                $result[] = $errorResult;
+            }
+            dd($result);
+        }
+        
     }
 }

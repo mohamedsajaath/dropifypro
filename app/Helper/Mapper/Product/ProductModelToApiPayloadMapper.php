@@ -178,6 +178,8 @@ class ProductModelToApiPayloadMapper
             ],
         ];
 
+
+
         // $productImageDetails = $this->getProductImageDetails();
 
         // if (!empty($productImageDetails)) {
@@ -206,7 +208,6 @@ class ProductModelToApiPayloadMapper
         return $imgArr;
     }
 
-
     private function getVariantImageDetails($variant)
     {
         $imgArr = [];
@@ -215,8 +216,6 @@ class ProductModelToApiPayloadMapper
         }
         return $imgArr;
     }
-
-
 
     private function getVariantDetails()
     {

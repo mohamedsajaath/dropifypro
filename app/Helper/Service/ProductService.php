@@ -18,12 +18,12 @@ class ProductService
 
     public static function listById($userId, $product_id,$product_price ='')
     {
-        // dd($userId);
+        //  dd($userId);
         //get product with its all dependencies
         $product = Product::findById($product_id);
-        //  dd($product);
+        // dd($product);
         $ebayAccounts = EbayAccountService::getByUserId($userId);
-        //  dd($ebayAccounts);
+        //   dd($ebayAccounts);
             foreach ($ebayAccounts as $ebayAccount) {
                 EbayHandler::listProduct($product,$ebayAccount->access_token);               
             }
