@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\Mapper\Admin\TicketMapper;
+use App\Helper\Service\Admin\TicketService;
 use App\Http\Controllers\AbstractController;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
@@ -28,7 +30,9 @@ class TicketController extends AbstractController
 
     public function store(Request $request)
     {
-        //
+        $ticket = TicketMapper::loadFromRequest($request);
+        TicketService::save($ticket);
+        return self::response('Successfully inserted');
     }
 
     public function show(Ticket $ticket)

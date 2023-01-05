@@ -48,7 +48,7 @@
                                                 <div class="text-dark mb-1">
                                                     <a href="{{ route('seller.support.ticket_view') }}"
                                                         class="text-dark view-tickets">
-                                                        <span class="fw-bold">fhfhfhfhfhfhf</span>
+                                                        <span class="fw-bold">imara software solution</span>
                                                     </a>
                                                 </div>
                                             </td>
