@@ -21,6 +21,12 @@
     <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/image-uploader/image-uploader.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+
+
+    <link rel="stylesheet" href="{{ asset('assets/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/owl.theme.default.min.css') }}">
+
+
     <!--end::Global Stylesheets Bundle-->
     <link href="{{ asset('common.css') }}" rel="stylesheet" type="text/css" />
     @stack('css')

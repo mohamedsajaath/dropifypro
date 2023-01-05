@@ -16,19 +16,14 @@ class ProductService
         }
     }
 
-    public static function listById($userId, $product_id,$product_price ='')
+    public static function upload($userId, Product $product)
     {
-        //  dd($userId);
-        //get product with its all dependencies
-        $product = Product::findById($product_id);
-        // dd($product);
         $ebayAccounts = EbayAccountService::getByUserId($userId);
-        //   dd($ebayAccounts);
-            foreach ($ebayAccounts as $ebayAccount) {
-                EbayHandler::listProduct($product,$ebayAccount->access_token);               
-            }
+        foreach ($ebayAccounts as $ebayAccount) {
+            EbayHandler::listProduct($product, $ebayAccount->access_token);
+        }
     }
-    
+
     public static function getAllProducts()
     {
         $products = Product::join('product_variants', 'products.id', '=', 'product_variants.product_id')
@@ -37,5 +32,10 @@ class ProductService
             ->select('products.*', 'product_variants.*', 'product_item_specifications.*', 'product_images.*');
 
         return $products;
+    }
+
+    public static function getById($id)
+    {
+        return Product::findById($id);
     }
 }

@@ -10,7 +10,7 @@ use App\Http\Controllers\PlanController;
 use App\Http\Controllers\Admin\OnBoardingController;
 use App\Http\Controllers\RegisterPlanController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\admin\ProductController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,7 +26,8 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/getCategory', [ProductController::class, 'getCategory'])->name('getCategory');
+Route::get('/getCategory', [App\Http\Controllers\admin\ProductController::class, 'getCategory'])->name('getCategory');
+Route::get('/getCategory', [App\Http\Controllers\admin\ProductController::class, 'getCategory'])->name('getCategory');
 Route::get('/test', [TestController::class, 'index']);
 
 //HOME START
@@ -56,12 +57,25 @@ Route::middleware('auth')->group(function () {
         })->name('admin.dashboard');
 
 
-        Route::get('/products', [ProductController::class, 'index'])->name('admin.products');
-        Route::get('/products/list', [ProductController::class, 'list'])->name('admin.products.list');
-        Route::post('/products/create', [ProductController::class, 'store'])->name('admin.products.store');
+        Route::get('/products', [App\Http\Controllers\admin\ProductController::class, 'index'])->name('admin.products');
+        Route::get('/products/list', [App\Http\Controllers\admin\ProductController::class, 'list'])->name('admin.products.list');
+        Route::post('/products/create', [App\Http\Controllers\admin\ProductController::class, 'store'])->name('admin.products.store');
         Route::get('/products/recommend', function () {
             return view('pages.admin.products.recommend.index');
         })->name('admin.products.recommend');
+
+
+
+
+
+
+
+
+
+
+
+
+
         Route::get('/orders/paid', function () {
             return view('pages.admin.orders.paid.index');
         })->name('admin.orders.paid');
@@ -119,7 +133,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/plan/{id}', [PlanController::class, 'edit'])->name('plan.edit');
         Route::post('/plan/update', [PlanController::class, 'update'])->name('plan.update');
         // ADMIN ACCOUNT SETTING END
-        
 
     });
     //ADMIN END
@@ -131,9 +144,20 @@ Route::middleware('auth')->group(function () {
             return view('pages.seller.dashboard.index');
         })->name('dashboard');
 
-        Route::get('/products/all', function () {
-            return view('pages.seller.products.all.index');
-        })->name('products-all');
+        Route::get('/products/all',[App\Http\Controllers\ProductController::class, 'index'])->name('products-all');
+
+        Route::post('/products/import',[App\Http\Controllers\ProductController::class, 'import'])->name('products.import');
+
+
+
+
+
+
+
+
+
+
+
 
         Route::get('/products/imported', function () {
             return view('pages.seller.products.imported.index');

@@ -33,7 +33,6 @@ class EbayHandler
 
     public static function listProduct(Product $product, $access_token)
     {
-        // dd($product);
         // mapper model to api payload
         $ProductModelToApiPayload = new ProductModelToApiPayloadMapper($product);
         $payload =  $ProductModelToApiPayload->getPayload();
@@ -53,6 +52,6 @@ class EbayHandler
             }
             dd($result);
         }
-        
+
     }
 }

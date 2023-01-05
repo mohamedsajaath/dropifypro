@@ -39,9 +39,7 @@ class ProductController extends Controller
         AdminServices\ProductImageService::save($productId,$product->images);
         AdminServices\ProductVariationService::save($productId,$product->variations);
 
-        return self::response('product Added Successfully');
-
-
+        return self::response('Product Added Successfully');
     }
 
 
