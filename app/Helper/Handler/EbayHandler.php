@@ -15,6 +15,7 @@ class EbayHandler
         //'v^1.1#i^1#r^1#p^3#I^3#f^0#t^Ul4xMF83OjNDQTI4RjczQTk3RjE5RUZGOUJEOThBNTQ3QkIyQTFEXzJfMSNFXjI2MA=='
         // instantiate client : get orders by date range
         $ebay = new EbayClient($access_token, 0);
+        // dd($ebay);
         // get all orders of ebay with in the date range
         $orders =  $ebay->getAllOrdersByDateRange($start_date, $end_date);
         // take an empty array: order_collection
@@ -33,36 +34,41 @@ class EbayHandler
 
     public static function listProduct(Product $product, $access_token)
     {
+        // dd($access_token);
         // mapper model to api payload
         $ProductModelToApiPayload = new ProductModelToApiPayloadMapper($product);
         $payload =  $ProductModelToApiPayload->getPayload();
         //  dd($payload);
         // call client
         $ebay = new EbayClient($access_token, 0);
+        // dd($ebay);
         $response = $ebay->listItem($payload);
-      
-        $result = [];
-        if ($response['Ack'] == 'Failure') {
-            if(isset($response['Errors'][0])) {
-                foreach ($response['Errors'] as $key => $error) {
-                    $errorResult = array();
-                    $shortMsg = $response['Errors'][$key]['ShortMessage'];
-                    $longMsg = $response['Errors'][$key]['LongMessage'];
-                    $errorResult['ShortError'] = $shortMsg;
-                    $errorResult['LongError'] = $longMsg;
-                    $result[] = $errorResult;
-                }
-            }
-            else{
-                $shortMsg = $response['Errors']['ShortMessage'];
-                $longMsg = $response['Errors']['LongMessage'];
-                $errorResult['ShortError'] = $shortMsg;
-                $errorResult['LongError'] = $longMsg;
-                $result[] = $errorResult;
-            }
+        //  dd($response);
+
+        $data = [];
+        if ($response['Ack'] != 'Failure') {
+            $data['success']= true;
+        } else {
+            $data['success'] = false;
         }
 
-         return $result;
+        $data['messages'] = self::getErrorMessages($response);
+         return $data;
+    }
 
+    public static function getErrorMessages($response)
+    {
+        $data = [];
+        if (isset($response['Errors'][0])) {
+            foreach ($response['Errors'] as $key => $error) {
+                $data['ShortError'][] = $response['Errors'][$key]['ShortMessage'];
+                $data['LongError'][] = $response['Errors'][$key]['LongMessage'];
+
+            }
+        } else {
+            $data['ShortError'] = $response['Errors']['ShortMessage'];
+            $data['LongError'] = $response['Errors']['LongMessage'];
+        }
+        return $data;
     }
 }

@@ -16,10 +16,16 @@ class TestController extends Controller
         // {
         //     echo "variant id: " . $variant->id . "<br/>";
         //     dd($variant->getImages());
-        // }
-        $user_id = 3;
-        $product_id =1;
-        $productService = ProductService::getById($user_id,$product_id);
-        return $productService;
+        // // }
+        // $user_id = 3;
+        // $product_id =1;
+        // $productService = ProductService::getById($user_id,$product_id);
+        // return $productService;
+        $data = [];
+
+        $data['short'][] = 45;
+        $data['short'][] = 95;
+
+        dd($data);
     }
 }

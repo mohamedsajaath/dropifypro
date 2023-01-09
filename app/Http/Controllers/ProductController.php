@@ -116,13 +116,13 @@ class ProductController extends Controller
 
 
     public function import(Request $request){
+       
         try {
             $userId = Auth::user()->id;
-            $product = SetCustomValuesToProductMapper::get($request->product_id, $request->margin);
-            ProductService::upload($userId, $product);
+            ProductService::import($request, $userId);
             return self::response('Succesfully Imported');
-        }catch(\Exception $e){
-            return self::response($e->getMessage(),[],422);
+        } catch (\Exception $e) {
+            return self::response($e->getMessage(), [], 422);
         }
 
     }

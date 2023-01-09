@@ -3,6 +3,9 @@
 namespace App\Helper\Service;
 
 use App\Helper\Handler\EbayHandler;
+use App\Helper\Mapper\EbayAccountMapper;
+use App\Helper\Mapper\SetCustomValuesToProductMapper;
+use App\Models\EbayAccount;
 use App\Models\Product;
 
 class ProductService
@@ -10,19 +13,27 @@ class ProductService
     public static function save(Product $product, $user_id)
     {
         $product->save();
-        foreach ($product->variants as $variant){
+        foreach ($product->variants as $variant) {
             $variant->product_id = $product->id;
             ProductVariantService::saveOrUpdate($variant, $user_id);
         }
     }
 
-    public static function upload($userId, Product $product)
+    public static function upload($ebayAccount, Product $product)
     {
+        // dd($ebayAccount->access_token);
 
-        $ebayAccounts = EbayAccountService::getByUserId($userId);
-        foreach ($ebayAccounts as $ebayAccount) {
-            EbayHandler::listProduct($product, $ebayAccount->access_token);
-        }
+        return EbayHandler::listProduct($product, $ebayAccount->access_token);
+    }
+
+    public static function import($request, $userId)
+    {
+        $product = SetCustomValuesToProductMapper::get($request->product_id, $request->margin);
+        // dd($product);
+        $ebayAccount = EbayAccountService::getByUserId($userId);
+        // dd($ebayAccount);
+        return ProductService::upload($ebayAccount, $product);
+
     }
 
     public static function getAllProducts()
