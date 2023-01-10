@@ -15,35 +15,35 @@
                                 class="table table-striped table-hover table-row-bordered fs-6 gy-5 my-0 dataTable no-footer">
                                 <!--begin::Table body-->
 
-                                @foreach ($tickets as $ticket)
-                                    <tbody>
-                                        <tr class="">
-                                            <td class="ps-9">
-                                                <!--begin::Checkbox-->
-                                                <div
-                                                    class="form-check form-check-sm form-check-custom form-check-solid mt-3">
-                                                    <input class="form-check-input" type="checkbox" value="1">
-                                                </div>
-                                                <!--end::Checkbox-->
-                                            </td>
-                                            <td>
-                                                <div class="text-dark mb-1">
-                                                    <a href="{{ route('admin.support.tickets.ticket-details') }}"
-                                                        class="text-dark">
-                                                        <span class="fw-bold">{{ $ticket->title }}</span>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge badge-light-warning">new</span></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="w-100px fs-7 pe-9">
-                                                <span class="fw-semibold">8:30 PM</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <!--end::Table body-->
-                                @endforeach
+                                {{-- @foreach ($tickets as $ticket) --}}
+                                <tbody>
+                                    <tr class="">
+                                        <td class="ps-9">
+                                            <!--begin::Checkbox-->
+                                            <div
+                                                class="form-check form-check-sm form-check-custom form-check-solid mt-3">
+                                                <input class="form-check-input" type="checkbox" value="1">
+                                            </div>
+                                            <!--end::Checkbox-->
+                                        </td>
+                                        <td>
+                                            <div class="text-dark mb-1">
+                                                <a href="{{ route('admin.support.tickets.ticket-details') }}"
+                                                    class="text-dark">
+                                                    <span class="fw-bold">imara software solution</span>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge badge-light-warning">new</span></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="w-100px fs-7 pe-9">
+                                            <span class="fw-semibold">8:30 PM</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <!--end::Table body-->
+                                {{-- @endforeach --}}
 
                             </table>
                         </div>

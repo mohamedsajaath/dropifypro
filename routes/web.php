@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 require __DIR__ . '/auth.php';
-
 /*Temporary url to be removed*/
 Route::get('/admin/account', [Controller\HomeController::class, 'index'])->name('admin.account');
 
@@ -39,9 +38,8 @@ Route::get('/support/tickets/ticket-details', [AdminController\TicketController:
 Route::resource('/admin/support/tickets', AdminController\TicketController::class)->names('admin.support.tickets');
 
 // Seller
-Route::get('/support/ticket-details', [Controller\TicketController::class, 'ticketDetails'])->name('seller.support.ticket_view');
-Route::resource('/seller/support/tickets', Controller\TicketController::class)->names('seller.support.tickets');
-
+Route::get('/support/ticket-details/{id}', [Controller\TicketController::class, 'ticketDetails'])->name('seller.support.ticket_view');
+Route::resource('/seller/support/ticket', Controller\TicketController::class)->names('seller.support.tickets');
 /************************************* ADMIN ROUTES *************************************/
 Route::prefix('admin')->middleware(['auth','auth.admin'])->group(function () {
 
@@ -76,16 +74,6 @@ Route::prefix('admin')->middleware(['auth','auth.admin'])->group(function () {
     Route::get('/memberships/cancelled', function () {
         return view('pages.admin.memberships.cancelled.index');
     })->name('admin.sellers.memberships.cancelled');
-
-    Route::get('/tickets/index', [AdminController\TicketController::class, 'index'])->name('admin.support.tickets.index');
-    Route::get('/tickets/create', [AdminController\TicketController::class, 'create'])->name('admin.support.tickets.create');
-    Route::post('/tickets/store', [AdminController\TicketController::class, 'store'])->name('admin.support.tickets.store');
-
-    Route::get('/support/account-managers', [AdminController\AccountManagerController::class, 'index'])->name('admin.support.account-managers.index');
-    // Route::get('account-managers/create', [AdminController\AccountManagerController::class, 'create'])->name('admin.account-managers.create');
-    Route::post('/support/account-managers/store', [AdminController\AccountManagerController::class, 'store'])->name('admin.account-managers.store');
-    Route::get('/support/account-managers/edit/{id}', [AdminController\AccountManagerController::class, 'edit'])->name('admin.account-managers.edit');
-
 
 
     Route::get('/wholesale-requests', function () {

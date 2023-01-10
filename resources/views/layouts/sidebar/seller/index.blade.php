@@ -170,7 +170,7 @@
 
 <div class="menu-item here show menu-accordion">
     <!--begin:Menu link-->
-    <a class="menu-link" href="{{ route('support') }}">
+    <a class="menu-link" href="{{ route('seller.support.tickets.index') }}">
         <span class="menu-icon">
             <i class="bi bi-headset fs-2"></i>
         </span>

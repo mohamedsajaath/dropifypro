@@ -34,19 +34,19 @@
             const btnTitle = btn.html();
             try {
                 loadButton(btn);
-                const url = "{{ route('admin.account-managers.store') }}";
+                const url = "{{ route('admin.support.account-managers.store') }}";
                 let ajaxRequest = new HttpRequest(url, 'POST');
                 ajaxRequest.set_data_by_form_object(form);
                 let response = await ajaxRequest.call();
                 $("#" + modalId).modal("hide");
-                const storedEvent = response['event'];
-                const activeDateOnNav = $('.btn-active-danger.active').attr('data-date');
-                const requestedDate = storedEvent.date;
-                if (activeDateOnNav === requestedDate) {
-                    const eventHtmlContent = getOnboardingContentHtml(storedEvent);
-                    $('#accountManager-content').prepend(eventHtmlContent);
-                }
-                toast.success(response.message);
+                // const storedEvent = response['event'];
+                // const activeDateOnNav = $('.btn-active-danger.active').attr('data-date');
+                // const requestedDate = storedEvent.date;
+                // if (activeDateOnNav === requestedDate) {
+                //     const eventHtmlContent = getOnboardingContentHtml(storedEvent);
+                //     $('#accountManager-content').prepend(eventHtmlContent);
+                // }
+                // toast.success(response.message);
             } catch (err) {
                 toast.error(err);
             } finally {

@@ -31,8 +31,7 @@
                                 class="table table-striped table-hover table-row-bordered fs-6 gy-5 my-0 dataTable no-footer"
                                 id="kt_inbox_listing">
                                 <!--begin::Table body-->
-
-                                {{-- @foreach ($tickets as $ticket) --}}
+                                @foreach ($tickets as $ticket)
                                     <tbody>
                                         <tr class="">
                                             <td class="ps-9">
@@ -46,9 +45,9 @@
                                             <!--begin::Title-->
                                             <td>
                                                 <div class="text-dark mb-1">
-                                                    <a href="{{ route('seller.support.ticket_view') }}"
+                                                    <a href="{{ url('support/ticket-details') }}/{{ $ticket->id }}"
                                                         class="text-dark view-tickets">
-                                                        <span class="fw-bold">imara software solution</span>
+                                                        <span class="fw-bold">{{ $ticket->title }}</span>
                                                     </a>
                                                 </div>
                                             </td>
@@ -64,8 +63,7 @@
                                             </td>
                                         </tr>
                                     </tbody>
-                                {{-- @endforeach --}}
-
+                                @endforeach
                             </table>
                         </div>
                         <div class="row px-9 pt-3 pb-5">
@@ -97,9 +95,6 @@
                                         <li class="paginate_button page-item "><a href="#"
                                                 aria-controls="kt_inbox_listing" data-dt-idx="2" tabindex="0"
                                                 class="page-link">2</a></li>
-                                        <li class="paginate_button page-item next" id="kt_inbox_listing_next"><a
-                                                href="#" aria-controls="kt_inbox_listing" data-dt-idx="3"
-                                                tabindex="0" class="page-link"><i class="next"></i></a></li>
                                     </ul>
                                 </div>
                             </div>

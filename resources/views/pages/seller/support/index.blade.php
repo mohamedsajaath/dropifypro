@@ -15,11 +15,12 @@
             const btnTitle = btn.html();
             try {
                 loadButton(btn, 'Loading ...');
-                let loadURL = `${baseUrl}/admin/support/account-managers/create`;
+                let loadURL = `${baseUrl}/seller/support/ticket/create`;
+                console.log(baseUrl);
                 await loadModal(modalId, loadURL);
             } catch (err) {
-                toast.error("Could not load add event popup. (error_ref: add_account_manager)");
-                console.log("add_account_manager", err);
+                toast.error("Could not load add event popup. (error_ref: create_ticket)");
+                console.log("craete_ticket", err);
             } finally {
                 resetButton(btn, btnTitle);
             }
@@ -28,26 +29,18 @@
 
     {{-- Store Ticket --}}
     <script>
-        $(document).on('click', '.ticket-add-form', async function(e) {
+        $(document).on('click', '.add-ticket-btn', async function(e) {
             e.preventDefault();
             let form = $(this).closest('form');
             const btn = $(this);
             const btnTitle = btn.html();
             try {
                 loadButton(btn);
-                const url = "{{ url('/seller/support/tickets') }}";
+                const url = "{{ route('seller.support.tickets.store') }}";
                 let ajaxRequest = new HttpRequest(url, 'POST');
                 ajaxRequest.set_data_by_form_object(form);
                 let response = await ajaxRequest.call();
                 $("#" + modalId).modal("hide");
-                const storedEvent = response['event'];
-                const activeDateOnNav = $('.btn-active-danger.active').attr('data-date');
-                const requestedDate = storedEvent.date;
-                if (activeDateOnNav === requestedDate) {
-                    const eventHtmlContent = getOnboardingContentHtml(storedEvent);
-                    $('#accountManager-content').prepend(eventHtmlContent);
-                }
-                toast.success(response.message);
             } catch (err) {
                 toast.error(err);
             } finally {
@@ -65,24 +58,8 @@
     });
 </script>
 
-<script>
-    $(document).on("click", ".view-tickets", async function() {
-        //let manager_id = $(this).data('id');
-        let url = baseUrl + `/admin/support/account-managers/edit/${manager_id}`;
-        await loadEditFormModal(
-            "",
-            "post",
-            "Ticket",
-            "",
-            "",
-            "ticket-details-btn",
-            url
-        );
-    });
-</script> --}}
-
     {{-- Close --}}
-    <script>
+    {{-- <script>
         $(document).on('click', '.close', function() {
             $('.custom-modal-size').addClass('mw-450px').removeClass('mw-650px');
             loadFormModal("", "", "Close Ticket", "Are you sure want to close?", "Yes,Close it!",
@@ -97,24 +74,41 @@
                 `);
             $('.ticket-close-btn').closest('form').addClass('ticket-close-form');
         });
-    </script>
+    </script> --}}
 
     <script>
-        $(document).on('submit', '.ticket-close-form', async function(e) {
-            e.preventDefault();
-            let form = $(this).closest('form');
+        const modalId = 'modal';
+        $(document).on('click', '.close', async function() {
+            const btn = $(this);
+            const btnTitle = btn.html();
             try {
-
-                let ajaxRequest = new HttpRequest(url, 'POST');
-                ajaxRequest.set_data_by_form_object(form);
-                let response = await ajaxRequest.call();
-                console.log(response.message);
-                $("#kt_modal_new_target").modal("hide");
-                location.reload();
+                loadButton(btn, 'Loading ...');
+                let loadURL = `${baseUrl}/seller/support/ticket/create`;
+                console.log(baseUrl);
+                await loadModal(modalId, loadURL);
             } catch (err) {
-                console.log(err);
-                console.log("error");
+                toast.error("Could not load add event popup. (error_ref: ticket-close-btn)");
+                console.log("ticket-close-btn", err);
+            } finally {
+                resetButton(btn, btnTitle);
             }
         });
+
+        // $(document).on('submit', '.ticket-close-form', async function(e) {
+        //     e.preventDefault();
+        //     let form = $(this).closest('form');
+        //     try {
+
+        //         let ajaxRequest = new HttpRequest(url, 'POST');
+        //         ajaxRequest.set_data_by_form_object(form);
+        //         let response = await ajaxRequest.call();
+        //         console.log(response.message);
+        //         $("#kt_modal_new_target").modal("hide");
+        //         location.reload();
+        //     } catch (err) {
+        //         console.log(err);
+        //         console.log("error");
+        //     }
+        // });
     </script>
 @endpush

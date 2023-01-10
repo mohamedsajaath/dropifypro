@@ -38,7 +38,7 @@
 
     {{-- Store --}}
     <script>
-        $(document).on('click', '.add-managers-btn', async function(e) {
+        $(document).on('click', '.', async function(e) {
             e.preventDefault();
             let form = $(this).closest('form');
             const btn = $(this);
