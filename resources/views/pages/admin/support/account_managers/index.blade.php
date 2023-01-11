@@ -1,121 +1,124 @@
 @extends('layouts.app')
 @section('content')
-    @include('includes.bread_crumb_with_header',[
-        'header'=>'Account Managers',
-        'bread_crumbs'=>['Dashboard'=>route('dashboard'),'Support'=>'']
+    @include('includes.bread_crumb_with_header', [
+        'header' => 'Account Managers',
+        'bread_crumbs' => ['Dashboard' => route('dashboard'), 'Support' => ''],
     ])
     @include('pages.admin.support.account_managers.includes.list_view')
 @endsection
 @push('script')
     <script>
         const modalId = 'modal';
-        $(document).on('click', '#add-manager', async function () {
+        $(document).on('click', '.add-manager', async function() {
+            const btn = $(this);
+            const btnTitle = btn.html();
             try {
+                loadButton(btn, 'Loading ...');
                 let loadURL = `${baseUrl}/admin/support/account-managers/create`;
                 await loadModal(modalId, loadURL);
-            }catch(err){
-                console.log(err);
+            } catch (err) {
+                toast.error("Could not load add event popup. (error_ref: add_account_manager)");
+                console.log("add_account_manager", err);
+            } finally {
+                resetButton(btn, btnTitle);
             }
         });
     </script>
 
-    {{-- <script>
+    {{-- Store manager --}}
+    <script>
         $(document).on('click', '.add-managers-btn', async function(e) {
             e.preventDefault();
             let form = $(this).closest('form');
-
-            function ValidateEmail(inputText) {
-                var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                if (inputText.form.value.match(mailformat)) {
-                    alert("Valid email address!");
-                    document.email.focus();
-                    return true;
-                } else {
-                    alert("You have entered an invalid email address!");
-                    document.form.email.focus();
-                    return false;
-                }
-            }
-        });
-    </script> --}}
-
-    <script>
-        $(document).on('click', '.add-managers-btn', async function (e) {
-            e.preventDefault();
-            let form = $(this).closest('form');
+            const btn = $(this);
+            const btnTitle = btn.html();
             try {
-                const url = "{{ route('admin.account-managers.store') }}";
+                loadButton(btn);
+                const url = "{{ route('admin.support.account-managers.store') }}";
                 let ajaxRequest = new HttpRequest(url, 'POST');
                 ajaxRequest.set_data_by_form_object(form);
                 let response = await ajaxRequest.call();
-                console.log(response.message);
-                $("#kt_modal_new_target").modal("hide");
-                location.reload();
-
+                $("#" + modalId).modal("hide");
+                // const storedEvent = response['event'];
+                // const activeDateOnNav = $('.btn-active-danger.active').attr('data-date');
+                // const requestedDate = storedEvent.date;
+                // if (activeDateOnNav === requestedDate) {
+                //     const eventHtmlContent = getOnboardingContentHtml(storedEvent);
+                //     $('#accountManager-content').prepend(eventHtmlContent);
+                // }
+                // toast.success(response.message);
             } catch (err) {
-                console.log(err);
-                console.log("error");
-                //alert("error");
+                toast.error(err);
+            } finally {
+                resetButton(btn, btnTitle);
             }
         });
     </script>
 
-    {{-- edit manager --}}
+    {{-- Edit manager --}}
     <script>
-        $(document).on("click", ".edit-manager", async function () {
-            let manager_id = $(this).data('id');
-            let url = baseUrl + `/admin/support/account-managers/edit/${manager_id}`;
-            await loadEditFormModal(
-                "",
-                "post",
-                "EDIT MANAGER",
-                "",
-                "Update",
-                "edit_managers_btn",
-                url
-            );
-        });
-    </script>
-
-    {{-- update manager --}}
-    <script>
-        $(document).on("click", ".edit_managers_btn", async function (e) {
-            e.preventDefault();
-            let form = $(this).closest('form');
+        $(document).on('click', '.edit-manager', async function() {
             try {
-                const url = baseUrl+'/admin/support/account-managers/1/edit';
-                let ajaxRequest = new HttpRequest(url, 'POST');
+                debugger
+                let managerId = $(this).attr('data-id');
+                let loadUrl = baseUrl + '/admin/support/account-managers/' + managerId + '/edit';
+                await loadModal(modalId, loadUrl);
+            } catch (err) {
+                console.log(err);
+            }
+        });
+
+        $(document).on("click", "#edit-account-manager", async function(e) {
+            e.preventDefault();
+            const btn = $(this);
+            const btnTitle = btn.html();
+            let form = btn.closest('form');
+            const eventId = form.attr('data-id');
+            const eventHtmlContentWrapperSelector = `.content-wrapper[data-content-id='${eventId}']`
+            const eventHtmlContentWrapper = $(eventHtmlContentWrapperSelector);
+            try {
+                loadButton(btn);
+                const url = `${baseUrl}/admin/support/account-managers/${eventId}`;
+                let ajaxRequest = new HttpRequest(url, 'PUT');
                 ajaxRequest.set_data_by_form_object(form);
                 let response = await ajaxRequest.call();
-                console.log(response.message);
-                $("#kt_modal_new_target").modal("hide");
-                location.reload();
+                const storedEvent = response['event'];
+                eventHtmlContentWrapper.remove();
 
+                const eventHtmlContent = getOnboardingContentHtml(storedEvent);
+                $('#accountManager-content').prepend(eventHtmlContent);
+
+                toast.success(response.message);
+                $("#" + modalId).modal("hide");
             } catch (err) {
-                console.log(err);
-                console.log("error");
+                toast.error(err);
+            } finally {
+                resetButton(btn, btnTitle);
             }
-        });
+
+        })
     </script>
+
+    {{-- Update manager --}}
+
 
     {{-- Delete Sellers --}}
     <script>
-        $(document).on("click", ".acc-delete", async function (e) {
-            e.preventDefault();
-            let manager_id = $(this).data('id');
-            let url = baseUrl + `/admin/support/account-managers/delete/${manager_id}`;
-            if (await isConfirmToProcess("success", "", title = 'Are you sure! You want to delete',
-                'warning')) {
+        $(document).on("click", ".delete-manager", async function() {
+            if (await isConfirmToProcess("Warning", "",  'Are you sure! You want to delete',
+                    'warning')) {
                 try {
-                    let ajaxRequest = new HttpRequest(url, 'get');
+                    let eventId = $(this).data('id');
+                    const eventHtmlContentWrapperSelector = `.content-wrapper[data-content-id='${eventId}']`
+                    const eventHtmlContentWrapper = $(eventHtmlContentWrapperSelector);
+                    let url = `${baseUrl}/admin/support/account-managers/${eventId}`;
+                    let ajaxRequest = new HttpRequest(url, 'DELETE');
+                    ajaxRequest.set_data_as_object({'_token':csrfToken});
                     let response = await ajaxRequest.call();
-                    console.log(response.message);
-                    $("#kt_modal_new_target").modal("hide");
-                    location.reload();
-
+                    eventHtmlContentWrapper.remove();
+                    toast.success(response.message);
                 } catch (err) {
-                    console.log(err);
-                    console.log("error");
+                    toast.error(err);
                 }
             }
         });
@@ -123,7 +126,7 @@
 
     {{-- Assign Sellers --}}
     <script>
-        $(document).on('click', '.assign-sellers', function () {
+        $(document).on('click', '.assign-sellers', function() {
             $('.custom-modal-size').addClass('mw-600px').removeClass('mw-650px');
             loadDetailModal("ASSIGN SELLERS", "",
                 `

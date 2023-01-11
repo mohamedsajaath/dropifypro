@@ -9,8 +9,7 @@ class Ticket extends Model
 {
     use HasFactory, CommonQuery;
 
+    protected $table = 'tickets';
 
-
-protected $fillable = ['user_id','title','status'];
-
+    protected $fillable = ['user_id', 'title', 'status'];
 }

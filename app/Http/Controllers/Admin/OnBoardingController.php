@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Helper\Service\Admin\OnboardingService;
 use App\Helper\Utility\DateTimeUtility;
 use App\Http\Controllers\AbstractController;
-use App\Http\Requests\AddOnboardingEventRequest;
 use App\Models\Onboarding;
 use Illuminate\Http\Request;
 
@@ -31,24 +30,23 @@ class OnBoardingController extends AbstractController
         return 'pages.admin.onboardings.includes.create_modal';
     }
 
-    public function store(AddOnboardingEventRequest $request)
+    public function store(Request $request)
     {
         $onBoarding = new Onboarding();
         $onBoarding->loadFromRequest($request);
-        $onBoarding = OnboardingService::save($onBoarding);
-        $response = ['message' => 'Successfully Added', 'event' => $onBoarding];
-        return response()->json($response);
+        OnboardingService::save($onBoarding);
+        return self::response('Successfully Added');
     }
 
     public function getEditView()
     {
-        return 'pages.admin.onboardings.includes.edit_modal';
+        return 'pages.admin.onboardings.includes.create_modal';
     }
 
     public function getEditData($id)
     {
         $onboarding = Onboarding::find($id);
-        return ['onboarding' => $onboarding];
+        return ['on_boarding' => $onboarding];
     }
 
     /**
@@ -57,13 +55,13 @@ class OnBoardingController extends AbstractController
     public function update(Request $request, $id)
     {
         try {
+
             $onboarding = OnBoarding::find($id);
             $onboarding->loadFromRequest($request);
-            $onBoarding = OnboardingService::save($onboarding);
-            $response = ['message' => 'Successfully Updated', 'event' => $onBoarding];
-            return response()->json($response);
-        } catch (\Exception$ex) {
-            return self::response($ex->getMessage(), [], 422);
+            OnboardingService::save($onboarding);
+            return self::response('Successfully added');
+        }catch(\Exception $ex){
+            return self::response($ex->getMessage(),[],422);
         }
     }
 
@@ -73,7 +71,7 @@ class OnBoardingController extends AbstractController
         return self::response('Event deleted!');
     }
 
-    public function getByDate($date)
+    public function getOnboardingByDate($date)
     {
         return OnboardingService::getOnboardingByDate($date);
     }
