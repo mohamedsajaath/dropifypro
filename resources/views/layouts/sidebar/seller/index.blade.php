@@ -205,7 +205,7 @@
 
 <div class="menu-item here show menu-accordion">
     <!--begin:Menu link-->
-    <a class="menu-link" href="{{route('onboarding')}}">
+    <a class="menu-link" href="{{route('seller.onboardings.index')}}">
         <span class="menu-icon">
             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
             <span class="svg-icon svg-icon-2">

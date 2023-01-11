@@ -48,14 +48,14 @@
     <!--begin::Wallet-->
     <div class="app-navbar-item ms-1 ms-lg-3">
         <!--begin::Menu toggle-->
-        <a href="{{ route('seller.account.', ['page' => 'ebay']) }}"
+        <a href="#"
             class="btn btn-custom btn-icon-muted btn-active-light btn-active-color-primary  p-5 fs-6">
             <span style="color:#E53238;">e</span><span style="color:#0064D2;">b</span><span
                 style="color:#F5AF02;">a</span><span style="color:#86B817;">y</span><br />
 
             <small class="text-color-orange">Unlinked</small>
 
-        </a>
+        </a> 
         <!--begin::Menu toggle-->
         <!--begin::Menu-->
         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-title-gray-700 menu-icon-muted menu-active-bg menu-state-color fw-semibold py-4 fs-base w-175px"
@@ -112,7 +112,7 @@
             <!--end::Menu separator-->
             <!--begin::Menu item-->
             <div class="menu-item px-5">
-                <a href="{{ route('seller.account.',['page'=>"overview"]) }}" class="menu-link px-5">My Profile</a>
+                {{-- <a href="{{ route('seller.account',['page'=>"overview"]) }}" class="menu-link px-5">My Profile</a> --}}
             </div>
             <!--end::Menu item-->
             <!--begin::Menu item-->
@@ -131,7 +131,7 @@
                     <!--end::Menu item-->
                     <!--begin::Menu item-->
                     <div class="menu-item px-3">
-                        <a href="{{ route('seller.account.', ['page' => 'plans']) }}" class="menu-link px-5">Upgrade</a>
+                        {{-- <a href="{{ route('seller.account', ['page' => 'plans']) }}" class="menu-link px-5">Upgrade</a> --}}
                     </div>
                     <!--end::Menu item-->
                 </div>
@@ -140,7 +140,7 @@
             <!--end::Menu item-->
             <!--begin::Menu item-->
             <div class="menu-item px-5 my-1">
-                <a href="{{ route('seller.account.',['page'=>"overview"]) }}" class="menu-link px-5">Account Settings</a>
+                {{-- <a href="{{ route('seller.account',['page'=>"overview"]) }}" class="menu-link px-5">Account Settings</a> --}}
             </div>
             <!--end::Menu item-->
             <!--begin::Menu item-->

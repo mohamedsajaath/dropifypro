@@ -36,7 +36,7 @@ class OnBoardingController extends AbstractController
         $onBoarding = new Onboarding();
         $onBoarding->loadFromRequest($request);
         $onBoarding = OnboardingService::save($onBoarding);
-        $response = ['message' => 'Successfully Added', 'event'=> $onBoarding];
+        $response = ['message' => 'Successfully Added', 'event' => $onBoarding];
         return response()->json($response);
     }
 
@@ -60,10 +60,10 @@ class OnBoardingController extends AbstractController
             $onboarding = OnBoarding::find($id);
             $onboarding->loadFromRequest($request);
             $onBoarding = OnboardingService::save($onboarding);
-            $response = ['message' => 'Successfully Updated', 'event'=> $onBoarding];
+            $response = ['message' => 'Successfully Updated', 'event' => $onBoarding];
             return response()->json($response);
-        }catch(\Exception $ex){
-            return self::response($ex->getMessage(),[],422);
+        } catch (\Exception$ex) {
+            return self::response($ex->getMessage(), [], 422);
         }
     }
 
@@ -75,6 +75,6 @@ class OnBoardingController extends AbstractController
 
     public function getByDate($date)
     {
-        return  OnboardingService::getOnboardingByDate($date);
+        return OnboardingService::getOnboardingByDate($date);
     }
 }

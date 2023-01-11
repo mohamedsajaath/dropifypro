@@ -1,9 +1,10 @@
+
 @extends('layouts.app')
 
 @section('content')
     @include('includes.bread_crumb_with_header',[
         'header'=>'Onboardings',
-        'bread_crumbs'=>['Dashboard'=>route('dashboard')]
+        'bread_crumbs'=>['Dashboard'=>route('dashboard')],
     ])
     <div id="kt_app_content" class="app-content flex-column-fluid">
         {{-- LIST VIEW --}}
@@ -13,8 +14,7 @@
 @endsection
 @push('script')
     <script>
-        const modalId = 'modal';
-        $(document).on('click', '.add-onboarding',  async function () {
+        $(document).on('click', '#add-onboarding',  async function () {
             const btn = $(this);
             const btnTitle = btn.html();
             try {
@@ -136,8 +136,7 @@
         });
 
         function getOnboardingContentHtml(event)
-        {
-            return `
+        { return `
               <div class="tab-pane fade show active content-wrapper" role="tabpanel" data-content-id="${event['id']}">
                             <!--begin::Wrapper-->
                             <div class="d-flex align-items-center mb-6">
@@ -149,6 +148,7 @@
                                 <div class="flex-grow-1 me-5">
                                     <!--begin::Time-->
                                     <div class="text-gray-800 fw-semibold fs-2">
+                                        
 
                                         <span class="text-gray-400 fw-semibold fs-7">${event['start_time']}-${event['end_time']}</span>
                                     </div>

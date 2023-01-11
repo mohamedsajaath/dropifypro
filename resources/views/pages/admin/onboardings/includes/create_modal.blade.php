@@ -2,7 +2,7 @@
 @section('title','Define On-boarding slots')
 @section('content')
     <!--begin:Form-->
-    <form id="kt_modal_new_target_form" class="form" action="{{url('admin/onboardings')}}" method="POST">
+    <form id="kt_modal_new_target_form" class="form" action="{{url('seller/onboardings')}}" method="POST">
         @csrf
         <div class="modal-body">
             <div class="row">

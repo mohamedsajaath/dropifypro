@@ -30,6 +30,9 @@ Route::post('/register-with-plan-details', [Controller\RegisterPlanController::c
 Route::post('/admin/onboarding/{date}/', [AdminController\OnBoardingController::class,'getByDate']);
 Route::resource('/admin/onboardings', AdminController\OnboardingController::class)->names('admin.onboardings');
 
+Route::resource('/seller/onboardings',Controller\OnboardingController::class)->names('seller.onboardings');
+
+
 Route::resource('/admin/support/account-managers', AdminController\AccountManagerController::class)->names('admin.support.account-managers');
 // Route::get('account-managers/create', [AdminController\AccountManagerController::class, 'create'])->name('admin.account-managers.create');
 /*Route::post('/account-managers/store', [AdminController\AccountManagerController::class, 'store'])->name('admin.account-managers.store');
@@ -114,8 +117,10 @@ Route::prefix('admin')->middleware(['auth','auth.admin'])->group(function () {
 
 
 /************************************* SELLER ROUTES *************************************/
-Route::middleware(['auth, auth.seller'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
+        // dd(auth()->id());
+        // auth()->logout();
         return view('pages.seller.dashboard.index');
     })->name('dashboard');
 
@@ -154,9 +159,9 @@ Route::middleware(['auth, auth.seller'])->group(function () {
         return view('pages.seller.wholesale-request.index');
     })->name('wholesale-request');
 
-    Route::get('/onboarding', function () {
-        return view('pages.seller.onboarding.index');
-    })->name('onboarding');
+    // Route::get('/onboarding', function () {
+    //     return view('pages.seller.onboarding.index');
+    // })->name('onboarding');
 
     // SELLER ACCOUNT SETTING START
     Route::get('/seller/account_overview', function () {
@@ -297,9 +302,9 @@ Route::middleware('auth')->group(function () {
         return view('pages.seller.wholesale-request.index');
     })->name('wholesale-request');
 
-    Route::get('/onboarding', function () {
-        return view('pages.seller.onboarding.index');
-    })->name('onboarding');
+    // Route::get('/onboarding', function () {
+    //     return view('pages.seller.onboarding.index');
+    // })->name('onboarding');
 
 //SELLER END
 

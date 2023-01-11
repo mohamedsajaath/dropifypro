@@ -165,5 +165,5 @@
             //     dt.search(paymentValue).draw();
             // });
         });
-    </script>
+    </script> 
 @endpush

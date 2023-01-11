@@ -1,3 +1,4 @@
+const modalId = 'modal';
 const baseUrl = $('meta[name="base_url"]').attr('content');
 const csrfToken = $('meta[name="csrf"]').attr('content');
 function  isConfirmToProcess(alert_type, description, title = 'Are you sure!',icon){
